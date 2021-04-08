@@ -1,0 +1,90 @@
+25 aug---------------------------------------------------
+kisancare -------------
+1.kisancare ci setup on way to digital
+2.index page creation
+3.product page creation
+4.category page creation
+5.farmer profile page creation
+6.
+
+digilims--------------
+1.digilims setup on waytodigital
+2.database setup on waytodigital
+
+homeking--------------
+1.homeking uploaded on server waytodigital
+2.database creation on server waytodigital
+
+alxaa----------------
+1.product listing edition done
+
+digilims training provider --- 
+1.add learner done
+2.learner listing dolne
+3.learner edit done
+4.learner delete ---#
+5.dropout list done
+6.create learnership type done
+7.learnership list done
+8.learnership edit done
+9.learnership subtype add done
+10.learnership subtype edit done
+11.learnership subtype listing done
+12.learnership subtype delete done
+13.unit add done
+14.unit list done
+15.unit uypdate done
+16.unit delete done
+17.add facilitator done
+18.facilitator list done
+19.facilitator edit done
+20.facilitator delete done
+21.assessor add done
+22.assessor list done
+23.assessor edit done
+24.assessor delete done
+25.moderator add done
+26.moderator list done
+27.moderator edit done 
+28.moderator delete done
+29.class add done
+30.class list done
+31.class edit done
+32.class delete done
+33.attendence add done
+34.attendence list done
+35.attendence edit done
+36.attendence delete done
+37.user add done
+38.user edit done
+39.user list done
+40.user delete done
+41.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

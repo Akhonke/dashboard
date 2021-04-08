@@ -1,0 +1,210 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MyOrganization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.Add "Send SMS"; This should allow user to selct one use or many users or a class or a training intervention. Thentype an SMS and click "Send"- System must keep a record of all sent SMS's
+																
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Project Manager
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Training Provider
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.Create Learnership Sub-Type the user should be able to search for learnership sub type;mthe user should be able to search by "SAQA registration I.D" **												
+2.   	
+3.Create Learnership Sub-Type - User should be able to search for learnership subtype and then select the one they want**
+4.( Create Learnership Sub-Type - Add a field for "Facilitator" this should be a drop down menu )done _---(-which the user can search or filter	-)remaining	
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ranjeet sir ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~											
+5.Add "Elearning" Links. Online learning will be managed from "Training provider" panel																					
+6.For attandance, we will have 2 types of input --
+		1) Manual capture of days when the learner did not attend 
+		2) Biometric capture of attandance - Biomtric system will send Digilims a file with Biometric attendnace information	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ranjeet sir ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Facilitator
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.Under mark sheet add "Upload Mark Sheet" ; "Year" should be adrop down item; "Class Name" Should only show the classes to which the facilitator is teaching; Add "Date"																						
+2.Under mark sheet add "My Mark List" this is a list of all mark sheets uploaded; The User should be able to filter mark sheet list by (Using radio buttons one or many filter)
+		1) Class Name 
+		2) Date 
+		3) Year 
+		4) Learnership Sub-Type																						
+3.Add "Manage Attendnace" This is the same functionality as the training provider panel																						
+4.Add "Learner Discipline";
+		"New Issue"	- Learner Name and Surname 
+				- Date of Incident- Incident description
+				- Upload any evidence (Upload 3 documents and name them)
+				- Current status of incident (Pending/Completed);Outcome of Incident 
+				- (Warning letter issued/ Learner expelled); Upload Warning letter/ upload expulsion ;letter																						
+5.Add "Communication"; "Create new SMS"; "Create New Email" Same as project manager and programme director functionality																						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Assessor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------																														
+1.Assesment Reports																																	
+	Create New Assesment Report (An assesment report is a report of all learners in a class, That is, One assement report has data for multiple learners)																																	
+		Assessor Name and Surname (default based on login profile);
+		Assement Number (1st/2nd/3rd or  4th);
+		Assesment Date; 
+		Learnership Sub-Type (Drop Down with filtering); 
+		Class Name (Drop Down with filtering); 
+		Unit standards Assessed (Pick List Based on Unit standards in the Learnership Sub-Type); 
+		Overall Comment of Assement - (Free Text)																																	
+		Learner I.D Number (search)Learner Name (default based on I.D number); 
+		Learner Surname (Default Based on I.D number).																																	
+		Learner  Performance For each Unit Standard - Competent or Not Competent(Drop Down); 
+		Comments -(Free Text)																																	
+																																		
+2.My Assesment Reports																																	
+	List of all assesment reports (History) Arranged By Date and Clearnership Subtype and Class																																	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Moderator
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Internal Moderator Panel----------------------------------------																																	
+1.Internal Moderation Reports																																	
+	Create New Moderation Report (An Moderation report is a report of all learners in a class, That is, One moderation report has data for multiple learners)																																	
+		Moderator Name and Surname (default based on login profile);
+		Assement Number (1st/2nd/3rd or  4th);
+		Moderation Date; 
+		Learnership Sub-Type (Drop Down with filtering); 
+		Class Name (Drop Down with filtering); 
+		Unit standards Assessed (Pick List Based on Unit standards in the Learnership Sub-Type); 
+		Overall Comment of Assement - (Free Text)																																	
+		Learner I.D Number (search)Learner Name (default based on I.D number); 
+		Learner Surname (Default Based on I.D number).																																	
+		Learner  Performance For each Unit Standard - Competent or Not Competent(Drop Down); 
+		Comments -(Free Text)																																	
+																																		
+2.My Internal Moderation Reports																																	
+	List of all Moderation reports (History) Arranged By Date and Clearnership Subtype and Class	
+					
+						*****************************************************************
+
+External Moderator Panel----------------------------------------																														
+1.External Moderation Reports																																	
+	Create New Moderation Report (An Moderation report is a report of all learners in a class, That is, One moderation report has data for multiple learners)																																	
+		Moderator Name and Surname (default based on login profile);
+		Assement Number (1st/2nd/3rd or  4th);
+		Moderation Date; 
+		Learnership Sub-Type (Drop Down with filtering); 
+		Class Name (Drop Down with filtering); Unit standards Assessed (Pick List Based on Unit standards in the Learnership Sub-Type); 
+		Overall Comment of Assement - (Free Text)																																	
+		Learner I.D Number (search)Learner Name (default based on I.D number); 
+		Learner Surname (Default Based on I.D number).																																	
+		Learner  Performance For each Unit Standard - Competent or Not Competent(Drop Down); 
+		Comments -(Free Text)																																	
+																																		
+2.My External Moderation Reports																																	
+	List of all Moderation reports (History) Arranged By Date and Clearnership Subtype and Class																																	
+																														
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Learner
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.Add "My Performance"											
+	1)This will be a list of the assesment Reports for the learner only, from the Assesor Panel											
+	2)This will also have a list of all Internal Moderation Reports for the learner only from the internal moderation panel											
+	3)This will also have a list of all External Moderation Reports for the learner only from the external moderation panel											

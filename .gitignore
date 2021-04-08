@@ -1,0 +1,8 @@
+*.zip
+.ftpquota
+contributing.md
+error_log
+php.ini
+readme.rst
+yindex.html
+user_guide/

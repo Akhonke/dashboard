@@ -1,0 +1,173 @@
+/* your styles go here */
+.npy-5{
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+table .btn {
+
+    padding: 4px 10px !important;
+
+    margin: 2px !important;
+
+    font-size: 10px !important;
+
+}
+.sidebar-list-item .sidebar-menu a {
+    color: #000 !important;
+}
+.sidebar-list-item .sidebar-menu {
+    background: #f2f2f2 !important;
+    color: #000;
+}
+.sidebar-list-item .sidebar-menu a:hover {
+    background: #f2f2f2 !important;
+    color: #20bcd5!important;
+}
+.sidebar-link.active, .sidebar-link:focus {
+    background: #fff !important;
+    color: #000 !important;
+}
+.text-gray-400.text-uppercase.px-3.px-lg-4.py-4.font-weight-bold.small.headings-font-family {
+    background: #20bcd5 !important;
+    color: #fff !important;
+}
+
+.sidebar {
+
+    background: #fff ;
+
+}
+
+    div#pages1{
+
+        background:#f6f6f6 !important;
+
+    }
+
+    .text-muted {
+
+    color: #000!important;
+
+}
+
+button.btn.btn-secondary {
+
+    box-shadow: 5px 5px 10px rgba(0,0,0,.2);
+
+    margin:5px !important;
+
+}
+
+.sidebar-link:hover span {
+    text-decoration: none !important;
+    color: #20bcd5!important;
+}
+
+.border-primary {
+
+    border-color: #363c8b !important;
+
+    background: #f26b35 !important;
+
+}
+
+/* body{ 
+
+    background:rgba(0,0,0,.1) !important;
+
+} */
+
+.buttons-copy {
+
+    background: #4680ff !important;
+
+}
+
+.buttons-csv {
+
+    background: #17a2b8 !important;
+
+}
+
+.buttons-excel {
+
+    background: #ffc107 !important;
+
+}
+
+.buttons-pdf {
+
+    background: #dc3545 !important;
+
+}
+
+.buttons-print {
+
+    background: #28a745 !important;
+
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+
+    background-color: rgba(23, 162, 184,.5);
+
+}
+.card-header .h6.text-uppercase.mb-0 {
+    color: #fff !important;
+}
+footer.footer.bg-white{
+
+    background: #20bcd5 !important;
+
+}
+
+footer p.mb-2.mb-md-0 {
+
+    color: #fff;
+
+    margin: 0;
+
+    line-height: 1;
+
+}
+
+.card-header{
+
+    background: #20bcd5!important;
+
+}
+
+.text-white{
+
+    color:#fff;
+
+}
+
+@media (max-width:1199px){
+    .npy-5{
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+}
+@media (max-width:767px){
+    .card-body {
+        padding: 1rem;
+    }
+    .sidebar.shrink {
+        width: 30rem;
+        text-align: left;
+    }
+    .sidebar-link i {
+        font-size: 1rem;
+    }
+    .navbar-brand{
+        margin-right: 0 !important;
+    }
+    .btn{
+        padding: .2rem .7rem !important;
+    font-size: .7rem !important;
+    }
+    .table td, .table th {
+        padding: .5rem;
+    }
+}

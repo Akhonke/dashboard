@@ -1,0 +1,20 @@
+---------------------------------------------------------------------------------
+DATE : 28/08/2020
+---------------------------------------------------------------------------------
+PROJECT NAME : Digilims
+---------------------------------------------------------------------------------
+panel ---- training provider
+1.Upload Marksheet 
+		->Under mark sheet add "Upload Mark Sheet" ;
+ 		->"Year" should be adrop down item; "Class Name" 
+		->Should only show the classes to which the facilitator is teaching; Add "Date"
+
+2.
+
+
+
+
+
+
+
+
