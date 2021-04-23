@@ -150,7 +150,7 @@ class Common extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-	//  Single District data 
+	//  Single District data
 	public function one_District($id)
 	{
 		$query = $this->db->get_where('district', array('id' => $id));
@@ -225,7 +225,7 @@ class Common extends CI_Model
 		$query = $this->db->get_where('region', array('district_id' => $data));
 		return $query->result();
 	}
-	//  Insert city 
+	//  Insert city
 	public function insertcity($data)
 	{
 		$new_city =  $this->db->insert('city', $data);
@@ -2958,7 +2958,7 @@ class Common extends CI_Model
 		$this->db->join('learnership', 'learnership.id = learner.learnship_id');
 		$this->db->join('learnership_sub_type', 'learnership_sub_type.id = learner.learnershipSubType');
 		$this->db->where('learner.id_number', $where);
-		
+
 		$query = $this->db->get();
 
 		return $query->result();
@@ -2970,12 +2970,21 @@ class Common extends CI_Model
 		$this->db->join('learnership', 'learnership.id = learner.learnship_id');
 		$this->db->join('learnership_sub_type', 'learnership_sub_type.id = learner.learnershipSubType');
 		$this->db->where('learner.id_number', $id);
-		
+
 		$query = $this->db->get();
 
 		return $query->result();
 
 	}
 
+	public function assessmentList()
+	{
+
+	    $this->db->select('*');
+
+	    $query = $this->db->get('assessment');
+
+	    return $query->result();
+	}
 
 }

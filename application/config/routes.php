@@ -278,7 +278,7 @@ $route['projectmanager-get_receiver_contact'] = 'projectmanager/get_receiver_con
 $route['projectmanager-sendBulkMassage'] = 'projectmanager/sendBulkMessage';
 $route['projectmanager-sendBulkEmails'] = 'projectmanager/sendbulkEmails';
 // $route['Projectmanager-trash'] = 'projectmanager/trash';
-// $route['Projectmanager-important'] = 'projectmanager/important';      
+// $route['Projectmanager-important'] = 'projectmanager/important';
 $route['projectmanager-create-income'] = 'projectmanager/create_income_item';
 $route['projectmanager-income-list'] = 'projectmanager/income_list';
 $route['projectmanager-create-expenditure'] = 'projectmanager/create_expenditure_item';
@@ -324,9 +324,12 @@ $route['Projectmanager-User-Delete']    =    'projectmanager/deleteUser';
 $route['list-Mark-Sheet']    = 'projectmanager/listProviderAddedMarksheet';
 $route['projectmanager-getdestrict'] = 'projectmanager/projectmanager_getdestrict';
 
+$route['projectmanager-create-assessment'] = 'projectmanager/create_assessment';
+$route['projectmanager-assessment-list'] = 'projectmanager/list_assessments';
+
 
 /******************************(18 FEB 2021)***************************************/
-// create Project 
+// create Project
 $route['Create-New-Project'] = 'projectmanager/createNewProject';
 $route['New-Project-List'] = 'projectmanager/newProjectList';
 // create New Subcontractor
