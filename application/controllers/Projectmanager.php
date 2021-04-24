@@ -3795,9 +3795,9 @@ $record = $this->common->get_learnername($id);
 
 	public function list_assessments()
 	{
-	    $projcetid = $_SESSION['projectmanager']['id'];
+	    $project_manager_id = $_SESSION['projectmanager']['id'];
 
-	    $this->data['record'] = $this->common->assessmentList();
+	    $this->data['record'] = $this->common->assessmentListByProjectManager($project_manager_id);
 
 	    $this->data['page'] = 'list_assessments';
 
@@ -3810,7 +3810,7 @@ $record = $this->common->get_learnername($id);
 	public function create_assessment()
 	{
 
-	    $project_id = $_SESSION['projectmanager']['id'];
+	    $project_manager_id = $_SESSION['projectmanager']['id'];
 
 	    $id = 0;
 
@@ -3875,7 +3875,7 @@ $record = $this->common->get_learnername($id);
 	                'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
 	                'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
-	                'created_by' => $project_id,
+	                'created_by' => $project_manager_id,
 	                'created_date' => date('Y-m-d'),
 	                'updated_date' => date('Y-m-d'),
 
@@ -3940,7 +3940,7 @@ $record = $this->common->get_learnername($id);
 	                'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
 	                'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
-	                'created_by' => $project_id,
+	                'created_by' => $project_manager_id,
 	                'created_date' => date('Y-m-d'),
 	                'updated_date' => date('Y-m-d'),
 

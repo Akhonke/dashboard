@@ -90,7 +90,7 @@
 
                                     <!-- <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($record)) ? $record->unit_standard: ''; ?>" id="unit_standard">  -->
 
-                                    <select class="form-control" name="class_name" id="class_name">
+                                    <select class="form-control" name="unit_standard" id="class_name">
 
                                         <option hidden value="">Select Unit Standard</option>
                                         <?php foreach ($units as $unit) { ?>

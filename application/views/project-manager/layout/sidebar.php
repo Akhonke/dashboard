@@ -9,7 +9,7 @@ $learner = $this->common->accessrecord(TBL_Project_Manager, [], array('id' => $l
 $menus = getprojectmanageroptions();
 $res = array();
 $organisation = $this->db->where('id', $learner['organization'])->get('organisation')->result();
-// echo 
+// echo
 // print_r($organisation);die;
 $plan = $this->db->where('id', $organisation[0]->packageId)->get('plan')->result();
 
@@ -111,7 +111,7 @@ $projectcount = count($Project);
       </li>
 
       <!-- *************************** -->
-      
+
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Manage Employer" data-target="#pages6" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
             <i class="o-code-window-1 mr-3 text-gray"></i><span>Employer</span></a>
@@ -249,11 +249,11 @@ $projectcount = count($Project);
                <!-- <li class="sidebar-list-item">
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Learner Performance Management", $arrayfeatures)) {
-                  ?> 
+                  ?>
                   <a href="<?= BASEURL ?>projectmanager-stipends-list" class="sidebar-link text-white pl-lg-5"><span>Stipends List</span></a>
                   <?php } else { ?>
                             <a onclick="subscriptionMessage()" class="sidebar-link text-white pl-lg-5">Stipends List</a>
-                  <?php } ?> 
+                  <?php } ?>
                </li> -->
             </ul>
          </div>
@@ -289,12 +289,12 @@ $projectcount = count($Project);
             <a onclick="subscriptionMessage()" title="From Here You Can See Class List" class="sidebar-link text-white"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Class List</span></a>
          <?php } ?>
       </li>
-      
-      
+
+
       <!-- *************************** -->
-      
+
       <li class="sidebar-list-item">
-         <a href="#" data-toggle="collapse" title="From Here You Can Manage Employer" data-target="#pages6" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
+         <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages6" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
             <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
          <div id="pages6" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
@@ -321,12 +321,10 @@ $projectcount = count($Project);
       </li>
       <!-- *************************** -->
 
-      
-
 
       <!-- ******************************** -->
       <li class="sidebar-list-item">
-         <a href="#" data-toggle="collapse" title="From Here You Can Manage Finace " data-target="#pages3" aria-expanded="false" aria-controls="pages3" class="sidebar-link text-white">
+         <a href="#" data-toggle="collapse" title="From Here You Can Manage Finance " data-target="#pages3" aria-expanded="false" aria-controls="pages3" class="sidebar-link text-white">
             <i class="o-wireframe-1 mr-3 text-gray"></i><span>Finance</span></a>
          <div id="pages3" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
@@ -445,10 +443,10 @@ $projectcount = count($Project);
                <a href="<?= BASEURL ?>Projectmanager-sentbox" title="From Here You Can See Sentbox Message" class="sidebar-link text-white pl-lg-5">Sent Box</a>
             </li>
             <!-- <li class="sidebar-list-item">
-                      <a href="<?= BASEURL ?>Projectmanager-trash" class="sidebar-link text-white pl-lg-5">Trash</a>                    
+                      <a href="<?= BASEURL ?>Projectmanager-trash" class="sidebar-link text-white pl-lg-5">Trash</a>
                </li>
                <li class="sidebar-list-item">
-                      <a href="<?= BASEURL ?>Projectmanager-important" class="sidebar-link text-white pl-lg-5">Important</a>                     
+                      <a href="<?= BASEURL ?>Projectmanager-important" class="sidebar-link text-white pl-lg-5">Important</a>
                </li>-->
 
 
@@ -459,7 +457,7 @@ $projectcount = count($Project);
    <?php } ?>
 </li>
 
-<!-- 
+<!--
 <li class="sidebar-list-item">
    <a href="#" data-toggle="collapse" data-target="#pages88" aria-expanded="false" aria-controls="pages88" class="sidebar-link text-white">
       <i class="o-laptop-screen-1 mr-3 text-gray"></i><span>Message</span></a>
@@ -475,12 +473,12 @@ $projectcount = count($Project);
             <a href="<?= BASEURL ?>Projectmanager-sentbox" class="sidebar-link text-white pl-lg-5">Sent Box</a>
          </li> -->
 <!-- <li class="sidebar-list-item">
-                      <a href="<?= BASEURL ?>Projectmanager-trash" class="sidebar-link text-white pl-lg-5">Trash</a>                    
+                      <a href="<?= BASEURL ?>Projectmanager-trash" class="sidebar-link text-white pl-lg-5">Trash</a>
                </li>
                <li class="sidebar-list-item">
-                      <a href="<?= BASEURL ?>Projectmanager-important" class="sidebar-link text-white pl-lg-5">Important</a>                     
+                      <a href="<?= BASEURL ?>Projectmanager-important" class="sidebar-link text-white pl-lg-5">Important</a>
                </li>-->
-<!-- 
+<!--
 
       </ul>
    </div>
