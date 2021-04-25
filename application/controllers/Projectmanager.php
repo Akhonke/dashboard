@@ -3828,7 +3828,7 @@ $record = $this->common->get_learnername($id);
 
 	            // Upload files
 	            if (!empty($_FILES['upload_learner_guide']['name'])) {
-	                $upload_learner_guide['upload_learner_guide'] = $this->singlefileupload('upload_learner_guide', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_learner_guide['upload_learner_guide'] = $this->singlefileupload('upload_learner_guide', './uploads/assessment/upload_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
 	                $upload_learner_guide['upload_learner_guide'] = $assessment->upload_learner_guide;
@@ -3836,7 +3836,7 @@ $record = $this->common->get_learnername($id);
 
 	            // Upload files
 	            if (!empty($_FILES['upload_learner_workbook']['name'])) {
-	                $upload_learner_workbook['upload_learner_workbook'] = $this->singlefileupload('upload_learner_workbook', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_learner_workbook['upload_learner_workbook'] = $this->singlefileupload('upload_learner_workbook', './uploads/assessment/upload_learner_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
 	                $upload_learner_workbook['upload_learner_workbook'] = $assessment->upload_learner_workbook;
@@ -3844,7 +3844,7 @@ $record = $this->common->get_learnername($id);
 
 	            // Upload files
 	            if (!empty($_FILES['upload_learner_poe']['name'])) {
-	                $upload_learner_poe['upload_learner_poe'] = $this->singlefileupload('upload_learner_poe', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_learner_poe['upload_learner_poe'] = $this->singlefileupload('upload_learner_poe', './uploads/assessment/upload_learner_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
 	                $upload_learner_poe['upload_learner_poe'] = $assessment->upload_learner_poe;
@@ -3852,7 +3852,7 @@ $record = $this->common->get_learnername($id);
 
 	            // Upload files
 	            if (!empty($_FILES['upload_facilitator_guide']['name'])) {
-	                $upload_facilitator_guide['upload_facilitator_guide'] = $this->singlefileupload('upload_facilitator_guide', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_facilitator_guide['upload_facilitator_guide'] = $this->singlefileupload('upload_facilitator_guide', './assessment/bank/upload_facilitator_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
 	                $upload_facilitator_guide['upload_facilitator_guide'] = $assessment->upload_facilitator_guide;
@@ -3876,8 +3876,8 @@ $record = $this->common->get_learnername($id);
 	                'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
 	                'created_by' => $project_manager_id,
-	                'created_date' => date('Y-m-d'),
-	                'updated_date' => date('Y-m-d'),
+	                'created_date' => date('Y-m-d H:i:s'),
+	                'updated_date' => date('Y-m-d H:i:s'),
 
 	            ];
 
@@ -3897,28 +3897,28 @@ $record = $this->common->get_learnername($id);
 
 	            // Upload files
 	            if (!empty($_FILES['upload_learner_guide']['name'])) {
-	                $upload_learner_guide['upload_learner_guide'] = $this->singlefileupload('upload_learner_guide', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_learner_guide['upload_learner_guide'] = $this->singlefileupload('upload_learner_guide', './uploads/assessment/upload_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $upload_learner_guide = [];
 	            }
 
 	            // Upload files
 	            if (!empty($_FILES['upload_learner_workbook']['name'])) {
-	                $upload_learner_workbook['upload_learner_workbook'] = $this->singlefileupload('upload_learner_workbook', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_learner_workbook['upload_learner_workbook'] = $this->singlefileupload('upload_learner_workbook', './uploads/assessment/upload_learner_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $upload_learner_workbook = [];
 	            }
 
 	            // Upload files
 	            if (!empty($_FILES['upload_learner_poe']['name'])) {
-	                $upload_learner_poe['upload_learner_poe'] = $this->singlefileupload('upload_learner_poe', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_learner_poe['upload_learner_poe'] = $this->singlefileupload('upload_learner_poe', './uploads/assessment/upload_learner_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $upload_learner_poe = [];
 	            }
 
 	            // Upload files
 	            if (!empty($_FILES['upload_facilitator_guide']['name'])) {
-	                $upload_facilitator_guide['upload_facilitator_guide'] = $this->singlefileupload('upload_facilitator_guide', './uploads/bank/upload_bank_statement/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	                $upload_facilitator_guide['upload_facilitator_guide'] = $this->singlefileupload('upload_facilitator_guide', './uploads/assessment/upload_facilitator_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            } else {
 	                $upload_facilitator_guide = [];
 	            }
@@ -3941,8 +3941,8 @@ $record = $this->common->get_learnername($id);
 	                'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
 	                'created_by' => $project_manager_id,
-	                'created_date' => date('Y-m-d'),
-	                'updated_date' => date('Y-m-d'),
+	                'created_date' => date('Y-m-d H:i:s'),
+	                'updated_date' => date('Y-m-d H:i:s'),
 
 	            ];
 

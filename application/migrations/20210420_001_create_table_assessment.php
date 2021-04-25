@@ -32,6 +32,20 @@ CREATE TABLE `assessment` (
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `learner_assessment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `assessment_id` int(11) NOT NULL,
+  `learner_id` int(11) NOT NULL,
+  `upload_assessment` varchar(255) NOT NULL,
+  `upload_assessment_name` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `assessed_by` int(11),
+  `assessment_notes` text,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
          */
 
 //         $this->dbforge->add_field(array(

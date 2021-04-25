@@ -458,6 +458,10 @@ $route['learner-complaint-list'] = 'Learner/complaint_list';
 $route['learner-suggestion-list'] = 'Learner/suggestion_list';
 $route['learner-forget-password'] = 'welcome/learner_forgetpassword';
 
+$route['learner-assessment-list'] = 'learner/list_assessments';
+$route['learner-view-assessment'] = 'learner/view_assessment';
+$route['learner-load-assessment'] = 'learner/load_assessment';
+
 //****************************Assessor******************//
 $route['assessor'] = 'welcome/assosser';
 $route['assessor-dashboard'] = 'assessor/dashboard';

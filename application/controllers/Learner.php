@@ -27,7 +27,7 @@ class Learner extends CI_Controller
 
 		$this->data['suggestion_list_'] = $this->common->accessrecord('complaints_and_suggestions', [], ['learner_id' => $id,'type'=>'suggestions'], 'result');
 		$this->data['suggestion_list'] = count($this->data['suggestion_list_']);
-		
+
 		$this->data['page'] = 'dashboard';
 
 		$this->data['content'] = 'pages/dashboard/dashboard';
@@ -66,7 +66,7 @@ class Learner extends CI_Controller
 				'description' => $this->input->post('description'),
 
 			);
-	
+
 			if ($this->common->insertData('complaints_and_suggestions', $data)) {
 
 				$this->session->set_flashdata('success', 'Data Insert Successfully');
@@ -104,7 +104,7 @@ class Learner extends CI_Controller
 
 		$this->load->view('learner/tamplate', $this->data);
 	}
-	
+
 	public function suggestion_list()
 	{
 		$id = $_SESSION['learner']['id'];
@@ -547,7 +547,7 @@ class Learner extends CI_Controller
 		echo json_encode($region_data);
 	}
 
-	
+
 //****************************Learner Live Class******************//
 public function live_class_list(){
 
@@ -575,6 +575,164 @@ public function live_class_list(){
 }
 
 
-
 //****************************Learner Live Class******************//
+
+public function list_assessments(){
+
+
+     $learner_id = null;
+     if (isset($_SESSION['learner']['id'])) {
+         $learner_id = $_SESSION['learner']['id'];
+     }
+
+
+     $this->data['record'] = $this->common->assessmentListByLearner($learner_id);
+
+     $this->data['page'] = 'list_assessments';
+
+     $this->data['content'] = 'assessment/assessment_list';
+
+     $this->load->view('learner/tamplate', $this->data);
+}
+
+public function view_assessment(){
+
+
+    $learner_id = null;
+    if (isset($_SESSION['learner']['id'])) {
+        $learner_id = $_SESSION['learner']['id'];
+    }
+
+    $assessment_id = 0;
+    if (!empty($_GET['id'])) {
+        $assessment_id = $_GET['id'];
+    }
+    if ($assessment_id == 0) {
+        echo "Invalid Assessment";
+        return;
+    }
+
+    $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+    $this->data['learner_assessments'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id], 'result');
+    $this->data['learner_id'] = $learner_id;
+    $this->data['assessment_id'] = $assessment_id;
+
+    $this->data['page'] = 'view_assessment';
+
+    $this->data['content'] = 'assessment/assessment_details';
+
+    $this->load->view('learner/tamplate', $this->data);
+
+
+
+}
+
+// TODO: This file is define in multiple files (eg Project manager controller
+
+private function singlefileupload($image, $path, $allowed_types)
+{
+
+    $config['upload_path']          = $path;
+
+    $config['allowed_types']        = $allowed_types;
+
+    $config['encrypt_name']         = TRUE;
+
+    $config['remove_spaces']        = TRUE;
+
+    $config['detect_mime']          = TRUE;
+
+    $config['overwrite']            = TRUE;
+
+    $config['file_ext_tolower']     = TRUE;
+
+    $this->load->library('upload', $config);
+
+    $this->upload->initialize($config);
+
+    if (!$this->upload->do_upload($image)) {
+
+        echo  $this->upload->display_errors();
+        die;
+    } else {
+
+        $data = $this->upload->data();
+
+        $name = $data['file_name'];
+
+        return $name;
+    }
+}
+
+public function load_assessment(){
+
+
+    $learner_id = null;
+    if (isset($_SESSION['learner']['id'])) {
+        $learner_id = $_SESSION['learner']['id'];
+    }
+
+    $assessment_id = 0;
+    if (!empty($_POST['assessment_id'])) {
+        $assessment_id = $_POST['assessment_id'];
+    }
+
+    if ($assessment_id == 0) {
+        $this->session->set_flashdata('error', 'Invalid Assessment. Please Try Again');
+        redirect('learner-assessment-list');
+    }
+
+
+    // Upload files
+    if (!empty($_FILES['upload_assessment']['name'])) {
+        $upload_assessment['upload_assessment']['store'] = $this->singlefileupload('upload_assessment', './uploads/assessment/upload_assessment/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+        $upload_assessment['upload_assessment']['name'] = $_FILES['upload_assessment']['name'];
+    } else {
+        $this->session->set_flashdata('error', 'No assessment submitted. Please Try Again');
+        redirect('/learner/view_assessment?id=' . $assessment_id);
+    }
+
+
+    $data = [
+        'assessment_id' => $this->input->post('assessment_id'),
+        'learner_id' => $learner_id,
+        'upload_assessment' => $upload_assessment['upload_assessment']['store'],
+        'upload_assessment_name' => $upload_assessment['upload_assessment']['name'],
+        'status' => 'new',
+        'created_date' => date('Y-m-d H:i:s'),
+        'updated_date' => date('Y-m-d H:i:s'),
+
+    ];
+
+    if ($this->common->insertData('learner_assessment', $data)) {
+
+        $this->session->set_flashdata('success', 'Assessement Saved Successfully');
+
+        redirect('learner-assessment-list');
+    } else {
+
+        $this->session->set_flashdata('error', 'Please Try Again');
+
+        redirect('/learner/view_assessment?id=' . $assessment_id);
+    }
+
+    ///
+
+
+//     $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+//     $this->data['learner_assessments'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id], 'result');
+//     $this->data['learner_id'] = $learner_id;
+//     $this->data['assessment_id'] = $assessment_id;
+
+//     $this->data['page'] = 'view_assessment';
+
+//     $this->data['content'] = 'assessment/assessment_details';
+
+//     $this->load->view('learner/tamplate', $this->data);
+
+
+
+}
+
+
 }

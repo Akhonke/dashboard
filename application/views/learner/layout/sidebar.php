@@ -86,8 +86,30 @@ echo $learner_nm=$learner->first_name.' '.$learner->surname;
                 <?php } else { ?>
             <a onclick="subscriptionMessage()" title="From Here You Can See Live Class List " class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>E-Learning</span></a>
          <?php } ?>
-           
-        </li>
+
+      </li>
+
+      <!-- *************************** -->
+
+      <li class="sidebar-list-item">
+         <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages6" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
+            <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
+         <div id="pages6" class="collapse">
+            <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+
+               <li class="sidebar-list-item">
+                  <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                  if (in_array("Learner Performance Management", $arrayfeatures)) {
+                  ?>
+                     <a href="<?= BASEURL ?>learner-assessment-list" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                  <?php } ?>
+               </li>
+            </ul>
+         </div>
+      </li>
+      <!-- *************************** -->
 
    </ul>
 </div>

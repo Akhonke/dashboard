@@ -2977,6 +2977,8 @@ class Common extends CI_Model
 
 	}
 
+	// Assessments
+
 	public function assessmentList()
 	{
 
@@ -2986,5 +2988,41 @@ class Common extends CI_Model
 
 	    return $query->result();
 	}
+
+	public function assessmentListByProjectManager($project_manager_id)
+	{
+
+	    $result = $this->db->select('*')
+    	    ->from('assessment')
+    	    ->where('created_by', $project_manager_id)
+    	    ->get()
+    	    ->result();
+
+	    return $result;
+	}
+
+	public function assessmentListByLearner($learner_id)
+	{
+
+	    // select * from assessment
+	    // left join class_name on class_name.id = assessment.class_name
+	    // left join elearner on elearner.class_name = class_name.id
+	    // left join learner on learner.trainer_id  = elearner.trainer_id
+	    // WHERE learner.id = 1;
+
+
+
+	    $result = $this->db->select('*')
+	    ->from('assessment')
+	    ->join('class_name', 'class_name.id = assessment.class_name')
+	    ->join('elearner', 'elearner.class_name = class_name.id')
+	    ->join('learner', 'learner.trainer_id = elearner.trainer_id')
+	    ->where('learner.id', $learner_id)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
 
 }
