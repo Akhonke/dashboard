@@ -510,6 +510,9 @@ $route['assessor-mark-assessment'] = 'assessor/mark_assessment';
 $route['moderator'] = 'welcome/moderator';
 $route['moderator-dashboard'] = 'moderator/dashboard';
 
+$route['moderator-completed-assessment-list'] = 'moderator/list_complete_assessments';
+// $route['moderator-view-assessment'] = 'moderator/view_assessment';
+// $route['moderator-mark-assessment'] = 'moderator/mark_assessment';
 
 
 

@@ -5054,8 +5054,10 @@ class JscssProjectmanger extends CI_Model
 								$('#learnership_sub_type_id-error').html(star);
 
 							}else{
+
+debugger;
 								var test = '<option hidden value='+'>Select Class</option>';
-							  option += '<option value='+star.class_name+'>'+star.class_name+'</option>'
+							  option += '<option value='+star.id+'>'+star.class_name+'</option>'
 
 							  $('.learner_classname').html(test+option);
 

@@ -44,10 +44,25 @@ CREATE TABLE `learner_assessment` (
   `upload_completed_poe` varchar(255) NOT NULL,
   `upload_completed_poe_name` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
+
+  `assessment_status` varchar(255) NOT NULL,
   `assessed_by` int(11) DEFAULT NULL,
+  `assessment_date` DATETIME NOT NULL,
   `assessment_notes` text DEFAULT NULL,
   `learner_feedback` text DEFAULT NULL,
   `overall_assessment` text DEFAULT NULL,
+
+  `internal_moderation_status` varchar(255) NOT NULL,
+  `internal_moderation_by` int(11) DEFAULT NULL,
+  `internal_moderation_date` DATETIME NOT NULL,
+  `internal_moderation_notes` text DEFAULT NULL,
+
+  `external_moderation_status` varchar(255) NOT NULL,
+  `external_moderation_by` int(11) DEFAULT NULL,
+  `external_moderation_date` DATETIME NOT NULL,
+  `external_moderation_notes` text DEFAULT NULL,
+
+
   `upload_marked_learner_guide` varchar(255) NOT NULL,
   `upload_marked_learner_guide_name` varchar(255) NOT NULL,
   `upload_marked_workbook` varchar(255) NOT NULL,

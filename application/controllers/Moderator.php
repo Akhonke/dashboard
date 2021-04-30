@@ -677,7 +677,7 @@ class Moderator extends CI_Controller
 		// 	$trainer = $this->common->accessrecord('trainer', [], ['id' => $trainer_id], 'row');
 
 		// 	$trainerid = $trainer->id;
-			
+
 		// } else {
 
 		// 	$trainerid = '';
@@ -687,7 +687,7 @@ class Moderator extends CI_Controller
 
 		// $record = $this->common->accessrecord('class_name', [], ['learnership_sub_type_id' => $id, 'trainer_id' => $trainerid], 'result');
 		$record = $this->common->accessrecord('class_name', [], ['learnership_sub_type_id' => $id], 'result');
-		
+
 		if (!empty($record)) {
 
 			$data = $record;
@@ -795,6 +795,31 @@ class Moderator extends CI_Controller
 		}
 	}
 
+
+	//****************************Assessments******************//
+	public function list_complete_assessments(){
+
+
+	    if (isset($_SESSION['moderator']['id'])) {
+	        $moderator_id = $_SESSION['moderator']['id'];
+	    } else {
+
+	        $moderator_id = '';
+	    }
+
+	    $moderator = $this->db->where('id',  $moderator_id)->get('moderator')->row();
+	    $organisation_id  = $moderator->organization;
+
+
+
+	    $this->data['record'] = $this->common->CompletedAssessmentListByOrganisation($organisation_id);
+
+	    $this->data['page'] = 'list_complete_assessments';
+
+	    $this->data['content'] = '/pages/assessment/complete_assessment_list';
+
+	    $this->load->view('moderator/tamplate', $this->data);
+	}
 
 }
 

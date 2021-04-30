@@ -3005,7 +3005,7 @@ class Common extends CI_Model
 	{
 
 	    // select * from assessment
-	    // left join class_name on class_name.id = assessment.class_name
+	    // left join class_name on class_name.id = assessment.classname
 	    // left join elearner on elearner.class_name = class_name.id
 	    // left join learner on learner.trainer_id  = elearner.trainer_id
 	    // WHERE learner.id = 1;
@@ -3014,7 +3014,7 @@ class Common extends CI_Model
 
 	    $result = $this->db->select('*')
 	    ->from('assessment')
-	    ->join('class_name', 'class_name.id = assessment.class_name')
+	    ->join('class_name', 'class_name.id = assessment.classname')
 	    ->join('elearner', 'elearner.class_name = class_name.id')
 	    ->join('learner', 'learner.trainer_id = elearner.trainer_id')
 	    ->where('learner.id', $learner_id)
@@ -3030,7 +3030,7 @@ class Common extends CI_Model
 	    /*
 	     select * from learner_assessment
 	     left join assessment on assessment.id = learner_assessment.assessment_id
-	     left join class_name on class_name.id = assessment.class_name
+	     left join class_name on class_name.id = assessment.classname
 	     where class_name.facilitator_id = 1
         */
 
@@ -3054,7 +3054,7 @@ class Common extends CI_Model
 	    $result = $this->db->select($select_fields)
  	    ->from('learner_assessment')
  	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
- 	    ->join('class_name', 'class_name.id = assessment.class_name')
+ 	    ->join('class_name', 'class_name.id = assessment.classname')
  	    ->join('learner', 'learner.id = learner_assessment.learner_id')
  	    ->where('class_name.facilitator_id', $facilitator_id)
  	    ->get()
@@ -3070,7 +3070,7 @@ class Common extends CI_Model
 	    /*
 	     select * from learner_assessment
 	     left join assessment on assessment.id = learner_assessment.assessment_id
-	     left join class_name on class_name.id = assessment.class_name
+	     left join class_name on class_name.id = assessment.classname
 	     left join assessor on assessor.organization = class_name.organization
 	     where class_name.facilitator_id = 1
 	     */
@@ -3095,7 +3095,7 @@ class Common extends CI_Model
 	    $result = $this->db->select($select_fields)
 	    ->from('learner_assessment')
 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
-	    ->join('class_name', 'class_name.id = assessment.class_name')
+	    ->join('class_name', 'class_name.id = assessment.classname')
 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
 	    ->join('assessor', 'assessor.organization = class_name.organization')
 // 	    ->where('assessor.id', $assessorid)
@@ -3111,7 +3111,7 @@ class Common extends CI_Model
 	    /*
 	     select * from learner_assessment
 	     left join assessment on assessment.id = learner_assessment.assessment_id
-	     left join class_name on class_name.id = assessment.class_name
+	     left join class_name on class_name.id = assessment.classname
 	     where learner_assessment.id = 1
 	     */
 
@@ -3135,7 +3135,7 @@ class Common extends CI_Model
 	    $result = $this->db->select($select_fields)
 	    ->from('learner_assessment')
 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
-	    ->join('class_name', 'class_name.id = assessment.class_name')
+	    ->join('class_name', 'class_name.id = assessment.classname')
 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
 	    ->where('learner_assessment.id', $learner_assessment_id)
 	    ->get()
@@ -3144,4 +3144,38 @@ class Common extends CI_Model
 	    return $result;
 	}
 
+
+	public function CompletedAssessmentListByOrganisation($organisation_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.classname')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('class_name.organization', $organisation_id)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+
 }
+
