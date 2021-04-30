@@ -1,10 +1,13 @@
 <?php
 namespace application\models;
 
+use CI_Model;
+
+
 class AssessmentModel extends CI_Model {
-    
-    const DB_TABLE = $'assessment';
-    
+
+    const DB_TABLE = 'assessment';
+
     public int $id;
     public string $assessment_start_date;
     public string $assessment_end_date;
@@ -23,7 +26,7 @@ class AssessmentModel extends CI_Model {
     public int $created_by;
     public string $created_date;
     public string $updated_date;
-    
+
 //     public assessment(int id_,DateTime assessment_start_date_,DateTime assessment_end_date_,string title_,string assessment_type_,string submission_type_,string class_name_,string unit_standard_,string programme_name_,string programme_number_,string intervention_name_,string upload_learner_guide_,string upload_learner_workbook_,string upload_learner_poe_,string upload_facilitator_guide_,int created_by_,byte[] created_date_,byte[] updated_date_)
 //     {
 //         $this->id = $id_;
@@ -66,8 +69,14 @@ class AssessmentModel extends CI_Model {
             $this->created_by = $created_by_;
             $this->created_date = $created_date;
             $this->updated_date = $updated_date;
-        
+
         $this->db->insert(self::DB_TABLE, $this);
+    }
+
+
+    // Send message to all students in class
+    public function email_students_in_class($class_name, $subject, $message) {
+
     }
 }
 

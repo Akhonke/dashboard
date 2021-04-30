@@ -3024,5 +3024,124 @@ class Common extends CI_Model
 	    return $result;
 	}
 
+	public function compeletedAssessmentListByFacilitator($facilitator_id)
+	{
+
+	    /*
+	     select * from learner_assessment
+	     left join assessment on assessment.id = learner_assessment.assessment_id
+	     left join class_name on class_name.id = assessment.class_name
+	     where class_name.facilitator_id = 1
+        */
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+            'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+ 	    ->from('learner_assessment')
+ 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+ 	    ->join('class_name', 'class_name.id = assessment.class_name')
+ 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+ 	    ->where('class_name.facilitator_id', $facilitator_id)
+ 	    ->get()
+ 	    ->result();
+
+	    return $result;
+	}
+
+
+	public function compeletedAssessmentListByAssessor($assessorid)
+	{
+
+	    /*
+	     select * from learner_assessment
+	     left join assessment on assessment.id = learner_assessment.assessment_id
+	     left join class_name on class_name.id = assessment.class_name
+	     left join assessor on assessor.organization = class_name.organization
+	     where class_name.facilitator_id = 1
+	     */
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_name')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->join('assessor', 'assessor.organization = class_name.organization')
+// 	    ->where('assessor.id', $assessorid)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+	public function compeletedAssessmentListByID($learner_assessment_id)
+	{
+
+	    /*
+	     select * from learner_assessment
+	     left join assessment on assessment.id = learner_assessment.assessment_id
+	     left join class_name on class_name.id = assessment.class_name
+	     where learner_assessment.id = 1
+	     */
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_name')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('learner_assessment.id', $learner_assessment_id)
+	    ->get()
+	    ->row();
+
+	    return $result;
+	}
 
 }

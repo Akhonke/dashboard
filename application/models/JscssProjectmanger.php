@@ -4975,7 +4975,7 @@ class JscssProjectmanger extends CI_Model
 
 			</script>';
 		}
-		if ($page == 'create_new_stipend') {
+		if ( ($page == 'create_new_stipend') || ($page == 'create_assessment')) {
 
 			$js[] = "<script>
 

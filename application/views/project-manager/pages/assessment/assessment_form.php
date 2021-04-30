@@ -38,15 +38,105 @@
 
                             <!-- <div class="line"></div> -->
 
+
+
+
+<!--                             // /////////////////////////////////////////////////////////////////////// -->
+<!--                             // /////////////////////////////////////////////////////////////////////// -->
+
                             <div class="form-group row">
+
+<!--                             // /////////////////////////////////////////////////////////////////////// -->
+<!--                             // /////////////////////////////////////////////////////////////////////// -->
+
+                               <div class="col-md-6">
+                                    <label class="form-control-label">Learnership Type Name<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <select class="form-control learnship_id" name="learnship_id" id="learnship_id">
+                                        <option value="" hidden>Select Learnership Type Name</option>
+                                        <?php
+                                        if (!empty($learnership)) {
+                                            foreach ($learnership as $key => $learnship) { ?>
+                                                <option value="<?= $learnship->id; ?>" <?php if (isset($record) && $record->learnship_id == $learnship->id) {
+                                                                                            echo 'selected';
+                                                                                        } else {
+                                                                                            if (isset($_POST['learnship_id']) && $_POST['learnship_id'] == $learnship->id) {
+                                                                                                echo 'selected';
+                                                                                            }
+                                                                                        } ?>><?= ucfirst($learnship->name); ?></option>
+                                        <?php  }
+                                        } ?>
+                                    </select>
+                                    <span class='error_validate' style='color:red;'><?= form_error('learnship_id') ?></span>
+                                </div>
 
                                 <div class="col-md-6">
 
-                                    <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_end_date" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title">
+
+                                    <label class="form-control-label">Learnership Sub Type<span style="color:red;font-weight:bold;"> *</span></label>
+
+
+
+                                    <select class="form-control learnership_sub_type_id" name="learnershipSubType" id="learnership_sub_type_id">
+
+                                        <?php
+                                        if (!empty($learnershipSubType)) {
+                                            foreach ($learnershipSubType as $key => $sublearnship) { ?>
+                                                <option value="<?= $sublearnship->id; ?>" <?php if (isset($record) && $record->learnershipSubType == $sublearnship->id) {
+                                                                                                echo 'selected';
+                                                                                            } else {
+                                                                                                if (isset($_POST['learnershipSubType']) && $_POST['learnershipSubType'] == $sublearnship->id) {
+                                                                                                    echo 'selected';
+                                                                                                }
+                                                                                            } ?>><?= ucfirst($sublearnship->sub_type); ?></option>
+                                        <?php  }
+                                        } ?>
+
+                                    </select>
+
+                                    <label id="learnership_sub_type_id-error" class="error" for="learnership_sub_type_id"><span style="color:red;font-weight:bold;"> *</span></label>
 
                                 </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Class Name<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <?php
+
+                                    if (!empty($_GET['id'])) {
+
+
+
+                                        //if($record->learner_classname == $classname->id){
+
+                                    ?>
+
+                                        <input type="hidden" name="classname" class="form-control" value="<?= $record->classname ?>">
+
+                                        <input type="text" name="classname" class="form-control" value="<?= $record->classname ?>" readonly>
+
+                                    <?php
+
+                                    } else { ?>
+
+                                        <select class="form-control learner_classname" name="classname">
+
+                                            <option label="" value="" hidden>Select Your Class Name</option>
+
+                                        </select>
+
+                                    <?php } ?>
+
+
+
+                                    <label id="classname-error" class="error" for="classname"></label>
+
+
+
+                                </div>
+
+	<?php  /*
 
                                 <div class="col-md-6">
 
@@ -66,6 +156,11 @@
 
                                 </div>
 
+
+
+
+
+
                                 <div class="col-md-6">
 
                                     <label class="form-control-label">Programme Name<span style="color:red;font-weight:bold;"> *</span></label>
@@ -82,7 +177,8 @@
 
                                 </div>
 
-
+*/
+?>
 
                                 <div class="col-md-6">
 
@@ -105,7 +201,15 @@
 
                                 <div class="col-md-6">
 
-                                    <label class="form-control-label">Intervention Name<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_end_date" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title">
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Intervention Name</label>
 
                                     <input type="text" placeholder="Enter the Intervention Name" name="intervention_name" class="form-control intervention_name" value="<?= (isset($record)) ? $record->intervention_name: ''; ?>" id="intervention_name">
 

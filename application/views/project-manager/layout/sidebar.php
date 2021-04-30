@@ -294,9 +294,9 @@ $projectcount = count($Project);
       <!-- *************************** -->
 
       <li class="sidebar-list-item">
-         <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages6" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
+         <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages16" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
             <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
-         <div id="pages6" class="collapse">
+         <div id="pages16" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                <li class="sidebar-list-item">
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);

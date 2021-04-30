@@ -5,6 +5,8 @@
         $facilitator = $this->db->where('id',  $Facilitator_id)->get('facilitator')->result();
         $organisation = $this->db->where('id', $facilitator[0]->organization)->get('organisation')->result();
         $plan = $this->db->where('id', $organisation[0]->packageId)->get('plan')->result();
+
+        $arrayfeatures = explode("%@#$", $plan[0]->feature);
 ?>
 <div id="sidebar" class="sidebar py-3">
 
@@ -22,14 +24,21 @@
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
                <li class="sidebar-list-item">
-                  <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
-                  if (in_array("Learner Performance Management", $arrayfeatures)) {
-                  ?>
+
+                  <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
                      <a href="<?= BASEURL ?>projectmanager-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Assessment List</a>
                   <?php } else { ?>
                      <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
                   <?php } ?>
                </li>
+               <li class="sidebar-list-item">
+                  <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
+                     <a href="<?= BASEURL ?>facilitator-completed-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Completed Assessment List" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
+                  <?php } ?>
+               </li>
+
             </ul>
          </div>
       </li>

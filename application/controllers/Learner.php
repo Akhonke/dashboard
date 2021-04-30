@@ -577,6 +577,9 @@ public function live_class_list(){
 
 //****************************Learner Live Class******************//
 
+
+
+//****************************Assessments******************//
 public function list_assessments(){
 
 
@@ -684,20 +687,39 @@ public function load_assessment(){
 
 
     // Upload files
-    if (!empty($_FILES['upload_assessment']['name'])) {
-        $upload_assessment['upload_assessment']['store'] = $this->singlefileupload('upload_assessment', './uploads/assessment/upload_assessment/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
-        $upload_assessment['upload_assessment']['name'] = $_FILES['upload_assessment']['name'];
+    if (!empty($_FILES['upload_completed_learner_guide']['name'])) {
+        $upload_completed_learner_guide['upload_completed_learner_guide']['store'] = $this->singlefileupload('upload_completed_learner_guide', './uploads/assessment/upload_completed_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+        $upload_completed_learner_guide['upload_completed_learner_guide']['name'] = $_FILES['upload_completed_learner_guide']['name'];
     } else {
-        $this->session->set_flashdata('error', 'No assessment submitted. Please Try Again');
+        $this->session->set_flashdata('error', 'No learner guide submitted. Please Try Again');
         redirect('/learner/view_assessment?id=' . $assessment_id);
     }
 
+    if (!empty($_FILES['upload_completed_workbook']['name'])) {
+        $upload_completed_workbook['upload_completed_workbook']['store'] = $this->singlefileupload('upload_completed_workbook', './uploads/assessment/upload_completed_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+        $upload_completed_workbook['upload_completed_workbook']['name'] = $_FILES['upload_completed_workbook']['name'];
+    } else {
+        $this->session->set_flashdata('error', 'No learner workbook submitted. Please Try Again');
+        redirect('/learner/view_assessment?id=' . $assessment_id);
+    }
+
+    if (!empty($_FILES['upload_completed_poe']['name'])) {
+        $upload_completed_poe['upload_completed_poe']['store'] = $this->singlefileupload('upload_completed_poe', './uploads/assessment/upload_completed_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+        $upload_completed_poe['upload_completed_poe']['name'] = $_FILES['upload_completed_poe']['name'];
+    } else {
+        $this->session->set_flashdata('error', 'No learner POE submitted. Please Try Again');
+        redirect('/learner/view_assessment?id=' . $assessment_id);
+    }
 
     $data = [
         'assessment_id' => $this->input->post('assessment_id'),
         'learner_id' => $learner_id,
-        'upload_assessment' => $upload_assessment['upload_assessment']['store'],
-        'upload_assessment_name' => $upload_assessment['upload_assessment']['name'],
+        'upload_completed_learner_guide' => $upload_completed_learner_guide['upload_completed_learner_guide']['store'],
+        'upload_completed_learner_guide_name' => $upload_completed_learner_guide['upload_completed_learner_guide']['name'],
+        'upload_completed_workbook' => $upload_completed_workbook['upload_completed_workbook']['store'],
+        'upload_completed_workbook_name' => $upload_completed_workbook['upload_completed_workbook']['name'],
+        'upload_completed_poe' => $upload_completed_poe[upload_completed_poe]['store'],
+        'upload_completed_poe_name' => $upload_completed_poe['upload_completed_poe']['name'],
         'status' => 'new',
         'created_date' => date('Y-m-d H:i:s'),
         'updated_date' => date('Y-m-d H:i:s'),
@@ -715,22 +737,6 @@ public function load_assessment(){
 
         redirect('/learner/view_assessment?id=' . $assessment_id);
     }
-
-    ///
-
-
-//     $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
-//     $this->data['learner_assessments'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id], 'result');
-//     $this->data['learner_id'] = $learner_id;
-//     $this->data['assessment_id'] = $assessment_id;
-
-//     $this->data['page'] = 'view_assessment';
-
-//     $this->data['content'] = 'assessment/assessment_details';
-
-//     $this->load->view('learner/tamplate', $this->data);
-
-
 
 }
 

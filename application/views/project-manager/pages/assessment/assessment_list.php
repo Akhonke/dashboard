@@ -33,10 +33,11 @@
                                     <th>Submission Type</th>
                                     <th>Class Name</th>
                                     <th>Unit Standard</th>
-                                    <th>Programme Name</th>
-                                    <th>Programme Number</th>
+<!--                                     <th>Programme Name</th> -->
+<!--                                     <th>Programme Number</th> -->
                                     <th>Intervention Name</th>
                                     <th>Created By</th>
+                                    <th>Created By Role</th>
                                     <th>Created On</th>
                                     <th>Updated On</th>
                                     <th>Action</th>
@@ -63,12 +64,16 @@
                                             <td><?= $row->title; ?></td>
                                             <td><?= $row->assessment_type; ?></td>
                                             <td><?= $row->submission_type; ?></td>
-                                            <td><?= $row->class_name; ?></td>
+                                            <td><?= $row->classname; ?></td>
                                             <td><?= $row->unit_standard; ?></td>
+<?php /*
                                             <td><?= $row->programme_name; ?></td>
                                             <td><?= $row->programme_number; ?></td>
+*/
+?>
                                             <td><?= $row->intervention_name; ?></td>
                                             <td><?= $row->created_by; ?></td>
+                                            <td><?= $row->created_by_role; ?></td>
                                             <td><?= $row->created_date; ?></td>
                                             <td><?= $row->updated_date; ?></td>
 

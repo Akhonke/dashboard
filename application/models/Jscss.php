@@ -12,7 +12,7 @@
 			$css[] = '<link href="' . BASEURL . 'assets/admin/cloudfront/css/style.default.css" id="theme-stylesheet" rel="stylesheet" type="text/css">';
 			$css[] = '<link href="' . BASEURL . 'assets/admin/cloudfront/css/custom.css" rel="stylesheet" type="text/css">';
 			$css[] = '<link href="' . BASEURL . 'assets/admin/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">';
-		
+
 			$css[] = '<link href="' . BASEURL . 'assets/validation/css/screen.css" rel="stylesheet" type="text/css">';
 			$css[] = '<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">';
 			$css[] = '<style>
@@ -24,7 +24,7 @@
 		.sa-button-container .cancel.btn.btn-lg.btn-default{
 			background:#f95506;
 		}
-		
+
 		</style>';
 
 			if ($page == 'createlearnershipSubType' || $page == 'newcreatesublearnership') {
@@ -84,14 +84,14 @@
 				$js[] = '<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>';
 				$js[] = '<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>';
 				$js[] = "<script>
-		
+
 
 		$(document).ready(function() {
 
 			var table=$('.table').DataTable( {
 
 				dom: 'Bfrtip',
-				columnDefs: [  
+				columnDefs: [
                     {
                         'searchable': false,
                         'orderable': false,
@@ -129,9 +129,9 @@
 
 		} );
 
-		
 
-			
+
+
 
 			</script>";
 
@@ -139,7 +139,7 @@
 
 					$js[] = '<script>
 
-			        function deleterecord(tablename,columnname,id){ 
+			        function deleterecord(tablename,columnname,id){
 
 		                swal({
 
@@ -161,7 +161,7 @@
 
 		                    closeOnCancel: false
 
-		                }, 
+		                },
 
 		                function (isConfirm) {
 
@@ -195,7 +195,7 @@
 
 		                    }
 
-		                });    
+		                });
 
 		            }
 
@@ -229,7 +229,7 @@
 
 					var table = $('.table').DataTable( {
 						dom: 'Bfrtip',
-						columnDefs: [  
+						columnDefs: [
 									{
 										'searchable': false,
 										'orderable': false,
@@ -244,12 +244,12 @@
 									columns: [ 0, ':visible' ]
 								}
 
-							
+
 							},
 							{
 								extend: 'excelHtml5',
 								title:'',
-								
+
 								exportOptions: {
 									columns: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 								}
@@ -259,7 +259,7 @@
 								exportOptions: {
 									columns: [ 1, ':visible' ]
 								}
-								
+
 							},
 							'colvis'
 						]
@@ -327,7 +327,7 @@
 
 				$js[] = '<script>
 
-						function deleterecord(tablename,columnname,id){ 
+						function deleterecord(tablename,columnname,id){
 
 						    swal({
 
@@ -349,7 +349,7 @@
 
 						        closeOnCancel: false
 
-						    }, 
+						    },
 
 						    function (isConfirm) {
 
@@ -383,7 +383,7 @@
 
 						        }
 
-						    });    
+						    });
 
 						}
 
@@ -393,49 +393,49 @@
 			if ($page == 'send_massage') {
 
 				$js[] = "<script>
-				
+
 				$('#receiver_type').change(function() {
 
 					$.ajax({
-		   
+
 					   url: 'MyOrganization-get_receiver',
-		   
+
 					   data: {
 						  'value': $('#receiver_type').val()
 					   },
-		   
+
 					   dataType: 'json',
-		   
+
 					   type: 'post',
-		   
+
 					   success: function(data) {
-		   
+
 						  var option = '';
-		   
+
 						  $.each(data, function(i, star) {
-		   
+
 							 if (i == 'error') {
-		   
+
 								$('#receiver').html(option);
-		   
+
 								$('#receiver-error').show();
-		   
+
 								$('#receiver-error').html(star);
-		   
+
 							 } else {
 								var test = '<option hidden value=' + '>Select Receiver</option>';
 								option += '<option value=' + star.id + '>' + star.name + '</option>'
-		   
+
 								$('#receiver').html(test + option);
-		   
+
 								$('#receiver-error').hide();
-		   
+
 							 }
-		   
+
 						  });
-		   
+
 					   }
-		   
+
 					});
 				 });
 				</script>";
@@ -444,49 +444,49 @@
 			if ($page == 'tpsend_massage') {
 
 				$js[] = "<script>
-				
+
 				$('#receiver_type').change(function() {
 
 					$.ajax({
-		   
+
 					   url: 'provider-get_receiver',
-		   
+
 					   data: {
 						  'value': $('#receiver_type').val()
 					   },
-		   
+
 					   dataType: 'json',
-		   
+
 					   type: 'post',
-		   
+
 					   success: function(data) {
-		   
+
 						  var option = '';
-		   
+
 						  $.each(data, function(i, star) {
-		   
+
 							 if (i == 'error') {
-		   
+
 								$('#receiver').html(option);
-		   
+
 								$('#receiver-error').show();
-		   
+
 								$('#receiver-error').html(star);
-		   
+
 							 } else {
 								var test = '<option hidden value=' + '>Select Receiver</option>';
 								option += '<option value=' + star.id + '>' + star.name + '</option>'
-		   
+
 								$('#receiver').html(test + option);
-		   
+
 								$('#receiver-error').hide();
-		   
+
 							 }
-		   
+
 						  });
-		   
+
 					   }
-		   
+
 					});
 				 });
 				</script>";
@@ -495,49 +495,49 @@
 			if ($page == 'bulk_message') {
 
 				$js[] = "<script>
-				
+
 				$('#receiver_type').change(function() {
 
 					$.ajax({
-		   
+
 					   url: 'MyOrganization-get_receiver_contact',
-		   
+
 					   data: {
 						  'value': $('#receiver_type').val()
 					   },
-		   
+
 					   dataType: 'json',
-		   
+
 					   type: 'post',
-		   
+
 					   success: function(data) {
-		   
+
 						  var option = '';
-		   
+
 						  $.each(data, function(i, star) {
-		   
+
 							 if (i == 'error') {
-		   
+
 								$('#receiver').html(option);
-		   
+
 								$('#receiver-error').show();
-		   
+
 								$('#receiver-error').html(star);
-		   
+
 							 } else {
 								var test = '<option hidden value=' + '>Select Receiver</option>';
 								option += '<option value=+27' + star.mobile_number + '>' + star.name + '</option>'
-		   
+
 								$('#receiver').html(test + option);
-		   
+
 								$('#receiver-error').hide();
-		   
+
 							 }
-		   
+
 						  });
-		   
+
 					   }
-		   
+
 					});
 				});
 
@@ -549,52 +549,52 @@
 			if ($page == 'tpbulk_message') {
 
 				$js[] = "<script>
-				
+
 				$('#receiver_type').change(function() {
 
 					$.ajax({
-		   
+
 					   url: 'provider-get_receiver_contact',
-		   
+
 					   data: {
 						  'value': $('#receiver_type').val()
 					   },
-		   
+
 					   dataType: 'json',
-		   
+
 					   type: 'post',
-		   
+
 					   success: function(data) {
-		   
+
 						  var option = '';
-		   
+
 						  $.each(data, function(i, star) {
-		   
+
 							 if (i == 'error') {
-		   
+
 								$('#receiver').html(option);
-		   
+
 								$('#receiver-error').show();
-		   
+
 								$('#receiver-error').html(star);
-		   
+
 							 } else {
 								var test = '<option hidden value=' + '>Select Receiver</option>';
 								option += '<option value=+27' + star.mobile_number + '>' + star.name + '</option>'
-		   
+
 								$('#receiver').html(test + option);
-		   
+
 								$('#receiver-error').hide();
-		   
+
 							 }
-		   
+
 						  });
-		   
+
 					   }
-		   
+
 					});
 				});
-				
+
 
 				$('#tpbulkform').validate({
 
@@ -602,23 +602,23 @@
 
 						receiver_type:{
 
-						 required: true, 
+						 required: true,
 
 						},
 
 						receiver:{
 
-						 required: true, 
+						 required: true,
 
 						},
 
 						message:{
 
-						 required: true, 
+						 required: true,
 
 						},
 
-				
+
 					},
 
 					messages:{
@@ -640,7 +640,7 @@
 						  required: 'Please enter your message content',
 
 						},
-						
+
 					}
 
 					});
@@ -662,7 +662,7 @@
 
 				$js[] = '<script>
 
-		        function deleterecordClass(tablename,columnname,id,classname){ 
+		        function deleterecordClass(tablename,columnname,id,classname){
 
 	                swal({
 
@@ -684,7 +684,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -732,7 +732,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -743,7 +743,7 @@
 
 				$js[] = '<script>
 
-		        function deleterecordCommon(tablename,columnname,id){ 
+		        function deleterecordCommon(tablename,columnname,id){
 
                     swal({
 
@@ -765,7 +765,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -811,7 +811,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -832,7 +832,7 @@
 
                         }, 'Please enter a valid employer email address.');
 
-                        
+
 
                         $.validator.addMethod('employer_contact_number', function (value, element) {
 
@@ -846,79 +846,79 @@
 
 					            employer_name:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
 		                        employer_contact_number:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
 		                        employer_contact_email:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
 		                        employer_province:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
 		                        employer_district:{
 
-		                          required: true, 
+		                          required: true,
 
 		                        },
 
 		                        employer_region:{
 
-		                          required: true, 
+		                          required: true,
 
 		                        },
 
 		                        employer_city:{
 
-		                          required: true, 
+		                          required: true,
 
 		                        },
 
 		                        employer_Suburb:{
 
-		                          required: true, 
+		                          required: true,
 
 		                        },
 
 		                        employer_Street_name:{
 
-		                          required: true, 
+		                          required: true,
 
 		                        },
 
 		                        employer_Street_number:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
 		                        contact_person_name:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
 		                        contact_person_surname:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
 		                        contact_person_contact_no:{
 
-		                         required: true, 
+		                         required: true,
 
 		                        },
 
@@ -948,7 +948,7 @@
 
 		                          required: 'Please enter your employer province',
 
-		                        }, 
+		                        },
 
 		                        employer_district: {
 
@@ -1062,7 +1062,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -1108,7 +1108,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -1171,7 +1171,7 @@
 
 				$js[] = '<script>
 
-		        function deleterecordprogrammedirector(tablename,columnname,id){ 
+		        function deleterecordprogrammedirector(tablename,columnname,id){
 
                     swal({
 
@@ -1193,7 +1193,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1239,7 +1239,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1250,7 +1250,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataprojectmanager(tablename,columnname,id){ 
+		        function deletedataprojectmanager(tablename,columnname,id){
 
                     swal({
 
@@ -1272,7 +1272,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1318,7 +1318,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1329,7 +1329,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataAssessor(tablename,columnname,id,trainer_id){ 
+		        function deletedataAssessor(tablename,columnname,id,trainer_id){
 
                     swal({
 
@@ -1351,7 +1351,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1397,7 +1397,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1408,7 +1408,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataModerator(tablename,columnname,id){ 
+		        function deletedataModerator(tablename,columnname,id){
 
                     swal({
 
@@ -1430,7 +1430,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1476,7 +1476,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1487,7 +1487,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataFacilitator(tablename,columnname,id,training_provider){ 
+		        function deletedataFacilitator(tablename,columnname,id,training_provider){
 
                     swal({
 
@@ -1509,7 +1509,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1555,7 +1555,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1566,7 +1566,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataLearner(tablename,columnname,id){ 
+		        function deletedataLearner(tablename,columnname,id){
 
                     swal({
 
@@ -1588,7 +1588,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1646,7 +1646,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1657,7 +1657,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataTrainingprovider(tablename,columnname,id){ 
+		        function deletedataTrainingprovider(tablename,columnname,id){
 
                     swal({
 
@@ -1679,7 +1679,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1917,7 +1917,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1928,7 +1928,7 @@
 
 				$js[] = '<script>
 
-		        function deleterecordProvince(tablename,columnname,id){ 
+		        function deleterecordProvince(tablename,columnname,id){
 
                     swal({
 
@@ -1950,7 +1950,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1996,7 +1996,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -2012,7 +2012,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataLearnerName(tablename,columnname,id){ 
+		        function deletedataLearnerName(tablename,columnname,id){
 
                     swal({
 
@@ -2034,7 +2034,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -2080,7 +2080,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -2091,7 +2091,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataLearnerShipType(tablename,columnname,id,learnSub_id){ 
+		        function deletedataLearnerShipType(tablename,columnname,id,learnSub_id){
 
                     swal({
 
@@ -2113,7 +2113,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -2159,7 +2159,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -2170,7 +2170,7 @@
 
 				$js[] = '<script>
 
-		        function deletedataUnit(tablename,columnname,id){ 
+		        function deletedataUnit(tablename,columnname,id){
 
                     swal({
 
@@ -2192,7 +2192,7 @@
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -2238,7 +2238,7 @@
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -2275,7 +2275,7 @@
 
 						 var table = $('.table').DataTable( {
 
-							
+
 
 							dom: 'Bfrtip',
 
@@ -2287,7 +2287,7 @@
 
 
 
-						
+
 
 				    } );
 
@@ -2490,7 +2490,7 @@
 			    </script>';
 			}
 
-			if ($page == 'create_class' || $page == 'create_learner_marks' || $page == 'create_attendance' || $page == 'learner-attandance') {
+			if ($page == 'create_class' || $page == 'create_learner_marks' || $page == 'create_attendance' || $page == 'learner-attandance' || $page == 'create_assessment') {
 				$js[] = "<script>
 			$('.learnship_id').change(function(){
 
@@ -2530,7 +2530,7 @@
 
 						});
 
-					  
+
 
 					}
 
@@ -2538,7 +2538,7 @@
 
 			});
 
-				
+
 			</script>";
 			}
 			if ($page == 'create_learner_marks'  || $page == 'create_attendance' || $page == 'learner-attandance') {
@@ -2581,7 +2581,7 @@
 
 						});
 
-					  
+
 
 					}
 
@@ -2625,7 +2625,7 @@
 
 						});
 
-					  
+
 
 					}
 
@@ -2633,156 +2633,156 @@
 
 			});
 
-				
+
 			</script>";
 			}
 			if ($page == 'create_attendance') {
 
 
 				$js[] = "<script>
-	
+
 						$(function () {
-								
+
 						$.validator.addMethod('fullname', function(value, element) {
 
 							// allow any non-whitespace characters as the host part
-	
+
 								return this.optional( element ) || /^[a-zA-Z\s]+$/.test( value );
-	
+
 							}, 'Only letters and white space allowed.');
 
-	
+
 						$('#CreateAttendanceForm').validate({
-	
+
 						  rules:{
-	
+
 							'training_provider':{
-	
+
 							  required: true,
-	
+
 							},
 							'week_start_date' : {
 								required: true,
 							},
 
 							'week_date':{
-	
+
 								required: true,
-	  
+
 							  },
 
 							  'year':{
-	
+
 								required: true,
-	  
+
 							  },
 
 							  'learnship_id':{
-	
+
 								required: true,
-	  
+
 							  },
 
 							  'learnership_sub_type_id':{
-	
+
 								required: true,
-	  
+
 							  },
 
 							  'learner_classname':{
-	
+
 								required: true,
-	  
+
 							  },
 
 
 							  'facilitator':{
-	
+
 								required: true,
-	  
+
 							  },
 
 							  'attachment':{
-	
+
 								required: true,
-	  
+
 							  },
 
-	
+
 						},
-	
+
 						  messages:{
-	
+
 							'training_provider':{
-	
+
 							  required: 'Please enter your Training Providere name',
-	
+
 							},
 
 							'week_start_date' : {
 								required: 'Please enter Week Start Date',
 							},
 							'week_date':{
-	
+
 								required: 'Please enter Week Date',
-	  
+
 							  },
 
 							  'year':{
-	
+
 								required: 'Please enter year ',
-	  
+
 							  },
 
 							  'learnship_id':{
-	
+
 								required: 'Please select learnership',
-	  
+
 							  },
 
 							  'learnership_sub_type_id':{
-	
+
 								required: 'Please select learnership sub type',
-	  
+
 							  },
 
 							  'learner_classname':{
-	
+
 								required: 'Please select Learner classname',
-	  
+
 							  },
 
 							  'facilitator':{
-	
+
 								required: 'Please select class name',
-	  
+
 							  },
 
 							  'attachment':{
-	
+
 								required: 'Please select attachment',
-	  
+
 							  },
 
-							  
 
-	
+
+
 						}
-	
+
 						});
-	
+
 						$.validator.setDefaults({
-	
+
 						   submitHandler: function(form) {
-	
+
 						   form.submit();
-	
+
 						}
-	
+
 					  });
-	
+
 					});
-	
+
 				</script> ";
 			}
 
@@ -2993,7 +2993,7 @@
 
                             });
 
-			              
+
 
 			            }
 
@@ -3128,7 +3128,7 @@
 
                });
 
-    
+
 
 
 
@@ -3170,7 +3170,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -3215,7 +3215,7 @@
 
 			            }, 'Invalid Landline Number');
 
-                     var trainer_id = $('#trainer_id').val();    
+                     var trainer_id = $('#trainer_id').val();
 
 			        $('#CreateTraininForm').validate({
 
@@ -3339,7 +3339,7 @@
 
 			            },
 
-			            
+
 
 			            'email':{
 
@@ -3468,7 +3468,7 @@
 
                         }, 'Please enter a valid email address.');
 
-                        
+
 
                         $.validator.addMethod('employer_contact_email', function(value, element) {
 
@@ -3478,7 +3478,7 @@
 
                         }, 'Please enter a valid employer email address.');
 
-                        
+
 
                         $.validator.addMethod('employer_contact_number', function (value, element) {
 
@@ -3524,7 +3524,7 @@
 						  full_name : true
 			            },
 
-			           
+
 
 			            'surname':{
 
@@ -3532,7 +3532,7 @@
 						  surname : true
 			            },
 
-			            
+
 
 			            'email':{
 
@@ -3650,115 +3650,115 @@
 
                         reason:{
 
-                         required: true, 
+                         required: true,
 
-                        }, 
+                        },
 
                         classname:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         learner_place_of_employment:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         employer_name:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         employer_contact_number:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         employer_contact_email:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         employer_province:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         employer_district:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         employer_region:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         employer_city:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         employer_Suburb:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         employer_Street_name:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         employer_Street_number:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         bank_name:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                         bank_account_type:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         bank_account_number:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         branch_name:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         branch_code:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
                         upload_proof_of_banking:{
 
-                          required: true, 
+                          required: true,
 
                         },
 
@@ -3890,7 +3890,7 @@
 
 			            },
 
-			           
+
 
                         assessment: 'Please select your assessment status',
 
@@ -3942,7 +3942,7 @@
 
                           required: 'Please enter your employer province',
 
-                        }, 
+                        },
 
                         employer_district: {
 
@@ -4090,7 +4090,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -4136,7 +4136,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -4235,7 +4235,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -4281,7 +4281,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -4291,8 +4291,8 @@
 
 
 
-			
-				
+
+
 
 				$('#city').change(function(){
 					$.ajax({
@@ -4333,11 +4333,11 @@
 
 					    var wrapper = $(".field_wrapper"); //Input field wrapper
 
-					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>"; 
+					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>";
 
 					    var x = 1; //Initial field counter is 1
 
-					    
+
 
 					    //Once add button is clicked
 
@@ -4345,11 +4345,11 @@
 
 					        //Check maximum number of input fields
 
-					        if(x < maxField){ 
+					        if(x < maxField){
 
 					            x++; //Increment field counter
 
-					            
+
 
 					            $(wrapper).append(fieldHTML); //Add field html
 
@@ -4363,7 +4363,7 @@
 
 					    });
 
-					    
+
 
 					    //Once remove button is clicked
 
@@ -4469,7 +4469,7 @@
 								municipality:{
 
 									required: true,
-  
+
 								  },
 
 					            Suburb:{
@@ -4500,7 +4500,7 @@
 
 				                email: "Please enter a valid email address",
 
-				                
+
 
 				                id_number: {
 
@@ -4510,7 +4510,7 @@
 
 				                },
 
-				                
+
 
 				                mobile: {
 
@@ -4568,7 +4568,7 @@
 								municipality:{
 
 									required: "Please select your municipality",
-  
+
 								  },
 
 					            Suburb:{
@@ -4686,11 +4686,11 @@
 
 					    var wrapper = $(".field_wrapper"); //Input field wrapper
 
-					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>"; 
+					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>";
 
 					    var x = 1; //Initial field counter is 1
 
-					    
+
 
 					    //Once add button is clicked
 
@@ -4698,11 +4698,11 @@
 
 					        //Check maximum number of input fields
 
-					        if(x < maxField){ 
+					        if(x < maxField){
 
 					            x++; //Increment field counter
 
-					            
+
 
 					            $(wrapper).append(fieldHTML); //Add field html
 
@@ -4716,7 +4716,7 @@
 
 					    });
 
-					    
+
 
 					    //Once remove button is clicked
 
@@ -4822,7 +4822,7 @@
 								municipality:{
 
 									required: true,
-  
+
 								  },
 
 					            Suburb:{
@@ -4859,7 +4859,7 @@
 
 				                email: "Please enter a valid email address",
 
-				                
+
 
 				                id_number: {
 
@@ -4869,7 +4869,7 @@
 
 				                },
 
-				                
+
 
 				                mobile: {
 
@@ -4927,7 +4927,7 @@
 								municipality:{
 
 									required: "Please select your municipality",
-  
+
 								  },
 
 					            Suburb:{
@@ -5045,11 +5045,11 @@
 
 			$(document).on("click",".status_checks",function(){
 
-		        var status = ($(this).hasClass("btn-success")) ? "0" : "1"; 
+		        var status = ($(this).hasClass("btn-success")) ? "0" : "1";
 
 		        var msg = (status=="0")? "Inactivate" : "Activate";
 
-		        var current_element = $(this);  
+		        var current_element = $(this);
 
 			    swal({
 
@@ -5095,7 +5095,7 @@
 
 					});
 
-		        });    
+		        });
 
 	        });
 
@@ -5725,7 +5725,7 @@
 
 			                    },
 
-				               
+
 
 
 
@@ -5737,17 +5737,17 @@
 
 				                },
 
-				                
 
-				                
 
-				                
+
+
+
 
 				               /* tax_clearance: {
 
 				                    required: "Please choose tex clearance",
 
-				                   
+
 
 				                },
 
@@ -5868,7 +5868,7 @@
 
                         }, "Only letters and white space allowed.");
 
-				    
+
 
                       /*  $.validator.addMethod("programme_name", function(value, element) {
 
@@ -5898,7 +5898,7 @@
 
                         }, "Only letters and white space allowed.");
 
-                        
+
 
                         $.validator.addMethod("dateBefore", function (value, element, params) {
 
@@ -6190,7 +6190,7 @@
 
 							},
 
-					
+
 
 						},
 
@@ -6292,9 +6292,9 @@
 
 							},
 
-							
 
-						   
+
+
 
 							/*tax_clearance: {
 
@@ -6386,11 +6386,11 @@
 
 							},
 
-						
+
 
 						},
 
-						
+
 
 					});
 					$.validator.addMethod("fullname", function(value, element) {
@@ -6722,9 +6722,9 @@
 
 				                },
 
-				                
 
-				               
+
+
 
 				                /*tax_clearance: {
 
@@ -6816,7 +6816,7 @@
 
 					            },
 
-					     
+
 
 				            },
 
@@ -6867,7 +6867,7 @@
 
 					          equalTo:"#password",
 
-					        },  
+					        },
 
 				          },
 
@@ -6948,11 +6948,11 @@
 
 			                    maxlength: 9,
 
-			                    
+
 
 				           }
 
-					        
+
 
 				          },
 
@@ -6980,7 +6980,7 @@
 
 				                },
 
-					            
+
 
 				            },
 
@@ -7023,7 +7023,7 @@
 
                                 },
 
-				              
+
 
 				            },
 
@@ -7084,7 +7084,7 @@
 
                                 },
 
-				              
+
 
 				            },
 
@@ -7173,7 +7173,7 @@
 						  full_name : true
 			            },
 
-			           
+
 
 			            'surname':{
 
@@ -7182,7 +7182,7 @@
 
 			            },
 
-			            
+
 
 			            'email':{
 
@@ -7282,7 +7282,7 @@
 
 			            },
 
-			           
+
 
 			            'assessment': 'required',
 
@@ -7296,13 +7296,13 @@
 
                         reason:{
 
-                         required: true, 
+                         required: true,
 
-                        }, 
+                        },
 
                         classname:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
@@ -7428,7 +7428,7 @@
 
 			            },
 
-			            
+
 
                         assessment: 'Please select your assessment status',
 
@@ -7526,7 +7526,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -7572,7 +7572,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -7635,7 +7635,7 @@
 
 			        $(function () {
 
-			        	
+
 
                     $('#CreateDropOutForm').validate({
 
@@ -7728,7 +7728,7 @@
 
 			            },
 
-			            
+
 
 			            'date':{
 
@@ -7736,7 +7736,7 @@
 
 			            },
 
-			            
+
 
 			            'amount':{
 
@@ -7746,7 +7746,7 @@
 
 			            },
 
-			            
+
 
 			        },
 
@@ -7764,7 +7764,7 @@
 
 			            },
 
-			            
+
 
 			            'amount':{
 
@@ -7772,11 +7772,11 @@
 
 			            },
 
-			          
 
-			            
 
-			           
+
+
+
 
 			        }
 
@@ -7861,11 +7861,11 @@
 
 							var vals = "";
 
-							for (var i=0, n=checkboxes.length;i<n;i++) 
+							for (var i=0, n=checkboxes.length;i<n;i++)
 
 							{
 
-							    if (checkboxes[i].checked) 
+							    if (checkboxes[i].checked)
 
 							    {
 
@@ -7877,17 +7877,17 @@
 
 							if (vals) vals = vals.substring(1);
 
-							
 
-                        });                    
+
+                        });
 
 		                $(function() {
 							$.validator.addMethod("full_name", function(value, element) {
 
 								// allow any non-whitespace characters as the host part
-						  
+
 								return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
-						  
+
 							  }, "Only letters and white space allowed.");
 
 		                 	$("#sublearnshipform").validate({
@@ -7903,7 +7903,7 @@
 							      min_credit: { required: true, number: true },
 
 								  total_credits_allocated: { required: true, number: true },
-								  
+
 								  facilitator_id: { required: true},
 
 							    },
@@ -7918,7 +7918,7 @@
 
 							       required: "Please select your unit standard",
 
-							      
+
 
 							      },
 
@@ -7928,7 +7928,7 @@
 
 							        number: "Please enter valid number"
 
-							      }, 
+							      },
 
 							      total_credits_allocated:{
 
@@ -7936,7 +7936,7 @@
 
 							        number: "Please enter valid number"
 
-								  }, 
+								  },
 								  facilitator_id: "Please Select Facilitator",
 
 							    },
@@ -7977,7 +7977,7 @@
 
 
 
-					                
+
 
 							    });
 
@@ -8015,13 +8015,13 @@
 
 								        }
 
-                                          
+
 
 								        $("#lstBox2").append($(selectedOpts).clone());
 
 								        $(selectedOpts).remove();
 
-								      
+
 
 								        /* -- Uncomment for optional sorting --*/
 
@@ -8039,7 +8039,7 @@
 
 								        })
 
-								        
+
 
 								       var sum=0; var units=[];
 
@@ -8057,7 +8057,7 @@
 
 								           sum+=+$(opt).attr("data-price");
 
-								        })	
+								        })
 
 								         console.log(units);
 
@@ -8069,15 +8069,15 @@
 
 
 
-								        
+
 
 
 
 								        e.preventDefault();
 
-                                  
 
-								      
+
+
 
 
 
@@ -8117,7 +8117,7 @@
 
 								        })
 
-								        
+
 
 								       var sum=0; var units=[];
 
@@ -8135,7 +8135,7 @@
 
 								           sum+=+$(opt).attr("data-price");
 
-								        })	
+								        })
 
 								         console.log(units);
 
@@ -8183,7 +8183,7 @@
 
 								        })
 
-								        
+
 
 								      var sum=0; var units=[];
 
@@ -8201,7 +8201,7 @@
 
 								           sum+=+$(opt).attr("data-price");
 
-								        })	
+								        })
 
 								         console.log(units);
 
@@ -8251,7 +8251,7 @@
 
 								        })
 
-								        
+
 
 								      var sum=0; var units=[];
 
@@ -8269,7 +8269,7 @@
 
 								           sum+=+$(opt).attr("data-price");
 
-								        })	
+								        })
 
 								         console.log(units);
 
@@ -8287,9 +8287,9 @@
 
 								}(jQuery));
 
-                               
-					
-	 
+
+
+
 
 
 
@@ -8323,7 +8323,7 @@
 
 									}else{
 
-								
+
 
 										$('#min_credit').val(star.total_credits);
 
@@ -8331,7 +8331,7 @@
 
 							});
 
-						
+
 
 						}
 
@@ -8352,15 +8352,15 @@
 
 			   $(document).on("click",".status_change",function(){
 
-			   	var learner = $(this).data("learner");  
+			   	var learner = $(this).data("learner");
 
-		       // var status = ($(this).hasClass("btn-success")) ? "0" : "1"; 
+		       // var status = ($(this).hasClass("btn-success")) ? "0" : "1";
 
 		        var msg =((learner =="No")||(learner=="no"))? "Not Accepted" : "Accepted";
 
-		        var current_element = $(this); 
+		        var current_element = $(this);
 
-		      
+
 
 			    swal({
 
@@ -8384,7 +8384,7 @@
 
 				  if (inputValue === false) return false;
 
-				  
+
 
 				  if (inputValue === "") {
 
@@ -8432,7 +8432,7 @@
 
                 var msg =((learner =="Yes")||(learner=="yes"))? "Not Accepted" : "Accepted";
 
-		        var current_element = $(this);  
+		        var current_element = $(this);
 
 		        var text = "";
 
@@ -8496,7 +8496,7 @@
 
 	                    }
 
-	                });   
+	                });
 
 		    });
 
@@ -8554,13 +8554,13 @@
 
 		        $(function () {
 
-					
+
 					$.validator.addMethod('full_name', function(value, element) {
 
 						// allow any non-whitespace characters as the host part
-			
+
 						return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
-			
+
 					}, 'Only letters and white space allowed.');
 
 		            $('#CreateClassForm').validate({
@@ -8583,11 +8583,11 @@
 
 							  required: true,
 							},
-							
+
 							'facilitator_id':{
 
 								required: true,
-  
+
 							  },
 
 				        },
@@ -8611,11 +8611,11 @@
 	                          required: 'Please enter your class name',
 
 							},
-							
+
 							facilitator_id: {
 
 								required: 'Please select your Facilitator',
-  
+
 							  },
 
 						}
@@ -8661,7 +8661,7 @@
 
 			                	},
 
-			                
+
 
 			                 'learner_classname':{
 
@@ -8689,7 +8689,7 @@
 
 			                'learnership_sub_type': 'Please select your learnership sub type',
 
-			                
+
 
 			                'learner_classname':{
 
@@ -8721,7 +8721,7 @@
 
 			    });
 
-			  
+
 
 			    $('.learnshipsubtype').change(function(){
 
@@ -8761,7 +8761,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -8780,9 +8780,9 @@
 					$.validator.addMethod('full_name', function(value, element) {
 
 						// allow any non-whitespace characters as the host part
-			
+
 						return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
-			
+
 					}, 'Only letters and white space allowed.');
 
 
@@ -8795,7 +8795,7 @@
 								required:true,
 								full_name : true
 
-			                	
+
 
 			                	},
 
@@ -8806,7 +8806,7 @@
 
 			                },
 
-			               
+
 
 			                'start_date':{
 
@@ -8840,7 +8840,7 @@
 
 			                'created_by_surname': { required : 'Please choose Surname', },
 
-			               
+
 
 
 
@@ -8891,38 +8891,38 @@
 					$('#learner_id').keyup(function(){
 				debugger;
 						$.ajax({
- 
+
 							 url: 'provider-getlearner',
- 
+
 							 data: { 'value': $('#learner_id').val() },
- 
+
 							 dataType:'json',
- 
+
 							 type: 'post',
- 
+
 							 success: function(data){
- 
+
 								 var option = '';
- 
+
 								$.each(data, function(i, star) {
- 
+
 									 if(i == 'error'){
- 
+
 										 $('#learner_name').val(option);
- 
+
 										 $('#learner_surname').val(option);
 
 										 $('#learnship_id').val(option);
 										 $('#learnship_ids').val(option);
 										 $('#learnership_sub_type_id').val(option);
 										 $('#learnership_sub_type_ids').val(option);
-										 $('#learner_classname').val(option); 
+										 $('#learner_classname').val(option);
 										 $('#city-error').html(star);
- 
+
 									 }else{
- 
+
 										$('#learner_name').val(star.first_name);
- 
+
 										$('#learner_surname').val(star.surname);
 
 										$('#learnship_id').val(star.learnshipname);
@@ -8930,11 +8930,11 @@
 										$('#learnership_sub_type_id').val(star.sublearnshipname);
 										$('#learnership_sub_type_ids').val(star.sublearnship_id);
 										$('#learner_classname').val(star.classname);
- 
+
 									 }
- 
+
 								 });
- 
+
 							 }
 							})
 						 });
@@ -8947,7 +8947,7 @@
 
 			                	required:true,
 
-			                
+
 
 			                	},
 
@@ -8963,7 +8963,7 @@
 
 			                	},
 
-			                
+
 
 			                'learner_name':{
 
@@ -8982,8 +8982,8 @@
 			                  'required': true,
 
 							},
-						
-							  
+
+
 
 			            },
 
@@ -8998,7 +8998,7 @@
 							'learner_id':{
 
 								'required': 'Please Enter Learner ID',
-  
+
 							  },
 			                'learner_name':{
 
@@ -9021,10 +9021,10 @@
 							// 'reason_not_attend':{
 
 							// 	'required': 'Please select Reason',
-  
+
 							//   },
 
-							
+
 			            },
 
 			            submitHandler: function(form) {
@@ -9075,7 +9075,7 @@
 
 			                });
 
-			              
+
 
 			            }
 
@@ -9088,7 +9088,7 @@
 
 			if ($page == 'user_list') {
 				$js[] = '<script>
-        	 function deleteuser(tablename,columnname,id){ 
+        	 function deleteuser(tablename,columnname,id){
 		                swal({
 		                    title: "Are you sure?",
 		                    text: "Delete",
@@ -9099,7 +9099,7 @@
 		                    cancelButtonText: "No, cancel it!",
 		                    closeOnConfirm: false,
 		                    closeOnCancel: false
-		                }, 
+		                },
 		                function (isConfirm) {
 		                    if (isConfirm) {
 		                        $.ajax({
@@ -9116,7 +9116,7 @@
 		                    } else {
 		                      swal("Cancelled", "Your imaginary file is safe ", "error");
 		                    }
-		                });    
+		                });
 		            }
         	</script>';
 			}
@@ -9128,45 +9128,45 @@
                         // allow any non-whitespace characters as the host part
                             return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(?:\S{1,63})$/.test( value );
                         }, 'Please enter a valid email address.');
-                        
+
                         $.validator.addMethod('mobile', function (value, element) {
 			              return this.optional(element) || /^[0-9]{9}$/.test(value);
 						}, 'Invalid Mobile Number');
-						
+
 						$.validator.addMethod('fullname', function(value, element) {
 
 							// allow any non-whitespace characters as the host part
-	
+
 								return this.optional( element ) || /^[a-zA-Z\s]+$/.test( value );
-	
+
 							}, 'Only letters and white space allowed.');
 
-							
+
 				        $('#CreateUserForm').validate({
 					        rules:{
 					            first_name:{
-								 required: true, 
+								 required: true,
 								 fullname : true
 		                        },
 		                        second_name:{
 								 required: true,
 								 fullname : true
-								  
+
 		                        },
 		                        email:{
-								 required: true, 
+								 required: true,
 								 email : true
 		                        },
 		                        mobile:{
-		                         required: true, 
+		                         required: true,
 		                        },
 		                        password:{
-		                         required: true, 
+		                         required: true,
 		                        },
 		                        designation:{
-								 required: true, 
+								 required: true,
 								 fullname : true
-								 
+
 		                        },
 		                    },
 		                    messages:{
@@ -9181,7 +9181,7 @@
 		                        },
 		                        mobile: {
 		                          required: 'Please enter user mobile number',
-		                        }, 
+		                        },
 		                        password: {
 		                          required: 'Please enter user password',
 		                        },
@@ -9224,14 +9224,14 @@
 
 				$js[] = "<script>
 
-		
+
 
 			$(document).ready(function() {
 
 				var table=$('.table').DataTable( {
 
 					dom: 'Bfrtip',
-					columnDefs: [  
+					columnDefs: [
 						{
 							'searchable': false,
 							'orderable': false,
@@ -9253,7 +9253,7 @@
 
 					},
 
-					
+
 					'csv', 'excel', 'print' ,'colvis'
 
 					]
@@ -9270,58 +9270,58 @@
 
 			} );
 
-		
 
-			
+
+
 
 			</script>";
 			}
 
 			if ($page == 'banking-detail') {
 				$js[] = "<script>
-					
+
 			        $(function () {
 
 						$('#learner_id').keyup(function(){
 							debugger;
 							$.ajax({
-	 
+
 								 url: 'provider-getlearner',
-	 
+
 								 data: { 'value': $('#learner_id').val() },
-	 
+
 								 dataType:'json',
-	 
+
 								 type: 'post',
-	 
+
 								 success: function(data){
-	 
+
 									 var option = '';
-	 
+
 									$.each(data, function(i, star) {
-	 
+
 										 if(i == 'error'){
-	 
+
 											 $('#learner_name').val(option);
-	 
+
 											 $('#learner_surname').val(option);
 											 $('#learner_classname').val(option);
-											 
+
 											 $('#learnship_id').val(option);
 											 $('#learnership_sub_type_id').val(option);
-											 $('#bank_name').val(option); 
-											 $('#bank_branch_name').val(option); 
-											 $('#account_type').val(option); 
-											 $('#branch_code').val(option); 
-											 $('#account_number').val(option); 
-											 $('#account_holder_name').val(option); 
-											 $('#account_holder_surname').val(option); 
-											 $('#account_holder_idnumber').val(option); 
-											 $('#account_holder_id').val(option); 
+											 $('#bank_name').val(option);
+											 $('#bank_branch_name').val(option);
+											 $('#account_type').val(option);
+											 $('#branch_code').val(option);
+											 $('#account_number').val(option);
+											 $('#account_holder_name').val(option);
+											 $('#account_holder_surname').val(option);
+											 $('#account_holder_idnumber').val(option);
+											 $('#account_holder_id').val(option);
 										 }else{
-	 
+
 											$('#learner_name').val(star.first_name);
-	 
+
 											$('#learner_surname').val(star.surname);
 											$('#learnship_id').val(star.learnshipname);
 											$('#learner_classname').val(star.classname);
@@ -9335,11 +9335,11 @@
 											$('#account_holder_surname').val(star.surname);
 											$('#account_holder_idnumber').val(star.id_number);
 											$('#account_holder_id').val(star.account_holder_id);
-	 
+
 										 }
-	 
+
 									 });
-	 
+
 								 }
 								})
 							 });
@@ -9347,92 +9347,92 @@
 							 $('.learnship_id').change(function(){
 
 								$.ajax({
-				
+
 									url: 'provider-get_sublearnership',
-				
+
 									data: { 'value': $('.learnship_id').val() },
-				
+
 									dataType:'json',
-				
+
 									type: 'post',
-				
+
 									success: function(data){
-				
+
 										var option = '';
-				
+
 									   $.each(data, function(i, star) {
-				
+
 												if(i == 'error'){
-				
+
 												$('.learnership_sub_type_id').html(option);
-				
+
 												$('#learnership_sub_type_id-error').show();
-				
+
 												$('#learnership_sub_type_id-error').html(star);
-				
+
 											}else{
 												var test = '<option hidden value='+'>Select Sublearnership</option>';
 											  option += '<option value='+star.id+'>'+star.sub_type+'</option>'
-				
+
 											  $('.learnership_sub_type_id').html(test+option);
-				
+
 											  $('#learnership_sub_type_id-error').hide();
-				
+
 											}
-				
+
 										});
-				
-									  
-				
+
+
+
 									}
-				
+
 								});
-				
+
 							});
 							$('.learnership_sub_type_id').change(function(){
 
 								$.ajax({
-				
+
 									url: 'provider-getclassname',
-				
+
 									data: { 'value': $('.learnership_sub_type_id').val() },
-				
+
 									dataType:'json',
-				
+
 									type: 'post',
-				
+
 									success: function(data){
-				
+
 										var option = '';
-				
+
 									   $.each(data, function(i, star) {
-				
+
 												if(i == 'error'){
-				
+
 												$('.learner_classname').html(option);
-				
+
 												$('#learner_classname-error').show();
-				
+
 												$('#learnership_sub_type_id-error').html(star);
-				
+
 											}else{
 												var test = '<option hidden value='+'>Select Class</option>';
 											  option += '<option value='+star.class_name+'>'+star.class_name+'</option>'
-				
+
 											  $('.learner_classname').html(test+option);
-				
+
 											  $('#learner_classname-error').hide();
-				
+
 											}
-				
+
 										});
-				
-									  
-				
+
+
+
 									}
-				
+
 								});
-				
+
 							});
 
 			        	$.validator.addMethod('learner_name', function(value, element) {
@@ -9463,7 +9463,7 @@
 
                         }, 'Please enter a valid email address.');
 
-                                   
+
 
                         $.validator.addMethod('employer_contact_number', function (value, element) {
 
@@ -9494,192 +9494,192 @@
 						$('#CreateBankingDetailForm').validate({
 
 							rules:{
-	  
+
 								'learner_name':{
-	  
+
 								required: true,
 								learner_name : true
-	  
+
 							  },
-	  
+
 							  'learner_surname':{
-	  
+
 								  required: true,
 								  learner_name : true
-		
+
 								},
 								'learner_id' :{
-	  
+
 								  required: true,
-								  
+
 								},
 								'learnship_id':{
-	  
+
 								  required: true,
-		
+
 								},
 								'learnership_sub_type_id':{
-	  
+
 									required: true,
-		  
+
 								  },
 								  'learner_classname':{
-	  
+
 									required: true,
 									learner_name : true
-									
-		  
+
+
 								  },
 								'learner_class':{
-	  
+
 								  required: true,
-		
+
 								},
 								'bank_name':{
-	  
+
 								  required: true,
 								  learner_name : true
-		
+
 								},
 								// 'bank_branch_name':{
-	  
-								//   required: true,  
+
+								//   required: true,
 								//   learner_name : true
-	  
+
 								// },
 								'branch_code':{
-	  
+
 								  required: true,
-		
+
 								},
 								'account_number':{
-	  
+
 								  required: true,
-		
+
 								},
 								'account_type':{
-	  
+
 								  required: true,
 								  learner_name : true
-		
+
 								},
 								'account_holder_name':{
-	  
+
 								  required: true,
-		
+
 								  learner_name : true
-		
+
 								},
 								'account_holder_surname':{
-	  
+
 								  required: true,
 								  learner_name : true
-		
+
 								},
 								'account_holder_idnumber':{
-	  
+
 								  required: true,
-		
+
 								},
 								'account_holder_id':{
-							  
+
 								  required : true,
-	  
+
 							  },
 							  'account_holder_proof_id':{
-	  
+
 								  required : true,
-	  
+
 							  }
-	  
+
 							  },
-	  
+
 							messages:{
-	  
+
 								'learner_name':{
-	  
+
 								required: 'Please enter valid Learner ID',
-	  
+
 							  },
 							  'learner_surname':{
-	  
+
 								  required: 'Please enter valid Learner ID',
-		
+
 								},
 								'learner_id' :{
-	  
+
 								  required: 'Please enter ID number',
-	  
+
 								},
 								'learnship_id':{
-	  
+
 								  required: 'Please select Learnership ',
-		
+
 								},
 								'learnership_sub_type_id':{
-	  
+
 									required: 'Please select Learnership Subtype',
-		  
+
 								  },
 
 								'learner_classname':{
-	  
+
 								  required: 'Please select Learner class',
-		
+
 								},
 								'bank_name':{
-	  
+
 								  required: 'Please enter Learner Bank Name',
-		
+
 								},
 								// 'bank_branch_name':{
-	  
-								//   required: 'Please enter Learner Bank Branch name',  
-	  
+
+								//   required: 'Please enter Learner Bank Branch name',
+
 								// },
 								'branch_code':{
-	  
+
 								  required: 'Please enter Learner Branch Code',
-		
+
 								},
 								'account_number':{
-	  
+
 								  required: 'Please enter Learner Account Number',
-		
+
 								},
 								'account_type':{
-	  
+
 								  required: 'Please enter Learner Account Type',
-		
+
 								},
 								'account_holder_name':{
-	  
+
 								  required: 'Please enter Account Holder name',
-		
+
 								},
 								'account_holder_surname':{
-	  
+
 								  required: 'Please enter Account Holder surname',
-		
+
 								},
 								'account_holder_idnumber':{
-	  
+
 								  required: 'Please enter Account Holder ID number',
-		
+
 								},
 								'account_holder_id':{
-							  
+
 								  required : 'Please choose an Account Holder ID',
-	  
+
 							  },
 							  'account_holder_proof_id':{
-	  
+
 								  required : 'Choose Account Holder Proof ID',
-	  
+
 							  }
-	  
+
 						  }
-	  
+
 						  });
 
 			        $.validator.setDefaults({
@@ -9699,77 +9699,77 @@
 			if ($page == 'createLearnership') {
 
 				$js[] = "<script>
-	
+
 						$(function () {
-	
+
 							$.validator.addMethod('fname', function(value, element) {
 
 								// allow any non-whitespace characters as the host part
-		
+
 									return this.optional( element ) || /^[a-zA-Z ]*$/.test( value );
-		
+
 								}, 'Only letters and white space allowed.');
-		
-	
+
+
 							$('#learnshipform').validate({
-	
+
 								rules:{
-	
+
 									name:{
-										required: true, 
-										
-	
+										required: true,
+
+
 									},
-	
+
 									saqa_registration_id:{
-	
-									 required: true, 
-	
+
+									 required: true,
+
 									},
 									total_credits:{
-	
-										required: true, 
-	   
+
+										required: true,
+
 									   },
-									
-	
+
+
 								},
-	
+
 								messages:{
-	
+
 									name: {
-	
+
 									  required: 'Please enter Learnership name',
-	
+
 									},
-	
+
 									saqa_registration_id: {
-	
+
 									  required: 'Please enter SAQA Registration ID',
-	
+
 									},
 									total_credits: {
-	
+
 										required: 'please enter total credits',
-	  
+
 									  },
-	
+
 								}
-	
+
 								});
-	
+
 								$.validator.setDefaults({
-	
+
 								   submitHandler: function(form) {
-	
+
 								   form.submit();
-	
+
 								}
-	
+
 							});
-	
+
 						});
-	
+
 					  </script> ";
 			}
 
@@ -9781,96 +9781,96 @@
 						$('.learnship_id').change(function(){
 
 							$.ajax({
-							
+
 								url: 'provider-get_sublearnership',
-							
+
 								data: { 'value': $('.learnship_id').val() },
-							
+
 								dataType:'json',
-							
+
 								type: 'post',
-							
+
 								success: function(data){
-							
+
 									var option = '';
-							
+
 								   $.each(data, function(i, star) {
-							
+
 											if(i == 'error'){
-							
+
 											$('.learnership_sub_type_id').html(option);
-							
+
 											$('#learnership_sub_type_id-error').show();
-							
+
 											$('#learnership_sub_type_id-error').html(star);
-							
+
 										}else{
 											var test = '<option hidden value='+'>Select Sublearnership</option>';
 										  option += '<option value='+star.id+'>'+star.sub_type+'</option>'
-							
+
 										  $('.learnership_sub_type_id').html(test+option);
-							
+
 										  $('#learnership_sub_type_id-error').hide();
-							
+
 										}
-							
+
 									});
-							
-								  
-							
+
+
+
 								}
-							
+
 							});
-							
+
 							});
-							
+
 							$('.learnership_sub_type_id').change(function(){
-							
+
 							$.ajax({
-							
+
 								url: 'provider-getclassname',
-							
+
 								data: { 'value': $('.learnership_sub_type_id').val() },
-							
+
 								dataType:'json',
-							
+
 								type: 'post',
-							
+
 								success: function(data){
-							
+
 									var option = '';
-							
+
 								   $.each(data, function(i, star) {
-							
+
 											if(i == 'error'){
-							
+
 											$('.learner_classname').html(option);
-							
+
 											$('#learner_classname-error').show();
-							
+
 											$('#learnership_sub_type_id-error').html(star);
-							
+
 										}else{
 											var test = '<option hidden value='+'>Select Class</option>';
 										  option += '<option value='+star.class_name+'>'+star.class_name+'</option>'
-							
+
 										  $('.learner_classname').html(test+option);
-							
+
 										  $('#learner_classname-error').hide();
-							
+
 										}
-							
+
 									});
-							
-								  
-							
+
+
+
 								}
-							
+
 							});
-							
+
 							});
-							
-							
+
+
 
 						$('.province').change(function(){
 							$.ajax({
@@ -9892,7 +9892,7 @@
 										  $('#district-error').hide();
 										}
 									});
-								  
+
 								}
 							});
 						});
@@ -9916,11 +9916,11 @@
 										$('#city-error').hide();
 									}
 									});
-								  
+
 								}
 							});
 						});
-					
+
 						$('#region').change(function(){
 						   $.ajax({
 								url: 'provider-getcity',
@@ -9998,12 +9998,12 @@
 
 						$('#learnerForm').validate({
 							rules: {
-								
+
 								full_name: {
 									required: true,
 									arsname: true
 								},
-								
+
 								surname: {
 									required: true,
 									arsname: true
@@ -10017,7 +10017,7 @@
 									required: true,
 									check___email: true
 								},
-								
+
 								id_number: {
 									required: true,
 									minlength: 13,
@@ -10047,7 +10047,7 @@
 									minlength: 5
 								},
 								classname:{
-									required: true, 
+									required: true,
 								},
 								province: {
 									required: true
@@ -10070,9 +10070,9 @@
 								Street_name: {
 									required: true
 								},
-								
+
 								reason:{
-								   required: true, 
+								   required: true,
 								},
 								learner_accepted_training:{
 									required: true,
@@ -10081,30 +10081,30 @@
 									required:true,
 								},
 								bank_name:{
-									required: true, 
+									required: true,
 								},
 								bank_account_type:{
-								  required: true, 
+								  required: true,
 								},
 								bank_account_number:{
-								  required: true, 
+								  required: true,
 								},
 								branch_name:{
-								  required: true, 
+								  required: true,
 								},
 								branch_code:{
-								  required: true, 
+								  required: true,
 								},
 								upload_proof_of_banking:{
-								  required: true, 
+								  required: true,
 								},
-					
+
 							},
-					
+
 							messages: {
 								full_name: {
 								required : 'Please enter your full name',
-								},							   
+								},
 								surname:{
 								required :'Please enter your surname',
 								},
@@ -10131,7 +10131,7 @@
 								  employer_name: {
 											  required: 'Please enter your employer name',
 											},
-								
+
 								id_number: {
 									required: 'Please enter your id number',
 									minlength: 'Your id number must  13 characters long',
@@ -10194,7 +10194,7 @@
 					$.validator.addMethod('fname', function(value, element) {
 						// allow any non-whitespace characters as the host part
 							return this.optional( element ) || /^[a-zA-Z ]*$/.test( value );
-	
+
 							}, 'Only letters and white space allowed.');
 
 						$('#unitform').validate({
@@ -10203,29 +10203,29 @@
 
 								title:{
 
-								 required: true, 
+								 required: true,
 								fname: true
 								},
 
 								total_credits:{
 
-									required: true, 
-   
+									required: true,
+
 								   },
 
 								   unit_standard_type:{
 
-									required: true, 
-   
+									required: true,
+
 								   },
 
 								   standard_id:{
 
-								 required: true, 
+								 required: true,
 
 								},
 
-								
+
 
 							},
 
@@ -10240,13 +10240,13 @@
 								total_credits: {
 
 									required: 'Please enter Total credits',
-  
+
 								  },
 
 								  unit_standard_type: {
 
 									required: 'Please select	 Unit Standard Type',
-  
+
 								  },
 
 								  standard_id: {
@@ -10317,7 +10317,7 @@
 							user_role:{
 								required: true,
 							},
-						
+
 						},
 						messages:{
 							first_name: {
@@ -10351,7 +10351,7 @@
 							user_role: {
 								required: 'Please Select User Role',
 							},
-							
+
 						}
 						});
 						$.validator.setDefaults({
@@ -10377,15 +10377,15 @@
 							department_name:{
 								required: true,
 							},
-							
-						
+
+
 						},
 						messages:{
 							department_name: {
 								required: 'Please Enter Department Name',
 							},
-							
-							
+
+
 						}
 						});
 						$.validator.setDefaults({
@@ -10416,8 +10416,8 @@
 							},
 							'user[]' : {
 								required: true,
-							}, 
-						
+							},
+
 						},
 						messages:{
 							group_name: {
@@ -10505,7 +10505,7 @@
 							budget:{
 								required: true,
 							}
-						
+
 						},
 						messages:{
 							programme_name: {
@@ -10546,14 +10546,14 @@
 							item_name:{
 								required: true,
 							},
-							
-						
+
+
 						},
 						messages:{
 							item_name: {
 								required: 'Please Enter Item Name',
 							},
-							
+
 						}
 						});
 						$.validator.setDefaults({
@@ -10594,7 +10594,7 @@
 				});
 			</script>";
 			}
-			
+
 			if($page == 'createNewSubcontractor'){
 				$js[] = "<script>
 				$(function () {
@@ -10637,7 +10637,7 @@
 							Street_name:{
 								required: true,
 							},
-							
+
 							Street_number:{
 								required: true,
 							},
@@ -10647,7 +10647,7 @@
 							user_role:{
 								required: true,
 							},
-						
+
 						},
 						messages:{
 							company_name: {
@@ -10656,7 +10656,7 @@
 							first_name: {
 								required: 'Please Enter First Name',
 							},
-							
+
 							last_name: {
 								required: 'Please Enter Last Name',
 							},
@@ -10687,12 +10687,12 @@
 							suburb: {
 								required: 'Please Select City ',
 							},
-						
-							
+
+
 							user_role: {
 								required: 'Please Select User Role',
 							},
-							
+
 						}
 						});
 						$.validator.setDefaults({

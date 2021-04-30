@@ -490,6 +490,11 @@ $route['assessor-getlearner'] = 'assessor/get_learnername';
 $route['assessor-get_sublearnership'] = 'assessor/get_sublearnership';
 $route['assessor-user_listing'] = 'assessor/user_listing';
 $route['assessor-forget-password'] = 'welcome/assessor_forgetpassword';
+
+$route['assessor-completed-assessment-list'] = 'assessor/list_complete_assessments';
+$route['assessor-view-assessment'] = 'assessor/view_assessment';
+$route['assessor-mark-assessment'] = 'assessor/mark_assessment';
+
 //*********************Assessor************************//
 
 
@@ -542,6 +547,16 @@ $route['Facilitator-get_receiver'] = 'faciltator/get_receiver';
 $route['Facilitator-sentboxview/(:any)'] = 'faciltator/sentboxview/$1';
 $route['Facilitator-inboxview/(:any)'] = 'faciltator/inboxview/$1';
 $route['Faciltator-forget-password'] = 'welcome/facilitator_forgetpassword';
+
+$route['facilitator-completed-assessment-list'] = 'faciltator/list_complete_assessments';
+$route['faciltator-view-assessment'] = 'faciltator/view_assessment';
+$route['facilitator-mark-assessment'] = 'faciltator/mark_assessment';
+
+// $route['faciltator-view-assessment-submission'] = 'faciltator/view_assessment_submission';
+// $route['faciltator-load-assessment'] = 'faciltator/load_assessment';
+
+
+
 /******************INternal Moderator*****************************************/
 $route['internal-moderator'] = 'welcome/moderator';
 $route['internal-Moderator-dashboard'] = 'moderator/dashboard';
