@@ -2992,36 +2992,71 @@ class Common extends CI_Model
 	public function assessmentListByProjectManager($project_manager_id)
 	{
 
-	    $result = $this->db->select('*')
+	    $result = $this->db->select('assessment.*, class_name.class_name, units.title as unit_standard')
     	    ->from('assessment')
-    	    ->where('created_by', $project_manager_id)
+    	    ->join('class_name', 'class_name.id = assessment.class_id')
+    	    ->join('units', 'units.id = assessment.unit_standard')
+    	    ->where('assessment.created_by', $project_manager_id)
     	    ->get()
     	    ->result();
 
 	    return $result;
 	}
 
+	/**
+	 * Get all assessments for given learner
+	 *
+	 * @param unknown $learner_id
+	 * @return unknown
+	 */
 	public function assessmentListByLearner($learner_id)
 	{
 
-	    // select * from assessment
-	    // left join class_name on class_name.id = assessment.classname
-	    // left join elearner on elearner.class_name = class_name.id
-	    // left join learner on learner.trainer_id  = elearner.trainer_id
-	    // WHERE learner.id = 1;
+	    //  select * from learner_assessment
+	    // right join assessment on assessment.id = learner_assessment.assessment_id
+	    // join class_name on class_name.id = assessment.class_id
+	    // join learner on learner.classname = class_name.class_name
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.id as assessment_id',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
 
 
-
-	    $result = $this->db->select('*')
-	    ->from('assessment')
-	    ->join('class_name', 'class_name.id = assessment.classname')
-	    ->join('elearner', 'elearner.class_name = class_name.id')
-	    ->join('learner', 'learner.trainer_id = elearner.trainer_id')
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id', 'right')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.classname = class_name.class_name')
 	    ->where('learner.id', $learner_id)
 	    ->get()
 	    ->result();
 
 	    return $result;
+
+
+// 	    $result = $this->db->select('*')
+// 	    ->from('assessment')
+// 	    ->join('class_name', 'class_name.id = assessment.classname')
+// 	    ->join('elearner', 'elearner.class_name = class_name.id')
+// 	    ->join('learner', 'learner.trainer_id = elearner.trainer_id')
+// 	    ->where('learner.id', $learner_id)
+// 	    ->get()
+// 	    ->result();
+
+// 	    return $result;
 	}
 
 	public function compeletedAssessmentListByFacilitator($facilitator_id)
