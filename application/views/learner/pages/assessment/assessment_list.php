@@ -33,12 +33,12 @@
                                     <th>Submission Type</th>
                                     <th>Class Name</th>
                                     <th>Unit Standard</th>
-                                    <th>Programme Name</th>
-                                    <th>Programme Number</th>
+<!--                                     <th>Programme Name</th> -->
+<!--                                     <th>Programme Number</th> -->
                                     <th>Intervention Name</th>
-                                    <th>Created By</th>
+<!--                                     <th>Created By</th> -->
                                     <th>Created On</th>
-                                    <th>Updated On</th>
+<!--                                     <th>Updated On</th> -->
                                     <th>Action</th>
 
                                 </tr>
@@ -65,16 +65,18 @@
                                             <td><?= $row->submission_type; ?></td>
                                             <td><?= $row->class_name; ?></td>
                                             <td><?= $row->unit_standard; ?></td>
-                                            <td><?= $row->programme_name; ?></td>
-                                            <td><?= $row->programme_number; ?></td>
+<?php /*
+                                            <td>< ? = $row -> programme_name; ? ></td>
+                                            <td>< ? = $row -> programme_number; ? ></td>
+*/ ?>
                                             <td><?= $row->intervention_name; ?></td>
-                                            <td><?= $row->created_by; ?></td>
+<?php /*                                            <td>< ? = $ row->c reated_by; ? ></td> */ ?>
                                             <td><?= $row->created_date; ?></td>
-                                            <td><?= $row->updated_date; ?></td>
+<?php /*                                             <td>< ? = $ row -> updated_date; ? ></td> */ ?>
 
                                             <td>
 
-                                                <a href="learner/view_assessment?id=<?= $row->id ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                                <a href="learner/view_assessment?id=<?= $row->assessment_id ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
 
                                             </td>
 

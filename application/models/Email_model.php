@@ -92,7 +92,7 @@ class Email_model extends CI_Model {
 											</tr>
 										</tbody>
 									</table>
-									
+
 								</td>
 							</tr>
 							<tr height="40">
@@ -101,7 +101,7 @@ class Email_model extends CI_Model {
 									<h4 align="center" style="color:#fff;margin: 0">LEARNING MANEGMENT
 </h4>
 									<hr>
-									
+
 									<p style="background: #fff; padding:10px;"><a href="'.base_url().'">About us</a> &nbsp; &nbsp; <a
 											href="'.base_url().'">Contact us</a> &nbsp; &nbsp; <a href="'.base_url().'">refer-end-earn</a> &nbsp; &nbsp;
 										<a href="'.base_url().'">www.demo.com</a></p>
@@ -117,6 +117,41 @@ class Email_model extends CI_Model {
 
 </html>';
 return $html;
+	}
+
+
+	// Send message to all students in class
+	public function email_learner_in_class($class_id, $subject, $message)
+	{
+
+	    $this->load->library('email');
+
+
+	    $class_name = $this->common->accessrecord('class_name', [], ['id' => $class_id], 'row');
+
+	    $learner_list = $this->common->accessrecord('learner', [], ['classname' => $class_name->class_name], 'result');
+	    $trainer_report = 0;
+	    foreach ($learner_list as $learner) {
+
+
+	        $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
+
+	        $this->email->to($learner->email);
+
+	        $this->email->subject($subject);
+
+	        $this->email->set_mailtype("html");
+
+	        $this->email->message($message);
+
+	        $this->email->send();
+
+	        echo $this->email->print_debugger();
+
+	    }
+
+
+
 	}
 
 }

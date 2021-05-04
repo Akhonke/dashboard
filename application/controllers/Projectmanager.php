@@ -3820,6 +3820,8 @@ $record = $this->common->get_learnername($id);
 	        $id = $_GET['id'];
 
 	        $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
+	        $class_name = $this->common->accessrecord('class_name', [], ['id' => ($this->data['record'])->class_id], 'row');
+	        $this->data['record']->classname = $class_name->class_name;
 	    }
 
 	    if ($_POST) {
@@ -3865,7 +3867,7 @@ $record = $this->common->get_learnername($id);
 	                'title' => $this->input->post('title'),
 	                'assessment_type' => $this->input->post('assessment_type'),
 	                'submission_type' => $this->input->post('submission_type'),
-	                'classname' => $this->input->post('classname'),
+	                'class_id' => $this->input->post('classname'),
 	                'unit_standard' => $this->input->post('unit_standard'),
 // 	                'programme_name' => $this->input->post('programme_name'),
 // 	                'programme_number' => $this->input->post('programme_number'),
@@ -3877,6 +3879,7 @@ $record = $this->common->get_learnername($id);
 	                'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
 	                'created_by' => $project_manager_id,
+	                'created_by_role' => 'project manager',
 	                'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
 	                'created_date' => date('Y-m-d H:i:s'),
 	                'updated_date' => date('Y-m-d H:i:s'),
@@ -3931,7 +3934,7 @@ $record = $this->common->get_learnername($id);
 	                'title' => $this->input->post('title'),
 	                'assessment_type' => $this->input->post('assessment_type'),
 	                'submission_type' => $this->input->post('submission_type'),
-	                'classname' => $this->input->post('classname'),
+	                'class_id' => $this->input->post('classname'),
 	                'unit_standard' => $this->input->post('unit_standard'),
 // 	                'programme_name' => $this->input->post('programme_name'),
 // 	                'programme_number' => $this->input->post('programme_number'),
@@ -3951,27 +3954,13 @@ $record = $this->common->get_learnername($id);
 
 	            if ($this->common->insertData('assessment', $data)) {
 
-	                /*
-// Send emails to learners,
-
-
-				$this->load->library('email');
-
-				$this->email->from('info@digilims.com','LEARNING MANEGMENT');
-
-				$this->email->to($email);
-
-				$this->email->subject('Password is successfully updated');
-
-				$this->email->set_mailtype("html");
-
-				$this->email->message($html);
-
-                $this->email->send();
-
-			//	echo $this->email->print_debugger();die;
-
-	                 */
+	                $this->Email_model->email_learner_in_class(
+	                    $data['class_id'],
+	                    'You have been assigned a new assessment.',
+	                    'A new new assessment has been created
+                         http://digilims.com/new_assessment
+                        '
+                    );
 
 	                $this->session->set_flashdata('success', 'Assessement Saved Successfully');
 
@@ -3985,13 +3974,9 @@ $record = $this->common->get_learnername($id);
 	        }
 
 	        if ($id != 0) {
-
 	            $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
 	        }
 	    }
-
-// 	    $this->data['projectmanager'] = $this->common->accessrecord('project_manager', [], ['id' => $project_id], 'row');
-
 
 	    $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
 	    $this->data['units'] = $this->common->accessrecord('units', [], [], 'result_array');

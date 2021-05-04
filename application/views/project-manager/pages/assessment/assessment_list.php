@@ -64,7 +64,7 @@
                                             <td><?= $row->title; ?></td>
                                             <td><?= $row->assessment_type; ?></td>
                                             <td><?= $row->submission_type; ?></td>
-                                            <td><?= $row->classname; ?></td>
+                                            <td><?= $row->class_name; ?></td>
                                             <td><?= $row->unit_standard; ?></td>
 <?php /*
                                             <td><?= $row->programme_name; ?></td>

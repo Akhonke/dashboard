@@ -593,7 +593,7 @@ public function list_assessments(){
 
      $this->data['page'] = 'list_assessments';
 
-     $this->data['content'] = 'assessment/assessment_list';
+     $this->data['content'] = 'pages/assessment/assessment_list';
 
      $this->load->view('learner/tamplate', $this->data);
 }
@@ -615,14 +615,23 @@ public function view_assessment(){
         return;
     }
 
-    $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
-    $this->data['learner_assessments'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id], 'result');
+    $this->data['assessment'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+    $this->data['learner_assessment'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
+    $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
+    $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
+
+    $assessment_submissions = [];
+//     foreach ($this->data['learner_assessment'] as $submission) {
+    $assessment_submissions[] = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'row');
+//     }
+    $this->data['learner_assessment_submissions'] = $assessment_submissions;
+
     $this->data['learner_id'] = $learner_id;
     $this->data['assessment_id'] = $assessment_id;
 
     $this->data['page'] = 'view_assessment';
 
-    $this->data['content'] = 'assessment/assessment_details';
+    $this->data['content'] = 'pages/assessment/assessment_details';
 
     $this->load->view('learner/tamplate', $this->data);
 
@@ -714,29 +723,49 @@ public function load_assessment(){
     $data = [
         'assessment_id' => $this->input->post('assessment_id'),
         'learner_id' => $learner_id,
-        'upload_completed_learner_guide' => $upload_completed_learner_guide['upload_completed_learner_guide']['store'],
-        'upload_completed_learner_guide_name' => $upload_completed_learner_guide['upload_completed_learner_guide']['name'],
-        'upload_completed_workbook' => $upload_completed_workbook['upload_completed_workbook']['store'],
-        'upload_completed_workbook_name' => $upload_completed_workbook['upload_completed_workbook']['name'],
-        'upload_completed_poe' => $upload_completed_poe[upload_completed_poe]['store'],
-        'upload_completed_poe_name' => $upload_completed_poe['upload_completed_poe']['name'],
-        'status' => 'new',
+
+        'status' => 'assessment',
+        'internal_moderation_status' => 'submitted',
         'created_date' => date('Y-m-d H:i:s'),
         'updated_date' => date('Y-m-d H:i:s'),
 
     ];
 
-    if ($this->common->insertData('learner_assessment', $data)) {
 
-        $this->session->set_flashdata('success', 'Assessement Saved Successfully');
+    $learner_assessment_id = $this->common->insertData('learner_assessment', $data);
 
-        redirect('learner-assessment-list');
-    } else {
+    if ($learner_assessment_id) {
 
-        $this->session->set_flashdata('error', 'Please Try Again');
+        $submission_data = [
+            'learner_assessment_id'               => $learner_assessment_id,
+            'assessment_submission_date'          => date('Y-m-d H:i:s'),
 
-        redirect('/learner/view_assessment?id=' . $assessment_id);
+            'upload_completed_learner_guide'      => $upload_completed_learner_guide['upload_completed_learner_guide']['store'],
+            'upload_completed_learner_guide_name' => $upload_completed_learner_guide['upload_completed_learner_guide']['name'],
+
+            'upload_completed_workbook'           => $upload_completed_workbook['upload_completed_workbook']['store'],
+            'upload_completed_workbook_name'      => $upload_completed_workbook['upload_completed_workbook']['name'],
+
+            'upload_completed_poe'                => $upload_completed_poe['upload_completed_poe']['store'],
+            'upload_completed_poe_name'           => $upload_completed_poe['upload_completed_poe']['name'],
+
+            'assessment_status'                   => 'new',
+
+            'created_date' => date('Y-m-d H:i:s'),
+            'updated_date' => date('Y-m-d H:i:s'),
+        ];
+
+        if ($this->common->insertData('learner_assessment_submission', $submission_data)) {
+            $this->session->set_flashdata('success', 'Assessement Saved Successfully');
+            redirect('learner-assessment-list');
+        }
+
     }
+
+    // If we are here, something went wrong saving either the learner_assessment or learner_assessment_submission
+    $this->session->set_flashdata('error', 'Please Try Again');
+    redirect('/learner/view_assessment?id=' . $assessment_id);
+
 
 }
 
