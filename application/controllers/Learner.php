@@ -622,7 +622,7 @@ public function view_assessment(){
 
     $assessment_submissions = [];
 //     foreach ($this->data['learner_assessment'] as $submission) {
-    $assessment_submissions[] = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'row');
+    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'result');
 //     }
     $this->data['learner_assessment_submissions'] = $assessment_submissions;
 
@@ -756,6 +756,17 @@ public function load_assessment(){
         ];
 
         if ($this->common->insertData('learner_assessment_submission', $submission_data)) {
+
+            $this->Email_model->email_assessor_from_assessment(
+                $assessment_id,
+                'A new assessment has been submitted by a learner.',
+                'A new assessment submission has been created
+                         http://digilims.com/new_assessment
+                        '
+                );
+
+
+
             $this->session->set_flashdata('success', 'Assessement Saved Successfully');
             redirect('learner-assessment-list');
         }

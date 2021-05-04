@@ -182,7 +182,7 @@
                                     <?php } ?>
                                 </div>
 
-								<?php if ($learner_assessment->status == 'assessment') { ?>
+								<?php if ( ($learner_assessment) && ($learner_assessment->status == 'assessment')) { ?>
 										<p>Your assessment has been submitted for marking.</p>
                                 <?php } else { ?>
 

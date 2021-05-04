@@ -126,13 +126,10 @@ return $html;
 
 	    $this->load->library('email');
 
-
-	    $class_name = $this->common->accessrecord('class_name', [], ['id' => $class_id], 'row');
-
+	    $class_name   = $this->common->accessrecord('class_name', [], ['id' => $class_id], 'row');
 	    $learner_list = $this->common->accessrecord('learner', [], ['classname' => $class_name->class_name], 'result');
-	    $trainer_report = 0;
-	    foreach ($learner_list as $learner) {
 
+	    foreach ($learner_list as $learner) {
 
 	        $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
 
@@ -150,7 +147,37 @@ return $html;
 
 	    }
 
+	}
 
+	// Send message to all assessor in an organisation for a given assessment
+	public function email_assessor_from_assessment($assessment_id, $subject, $message)
+	{
+
+	    $this->load->library('email');
+
+	    $assessment    = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+	    $class         = $this->common->accessrecord('class_name', [], ['id' => $assessment->class_id], 'row');
+	    $assessor_list = $this->common->accessrecord('assessor', [], ['organization' => $class->organization], 'result');
+
+
+	    foreach ($assessor_list as $assessor) {
+
+
+	        $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
+
+	        $this->email->to($assessor->email);
+
+	        $this->email->subject($subject);
+
+	        $this->email->set_mailtype("html");
+
+	        $this->email->message($message);
+
+	        $this->email->send();
+
+	        $email =  $this->email->print_debugger();
+
+	    }
 
 	}
 
