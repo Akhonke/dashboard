@@ -1013,7 +1013,7 @@ class Assessor extends CI_Controller
 
 	        if ($learner_assessment_submission_id == 0) {
 	            $this->session->set_flashdata('error', 'Invalid Learner Assessment Submission. Please Try Again');
-	            redirect('list_complete_assessments');
+	            redirect('assessor-completed-assessment-list');
 	        }
 
 	        $assessment_submission = $this->common->accessrecord('learner_assessment_submission', [], ['id' => $learner_assessment_submission_id], 'row');
@@ -1025,24 +1025,30 @@ class Assessor extends CI_Controller
 	            $upload_marked_learner_guide['upload_marked_learner_guide']['store'] = $this->singlefileupload('upload_marked_learner_guide', './uploads/assessment/upload_marked_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            $upload_marked_learner_guide['upload_marked_learner_guide']['name'] = $_FILES['upload_marked_learner_guide']['name'];
 	        } else {
-	            $this->session->set_flashdata('error', 'No learner guide submitted. Please Try Again');
-	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	            if (empty($assessment_submission->upload_marked_learner_guide)) {
+	                $this->session->set_flashdata('error', 'No learner guide submitted. Please Try Again');
+	                redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	            }
 	        }
 
 	        if (!empty($_FILES['upload_marked_workbook']['name'])) {
 	            $upload_marked_workbook['upload_marked_workbook']['store'] = $this->singlefileupload('upload_marked_workbook', './uploads/assessment/upload_marked_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            $upload_marked_workbook['upload_marked_workbook']['name'] = $_FILES['upload_marked_workbook']['name'];
 	        } else {
-	            $this->session->set_flashdata('error', 'No learner workbook submitted. Please Try Again');
-	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	            if (empty($assessment_submission->upload_marked_workbook)) {
+	                $this->session->set_flashdata('error', 'No learner workbook submitted. Please Try Again');
+	                redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	            }
 	        }
 
 	        if (!empty($_FILES['upload_marked_poe']['name'])) {
 	            $upload_marked_poe['upload_marked_poe']['store'] = $this->singlefileupload('upload_marked_poe', './uploads/assessment/upload_marked_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
 	            $upload_marked_poe['upload_marked_poe']['name'] = $_FILES['upload_marked_poe']['name'];
 	        } else {
-	            $this->session->set_flashdata('error', 'No learner POE submitted. Please Try Again');
-	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	            if (empty($assessment_submission->upload_marked_poe)) {
+	                $this->session->set_flashdata('error', 'No learner POE submitted. Please Try Again');
+	                redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	            }
 	        }
 
 
@@ -1085,7 +1091,7 @@ class Assessor extends CI_Controller
 
 	            $this->session->set_flashdata('success', 'Assessement Saved Successfully');
 
-	            redirect('list_complete_assessments');
+	            redirect('assessor-completed-assessment-list');
 	        } else {
 
 	            $this->session->set_flashdata('error', 'Cannot save marked submission. Please Try Again');
