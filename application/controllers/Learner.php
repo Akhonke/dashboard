@@ -755,14 +755,21 @@ public function load_assessment(){
 
         if ($this->common->insertData('learner_assessment_submission', $submission_data)) {
 
-            $this->Email_model->email_assessor_from_assessment(
+//             $this->Email_model->email_assessor_from_assessment(
+//                 $assessment_id,
+//                 'A new assessment has been submitted by a learner.',
+//                 'A new assessment submission has been created
+//                          http://digilims.com/new_assessment
+//                         '
+//                 );
+
+            $this->Email_model->email_facilitator_from_assessment(
                 $assessment_id,
                 'A new assessment has been submitted by a learner.',
                 'A new assessment submission has been created
                          http://digilims.com/new_assessment
                         '
                 );
-
 
 
             $this->session->set_flashdata('success', 'Assessement Saved Successfully');

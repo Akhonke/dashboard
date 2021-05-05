@@ -82,6 +82,10 @@ CREATE TABLE `learner_assessment_submission` (
   `learner_feedback` text DEFAULT NULL,
   `overall_assessment` text DEFAULT NULL,
 
+  `marked_status` varchar(255) NOT NULL;
+  `marked_by` int(11) DEFAULT NULL,
+  `marked_date` DATETIME NOT NULL,
+
   `upload_marked_learner_guide` varchar(255) NOT NULL,
   `upload_marked_learner_guide_name` varchar(255) NOT NULL,
   `upload_marked_workbook` varchar(255) NOT NULL,

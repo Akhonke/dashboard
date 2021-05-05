@@ -36,8 +36,6 @@
                                     <th>Submission Type</th>
                                     <th>Class Name</th>
                                     <th>Unit Standard</th>
-                                    <th>Programme Name</th>
-                                    <th>Programme Number</th>
                                     <th>Intervention Name</th>
                                     <th>Created On</th>
                                     <th>Updated On</th>
@@ -70,8 +68,6 @@
                                             <td><?= $row->submission_type; ?></td>
                                             <td><?= $row->class_name; ?></td>
                                             <td><?= $row->unit_standard; ?></td>
-                                            <td><?= $row->programme_name; ?></td>
-                                            <td><?= $row->programme_number; ?></td>
                                             <td><?= $row->intervention_name; ?></td>
                                             <td><?= $row->created_date; ?></td>
                                             <td><?= $row->updated_date; ?></td>

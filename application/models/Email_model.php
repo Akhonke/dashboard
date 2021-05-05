@@ -181,4 +181,26 @@ return $html;
 
 	}
 
+
+	// Send message to all assessor in an organisation for a given assessment
+	public function email_facilitator_from_assessment($assessment_id, $subject, $message)
+	{
+
+	    $this->load->library('email');
+
+	    $assessment    = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+	    $class         = $this->common->accessrecord('class_name', [], ['id' => $assessment->class_id], 'row');
+	    $facilitator   = $this->common->accessrecord('facilitator', [], ['id' => $class->facilitator_id], 'row');
+
+        $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
+        $this->email->to($facilitator->email);
+        $this->email->subject($subject);
+        $this->email->set_mailtype("html");
+        $this->email->message($message);
+        $this->email->send();
+        $email =  $this->email->print_debugger();
+
+
+	}
+
 }

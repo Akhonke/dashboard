@@ -3080,8 +3080,6 @@ class Common extends CI_Model
 	        'submission_type',
 	        'class_name.class_name',
 	        'unit_standard',
-	        'programme_name',
-	        'programme_number',
 	        'intervention_name'
 	    ];
 
@@ -3089,7 +3087,7 @@ class Common extends CI_Model
 	    $result = $this->db->select($select_fields)
  	    ->from('learner_assessment')
  	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
- 	    ->join('class_name', 'class_name.id = assessment.classname')
+ 	    ->join('class_name', 'class_name.id = assessment.class_id')
  	    ->join('learner', 'learner.id = learner_assessment.learner_id')
  	    ->where('class_name.facilitator_id', $facilitator_id)
  	    ->get()

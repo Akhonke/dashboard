@@ -53,24 +53,6 @@
 
                                 <div class="col-md-6">
 
-                                    <label class="form-control-label">Programme Name<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <input type="text" placeholder="Enter the Programme Name" name="programme_name" class="form-control programme_name" value="<?= (isset($record)) ? $record->programme_name: ''; ?>" id="programme_name"  readonly="readonly">
-
-                                </div>
-
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Programme Number<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <input type="text" placeholder="Enter the Programme Number" name="programme_number" class="form-control programme_number" value="<?= (isset($record)) ? $record->programme_number: ''; ?>" id="programme_number"  readonly="readonly">
-
-                                </div>
-
-
-
-                                <div class="col-md-6">
-
                                     <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($record)) ? $record->unit_standard: ''; ?>" id="unit_standard"  readonly="readonly">
@@ -119,6 +101,14 @@
                                     <input type="text" placeholder="Enter Your Assessment Submission Type" name="assessment_type" class="form-control assessment_type" value="<?= (isset($record)) ? $record->submission_type : ''; ?>" id="submission_type">
 
                                 </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Learner Name<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <input type="text" name="learner_name" class="form-control assessment_type" value="<?= (isset($record)) ? $record->first_name . ' ' . $record->surname : ''; ?>" id="submission_type">
+
+                                </div>
 <?php
 /*
                                 <div class="col-md-12">
@@ -159,37 +149,34 @@
 */
 ?>
 
+
                                 <div class="col-md-12">
                                 	<p>&nbsp:</p>
-                                    <h4>Assessment Submission</h4>
+                                    <h4>Assessment Submissions By Learner</h4>
+                                    <?php if (count($learner_assessment_submissions)) { ?>
                                     	<ul>
+                                    	<?php foreach ($learner_assessment_submissions as $assessment_submission) { ?>
 											<li>
-											<p>Assessment submitted on <?php echo $record->created_date ?></p>
-											<p>Status : <?php echo $record->status; ?></p>
-											<p>Assessment Notes : <?php echo $record->assessment_notes; ?></p>
+    											<p>Assessment submitted on <?php echo $assessment_submission->created_date ?></p>
+    											<p>Status : <?php echo $assessment_submission->assessment_status; ?></p>
+    											<p>Assessment Notes : <?php echo $assessment_submission->assessment_notes; ?></p>
 
-											<?php if (!empty($record->upload_completed_learner_guide)) { ?>
+    											<?php if (!empty($assessment_submission->upload_completed_learner_guide)) { ?>
     											<p>
-    											Submitted Learner Guide : <a href="/uploads/assessment/upload_completed_learner_guide/<?php echo $record->upload_completed_learner_guide; ?>" target="_blank"><?php echo $record->upload_completed_learner_guide_name; ?></a>
+        											Submitted Learner Guide : <a href="/uploads/assessment/upload_completed_learner_guide/<?php echo $assessment_submission->upload_completed_learner_guide; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_learner_guide_name; ?></a>
     											</p>
 											<?php } ?>
-											<?php if (!empty($record->upload_completed_workbook)) { ?>
+    											<?php if (!empty($assessment_submission->upload_completed_workbook)) { ?>
 												<p>
-												Submitted Workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $record->upload_completed_workbook; ?>" target="_blank"><?php echo $record->upload_completed_workbook_name; ?></a>
+    												Submitted Workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $assessment_submission->upload_completed_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_workbook_name; ?></a>
 												</p>
 											<?php } ?>
-											<?php if (!empty($record->upload_completed_poe)) { ?>
+    											<?php if (!empty($assessment_submission->upload_completed_poe)) { ?>
 												<p>
-												Submitted POE : <a href="/uploads/assessment/upload_completed_poe/<?php echo $record->upload_completed_poe; ?>" target="_blank"><?php echo $record->upload_completed_poe_name; ?></a>
+    												Submitted POE : <a href="/uploads/assessment/upload_completed_poe/<?php echo $assessment_submission->upload_completed_poe; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_poe_name; ?></a>
 												</p>
 											<?php } ?>
 
-
-											</li>
-
-                                    	</ul>
-
-                                </div>
 
                                 <div class="col-md-12">
                                 	<p>&nbsp:</p>
@@ -197,13 +184,13 @@
                                 </div>
 
                         		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="MarkAssessment" action="/facilitator-mark-assessment">
-								<input type="hidden" name="learner_assessment_id" value="<?= (isset($record)) ? $record->id : ''; ?>">
+								<input type="hidden" name="learner_assessment_submission_id" value="<?= (isset($assessment_submission)) ? $assessment_submission->id : ''; ?>">
 
                                 <div class="col-md-12">
 
                                     <label class="form-control-label">Assessment Notes (not viewable by Learner)<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <textarea class="form-control"  name="assessment_notes" id="assessment_notes" cols="60" rows="5"><?= (isset($record)) ? $record->assessment_notes : ''; ?></textarea>
+                                    <textarea class="form-control"  name="assessment_notes" id="assessment_notes" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->assessment_notes : ''; ?></textarea>
 
                                 </div>
 
@@ -211,7 +198,7 @@
 
                                     <label class="form-control-label">Learner Feedback<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <textarea class="form-control"  name="learner_feedback" id="learner_feedback" cols="60" rows="5"><?= (isset($record)) ? $record->learner_feedback : ''; ?></textarea>
+                                    <textarea class="form-control"  name="learner_feedback" id="learner_feedback" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->learner_feedback : ''; ?></textarea>
 
                                 </div>
 
@@ -219,27 +206,27 @@
 
                                     <label class="form-control-label">Overall Assessment<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <textarea class="form-control"  name="overall_assessment" id="overall_assessment" cols="60" rows="5"><?= (isset($record)) ? $record->overall_assessment : ''; ?></textarea>
+                                    <textarea class="form-control"  name="overall_assessment" id="overall_assessment" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->overall_assessment : ''; ?></textarea>
 
                                 </div>
 
                                     <div class="col-md-12">
-    									<?php if (!empty($record->upload_marked_learner_guide)) { ?>
+    									<?php if (!empty($assessment_submission->upload_marked_learner_guide)) { ?>
     										<p>
-    										Marked Learner Guide : <a href="/uploads/assessment/upload_marked_learner_guide/<?php echo $record->upload_marked_learner_guide; ?>" target="_blank"><?php echo $record->upload_marked_learner_guide_name; ?></a>
+        										Marked Learner Guide : <a href="/uploads/assessment/upload_marked_learner_guide/<?php echo $assessment_submission->upload_marked_learner_guide; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_learner_guide_name; ?></a>
     										</p>
     									<?php } else { ?>
-                                    			<label class="form-control-label">Upload The Marked Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
-                                                <input type="file" name="upload_marked_learner_guide" class="form-control">
-                                                <label id="upload_marked_learner_guide-error" class="error" for="upload_marked_learner_guide"></label>
+                                			<label class="form-control-label">Upload The Marked Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
+                                            <input type="file" name="upload_marked_learner_guide" class="form-control">
+                                            <label id="upload_marked_learner_guide-error" class="error" for="upload_marked_learner_guide"></label>
                                         <?php } ?>
                                     </div>
 
 
                                     <div class="col-md-12">
-    									<?php if (!empty($record->upload_marked_workbook)) { ?>
+    									<?php if (!empty($assessment_submission->upload_marked_workbook)) { ?>
     										<p>
-    										Marked Workbook : <a href="/uploads/assessment/upload_marked_workbook/<?php echo $record->upload_marked_workbook; ?>" target="_blank"><?php echo $record->upload_marked_workbook_name; ?></a>
+    											Marked Workbook : <a href="/uploads/assessment/upload_marked_workbook/<?php echo $assessment_submission->upload_marked_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_workbook_name; ?></a>
     										</p>
     									<?php } else { ?>
                                 			<label class="form-control-label">Upload The Marked Workbook<span style="color:red;font-weight:bold;"> *</span></label>
@@ -249,9 +236,9 @@
                                     </div>
 
                                     <div class="col-md-12">
-										<?php if (!empty($record->upload_marked_poe)) { ?>
+										<?php if (!empty($assessment_submission->upload_marked_poe)) { ?>
     										<p>
-    										Marked POE : <a href="/uploads/assessment/upload_marked_poe/<?php echo $record->upload_marked_poe; ?>" target="_blank"><?php echo $record->upload_marked_poe_name; ?></a>
+    											Marked POE : <a href="/uploads/assessment/upload_marked_poe/<?php echo $assessment_submission->upload_marked_poe; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_poe_name; ?></a>
     										</p>
     									<?php } else { ?>
                                 			<label class="form-control-label">Upload The Marked POE<span style="color:red;font-weight:bold;"> *</span></label>
@@ -269,6 +256,21 @@
 
 
                         		</form>
+
+
+											</li>
+
+                                    	<?php } ?>
+
+                                    	</ul>
+
+                                    <?php } else { ?>
+                                		<p>No assessments have been submitted for this class by the learner.</p>
+                                    <?php } ?>
+                                </div>
+
+
+
 
                             </div>
 
