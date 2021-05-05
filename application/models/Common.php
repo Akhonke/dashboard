@@ -3098,18 +3098,16 @@ class Common extends CI_Model
 	    return $result;
 	}
 
+    /**
+     * Load all submitted assessments for this assessor.
+     * for now, we link the class organisation to the assessor organisation
+     *
+     * @param integer $assessorid
+     * @return mixed
+     */
 
 	public function compeletedAssessmentListByAssessor($assessorid)
 	{
-
-	    /*
-	     select * from learner_assessment
-	     left join assessment on assessment.id = learner_assessment.assessment_id
-	     left join class_name on class_name.id = assessment.classname
-	     left join assessor on assessor.organization = class_name.organization
-	     where class_name.facilitator_id = 1
-	     */
-
 	    $select_fields = [
 	        'learner_assessment.*',
 	        'learner.first_name',
@@ -3130,10 +3128,9 @@ class Common extends CI_Model
 	    $result = $this->db->select($select_fields)
 	    ->from('learner_assessment')
 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
-	    ->join('class_name', 'class_name.id = assessment.classname')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
 	    ->join('assessor', 'assessor.organization = class_name.organization')
-// 	    ->where('assessor.id', $assessorid)
 	    ->get()
 	    ->result();
 
@@ -3143,13 +3140,6 @@ class Common extends CI_Model
 	public function compeletedAssessmentListByID($learner_assessment_id)
 	{
 
-	    /*
-	     select * from learner_assessment
-	     left join assessment on assessment.id = learner_assessment.assessment_id
-	     left join class_name on class_name.id = assessment.classname
-	     where learner_assessment.id = 1
-	     */
-
 	    $select_fields = [
 	        'learner_assessment.*',
 	        'learner.first_name',
@@ -3161,8 +3151,6 @@ class Common extends CI_Model
 	        'submission_type',
 	        'class_name.class_name',
 	        'unit_standard',
-	        'programme_name',
-	        'programme_number',
 	        'intervention_name'
 	    ];
 
@@ -3170,7 +3158,7 @@ class Common extends CI_Model
 	    $result = $this->db->select($select_fields)
 	    ->from('learner_assessment')
 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
-	    ->join('class_name', 'class_name.id = assessment.classname')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
 	    ->where('learner_assessment.id', $learner_assessment_id)
 	    ->get()

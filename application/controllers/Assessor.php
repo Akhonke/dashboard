@@ -892,6 +892,11 @@ class Assessor extends CI_Controller
 	// Assessments
 
 	//****************************Assessments******************//
+
+	/**
+	 * Display all submitted learner assessments
+	 *
+	 */
 	public function list_complete_assessments(){
 
 
@@ -907,10 +912,16 @@ class Assessor extends CI_Controller
 
 	    $this->data['page'] = 'list_complete_assessments';
 
-	    $this->data['content'] = '/assessment/complete_assessment_list';
+	    $this->data['content'] = 'pages/assesment/complete_assessment_list';
 
 	    $this->load->view('assessor/tamplate', $this->data);
 	}
+
+
+	/**
+	 * View details of the given learner_assessment
+	 *
+	 */
 
 	public function view_assessment(){
 
@@ -933,9 +944,14 @@ class Assessor extends CI_Controller
 
 	    $this->data['record'] = $this->common->compeletedAssessmentListByID($learner_assessment_id);
 
+	    $assessment_submissions = [];
+	    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => $learner_assessment_id], 'result');
+	    $this->data['learner_assessment_submissions'] = $assessment_submissions;
+
+
 	    $this->data['page'] = 'view_assessment';
 
-	    $this->data['content'] = '/assessment/assessment_details';
+	    $this->data['content'] = 'pages/assesment/assessment_details';
 
 	    $this->load->view('assessor/tamplate', $this->data);
 
@@ -990,15 +1006,18 @@ class Assessor extends CI_Controller
 	            $assessorid = '';
 	        }
 
-	        $learner_assessment_id = 0;
-	        if (!empty($_POST['learner_assessment_id'])) {
-	            $learner_assessment_id = $_POST['learner_assessment_id'];
+	        $learner_assessment_submission_id = 0;
+	        if (!empty($_POST['learner_assessment_submission_id'])) {
+	            $learner_assessment_submission_id = $_POST['learner_assessment_submission_id'];
 	        }
 
-	        if ($learner_assessment_id == 0) {
-	            $this->session->set_flashdata('error', 'Invalid Learner Assessment. Please Try Again');
-	            redirect('facilitator-completed-assessment-list');
+	        if ($learner_assessment_submission_id == 0) {
+	            $this->session->set_flashdata('error', 'Invalid Learner Assessment Submission. Please Try Again');
+	            redirect('list_complete_assessments');
 	        }
+
+	        $assessment_submission = $this->common->accessrecord('learner_assessment_submission', [], ['id' => $learner_assessment_submission_id], 'row');
+	        $learner_assessment = $this->common->accessrecord('learner_assessment', [], ['id' => $assessment_submission->learner_assessment_id], 'row');
 
 
 	        // Upload files
@@ -1007,7 +1026,7 @@ class Assessor extends CI_Controller
 	            $upload_marked_learner_guide['upload_marked_learner_guide']['name'] = $_FILES['upload_marked_learner_guide']['name'];
 	        } else {
 	            $this->session->set_flashdata('error', 'No learner guide submitted. Please Try Again');
-	            redirect('/faciltator/view_assessment?id=' . $assessment_id);
+	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
 	        }
 
 	        if (!empty($_FILES['upload_marked_workbook']['name'])) {
@@ -1015,7 +1034,7 @@ class Assessor extends CI_Controller
 	            $upload_marked_workbook['upload_marked_workbook']['name'] = $_FILES['upload_marked_workbook']['name'];
 	        } else {
 	            $this->session->set_flashdata('error', 'No learner workbook submitted. Please Try Again');
-	            redirect('/faciltator/view_assessment?id=' . $assessment_id);
+	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
 	        }
 
 	        if (!empty($_FILES['upload_marked_poe']['name'])) {
@@ -1023,44 +1042,55 @@ class Assessor extends CI_Controller
 	            $upload_marked_poe['upload_marked_poe']['name'] = $_FILES['upload_marked_poe']['name'];
 	        } else {
 	            $this->session->set_flashdata('error', 'No learner POE submitted. Please Try Again');
-	            redirect('/faciltator/view_assessment?id=' . $assessment_id);
+	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
 	        }
 
 
-	        $data = [
-	            'assessed_by' => $assessorid,
-	            'assessment_notes' => $this->input->post('assessment_notes'),
-	            'learner_feedback' => $this->input->post('learner_feedback'),
-	            'overall_assessment' => $this->input->post('overall_assessment'),
+	        $learner_assessment_data = [
 	            'status' => 'marked',
 	            'updated_date' => date('Y-m-d H:i:s'),
 	        ];
 
+	        if (!$this->common->updateData('learner_assessment', $learner_assessment_data , ['id' => $assessment_submission->learner_assessment_id])) {
+	            $this->session->set_flashdata('error', 'Cannot save learner assessment. Please Try Again');
+	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	        }
+
+	        $assessment_submission_data = [
+	            'assessment_status' => 'marked',
+	            'assessed_by' => $assessorid,
+	            'assessment_notes' => $this->input->post('assessment_notes'),
+	            'learner_feedback' => $this->input->post('learner_feedback'),
+	            'overall_assessment' => $this->input->post('overall_assessment'),
+	            'assessment_date'  => date('Y-m-d H:i:s'),
+	            'updated_date' => date('Y-m-d H:i:s'),
+	        ];
+
 	        if (!empty($upload_marked_workbook['upload_marked_workbook']['store'])) {
-	            $data['upload_marked_workbook'] = $upload_marked_workbook['upload_marked_workbook']['store'];
-	            $data['upload_marked_workbook_name'] = $upload_marked_workbook['upload_marked_workbook']['name'];
+	            $assessment_submission_data['upload_marked_workbook'] = $upload_marked_workbook['upload_marked_workbook']['store'];
+	            $assessment_submission_data['upload_marked_workbook_name'] = $upload_marked_workbook['upload_marked_workbook']['name'];
 	        }
 
 	        if (!empty($upload_marked_learner_guide['upload_marked_learner_guide']['store'])) {
-	            $data['upload_marked_learner_guide'] = $upload_marked_learner_guide['upload_marked_learner_guide']['store'];
-	            $data['upload_marked_learner_guide_name'] = $upload_marked_learner_guide['upload_marked_learner_guide']['name'];
+	            $assessment_submission_data['upload_marked_learner_guide'] = $upload_marked_learner_guide['upload_marked_learner_guide']['store'];
+	            $assessment_submission_data['upload_marked_learner_guide_name'] = $upload_marked_learner_guide['upload_marked_learner_guide']['name'];
 	        }
 
-	        if (!empty($upload_marked_poe[upload_marked_poe]['store'])) {
-	            $data['upload_marked_poe'] = $upload_marked_poe[upload_marked_poe]['store'];
-	            $data['upload_marked_poe_name'] = $upload_marked_poe['upload_marked_poe']['name'];
+	        if (!empty($upload_marked_poe['upload_marked_poe']['store'])) {
+	            $assessment_submission_data['upload_marked_poe'] = $upload_marked_poe['upload_marked_poe']['store'];
+	            $assessment_submission_data['upload_marked_poe_name'] = $upload_marked_poe['upload_marked_poe']['name'];
 	        }
 
-	        if ($this->common->updateData('learner_assessment', $data , ['id' => $learner_assessment_id])) {
+	        if ($this->common->updateData('learner_assessment_submission', $assessment_submission_data , ['id' => $learner_assessment_submission_id])) {
 
 	            $this->session->set_flashdata('success', 'Assessement Saved Successfully');
 
-	            redirect('facilitator-completed-assessment-list');
+	            redirect('list_complete_assessments');
 	        } else {
 
-	            $this->session->set_flashdata('error', 'Please Try Again');
+	            $this->session->set_flashdata('error', 'Cannot save marked submission. Please Try Again');
 
-	            redirect('/faciltator/view_assessment?id=' . $learner_assessment_id);
+	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
 	        }
 
 	    }
