@@ -821,6 +821,74 @@ class Moderator extends CI_Controller
 	    $this->load->view('moderator/tamplate', $this->data);
 	}
 
+	public function list_moderation_classes()
+	{
+
+
+	    if (isset($_SESSION['moderator']['id'])) {
+	        $moderator_id = $_SESSION['moderator']['id'];
+	    } else {
+
+	        $moderator_id = '';
+	    }
+
+	    $moderator = $this->db->where('id',  $moderator_id)->get('moderator')->row();
+	    $organisation_id  = $moderator->organization;
+
+
+
+	    $this->data['record'] = $this->common->AssessmentModerationListsByOrganisation($organisation_id);
+
+	    $this->data['page'] = 'list_complete_assessments';
+
+	    $this->data['content'] = '/pages/assessment/moderation_class_list';
+
+	    $this->load->view('moderator/tamplate', $this->data);
+	}
+
+
+	public function view_assessment(){
+
+	    if (isset($_SESSION['moderator']['id'])) {
+	        $moderator_id = $_SESSION['moderator']['id'];
+	    } else {
+
+	        $moderator_id = '';
+	    }
+
+
+	    $assessment_id = 0;
+	    if (!empty($_GET['id'])) {
+	        $assessment_id = $_GET['id'];
+	    }
+	    if ($assessment_id == 0) {
+	        echo "Invalid Assessment";
+	        return;
+	    }
+
+	    $this->data['assessment'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+	    // $this->data['learner_assessment'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
+	    $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
+	    $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
+
+// 	    $assessment_submissions = [];
+// 	    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'result');
+// 	    $this->data['learner_assessment_submissions'] = $assessment_submissions;
+
+// 	    $this->data['learner_id'] = $learner_id;
+// 	    $this->data['assessment_id'] = $assessment_id;
+
+	    $this->data['page'] = 'view_assessment';
+
+	    $this->data['content'] = 'pages/assessment/assessment_details';
+
+	    $this->load->view('moderator/tamplate', $this->data);
+
+
+
+	}
+
+
 }
 
 

@@ -3198,5 +3198,45 @@ class Common extends CI_Model
 	}
 
 
+	public function AssessmentModerationListsByOrganisation($organisation_id)
+	{
+
+	    $select_fields = [
+	        'assessment.id',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment.status as status',
+	        'assessment.created_date',
+	        'assessment.updated_date',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+// 	    $result = $this->db->select($select_fields)
+// 	    ->from('learner_assessment')
+// 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+// 	    ->join('class_name', 'class_name.id = assessment.class_id')
+// 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+// 	    ->where('class_name.organization', $organisation_id)
+// 	    ->get()
+// 	    ->result();
+
+	    $result = $this->db->select($select_fields)
+	    ->from('assessment')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner_assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->where('class_name.organization', $organisation_id)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+
+
 }
 

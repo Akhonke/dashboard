@@ -43,11 +43,20 @@ $arrayfeatures = explode("%@#$", $plan[0]->feature);
 
                <li class="sidebar-list-item">
                   <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
+                     <a href="<?= BASEURL ?>moderator-moderation-list" title="From Here You Can See Assessment Moderation Lists" class="sidebar-link text-white pl-lg-5">Assessment Moderation List</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment Moderation List" class="sidebar-link text-white pl-lg-5">Assessment Moderation List</a>
+                  <?php } ?>
+               </li>
+
+                              <li class="sidebar-list-item">
+                  <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
                      <a href="<?= BASEURL ?>moderator-completed-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
                   <?php } else { ?>
                      <a onclick="subscriptionMessage()" title="From Here You Can See Completed Assessment List" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
                   <?php } ?>
                </li>
+
 
             </ul>
          </div>
