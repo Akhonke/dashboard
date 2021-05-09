@@ -2197,31 +2197,176 @@
 
 				);
 
+
+				$class_modules_list = [];
+				$modules = [];
+
+				// Get the module data from the form
+				$form_class_modules_list = (key_exists('class_module_id', $_POST)) ? $_POST['class_module_id'] : [];
+
+				// BUG ALERT: When class module is deleted, it is not removed from the database.
+
+				foreach ($form_class_modules_list as $key => $class_module_id) {
+
+				    $modules[$key]['id'] = $class_module_id;
+
+				    if ( (key_exists('class_module', $_POST)) && (!empty($_POST['class_module'][$key]))) {
+				        $modules[$key]['title'] = $_POST['class_module'][$key];
+				    }
+
+				    if ( (key_exists('learner_guide', $_FILES)) && (!empty($_FILES['learner_guide']['name'][$key]))) {
+
+				        $file_entry = [
+				            'name' => $_FILES['learner_guide']['name'][$key],
+				            'type' => $_FILES['learner_guide']['type'][$key],
+				            'tmp_name' => $_FILES['learner_guide']['tmp_name'][$key],
+				            'error' => $_FILES['learner_guide']['error'][$key],
+				            'size' => $_FILES['learner_guide']['size'][$key],
+				        ];
+
+				        $_FILES['upload_learner_guide'] = $file_entry;
+
+				        $modules[$key]['learner_guide']['store'] = $this->singlefileupload('upload_learner_guide', './uploads/class/learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+				        $modules[$key]['learner_guide']['name'] = $_FILES['learner_guide']['name'][$key];
+				    }
+
+				    if ( (key_exists('learner_poe', $_FILES)) && (!empty($_FILES['learner_poe']['name'][$key]))) {
+
+				        $file_entry = [
+				            'name' => $_FILES['learner_poe']['name'][$key],
+				            'type' => $_FILES['learner_poe']['type'][$key],
+				            'tmp_name' => $_FILES['learner_poe']['tmp_name'][$key],
+				            'error' => $_FILES['learner_poe']['error'][$key],
+				            'size' => $_FILES['learner_poe']['size'][$key],
+				        ];
+
+				        $_FILES['upload_learner_poe'] = $file_entry;
+
+				        $modules[$key]['learner_poe']['store'] = $this->singlefileupload('upload_learner_poe', './uploads/class/learner_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+				        $modules[$key]['learner_poe']['name'] = $_FILES['learner_poe']['name'][$key];
+
+				    }
+
+
+				    if ( (key_exists('learner_workbook', $_FILES)) && (!empty($_FILES['learner_workbook']['name'][$key]))) {
+
+				        $file_entry = [
+				            'name' => $_FILES['learner_workbook']['name'][$key],
+				            'type' => $_FILES['learner_workbook']['type'][$key],
+				            'tmp_name' => $_FILES['learner_workbook']['tmp_name'][$key],
+				            'error' => $_FILES['learner_workbook']['error'][$key],
+				            'size' => $_FILES['learner_workbook']['size'][$key],
+				        ];
+
+				        $_FILES['upload_learner_workbook'] = $file_entry;
+
+				        $modules[$key]['learner_workbook']['store'] = $this->singlefileupload('upload_learner_workbook', './uploads/class/learner_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+				        $modules[$key]['learner_workbook']['name'] = $_FILES['learner_workbook']['name'][$key];
+
+				    }
+
+				    if ( (key_exists('facilitator_guide', $_FILES)) && (!empty($_FILES['facilitator_guide']['name'][$key]))) {
+
+				        $file_entry = [
+				            'name' => $_FILES['facilitator_guide']['name'][$key],
+				            'type' => $_FILES['facilitator_guide']['type'][$key],
+				            'tmp_name' => $_FILES['facilitator_guide']['tmp_name'][$key],
+				            'error' => $_FILES['facilitator_guide']['error'][$key],
+				            'size' => $_FILES['facilitator_guide']['size'][$key],
+				        ];
+
+				        $_FILES['upload_facilitator_guide'] = $file_entry;
+
+
+				        $modules[$key]['facilitator_guide']['store'] = $this->singlefileupload('upload_facilitator_guide', './uploads/class/facilitator_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+				        $modules[$key]['facilitator_guide']['name'] = $_FILES['facilitator_guide']['name'][$key];
+
+				    }
+
+				}
+
+
+
 				if ($id != 0) {
 
 					if ($this->common->updateData('class_name', $data, ['id' => $id])) {
-
-						$this->session->set_flashdata('success', 'Class Updated Succesfully');
-
-						redirect('provider-class-list');
+                        ;
 					} else {
-
-						redirect('provider-class-list');
+					    // BUG !! Saving, but returning false
+// 					    $this->session->set_flashdata('error', 'Please Try Again');
+// 						redirect('provider-class-list');
+                        ;
 					}
 				} else {
 
-					if ($this->common->insertData('class_name', $data)) {
-
-						$this->session->set_flashdata('success', 'Class Insert Successfully');
-
-						redirect('provider-class-list');
+					if ($class_id = $this->common->insertData('class_name', $data)) {
+					    ;
 					} else {
-
 						$this->session->set_flashdata('error', 'Please Try Again');
-
 						redirect('provider-create-class');
 					}
 				}
+
+
+				// Save the class modules
+
+				$save_status = true;
+				foreach ($modules as $class_module_item) {
+				    $class_module_data = [
+
+				        'class_id' => $id,
+				        'title' => $class_module_item['title'],
+
+				        'title' => $class_module_item['title'],
+				        'title' => $class_module_item['title'],
+
+// 				        'created_date' => date('Y-m-d H:i:s'),`
+				        'updated_date' => date('Y-m-d H:i:s'),
+
+				    ];
+
+				    if (!empty($class_module_item['learner_guide']['store'])) {
+				        $class_module_data['upload_learner_guide'] = $class_module_item['learner_guide']['store'];
+				        $class_module_data['upload_learner_guide_name'] = $class_module_item['learner_guide']['name'];
+				    }
+
+				    if (!empty($class_module_item['learner_workbook']['store'])) {
+				        $class_module_data['upload_workbook'] = $class_module_item['learner_workbook']['store'];
+				        $class_module_data['upload_workbook_name'] = $class_module_item['learner_workbook']['name'];
+				    }
+
+				    if (!empty($class_module_item['learner_poe']['store'])) {
+				        $class_module_data['upload_poe'] = $class_module_item['learner_poe']['store'];
+				        $class_module_data['upload_poe_name'] = $class_module_item['learner_poe']['name'];
+				    }
+
+				    if (!empty($class_module_item['facilitator_guide']['store'])) {
+				        $class_module_data['upload_facilitator_guide'] = $class_module_item['facilitator_guide']['store'];
+				        $class_module_data['upload_facilitator_guide_name'] = $class_module_item['facilitator_guide']['name'];
+				    }
+
+				    if (!empty($class_module_item['id'])) {
+				        $class_module_query = $this->common->updateData('class_module', $class_module_data, ['id' => $class_module_item['id']]);
+				    } else {
+// 				        $class_module_data['created_date'] = date('Y-m-d H:i:s');
+				        $class_module_query = $this->common->insertData('class_module', $class_module_data);
+				    }
+
+				    if (empty($class_module_query)) {
+				        $save_status = false;
+				    }
+
+				}
+
+				if ($save_status == true) {
+				    $this->session->set_flashdata('success', 'Class Updated Succesfully');
+				    redirect('provider-class-list');
+				} else {
+				    $this->session->set_flashdata('error', 'Please Try Again');
+				    redirect('provider-create-class');
+				}
+
+
 			}
 
 			$condition = "`trainer_id` IN ('1','$trainer_id')";
@@ -2232,8 +2377,9 @@
 
 			$this->data['facilitators'] = $this->common->accessrecord('facilitator', [], ['trainer_id' => $trainer_id], 'result');
 
-
 			$this->data['sublearnship'] = $this->common->accessrecord('learnership_sub_type', [], [], 'result');
+
+			$this->data['class_modules'] = $this->common->accessrecord('class_module', [], ['class_id' => $id], 'result');
 
 			$this->data['page'] = 'create_class';
 
@@ -2966,7 +3112,7 @@
 			$this->data['attendance'] = $this->common->accessrecord('attendance', [], [], 'result');
 
 			$this->data['facilitator'] = $this->common->accessrecord('facilitator', [], ['trainer_id' => $trainer_id], 'result');
-			
+
 			$this->data['training'] = $this->common->accessrecord('trainer', [], ['id' => $trainer_id], 'row');
 
 			if (!empty($_GET['id'])) {
@@ -2983,7 +3129,7 @@
 			} else {
 
 				$this->data['learnershipSubType'] = $this->common->accessrecord('learnership_sub_type', [], [], 'result');
-			
+
 
 				$this->data['classname'] = $this->common->accessrecord('class_name', [], [], 'result');
 			}
@@ -5200,7 +5346,7 @@
     public function provider_download_csv_data() {
         // file name
 		$filename = 'LearnerSheetDemo' . date('Y-m-d') . '.csv';
-		
+
         header("Content-Description: File Transfer");
         header("Content-Disposition: attachment; filename=$filename");
         header("Content-Type: Question-List/csv; ");
@@ -5211,20 +5357,20 @@
         fclose($file);
         exit;
 	}
-	
-	 
+
+
     /*************************upload CSv xls*******************************/
     //Import Learner Via CSV Upload ******************************
     public function provider_import_data() {
-      
-         
+
+
             // if (empty($_FILES['uploadFile'])) {
             //     $this->form_validation->set_rules('uploadFile', 'UploadFile', 'required');
             // }
             // if ($this->form_validation->run() == true) {
                 $fileExt = pathinfo($_FILES["learner"]["name"], PATHINFO_EXTENSION);
                 if ($fileExt == 'csv') {
-                  
+
                     $csv = $_FILES['learner']['tmp_name'];
                     $handle = fopen($csv, "r");
                     $flag = true;
@@ -5241,56 +5387,56 @@
 						if (empty($company_name)) {
 							$this->session->set_flashdata('error', 'Please Enter your training provider');
 							redirect('provider-import-learner');
-						
+
 						}
 						$first_name = trim($row[1]);
 						if (empty($first_name)) {
 							$this->session->set_flashdata('error', 'Please enter your full name');
 							redirect('provider-import-learner');
-						
+
 						}
 						$surname = trim($row[2]);
 						if (empty($surname)) {
 							$this->session->set_flashdata('error', 'Please enter your surname');
 							redirect('provider-import-learner');
-						
+
 						}
 
 						$email =  trim($row[3]);
 						if (empty($email)) {
 							$this->session->set_flashdata('error', 'Please enter your email');
 							redirect('provider-import-learner');
-						
+
 						}
 						$id_number = trim($row[4]);
 						if (empty($id_number)) {
-	
+
 							$this->session->set_flashdata('error', 'Please enter your id number');
-	
+
 							redirect('provider-import-learner');
-						
+
 						}
-	
+
 						$SETA = trim($row[5]);
-	
+
 						if (empty($SETA)) {
-	
+
 							$this->session->set_flashdata('error', 'Please enter your SETA');
-	
+
 							redirect('provider-import-learner');
-						
+
 						}
 						$mobile = trim($row[6]);
 						if (empty($mobile)) {
 							$this->session->set_flashdata('error', 'Please enter your  primary cellphone number');
 							redirect('provider-import-learner');
-						
+
 						}
 						$mobile_number = trim($row[7]);
 						if (empty($mobile_number)) {
 							$this->session->set_flashdata('error', 'Please enter your second cellphone number');
 							redirect('provider-import-learner');
-						
+
 						}
 
 						$gender = trim($row[8]);
@@ -5300,14 +5446,14 @@
 						$this->session->set_flashdata('error', 'Please enter your gender');
 
 						redirect('provider-import-learner');
-					
+
 					}
-				
+
 					$learnershipSubType = trim($row[9]);
 					if (empty($learnershipSubType)) {
 						$this->session->set_flashdata('error', 'Please enter your learnership Sub Type');
 						redirect('provider-import-learner');
-					
+
 					}
 					$password = trim($row[10]);
 
@@ -5316,9 +5462,9 @@
 						$this->session->set_flashdata('error', 'Please enter your password');
 
 						redirect('provider-import-learner');
-					
+
 					}
-				
+
 
 					$province = trim($row[11]);
 
@@ -5327,7 +5473,7 @@
 						$this->session->set_flashdata('error', 'Please enter your province');
 
 						redirect('provider-import-learner');
-					
+
 					}
 
 					$district = trim($row[12]);
@@ -5346,7 +5492,7 @@
 						$this->session->set_flashdata('error', 'Please enter your city');
 
 						redirect('provider-import-learner');
-					
+
 					}
 
 					$municipality = trim($row[14]);
@@ -5356,10 +5502,10 @@
 						$this->session->set_flashdata('error', 'Please enter your municipality');
 
 						redirect('provider-import-learner');
-					
+
 					}
 
-				
+
 					$Suburb = trim($row[15]);
 
 					if (empty($Suburb)) {
@@ -5367,7 +5513,7 @@
 						$this->session->set_flashdata('error', 'Please enter your Suburb');
 
 						redirect('provider-import-learner');
-					
+
 					}
 
 					$Street_name = trim($row[16]);
@@ -5377,7 +5523,7 @@
 						$this->session->set_flashdata('error', 'Please enter your street name');
 
 						redirect('provider-import-learner');
-					
+
 					}
 
 					$Street_number = trim($row[17]);
@@ -5387,39 +5533,39 @@
 						$this->session->set_flashdata('error', 'Please enter your street number');
 
 						redirect('provider-import-learner');
-					
-					}	
-					
+
+					}
+
 
 					$assessment = trim($row[18]);
 					if (empty($assessment)) {
 						$this->session->set_flashdata('error', 'Please enter your assessment status');
 						redirect('provider-import-learner');
-					
+
 					}
 					$disable = trim($row[19]);
 					if (empty($disable)) {
 						$this->session->set_flashdata('error', 'Please enter your disabled');
 						redirect('provider-import-learner');
-					
+
 					}
-				
+
 					$utf_benefits = trim($row[20]);
 					if (empty($utf_benefits)) {
 						$this->session->set_flashdata('error', 'Please enter your  U.I.F Beneficiary');
 						redirect('provider-import-learner');
-					
+
 					}
 					$learner_accepted_training = trim($row[21]);
 					if (empty($learner_accepted_training)) {
 						$this->session->set_flashdata('error', 'Please enter your learner accepted training');
 						redirect('provider-import-learner');
-					
+
 				}
 
-				
 
-					
+
+
 
 					//  $classname = trim($row[22]);
 					//   if(empty($classname)){
@@ -5428,105 +5574,105 @@
 					// 	 }
 
 						// $data = array(
-						//    'trining_provider' => trim($row[0]), 
-						//    'first_name' => trim($row[1]), 
-						//    'surname' => trim($row[2]), 
-						//    'email' => trim($row[3]), 
-						//    'mobile' => trim($row[4]), 
-						//    'mobile_number' => trim($row[5]), 
-						//    'assessment' => trim($row[6]), 
-						//    'disable' => trim($row[7]), 
-						//    'utf_benefits' => trim($row[8]), 
-						//    'learner_accepted_training' => trim($row[9]), 
-						//    'learnershipSubType' => trim($row[10]), 
-						//    'id_number' => trim($row[11]), 
-						//    'SETA' => trim($row[12]), 
-						//    'province' => trim($row[13]), 
-						//    'district' => trim($row[14]), 
-						//    'city' => trim($row[15]), 
-						//    'municipality' => trim($row[16]), 
-						//    'Suburb' => trim($row[17]), 
-						//    'Street_name' => trim($row[18]), 
-						//    'Street_number' => trim($row[19]), 
+						//    'trining_provider' => trim($row[0]),
+						//    'first_name' => trim($row[1]),
+						//    'surname' => trim($row[2]),
+						//    'email' => trim($row[3]),
+						//    'mobile' => trim($row[4]),
+						//    'mobile_number' => trim($row[5]),
+						//    'assessment' => trim($row[6]),
+						//    'disable' => trim($row[7]),
+						//    'utf_benefits' => trim($row[8]),
+						//    'learner_accepted_training' => trim($row[9]),
+						//    'learnershipSubType' => trim($row[10]),
+						//    'id_number' => trim($row[11]),
+						//    'SETA' => trim($row[12]),
+						//    'province' => trim($row[13]),
+						//    'district' => trim($row[14]),
+						//    'city' => trim($row[15]),
+						//    'municipality' => trim($row[16]),
+						//    'Suburb' => trim($row[17]),
+						//    'Street_name' => trim($row[18]),
+						//    'Street_number' => trim($row[19]),
 						//    'password' => sha1(trim($row[20])),
-						//    'gender' => trim($row[21]), 
-						//    'classname' => trim($row[22]), 
+						//    'gender' => trim($row[21]),
+						//    'classname' => trim($row[22]),
 						//    'employer_name' => trim($row[23]),
-						//    'bank_name' => trim($row[24]), 
-						//    'bank_account_type' => trim($row[25]), 
+						//    'bank_name' => trim($row[24]),
+						//    'bank_account_type' => trim($row[25]),
 						//    'branch_name' => trim($row[26]),
 						//    'branch_code' => trim($row[27]),
-						   
+
 
 						// );
 						$data = array(
-							'trining_provider' => $company_name, 
-							'first_name' => $first_name, 
-							'surname' => $surname, 
-							'email' => $email, 
-							'mobile' => $mobile, 
-							'mobile_number' => $mobile_number, 
-							'assessment' => $assessment, 
-							'disable' => $disable, 
-							'utf_benefits' => $utf_benefits, 
-							'learner_accepted_training' => $learner_accepted_training, 
-							'learnershipSubType' => $learnershipSubType, 
-							'id_number' => $id_number, 
-							'SETA' => $SETA, 
-							'province' => $province, 
-							'district' => $district, 
-							'city' => $city, 
-							'municipality' => $municipality, 
-							'Suburb' => $Suburb, 
-							'Street_name' => $Street_name, 
-							'Street_number' =>$Street_number, 
+							'trining_provider' => $company_name,
+							'first_name' => $first_name,
+							'surname' => $surname,
+							'email' => $email,
+							'mobile' => $mobile,
+							'mobile_number' => $mobile_number,
+							'assessment' => $assessment,
+							'disable' => $disable,
+							'utf_benefits' => $utf_benefits,
+							'learner_accepted_training' => $learner_accepted_training,
+							'learnershipSubType' => $learnershipSubType,
+							'id_number' => $id_number,
+							'SETA' => $SETA,
+							'province' => $province,
+							'district' => $district,
+							'city' => $city,
+							'municipality' => $municipality,
+							'Suburb' => $Suburb,
+							'Street_name' => $Street_name,
+							'Street_number' =>$Street_number,
 							'password' => sha1($password),
-							'gender' => $gender, 
-							'classname' => trim($row[22]), 
+							'gender' => $gender,
+							'classname' => trim($row[22]),
 							// 'employer_name' => trim($row[23]),
-							// 'bank_name' => trim($row[24]), 
-							// 'bank_account_type' => trim($row[25]), 
+							// 'bank_name' => trim($row[24]),
+							// 'bank_account_type' => trim($row[25]),
 							// 'branch_name' => trim($row[26]),
 							// 'branch_code' => trim($row[27]),
-							
- 
-						 );
-						
 
-						 
-						 
-						//    $fetchData[] = array('trining_provider' => $company_name, 
-						//    'first_name' => $first_name,  
+
+						 );
+
+
+
+
+						//    $fetchData[] = array('trining_provider' => $company_name,
+						//    'first_name' => $first_name,
 						//    'surname' => $surname,
-						//    'email' => $email, 
-						//    'mobile' => $mobile, 
-						//    'mobile_number' => $mobile_number, 
-						//    'assessment' => $assessment, 
-						//    'disable' => $disable, 
-						//    'utf_benefits' => $utf_benefits, 
-						//    'learner_accepted_training' => $learner_accepted_training, 
-						//    'learnershipSubType' => $learnershipSubType, 
-						//    'id_number' => $id_number, 
-						//    'SETA' => $SETA, 
-						//    'province' => $province, 
-						//    'district' => $district, 
-						//    'city' => $city, 
-						//    'region' => $region, 
-						//    'Suburb' => $Suburb, 
-						//    'Street_name' => $Street_name, 
-						//    'Street_number' => $Street_number, 
-						//    'password' => sha1($password), 
-						//    'gender' => $gender, 
-						//    'classname' => $classname, 
-						//    'employer_name' => $employer_name, 
-						//    'bank_name' => $bank_name, 
+						//    'email' => $email,
+						//    'mobile' => $mobile,
+						//    'mobile_number' => $mobile_number,
+						//    'assessment' => $assessment,
+						//    'disable' => $disable,
+						//    'utf_benefits' => $utf_benefits,
+						//    'learner_accepted_training' => $learner_accepted_training,
+						//    'learnershipSubType' => $learnershipSubType,
+						//    'id_number' => $id_number,
+						//    'SETA' => $SETA,
+						//    'province' => $province,
+						//    'district' => $district,
+						//    'city' => $city,
+						//    'region' => $region,
+						//    'Suburb' => $Suburb,
+						//    'Street_name' => $Street_name,
+						//    'Street_number' => $Street_number,
+						//    'password' => sha1($password),
+						//    'gender' => $gender,
+						//    'classname' => $classname,
+						//    'employer_name' => $employer_name,
+						//    'bank_name' => $bank_name,
 						//    'bank_account_type' => $bank_account_type,
 						// 	'bank_account_number' => $bank_account_number,
 						// 	 'branch_name' => $branch_name,
 						// 	  'branch_code' => $branch_code);
-			                    
-                       
-                       
+
+
+
                         $res = $this->common->insertData('learner', $data);
                     }
 
@@ -5545,7 +5691,7 @@
             //     $this->session->set_flashdata('error', 'Please fillup all Fields');
             //    redirect('provider-import-learner');
             // }
-       
+
     }
 
 
@@ -5598,7 +5744,7 @@
 					. '": ' . $e->getMessage());
 			}
 
-			
+
 
 			$allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true, true, true, true, true, true, true, true, true, true, null, null, null, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, null, null, null, null);
 
@@ -5948,7 +6094,7 @@
 			redirect('learner-list');
 		}
 
-		
+
 
 		public function provider_stipends_list()
 		{

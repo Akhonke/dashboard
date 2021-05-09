@@ -99,6 +99,67 @@
 
                                 <input type="hidden" name="created_by" value="<?php echo $_SESSION['admin']['trainer_id']; ?>">
 
+                                <div class="col-md-12">
+
+                                    <label class="form-control-label">Class Modules<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                            <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Select</th>
+                                                    <th>Module Name</th>
+                                                    <th>Module Uploads</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            <?php foreach ($class_modules as $class_module_item) { ?>
+                                       			<tr>
+                                       				<td>
+                                       					<input type='checkbox' name='record'>
+                                       					<input type='hidden' name='class_module_id[]' value="<?php echo $class_module_item->id; ?>">
+
+                                       				</td>
+                                       				<td><input type='text' name='class_module[]' value="<?php echo $class_module_item->title; ?>"></td>
+                                       				<td>
+
+                                                        <label class='form-control-label'>Learner Guide<span style='color:red;font-weight:bold;'> *</span></label><br/>
+                                                        <?php if (!empty($class_module_item->upload_learner_guide)) { ?>
+                                                        	<a href="uploads/class/learner_guide/<?php echo $class_module_item->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a><br/>
+                                                        <?php } ?>
+                                                        <input type='file' name='learner_guide[]'><br/>
+
+                                                        <label class='form-control-label'>Learner Workbook<span style='color:red;font-weight:bold;'> *</span></label><br/>
+                                                        <?php if (!empty($class_module_item->upload_workbook)) { ?>
+                                                        	<a href="uploads/class/learner_workbook/<?php echo $class_module_item->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a><br/>
+                                                        <?php } ?>
+                                                        <input type='file' name='learner_workbook[]'><br/>
+
+                                                        <label class='form-control-label'>Learner POE<span style='color:red;font-weight:bold;'> *</span></label><br/>
+                                                        <?php if (!empty($class_module_item->upload_poe)) { ?>
+                                                        	<a href="uploads/class/learner_poe/<?php echo $class_module_item->upload_poe; ?>" target="_blank">Download the Learner POE</a><br/>
+                                                        <?php } ?>
+                                                        <input type='file' name='learner_poe[]'><br/>
+
+                                                        <label class='form-control-label'>Facilitator Guide<span style='color:red;font-weight:bold;'> *</span></label><br/>
+                                                        <?php if (!empty($class_module_item->upload_facilitator_guide)) { ?>
+                                                        	<a href="uploads/class/facilitator_guide/<?php echo $class_module_item->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a><br/>
+                                                        <?php } ?>
+
+                                                        <input type='file' name='facilitator_guide[]'><br/>
+
+                                       				</td>
+                                       			</tr>
+                                            <?php } ?>
+
+
+                                            </tbody>
+                                        </table>
+                                        <button type="button" class="delete-class-module">Delete Class Module</button>
+                                        <button type="button" class="add-class-module">Add Class Module</button>
+
+                                </div>
+
                             </div>
 
                             <div class="line"></div>
@@ -129,7 +190,29 @@
 
     </section>
 
-</div>
+
+
+<style>
+/*     form{ */
+/*         margin: 20px 0; */
+/*     } */
+/*     form input, button{ */
+/*         padding: 5px; */
+/*     } */
+    table{
+        width: 100%;
+        margin-bottom: 20px;
+		border-collapse: collapse;
+    }
+    table, th, td{
+        border: 1px solid #cdcdcd;
+    }
+    table th, table td{
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+
 
 <script>
     $(function() {
@@ -185,6 +268,8 @@
         $.validator.setDefaults({
 
             submitHandler: function(form) {
+
+            console.log('abcd');
 
                 form.submit();
 

@@ -9,6 +9,26 @@ class Migration_20210420_001_create_table_assessment extends CI_Migration {
 
         /*
 
+
+CREATE TABLE `class_module` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `upload_learner_guide` varchar(255) NOT NULL,
+  `upload_learner_guide_name` varchar(255) NOT NULL,
+  `upload_workbook` varchar(255) NOT NULL,
+  `upload_workbook_name` varchar(255) NOT NULL,
+  `upload_poe` varchar(255) NOT NULL,
+  `upload_poe_name` varchar(255) NOT NULL,
+  `upload_facilitator_guide` varchar(255) NOT NULL,
+  `upload_facilitator_guide_name` varchar(255) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+
+
 CREATE TABLE `assessment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `assessment_start_date` DATETIME NOT NULL,
