@@ -437,6 +437,16 @@ $route['provider-sendBulkEmails'] = 'Traningprovider/sendbulkEmails';
 // $route['provider-create-course'] = 'Traningprovider/create_course';
 $route['provider-forget-password'] = 'welcome/provider_forgetpassword';
 
+
+$route['provider-create-assessment'] = 'Traningprovider/create_assessment';
+$route['provider-assessment-list'] = 'Traningprovider/list_assessments';
+
+$route['provider-get_class_module'] = 'Traningprovider/get_class_module';
+$route['provider-module-uploads'] = 'Traningprovider/get_module_uploads';
+
+
+
+
 // ****************** Learner **************************** //
 $route['learner'] = 'welcome/learner'; //use for Learner login
 $route['learner-Dashboard'] = 'Learner/dashboard';
@@ -556,6 +566,9 @@ $route['Faciltator-forget-password'] = 'welcome/facilitator_forgetpassword';
 $route['facilitator-completed-assessment-list'] = 'faciltator/list_complete_assessments';
 $route['faciltator-view-assessment'] = 'faciltator/view_assessment';
 $route['facilitator-mark-assessment'] = 'faciltator/mark_assessment';
+
+$route['facilitator-create-assessment'] = 'faciltator/create_assessment';
+$route['facilitator-assessment-list'] = 'faciltator/list_assessments';
 
 // $route['faciltator-view-assessment-submission'] = 'faciltator/view_assessment_submission';
 // $route['faciltator-load-assessment'] = 'faciltator/load_assessment';

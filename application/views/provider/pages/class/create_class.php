@@ -1,3 +1,108 @@
+<style>
+    input.btn.btn-default {
+
+        padding: 2px 10px !important;
+
+        background: #4680ff;
+
+        margin: 3px;
+
+    }
+
+    .subject-info-arrows.text-center {
+
+        margin: 45px 0 0;
+
+    }
+
+    select.form-control[multiple],
+    select.form-control[size] {
+
+        height: 130px;
+
+        border-radius: 3px !important;
+
+    }
+
+    select.form-control[multiple] option:hover {
+
+        background: #4680ff;
+
+        color: #fff;
+
+    }
+
+    /*********************3 jan *************/
+
+    .subject-info-box-1,
+
+    .subject-info-box-2 {
+
+        float: left;
+
+        width: 45%;
+
+
+
+        select {
+
+            height: 200px;
+
+            padding: 0;
+
+
+
+            option {
+
+                padding: 4px 10px 4px 10px;
+
+            }
+
+
+
+            option:hover {
+
+                background: #EEEEEE;
+
+            }
+
+        }
+
+    }
+
+
+
+    .subject-info-arrows {
+
+        float: left;
+
+        width: 10%;
+
+
+
+        input {
+
+            width: 70%;
+
+            margin-bottom: 5px;
+
+        }
+
+    }
+
+    @media(max-width:767px) {
+        .subject-info-box-1,
+
+        .subject-info-box-2 {
+            width: 40%;
+        }
+
+        .subject-info-arrows {
+            width: 20%;
+        }
+    }
+</style>
+
 <div class="container-fluid px-xl-5">
     <section class="py-5">
         <div class="row">
@@ -120,7 +225,87 @@
                                        					<input type='hidden' name='class_module_id[]' value="<?php echo $class_module_item->id; ?>">
 
                                        				</td>
-                                       				<td><input type='text' name='class_module[]' value="<?php echo $class_module_item->title; ?>"></td>
+                                       				<td>
+                                       					<input type='text' name='class_module[]' value="<?php echo $class_module_item->title; ?>">
+														<br/>
+
+                                       					<div class="row">
+<?php /*
+                                <div class="col-md-12">
+                                    <!-- ************************* -->
+                                    <div class="subject-info-box-1">
+                                        <label class="form-control-label">All Unit Standards<span style="color:red;font-weight:bold;"> *</span></label>
+                                        <select multiple="multiple" id='lstBox1' class="form-control multilistselection">
+                                            <?php if (!empty($units)) {
+                                                foreach ($units as $key => $unit) {
+                                                    if (!empty($sublearnship)) {
+                                                        $chkbox = $sublearnship->unit_standard;
+                                                        $arr = explode(",", $chkbox);
+                                                    }
+                                            ?>
+                                                    <option data-title="<?= $unit->title; ?>" class="unitype" data-id="<?= $unit->id; ?>" data-price="<?= $unit->total_credits; ?>" value="<?= $unit->id ?>" <?php if (!empty($sublearnship)) {
+                                                                                                                                                                                                                    if ((in_array($unit->id, $arr))) {
+                                                                                                                                                                                                                        echo 'selected';
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                    if (isset($_POST['unit_standard']) && $_POST['unit_standard'] == $unit->id) {
+                                                                                                                                                                                                                        echo 'selected';
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                } ?>><?= ucfirst($unit->title); ?></option>
+
+
+
+                                            <?php  }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <div class="subject-info-arrows text-center">
+                                        <input type='button' id='btnAllRight' value='>>' class="btn btn-default" /><br />
+                                        <input type='button' id='btnRight' value='>' class="btn btn-default" /><br />
+                                        <input type='button' id='btnLeft' value='<' class="btn btn-default" /><br />
+                                        <input type='button' id='btnAllLeft' value='<<' class="btn btn-default" />
+                                    </div>
+                                    <div class="subject-info-box-2">
+                                        <label class="form-control-label">Selected Unit Standards<span style="color:red;font-weight:bold;"> *</span></label>
+                                        <select multiple="multiple" id='lstBox2' class="form-control lstBox2new" name="unit_standard[]">
+                                            <?php
+                                            if (!empty($sublearnship)) {
+                                                $chkbox = $sublearnship->unit_standard;
+                                                $arr = explode(",", $chkbox);
+                                                foreach ($units as $key => $unit) {
+                                                    if (in_array($unit->id, $arr)) {
+                                            ?>
+                                                        <option data-title="<?= $unit->title; ?>" class="unitype" data-id="<?= $unit->id; ?>" data-price="<?= $unit->total_credits; ?>" value="<?= $unit->id ?>" <?php if (!empty($sublearnship)) {
+                                                                                                                                                                                                                        if ((in_array($unit->id, $arr))) {
+                                                                                                                                                                                                                            echo 'selected';
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                        if (isset($_POST['unit_standard']) && $_POST['unit_standard'] == $unit->id) {
+                                                                                                                                                                                                                            echo 'selected';
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                    } ?>><?= ucfirst($unit->title); ?></option>
+
+
+
+                                            <?php  }
+                                                }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <label style="display: none" id="unit_standard-error" class="error" for="unit_standard"></label>
+                                    <span class='error_validate' style='color:red;'><?= form_error('unit_standard') ?></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!-- ************************************************************** -->
+*/
+?>
+
+                                       					</div>
+
+
+
+
+                                       					</td>
                                        				<td>
 
                                                         <label class='form-control-label'>Learner Guide<span style='color:red;font-weight:bold;'> *</span></label><br/>

@@ -2541,8 +2541,8 @@
 
 			</script>";
 			}
-			if ($page == 'create_learner_marks'  || $page == 'create_attendance' || $page == 'learner-attandance' || $page == 'create_assessment') {
-			    $js[] = "<script>
+			if ($page == 'create_learner_marks'  || $page == 'create_attendance' || $page == 'learner-attandance') {
+				$js[] = "<script>
 			$('.learnership_sub_type_id').change(function(){
 
 				$.ajax({
@@ -2589,82 +2589,6 @@
 
 			});
 
-
-			</script>";
-			}
-
-			if ($page == 'create_assessment') {
-			    $js[] = "<script>
-			$('.learnership_sub_type_id').change(function(){
-
-				$.ajax({
-
-					url: 'provider-getclassname',
-
-					data: { 'value': $('.learnership_sub_type_id').val() },
-
-					dataType:'json',
-
-					type: 'post',
-
-					success: function(data){
-
-						var option = '';
-
-					   $.each(data, function(i, star) {
-
-								if(i == 'error'){
-
-								$('.learner_classname').html(option);
-
-								$('#learner_classname-error').show();
-
-								$('#learnership_sub_type_id-error').html(star);
-
-							}else{
-								var test = '<option hidden value='+'>Select Class</option>';
-							  option += '<option value='+star.id+'>'+star.class_name+'</option>'
-
-							  $('.lstBox1').html(test+option);
-
-							  $('#lstBox1-error').hide();
-
-							}
-
-						});
-
-
-
-					}
-
-				});
-
-			});
-
-			$('.class_module').change(function(){
-
-				$.ajax({
-
-					url: 'provider-module-uploads',
-
-					data: { 'value': $('.class_module').val() },
-
-					type: 'post',
-
-					success: function(data){
-			             $('#class_module_uploads').html(data);
-					}
-
-				});
-
-			});
-
-
-			</script>";
-			}
-
-			if ($page == 'create_learner_marks'  || $page == 'create_attendance' || $page == 'learner-attandance') {
-				$js[] = "<script>
 
 			$('.learner_classname').change(function(){
 
@@ -7873,7 +7797,7 @@
 			</script> ";
 			}
 
-			if ($page == 'createlearnershipSubType' || $page == 'newcreatesublearnership' || $page == 'create_assessment') {
+			if ($page == 'createlearnershipSubType' || $page == 'newcreatesublearnership') {
 
 				$js[] = '<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>';
 
@@ -10786,13 +10710,13 @@
 /// //////////////////////////
 // ///////////////////////////////
 
-			$('.learner_classname').change(function(){
+			$('#classname').change(function(){
 
 				$.ajax({
 
 					url: 'provider-get_class_module',
 
-					data: { 'value': $('.learner_classname').val() },
+					data: { 'value': $('.classname').val() },
 
 					dataType:'json',
 
@@ -10806,29 +10730,74 @@
 
 								if(i == 'error'){
 
-								$('.class_module').html(option);
+								$('.class_module_name').html(option);
 
-								$('#class_module-error').show();
+								$('#class_module_name-error').show();
 
-								$('#class_module-error').html(star);
+								$('#class_module_name-error').html(star);
 
 							}else{
 								var test = '<option hidden value='+'>Select Class Module</option>';
-							  option += '<option value='+star.id+'>'+star.title+'</option>'
+							  option += '<option value='+star.id+'>'+star.sub_type+'</option>'
 
-							  $('.class_module').html(test+option);
+							  $('.class_module_name').html(test+option);
 
-							  $('#class_module-error').hide();
+							  $('#class_module_name-error').hide();
 
 							}
 
 						});
+
+
 
 					}
 
 				});
 
 			});
+
+// 			$('.learner_classname').change(function(){
+
+// 				$.ajax({
+
+// 					url: 'provider-getfacilitator',
+
+// 					data: { 'value': $('.learner_classname').val() },
+
+// 					dataType:'json',
+
+// 					type: 'post',
+
+// 					success: function(data){
+
+// 						var option = '';
+
+// 					   $.each(data, function(i, star) {
+
+// 								if(i == 'error'){
+
+// 								$('.facilitator').val(option);
+
+// 								$('#facilitator-error').show();
+
+// 								$('#facilitator-error').html(star);
+
+// 							}else{
+// 							  $('.facilitators').val(star.id);
+// 							  $('.facilitator').val(star.fullname);
+// 							  $('#facilitator-error').hide();
+
+// 							}
+
+// 						});
+
+
+
+// 					}
+
+// 				});
+
+// 			});
 
 
 			</script>";

@@ -24,6 +24,26 @@
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
                <li class="sidebar-list-item">
+                  <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                  if (in_array("Learner Performance Management", $arrayfeatures)) {
+                  ?>
+                     <a href="<?= BASEURL ?>facilitator-create-assessment" title="From Here You Can Create An Assessment" class="sidebar-link text-white pl-lg-5">Create Assessment</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can Create An Assessment" class="sidebar-link text-white pl-lg-5">Create Assessment</a>
+                  <?php } ?>
+               </li>
+               <li class="sidebar-list-item">
+                  <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                  if (in_array("Learner Performance Management", $arrayfeatures)) {
+                  ?>
+                     <a href="<?= BASEURL ?>facilitator-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                  <?php } ?>
+               </li>
+
+
+               <li class="sidebar-list-item">
                   <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
                      <a href="<?= BASEURL ?>facilitator-completed-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
                   <?php } else { ?>

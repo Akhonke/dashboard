@@ -37,6 +37,7 @@ CREATE TABLE `assessment` (
   `assessment_type` varchar(255) NOT NULL,
   `submission_type` varchar(255) NOT NULL,
   `class_id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL,
   `unit_standard` varchar(255) NOT NULL,
   `programme_name` varchar(255) DEFAULT NULL,
   `programme_number` varchar(255) DEFAULT NULL,

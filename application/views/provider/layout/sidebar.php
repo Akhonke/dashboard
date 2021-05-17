@@ -229,6 +229,36 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
             </div>
         </li> -->
 
+          <!-- *************************** -->
+
+          <li class="sidebar-list-item">
+             <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages16" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
+                <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
+             <div id="pages16" class="collapse">
+                <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+                   <li class="sidebar-list-item">
+                      <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                      if (in_array("Learner Performance Management", $arrayfeatures)) {
+                      ?>
+                         <a href="<?= BASEURL ?>provider-create-assessment" title="From Here You Can Create An Assessment" class="sidebar-link text-white pl-lg-5">Create Assessment</a>
+                      <?php } else { ?>
+                         <a onclick="subscriptionMessage()" title="From Here You Can Create An Assessment" class="sidebar-link text-white pl-lg-5">Create Assessment</a>
+                      <?php } ?>
+                   </li>
+                   <li class="sidebar-list-item">
+                      <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                      if (in_array("Learner Performance Management", $arrayfeatures)) {
+                      ?>
+                         <a href="<?= BASEURL ?>provider-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                      <?php } else { ?>
+                         <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                      <?php } ?>
+                   </li>
+                </ul>
+             </div>
+          </li>
+          <!-- *************************** -->
+
         <li class="sidebar-list-item">
             <a href="#" data-toggle="collapse" title="From Here You Can Manage Marks" data-target="#pages14" aria-expanded="false" aria-controls="pages14" class="sidebar-link text-white">
                 <i class="o-wireframe-1 mr-3 text-gray"></i><span>Manage Marks</span></a>

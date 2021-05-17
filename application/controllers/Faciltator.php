@@ -1484,5 +1484,291 @@ class Faciltator extends CI_Controller
 
 	}
 
+	public function list_assessments()
+	{
+
+	    if (isset($_SESSION['facilitator']['id'])) {
+	        $facilitatorid = $_SESSION['facilitator']['id'];
+	    } else {
+	        $facilitatorid = '';
+	    }
+
+	    if ($facilitatorid) {
+	        $facilitator = $this->common->accessrecord('facilitator', [], ['id' => $facilitatorid], 'row');
+// 	        $this->data['facilitator'] = $facilitator->id;
+// 	        $this->data['trainer_id'] = $facilitator->trainer_id;
+// 	        $this->data['projectmanager'] = $facilitator->project_manager;
+	        $organization_id = $facilitator->organization;
+	    } else {
+	        $organization_id = 0;
+	    }
+
+	    $this->data['record'] = $this->common->assessmentListByOrganisation($organization_id);
+
+	    foreach ($this->data['record'] as &$record) {
+
+	        $unit_standard_list = $this->common->getAssessmentUnits($record->id);
+	        $unit_standards = [];
+	        foreach ($unit_standard_list as $unit_standard_item) {
+	            $unit_standards[] = $unit_standard_item->title;
+	        }
+	        $record->unit_standard = join(",", $unit_standards);
+	    }
+
+	    $this->data['page'] = 'list_assessments';
+
+	    $this->data['content'] = 'pages/assessment/assessment_list';
+
+	    $this->load->view('faciltator/tamplate', $this->data);
+
+	}
+
+    public function create_assessment()
+    {
+        if (isset($_SESSION['admin']['trainer_id'])) {
+
+            $trainer_id = $_SESSION['admin']['trainer_id'];
+        } else {
+
+            $trainer_id = '';
+        }
+
+        // $project_manager_id = $_SESSION['projectmanager']['id'];
+        $organisation_id = $_SESSION['organisation']['id'];
+
+        $id = 0;
+
+        if (! empty($_GET['id'])) {
+
+            $id = $_GET['id'];
+
+            $this->data['record'] = $this->common->accessrecord('assessment', [], [
+                'id' => $id
+            ], 'row');
+            $class_name = $this->common->accessrecord('class_name', [], [
+                'id' => ($this->data['record'])->class_id
+            ], 'row');
+            $this->data['record']->classname = $class_name->class_name;
+            $this->data['class_module'] = $this->common->accessrecord('class_module', [], [
+                'id' => ($this->data['record'])->module_id
+            ], 'row');
+        }
+
+        if ($_POST) {
+
+            if ($id != 0) {
+
+                // // Upload files
+                // if (!empty($_FILES['upload_learner_guide']['name'])) {
+                // $upload_learner_guide['upload_learner_guide'] = $this->singlefileupload('upload_learner_guide', './uploads/assessment/upload_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
+                // $upload_learner_guide['upload_learner_guide'] = $assessment->upload_learner_guide;
+                // }
+
+                // // Upload files
+                // if (!empty($_FILES['upload_learner_workbook']['name'])) {
+                // $upload_learner_workbook['upload_learner_workbook'] = $this->singlefileupload('upload_learner_workbook', './uploads/assessment/upload_learner_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
+                // $upload_learner_workbook['upload_learner_workbook'] = $assessment->upload_learner_workbook;
+                // }
+
+                // // Upload files
+                // if (!empty($_FILES['upload_learner_poe']['name'])) {
+                // $upload_learner_poe['upload_learner_poe'] = $this->singlefileupload('upload_learner_poe', './uploads/assessment/upload_learner_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
+                // $upload_learner_poe['upload_learner_poe'] = $assessment->upload_learner_poe;
+                // }
+
+                // // Upload files
+                // if (!empty($_FILES['upload_facilitator_guide']['name'])) {
+                // $upload_facilitator_guide['upload_facilitator_guide'] = $this->singlefileupload('upload_facilitator_guide', './assessment/bank/upload_facilitator_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
+                // $upload_facilitator_guide['upload_facilitator_guide'] = $assessment->upload_facilitator_guide;
+                // }
+
+                $data = [
+                    'assessment_start_date' => $this->input->post('assessment_start_date'),
+                    'assessment_end_date' => $this->input->post('assessment_end_date'),
+                    'title' => $this->input->post('title'),
+                    'assessment_type' => $this->input->post('assessment_type'),
+                    'submission_type' => $this->input->post('submission_type'),
+                    'class_id' => $this->input->post('classname'),
+                    'module_id' => $this->input->post('class_module'),
+                    'qualification' => $this->input->post('qualification'),
+                    'learning_programme' => $this->input->post('learning_programme'),
+                    // 'unit_standard' => $this->input->post('unit_standard'),
+                    // 'programme_name' => $this->input->post('programme_name'),
+                    // 'programme_number' => $this->input->post('programme_number'),
+                    'intervention_name' => $this->input->post('intervention_name'),
+
+                    // 'upload_learner_guide' => $upload_learner_guide['upload_learner_guide'],
+                    // 'upload_learner_workbook' => $upload_learner_workbook['upload_learner_workbook'],
+                    // 'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
+                    // 'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
+
+                    'created_by' => $trainer_id,
+                    'created_by_role' => 'trainer',
+                    'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
+                    'created_date' => date('Y-m-d H:i:s'),
+                    'updated_date' => date('Y-m-d H:i:s')
+                ];
+
+                if (! empty($_POST['unit_standard']) && is_array($_POST['unit_standard'])) {
+                    $data['unit_standard'] = join(',', $_POST['unit_standard']);
+                }
+
+                if ($this->common->updateData('assessment', $data, array(
+                    'id' => $id
+                ))) {
+
+                    $this->session->set_flashdata('success', 'Assessment Updated Succesfully');
+
+                    redirect('provider-assessment-list');
+                } else {
+
+                    $this->session->set_flashdata('success', 'Assessment Updated Succesfully');
+
+                    redirect('provider-assessment-list');
+                }
+            } else {
+
+                // // Upload files
+                // if (!empty($_FILES['upload_learner_guide']['name'])) {
+                // $upload_learner_guide['upload_learner_guide'] = $this->singlefileupload('upload_learner_guide', './uploads/assessment/upload_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $upload_learner_guide = [];
+                // }
+
+                // // Upload files
+                // if (!empty($_FILES['upload_learner_workbook']['name'])) {
+                // $upload_learner_workbook['upload_learner_workbook'] = $this->singlefileupload('upload_learner_workbook', './uploads/assessment/upload_learner_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $upload_learner_workbook = [];
+                // }
+
+                // // Upload files
+                // if (!empty($_FILES['upload_learner_poe']['name'])) {
+                // $upload_learner_poe['upload_learner_poe'] = $this->singlefileupload('upload_learner_poe', './uploads/assessment/upload_learner_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $upload_learner_poe = [];
+                // }
+
+                // // Upload files
+                // if (!empty($_FILES['upload_facilitator_guide']['name'])) {
+                // $upload_facilitator_guide['upload_facilitator_guide'] = $this->singlefileupload('upload_facilitator_guide', './uploads/assessment/upload_facilitator_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                // } else {
+                // $upload_facilitator_guide = [];
+                // }
+
+                $data = [
+                    'assessment_start_date' => $this->input->post('assessment_start_date'),
+                    'assessment_end_date' => $this->input->post('assessment_end_date'),
+                    'title' => $this->input->post('title'),
+                    'assessment_type' => $this->input->post('assessment_type'),
+                    'submission_type' => $this->input->post('submission_type'),
+                    'class_id' => $this->input->post('classname'),
+                    'module_id' => $this->input->post('class_module'),
+                    // 'qualification' => $this->input->post('qualification'),
+                    'learning_programme' => $this->input->post('learning_programme'),
+                    // 'unit_standard' => $this->input->post('unit_standard'),
+                    // 'programme_name' => $this->input->post('programme_name'),
+                    // 'programme_number' => $this->input->post('programme_number'),
+                    'intervention_name' => $this->input->post('intervention_name'),
+
+                    // 'upload_learner_guide' => $upload_learner_guide['upload_learner_guide'],
+                    // 'upload_learner_workbook' => $upload_learner_workbook['upload_learner_workbook'],
+                    // 'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
+                    // 'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
+
+                    'created_by' => $trainer_id,
+                    'created_by_role' => 'trainer',
+                    'created_date' => date('Y-m-d H:i:s'),
+                    'updated_date' => date('Y-m-d H:i:s')
+                ];
+
+                if (! empty($_POST['unit_standard']) && is_array($_POST['unit_standard'])) {
+                    $data['unit_standard'] = join(',', $_POST['unit_standard']);
+                }
+
+                if ($this->common->insertData('assessment', $data)) {
+
+                    $this->Email_model->email_learner_in_class($data['class_id'], 'You have been assigned a new assessment.', 'A new new assessment has been created
+                     http://digilims.com/new_assessment
+                    ');
+
+                    $this->session->set_flashdata('success', 'Assessement Saved Successfully');
+
+                    redirect('provider-assessment-list');
+                } else {
+
+                    $this->session->set_flashdata('error', 'Please Try Again');
+
+                    redirect('provider-create-assessment');
+                }
+            }
+
+            if ($id != 0) {
+                $this->data['record'] = $this->common->accessrecord('assessment', [], [
+                    'id' => $id
+                ], 'row');
+                $this->data['class_module'] = $this->common->accessrecord('class_module', [], [
+                    'id' => ($this->data['record'])->module_id
+                ], 'row');
+            }
+        }
+
+        $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
+        $this->data['units'] = $this->common->accessrecord('units', [], [], 'result_array');
+
+        $this->data['page'] = 'create_assessment';
+
+        $this->data['content'] = 'pages/assessment/assessment_form';
+
+        $this->data['learnership'] = $this->common->accessrecord('learnership', [], [
+            'organization' => $organisation_id
+        ], 'result');
+
+        $this->load->view('provider/tamplate', $this->data);
+    }
+
+        function assessment_delete()
+        {
+
+            if (!empty($_GET['data'])) {
+
+                if ($this->common->accessrecord('assessment', [], ['id' => $_GET['data']], 'row')) {
+
+                    echo json_encode(array('error' => "error"));
+                } else {
+
+                    $this->common->deleteRecord($_GET['table'], [$_GET['behalf'] => $_GET['data']]);
+
+                    echo json_encode(array('status' => 'true'));
+                }
+            }
+        }
+
+        public function get_class_module()
+        {
+
+            $class_id = $this->input->post('value');
+
+            $record = $this->common->accessrecord('class_module', [], ['class_id' => $class_id], 'result');
+
+            if (!empty($record)) {
+
+                $data = $record;
+            } else {
+
+                $data = array('error' => 'facilitator not available in this class');
+            }
+
+            echo json_encode($data);
+        }
+
 
 }
