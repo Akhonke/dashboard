@@ -440,6 +440,8 @@ $route['provider-forget-password'] = 'welcome/provider_forgetpassword';
 
 $route['provider-create-assessment'] = 'Traningprovider/create_assessment';
 $route['provider-assessment-list'] = 'Traningprovider/list_assessments';
+$route['provider-completed-assessment-list'] = 'Traningprovider/list_complete_assessments';
+$route['provider-view-assessment'] = 'Traningprovider/view_assessment';
 
 $route['provider-get_class_module'] = 'Traningprovider/get_class_module';
 $route['provider-module-uploads'] = 'Traningprovider/get_module_uploads';

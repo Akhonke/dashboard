@@ -223,17 +223,15 @@
 		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_learner_guide . '" target="_blank">Download the Learner Guide</a></p>';
 
 		    $markup .= '<p><label class="form-control-label">Learner Workbook : </span></label>';
-		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_workbook . '" target="_blank">Download the Learner Guide</a></p>';
+		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_workbook . '" target="_blank">Download the Learner Workbook</a></p>';
 
 		    $markup .= '<p><label class="form-control-label">Learner POE : </span></label>';
-		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner Guide</a></p>';
+		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner POR</a></p>';
 
 		    $markup .= '<p><label class="form-control-label">Facilitator Guide : </span></label>';
-		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">Download the Learner Guide</a></p>';
+		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">Download the Facilitator Guide</a></p>';
 
 		    echo $markup;
-
-
 
 		}
 
@@ -7638,8 +7636,12 @@
 
 		        if ($id != 0) {
 		            $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
-		            $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
+		            // $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
 		        }
+		    }
+
+		    if ($id != 0) {
+		        $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
 		    }
 
 		    $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
@@ -7690,4 +7692,61 @@
 		}
 
 
+		//****************************Assessments******************//
+		public function list_complete_assessments(){
+
+
+		    if (isset($_SESSION['facilitator']['id'])) {
+		        $trainer_id = $_SESSION['facilitator']['id'];
+		    } else {
+		        $trainer_id = '';
+		    }
+
+		    if (!empty($_GET['aid'])) {
+		        $assessment_id = $_GET['aid'];
+		        $this->data['record'] = $this->common->compeletedAssessmentListByAssessment($assessment_id);
+		    } else {
+		        $assessment_id = 0;
+		        $this->data['record'] = $this->common->compeletedAssessmentListByTrainer($trainer_id);
+		    }
+
+		    $this->data['page'] = 'list_complete_assessments';
+
+		    $this->data['content'] = '/pages/assessment/complete_assessment_list';
+
+		    $this->load->view('provider/tamplate', $this->data);
+		}
+
+		public function view_assessment(){
+
+
+		    if (isset($_SESSION['facilitator']['id'])) {
+		        $trainer_id = $_SESSION['facilitator']['id'];
+		    } else {
+		        $trainer_id = '';
+		    }
+
+		    $learner_assessment_id = 0;
+		    if (!empty($_GET['id'])) {
+		        $learner_assessment_id = $_GET['id'];
+		    }
+		    if ($learner_assessment_id == 0) {
+		        echo "Invalid Assessment";
+		        return;
+		    }
+
+		    $this->data['record'] = $this->common->compeletedAssessmentListByID($learner_assessment_id);
+
+		    $assessment_submissions = [];
+		    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => $learner_assessment_id], 'result');
+		    $this->data['learner_assessment_submissions'] = $assessment_submissions;
+
+		    $this->data['page'] = 'view_assessment';
+
+		    $this->data['content'] = '/pages/assessment/assessment_details';
+
+		    $this->load->view('provider/tamplate', $this->data);
+
+
+		}
 	}

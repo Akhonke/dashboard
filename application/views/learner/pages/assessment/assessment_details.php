@@ -50,6 +50,15 @@
                                     <input type="text" placeholder="Enter Your Class Name" name="class_name" class="form-control class_name" value="<?= (isset($class)) ? $class->class_name: ''; ?>" id="class_name"  readonly="readonly">
 
                                 </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Module<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <input type="text" placeholder="Enter Your Class Name" name="class_module" class="form-control class_name" value="<?= (isset($class_module)) ? $class_module->title: ''; ?>" id="class_module"  readonly="readonly">
+
+                                </div>
+
 <?php /*
                                 <div class="col-md-6">
 
@@ -124,8 +133,8 @@
 
                                     <label class="form-control-label">Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <?php if (!empty($assessment->upload_learner_guide)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_guide/<?php echo $assessment->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a>
+                                    <?php if (!empty($class_module->upload_learner_guide)) { ?>
+                                    	<a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a>
                                     <?php } else {?>
                                     	<p>No learner guide available for this assessment</p>
                                     <?php } ?>
@@ -136,8 +145,8 @@
 
                                     <label class="form-control-label">Learner Workbook<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <?php if (!empty($assessment->upload_learner_workbook)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_workbook/<?php echo $assessment->upload_learner_workbook; ?>" target="_blank">Download the Learner Workbook</a>
+                                    <?php if (!empty($class_module->upload_workbook)) { ?>
+                                    	<a href="/uploads/assessment/upload_learner_workbook/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a>
                                     <?php } else {?>
                                     	<p>No learner workbook available for this assessment</p>
                                     <?php } ?>
@@ -148,8 +157,8 @@
 
                                     <label class="form-control-label">Learner POE<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <?php if (!empty($assessment->upload_learner_poe)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_poe/<?php echo $assessment->upload_learner_poe; ?>" target="_blank">Download the Learner POE</a>
+                                    <?php if (!empty($class_module->upload_poe)) { ?>
+                                    	<a href="/uploads/assessment/upload_learner_poe/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a>
                                     <?php } else {?>
                                     	<p>No learner guide poe for this assessment</p>
                                     <?php } ?>

@@ -619,6 +619,7 @@ public function view_assessment(){
     $this->data['learner_assessment'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
     $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
     $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
+    $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
 
     $assessment_submissions = [];
     $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'result');

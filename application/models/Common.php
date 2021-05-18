@@ -3047,15 +3047,14 @@ class Common extends CI_Model
 	        'intervention_name'
 	    ];
 
-
 	    $result = $this->db->select($select_fields)
-	    ->from('learner_assessment')
-	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id', 'right')
-	    ->join('class_name', 'class_name.id = assessment.class_id')
-	    ->join('learner', 'learner.classname = class_name.class_name')
-	    ->where('learner.id', $learner_id)
-	    ->get()
-	    ->result();
+    	    ->from('assessment')
+    	    ->join('learner_assessment', 'assessment.id = learner_assessment.assessment_id', 'left')
+    	    ->join('class_name', 'class_name.id = assessment.class_id')
+    	    ->join('learner', 'learner.classname = class_name.class_name')
+    	    ->where('learner.id', $learner_id)
+    	    ->get()
+    	    ->result();
 
 	    return $result;
 
@@ -3219,6 +3218,36 @@ class Common extends CI_Model
 	    ->where('learner_assessment.id', $learner_assessment_id)
 	    ->get()
 	    ->row();
+
+	    return $result;
+	}
+
+	public function compeletedAssessmentListByAssessment($assessment_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('learner_assessment.assessment_id', $assessment_id)
+	    ->get()
+	    ->result();
 
 	    return $result;
 	}

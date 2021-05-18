@@ -162,7 +162,7 @@
                                         <?php
                                         if (!empty($learnership)) {
                                             foreach ($learnership as $key => $learnship) { ?>
-                                                <option value="<?= $learnship->id; ?>" <?php if (isset($record) && $record->learnship_id == $learnship->id) {
+                                                <option value="<?= $learnship->id; ?>" <?php if (isset($class_name) && $class_name->learnship_id == $learnship->id) {
                                                                                             echo 'selected';
                                                                                         } else {
                                                                                             if (isset($_POST['learnship_id']) && $_POST['learnship_id'] == $learnship->id) {
@@ -188,7 +188,7 @@
                                         <?php
                                         if (!empty($learnershipSubType)) {
                                             foreach ($learnershipSubType as $key => $sublearnship) { ?>
-                                                <option value="<?= $sublearnship->id; ?>" <?php if (isset($record) && $record->learnershipSubType == $sublearnship->id) {
+                                                <option value="<?= $sublearnship->id; ?>" <?php if (isset($class_name) && $class_name->learnershipSubType == $sublearnship->id) {
                                                                                                 echo 'selected';
                                                                                             } else {
                                                                                                 if (isset($_POST['learnershipSubType']) && $_POST['learnershipSubType'] == $sublearnship->id) {
@@ -536,6 +536,22 @@
 ?>
 
 								<div class="col-md-6" id="class_module_uploads">
+									<?php if (!empty($_GET['id'])) { ?>
+
+									    <p><label class="form-control-label">Learner Guide : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>
+
+                            		    <p><label class="form-control-label">Learner Workbook : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
+
+                            		    <p><label class="form-control-label">Learner POE : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a></p>
+
+                            		    <p><label class="form-control-label">Facilitator Guide : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a></p>
+
+                                    <?php } ?>
+
 								</div>
 
                             </div>
@@ -556,7 +572,21 @@
 
                             </div>
 
+
                         </form>
+
+                         <div class="form-group row">
+
+                            <div class="col-md-12">
+
+                                <div class="text-left">
+                                	<a href= "/provider-completed-assessment-list?aid=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">See Completed Assessments</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
 
                     </div>
 
