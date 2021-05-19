@@ -3324,10 +3324,40 @@ class Common extends CI_Model
     	    ->get()
     	    ->row();
 
-	    if ($assessment) {
+    	    if ($assessment && (!empty($assessment->unit_standard))) {
+
+	        $where_clause = "id IN (" . $assessment->unit_standard . ")";
 	        $result = $this->db->select('*')
     	        ->from('units')
-    	        ->where("id IN ({$assessment->unit_standard})" )
+    	        ->where($where_clause)
+    	        ->get()
+    	        ->result();
+
+	        return $result;
+
+	    } else {
+	        return false;
+	    }
+
+	}
+
+
+	public function getAssessmentUnitsFromlearnershipSubType ($learnership_sub_type_id)
+	{
+
+	    $learnership_sub_type = $this->db->select('*')
+    	    ->from('learnership_sub_type')
+    	    ->where('id', $learnership_sub_type_id)
+    	    ->get()
+    	    ->row();
+
+	    if ($learnership_sub_type && (!empty($learnership_sub_type->unit_standard))) {
+
+	        $where_clause = "id IN (" . $learnership_sub_type->unit_standard . ")";
+
+	        $result = $this->db->select('*')
+    	        ->from('units')
+    	        ->where($where_clause)
     	        ->get()
     	        ->result();
 

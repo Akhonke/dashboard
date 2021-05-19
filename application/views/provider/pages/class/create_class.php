@@ -307,12 +307,14 @@
 
                                        					</td>
                                        				<td>
-
+<?php /*
                                                         <label class='form-control-label'>Learner Guide<span style='color:red;font-weight:bold;'> *</span></label><br/>
                                                         <?php if (!empty($class_module_item->upload_learner_guide)) { ?>
                                                         	<a href="uploads/class/learner_guide/<?php echo $class_module_item->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a><br/>
                                                         <?php } ?>
                                                         <input type='file' name='learner_guide[]'><br/>
+*/
+?>
 
                                                         <label class='form-control-label'>Learner Workbook<span style='color:red;font-weight:bold;'> *</span></label><br/>
                                                         <?php if (!empty($class_module_item->upload_workbook)) { ?>
@@ -340,8 +342,8 @@
 
                                             </tbody>
                                         </table>
-                                        <button type="button" class="delete-class-module">Delete Class Module</button>
-                                        <button type="button" class="add-class-module">Add Class Module</button>
+                                        <button type="button" class="delete-class-module btn btn-danger">Delete Selected Class Module</button>
+                                        <button type="button" class="add-class-module btn btn-success">Add Class Module</button>
 
                                 </div>
 

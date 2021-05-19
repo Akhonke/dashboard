@@ -116,7 +116,7 @@
                                     <label class="form-control-label">Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <?php if (!empty($record->upload_learner_guide)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_guide/<?php echo $record->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a>
+                                    	<a href="/uploads/class/upload_learner_guide/<?php echo $record->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a>
                                     <?php } else {?>
                                     	<p>No learner guide available for this assessment</p>
                                     <?php } ?>
@@ -128,7 +128,7 @@
                                     <label class="form-control-label">Learner Workbook<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <?php if (!empty($record->upload_learner_workbook)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_workbook/<?php echo $record->upload_learner_workbook; ?>" target="_blank">Download the Learner Workbook</a>
+                                    	<a href="/uploads/class/earner_workbook/<?php echo $record->upload_learner_workbook; ?>" target="_blank">Download the Learner Workbook</a>
                                     <?php } else {?>
                                     	<p>No learner workbook available for this assessment</p>
                                     <?php } ?>
@@ -140,7 +140,7 @@
                                     <label class="form-control-label">Learner POE<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <?php if (!empty($record->upload_learner_poe)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_poe/<?php echo $record->upload_learner_poe; ?>" target="_blank">Download the Learner POE</a>
+                                    	<a href="/uploads/class/upload_poe/<?php echo $record->upload_learner_poe; ?>" target="_blank">Download the Learner POE</a>
                                     <?php } else {?>
                                     	<p>No learner guide poe for this assessment</p>
                                     <?php } ?>

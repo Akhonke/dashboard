@@ -102,7 +102,7 @@
                                                 </div>
 
 
-                                                <a href="Traningprovider/create_assessment?id=<?= $row->id ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                                <a href="faciltator/create_assessment?id=<?= $row->id ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
 
                                                 <a href="javascript:;" class="btn btn-danger btn-sm" style="margin:5px 0 0" onclick="project_assessment('project&behalf','id',<?= $row->id ?>)"><i class="fa fa-trash"></i></a>
 

@@ -14,7 +14,6 @@
     $CI->load->model(array('JscssFaciltator', 'common'));
     // $data['profile'] = $CI->common->accessrecord('organisation', ['image,full_name,email_address'], ['id' => organisation()], 'row');
     $css = $CI->JscssFaciltator->css($page);
-    $js = $CI->JscssFaciltator->js($page);
 
     foreach ($css as $cs) {
         echo $cs;
@@ -49,11 +48,19 @@
     <?php } ?>
 
     <?php
-    foreach ($js as $j) {
-        echo $j;
-    }
+        $js = $CI->JscssFaciltator->js($page);
+        foreach ($js as $j) {
+            echo $j;
+        }
+
+//         $js = $CI->jscss->js($page);
+//         foreach ($js as $j) {
+//             echo $j;
+//         }
+
+
     ?>
-    
+
 
 </body>
 

@@ -391,7 +391,10 @@ $route['provider-learnership'] = 'Traningprovider/provider_learnership';
 $route['provider-export'] = 'Traningprovider/export_learnerMarks';
 $route['provider-learnermarks-import-data'] = 'Traningprovider/learnermarks_import_data';
 $route['provider-import-learnermarks'] = 'Traningprovider/provider_import_learnermarks';
+
 $route['provider-getclassname'] = 'Traningprovider/get_learnerclassname';
+$route['provider-leanership-subtype-units'] = 'Traningprovider/get_units_for_leanership_subtype';
+
 $route['provider-attendance-list'] = 'Traningprovider/attendance_list';
 $route['providerdeletedataAssessor'] = 'Traningprovider/deletedataAssessor';
 $route['providerdeletedataFacilitator'] = 'Traningprovider/deletedataFacilitator';

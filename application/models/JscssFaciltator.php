@@ -25,13 +25,13 @@ class JscssFaciltator extends CI_Model
 		$css[] = '<link href="' . BASEURL . 'assets/admin/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">';
 		$css[] = '<link href="' . BASEURL . 'assets/validation/css/screen.css" rel="stylesheet" type="text/css">';
 		$css[] = '<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">';
-		
+
 		$css[] = '<link href="' . BASEURL . 'assets/admin/cloudfront/css/style.default.css" id="theme-stylesheet" rel="stylesheet" type="text/css">';
 		$css[] = '<link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css" id="theme-stylesheet" rel="stylesheet" type="text/css">';
 		// if ($page == 'create_province' || $page == 'create_district' || $page == 'create_region' || $page == 'create_city' || $page == 'organisation_list' || $page == 'programmer_list' || $page == 'project_list' || $page == 'training_list' || $page == 'facilitator_list' || $page == 'assessor_list' || $page == 'moderator_list' || $page == 'learner_marks_list' || $page == 'discipline_list') {
 
 		// 	$css[] = '<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">';
-			
+
 		// 	$css[] = '<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">';
 		// 	$css[] = '<link href="' . BASEURL . 'assets/admin/cloudfront/css/style.default.css" id="theme-stylesheet" rel="stylesheet" type="text/css">';
 		// }
@@ -70,7 +70,7 @@ class JscssFaciltator extends CI_Model
 			$js[] = '<script src="' . BASEURL . 'assets/admin/cloudfront/js/charts-home.js"></script>';
 		}
 
-		if ($page == 'editprofile' || $page == 'create_district' || $page == 'create_region' || $page == 'create_city' || $page == 'organisation_list' || $page == 'programmer_list' || $page == 'project_list' || $page == 'training_list' || $page == 'facilitator_list' || $page == 'assessor_list' || $page == 'changepassword' || $page == 'learner_marks_list' || $page == 'discipline_list' || $page == 'attendance_list') {
+		if ($page == 'editprofile' || $page == 'create_district' || $page == 'create_region' || $page == 'create_city' || $page == 'organisation_list' || $page == 'programmer_list' || $page == 'project_list' || $page == 'training_list' || $page == 'facilitator_list' || $page == 'assessor_list' || $page == 'changepassword' || $page == 'learner_marks_list' || $page == 'discipline_list' || $page == 'attendance_list' || $page == 'list_assessments') {
 
 			$js[] = '<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>';
 
@@ -91,17 +91,17 @@ class JscssFaciltator extends CI_Model
 			$js[] = '<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>';
 
 			$js[] = '<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>';
-			
+
 			// $js[] = '<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.colVis.min.js"></script>';
-		
+
 			$js[] = "<script>
 
 			$(document).ready(function() {
 
 				var table=$('.table').DataTable( {
-	
+
 					dom: 'Bfrtip',
-					columnDefs: [  
+					columnDefs: [
 						{
 							'searchable': false,
 							'orderable': false,
@@ -109,26 +109,26 @@ class JscssFaciltator extends CI_Model
 						},
 					],
 					order: [[0, 'asc']] ,
-	
-	
+
+
 					buttons: [
-	
+
 					{
-	
+
 					  extend: 'pdfHtml5',
-	
+
 					  orientation: 'landscape',//landscape give you more space
-	
+
 					  pageSize: 'A0',//A0 is the largest A5 smallest(A0,A1,A2,A3,legal,A4,A5,letter))
-	
+
 					},
-	
+
 						 'csv', 'excel', 'print' ,'colvis'
-	
+
 					]
-	
+
 				} );
-	
+
 				$('.table').addClass('nowrap')
 				 table.on('order.dt search.dt', function () {
 					table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
@@ -136,18 +136,18 @@ class JscssFaciltator extends CI_Model
 						 table.cell(cell).invalidate('dom');
 					});
 				}).draw();
-	
+
 			} );
-	
-			
-	
-				
-	
+
+
+
+
+
 				</script>";
 
 			$js[] = '<script>
 
-	        function deleterecord(tablename,columnname,id){ 
+	        function deleterecord(tablename,columnname,id){
 
 				    swal({
 
@@ -169,7 +169,7 @@ class JscssFaciltator extends CI_Model
 
 				        closeOnCancel: false
 
-				    }, 
+				    },
 
 				    function (isConfirm) {
 
@@ -203,7 +203,7 @@ class JscssFaciltator extends CI_Model
 
 				        }
 
-				    });    
+				    });
 
 			}
 
@@ -242,7 +242,7 @@ class JscssFaciltator extends CI_Model
 
 					          equalTo:"#password",
 
-					        },  
+					        },
 
 				          },
 
@@ -292,49 +292,49 @@ class JscssFaciltator extends CI_Model
 		if($page == 'send_massage'){
 
 			$js[] = "<script>
-			
+
 			$('#receiver_type').change(function() {
 
 				$.ajax({
-	   
+
 				   url: 'Facilitator-get_receiver',
-	   
+
 				   data: {
 					  'value': $('#receiver_type').val()
 				   },
-	   
+
 				   dataType: 'json',
-	   
+
 				   type: 'post',
-	   
+
 				   success: function(data) {
-	   
+
 					  var option = '';
-	   
+
 					  $.each(data, function(i, star) {
-	   
+
 						 if (i == 'error') {
-	   
+
 							$('#receiver').html(option);
-	   
+
 							$('#receiver-error').show();
-	   
+
 							$('#receiver-error').html(star);
-	   
+
 						 } else {
 							var test = '<option hidden value=' + '>Select Receiver</option>';
 							option += '<option value=' + star.id + '>' + star.name + '</option>'
-	   
+
 							$('#receiver').html(test + option);
-	   
+
 							$('#receiver-error').hide();
-	   
+
 						 }
-	   
+
 					  });
-	   
+
 				   }
-	   
+
 				});
 			 });
 			</script>";
@@ -352,11 +352,11 @@ class JscssFaciltator extends CI_Model
 
 					    var wrapper = $(".field_wrapper"); //Input field wrapper
 
-					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>"; 
+					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>";
 
 					    var x = 1; //Initial field counter is 1
 
-					    
+
 
 					    //Once add button is clicked
 
@@ -364,7 +364,7 @@ class JscssFaciltator extends CI_Model
 
 					        //Check maximum number of input fields
 
-					        if(x < maxField){ 
+					        if(x < maxField){
 
 					            x++; //Increment field counter
 
@@ -378,7 +378,7 @@ class JscssFaciltator extends CI_Model
 
 					    });
 
-					    
+
 
 					    //Once remove button is clicked
 
@@ -398,9 +398,9 @@ class JscssFaciltator extends CI_Model
 						$.validator.addMethod("full_name", function(value, element) {
 
 							// allow any non-whitespace characters as the host part
-	
+
 								return this.optional( element ) || /^[a-zA-Z\s]+$/.test( value );
-	
+
 							}, "Only letters and white space allowed.");
 
 				        $("#CreateFacilitatorForm").validate({
@@ -418,7 +418,7 @@ class JscssFaciltator extends CI_Model
 
 									required: true,
 									full_name: true
-									
+
 				                },
 
 
@@ -513,7 +513,7 @@ class JscssFaciltator extends CI_Model
 
 					            classname:{
 
-                                   required: true, 
+                                   required: true,
 
                                 },
 
@@ -521,7 +521,7 @@ class JscssFaciltator extends CI_Model
 
 				            messages: {
 
-				               
+
 
 				                email: "Please enter a valid email address",
 								fullname: {
@@ -533,7 +533,7 @@ class JscssFaciltator extends CI_Model
 
 				                	required: "Please enter your surname name",
 				                },
-				                
+
 
 				                id_number: {
 
@@ -543,7 +543,7 @@ class JscssFaciltator extends CI_Model
 
 				                },
 
-				                
+
 
 				                mobile: {
 
@@ -740,7 +740,7 @@ class JscssFaciltator extends CI_Model
 
 				                });
 
-				              
+
 
 				            }
 
@@ -786,7 +786,7 @@ class JscssFaciltator extends CI_Model
 
 				    //             });
 
-				              
+
 
 				    //         }
 
@@ -798,49 +798,49 @@ class JscssFaciltator extends CI_Model
 					$('.district_option').change(function(){
 
 						$.ajax({
- 
+
 							 url: 'Faciltator-getcity',
- 
+
 							 data: { 'value': $('.district_option').val() },
- 
+
 							 dataType:'json',
- 
+
 							 type: 'post',
- 
+
 							 success: function(data){
- 
+
 								 var option = '';
- 
+
 								$.each(data, function(i, star) {
- 
+
 								 if(i == 'error'){
- 
+
 										 $('#city').html(option);
- 
+
 										 $('#city-error').show();
- 
+
 										 $('#city-error').html(star);
- 
+
 								  }else{
- 
+
 										option += '<option value='+star.id+'>'+star.city+'</option>'
- 
+
 										$('#city').html('<option>Select City</option>'+option);
- 
+
 										$('#city-error').hide();
- 
+
 								 }
- 
+
 								 });
- 
-							   
- 
+
+
+
 							 }
- 
+
 						 });
- 
+
 					 });
- 
+
 				    $('#city').change(function(){
 
 				       $.ajax({
@@ -912,7 +912,7 @@ class JscssFaciltator extends CI_Model
 
 			                	},
 
-			                
+
 
 			                 'learner_classname':{
 
@@ -940,7 +940,7 @@ class JscssFaciltator extends CI_Model
 
 			                'learnership_sub_type': 'Please select your learnership sub type',
 
-			                
+
 
 			                'learner_classname':{
 
@@ -972,7 +972,7 @@ class JscssFaciltator extends CI_Model
 
 			    });
 
-			  
+
 
 			    $('.learnshipsubtype').change(function(){
 
@@ -1009,13 +1009,13 @@ class JscssFaciltator extends CI_Model
 
 			                      $('#learner_classname-error').hide();
 
-			                     
+
 
 			                    }
 
 			                });
 
-			              
+
 
 			            }
 
@@ -1032,144 +1032,144 @@ class JscssFaciltator extends CI_Model
 			$('.learnship_id').change(function() {
 
 				$.ajax({
-				
+
 					url: 'Faciltator-get_sublearnership',
-				
+
 					data: {
 						'value': $('.learnship_id').val()
 					},
-				
+
 					dataType: 'json',
-				
+
 					type: 'post',
-				
+
 					success: function(data) {
-				
+
 						var option = '';
-				
+
 						$.each(data, function(i, star) {
-				
+
 							if (i == 'error') {
-				
+
 								$('.learnership_sub_type_id').html(option);
-				
+
 								$('#learnership_sub_type_id-error').show();
-				
+
 								$('#learnership_sub_type_id-error').html(star);
-				
+
 							} else {
 								var test = '<option hidden value=' + '>Select Sublearnership</option>';
 								option += '<option value=' + star.id + '>' + star.sub_type + '</option>'
-				
+
 								$('.learnership_sub_type_id').html(test + option);
-				
+
 								$('#learnership_sub_type_id-error').hide();
-				
+
 							}
-				
+
 						});
-				
-				
-				
+
+
+
 					}
-				
+
 				});
-				
+
 				});
 				</script>
 				<script>
 				$('.learnership_sub_type_id').change(function() {
-				
+
 				$.ajax({
-				
+
 					url: 'Faciltator-getclassname',
-				
+
 					data: {
 						'value': $('.learnership_sub_type_id').val()
 					},
-				
+
 					dataType: 'json',
-				
+
 					type: 'post',
-				
+
 					success: function(data) {
-				
+
 						var option = '';
-				
+
 						$.each(data, function(i, star) {
-				
+
 							if (i == 'error') {
-				
+
 								$('.learner_classname').html(option);
-				
+
 								$('#learner_classname-error').show();
-				
+
 								$('#learnership_sub_type_id-error').html(star);
-				
+
 							} else {
 								var test = '<option hidden value=' + '>Select Class</option>';
 								option += '<option value=' + star.id + '>' + star.class_name + '</option>'
-				
+
 								$('.learner_classname').html(test + option);
-				
+
 								$('#learner_classname-error').hide();
-				
+
 							}
-				
+
 						});
-				
-				
-				
+
+
+
 					}
-				
+
 				});
-				
+
 				});
-				
-				
+
+
 				$('.learner_classname').change(function() {
-				
+
 				$.ajax({
-				
+
 					url: 'provider-getfacilitator',
-				
+
 					data: {
 						'value': $('.learner_classname').val()
 					},
-				
+
 					dataType: 'json',
-				
+
 					type: 'post',
-				
+
 					success: function(data) {
-				
+
 						var option = '';
-				
+
 						$.each(data, function(i, star) {
-				
+
 							if (i == 'error') {
-				
+
 								$('.facilitator').val(option);
-				
+
 								$('#facilitator-error').show();
-				
+
 								$('#facilitator-error').html(star);
-				
+
 							} else {
 								$('.facilitator').val(star.fullname);
-				
+
 								$('#facilitator-error').hide();
-				
+
 							}
-				
+
 						});
-				
-				
-				
+
+
+
 					}
-				
+
 				});
-				
+
 				});
 			$(function() {
 
@@ -1191,7 +1191,7 @@ class JscssFaciltator extends CI_Model
 
 							},
 
-						
+
 						 'learner_classname':{
 
 							'required': true,
@@ -1212,12 +1212,12 @@ class JscssFaciltator extends CI_Model
 						'week_date':{
 
 							'required': true,
-						
+
 						},
 						'learnship_id': {
 
 							required:true,
-							
+
 							},
 					},
 
@@ -1226,15 +1226,15 @@ class JscssFaciltator extends CI_Model
 						'year': {
 
 							'required': 'Please choose your year',
-  
+
 						  },
 
 						'learnership_sub_type':{
 
 							'required': 'Please select your learnership sub type',
-  
-						  }, 
-						
+
+						  },
+
 						'learner_classname':{
 
 						  'required': 'Please select your classname',
@@ -1253,14 +1253,14 @@ class JscssFaciltator extends CI_Model
 
 						},
 						'week_date':{
-						
+
 							'required' : 'Please choose Date',
 
 						},
 						'learnship_id':{
 
 							'required': 'Please select your learnership type',
-							
+
 							},
 
 					},
@@ -1275,7 +1275,7 @@ class JscssFaciltator extends CI_Model
 
 			});
 
-		  
+
 
 			$('.learnshipsubtype').change(function(){
 
@@ -1311,13 +1311,13 @@ class JscssFaciltator extends CI_Model
 
 							  $('#learner_classname-error').hide();
 
-							 
+
 
 							}
 
 						});
 
-					  
+
 
 					}
 
@@ -1327,14 +1327,14 @@ class JscssFaciltator extends CI_Model
 
 		</script>";
 
-	
+
 		}
 
 		if($page == 'attendance_list')
 		{
 			$js[] = '<script>
 
-			function deleterecord(tablename,columnname,id){ 
+			function deleterecord(tablename,columnname,id){
 
 				swal({
 
@@ -1356,7 +1356,7 @@ class JscssFaciltator extends CI_Model
 
 					closeOnCancel: false
 
-				}, 
+				},
 
 				function (isConfirm) {
 
@@ -1390,7 +1390,7 @@ class JscssFaciltator extends CI_Model
 
 					}
 
-				});    
+				});
 
 			}
 
@@ -1451,7 +1451,7 @@ class JscssFaciltator extends CI_Model
 							// 'warning_letter' : {
 							// 	required : 'Please Select Warning Letter',
 							// }
-							
+
 						}
 					});
 
@@ -1459,56 +1459,56 @@ class JscssFaciltator extends CI_Model
 
 
 						$.ajax({
-	
+
 							url: 'Faciltator-getlearner',
-	
+
 							data: { 'value': $('.learner_id').val() },
-	
+
 							dataType:'json',
-	
+
 							type: 'post',
-	
+
 							success: function(data){
-	
+
 								var option = '';
-	
+
 							   $.each(data, function(i, star) {
-	
+
 									if(i == 'error'){
-	
+
 										$('#learner_name').val(option);
-	
+
 										$('#learner_surname').val(option);
 
 										$('#learner_name-error').show();
-	
+
 										$('#learner_name-error').val(star);
-	
+
 									}else{
-									
+
 										$('#learner_name').val(star.first_name);
 
 										$('#learner_surname').val(star.surname);
-	
+
 									  $('#learner_classname-error').hide();
-	
-									 
-	
+
+
+
 									}
-	
+
 								});
-	
-							  
-	
+
+
+
 							}
-	
+
 						});
-	
+
 					});
-	
+
 				});
 
-			</script>";	
+			</script>";
 		}
 
 		if($page == 'learner_marks_list')
@@ -1516,7 +1516,7 @@ class JscssFaciltator extends CI_Model
 			$js[] = " <script>
 			$(document).ready(function() {
 				var table = $('#learner_mark').DataTable();
-	
+
 				$('#dropdown1').on('keyup', function() {
 					table.columns(1).search(this.value).draw();
 				});
@@ -1534,10 +1534,779 @@ class JscssFaciltator extends CI_Model
 				});
 			});
 			</script>";
-			
 
-			
+
+
 		}
+
+
+		if ($page == 'create_assessment') {
+		    $js[] = "<script>
+
+			$('.learnship_id').change(function(){
+
+				$.ajax({
+
+					url: '/provider-get_sublearnership',
+
+					data: { 'value': $('.learnship_id').val() },
+
+					dataType:'json',
+
+					type: 'post',
+
+					success: function(data){
+
+						var option = '';
+
+					   $.each(data, function(i, star) {
+
+								if(i == 'error'){
+
+								$('.learnership_sub_type_id').html(option);
+
+								$('#learnership_sub_type_id-error').show();
+
+								$('#learnership_sub_type_id-error').html(star);
+
+							}else{
+								var test = '<option hidden value='+'>Select Sublearnership</option>';
+							  option += '<option value='+star.id+'>'+star.sub_type+'</option>'
+
+							  $('.learnership_sub_type_id').html(test+option);
+
+							  $('#learnership_sub_type_id-error').hide();
+
+							}
+
+						});
+
+
+
+					}
+
+				});
+
+			});
+
+
+			$('.learnership_sub_type_id').change(function(){
+
+				$.ajax({
+
+					url: '/provider-getclassname',
+
+					data: { 'value': $('.learnership_sub_type_id').val() },
+
+					dataType:'json',
+
+					type: 'post',
+
+					success: function(data){
+
+						var option = '';
+
+					   $.each(data, function(i, star) {
+
+								if(i == 'error'){
+
+								$('.learner_classname').html(option);
+
+								$('#learner_classname-error').show();
+
+								$('#learnership_sub_type_id-error').html(star);
+
+							}else{
+								var test = '<option hidden value='+'>Select Class</option>';
+							  option += '<option value='+star.id+'>'+star.class_name+'</option>'
+
+							  $('.learner_classname').html(test+option);
+
+							  $('#learner_classname-error').hide();
+
+							}
+
+						});
+
+
+
+					}
+
+				});
+
+			});
+
+
+			$('.learnership_sub_type_id').change(function(){
+
+				$.ajax({
+
+					url: '/provider-leanership-subtype-units',
+
+					data: { 'value': $('.learnership_sub_type_id').val() },
+
+					dataType:'json',
+
+					type: 'post',
+
+					success: function(data){
+
+						var option = '';
+
+					   $.each(data, function(i, star) {
+
+								if(i == 'error'){
+
+								$('.learner_classname').html(option);
+
+								$('#learner_classname-error').show();
+
+								$('#learnership_sub_type_id-error').html(star);
+
+							}else{
+								var test = '<option hidden value='+'>Select Class</option>';
+							  option += '<option value='+star.id+'>'+star.title+'</option>'
+
+							  $('.lstBox1').html(test+option);
+
+							  $('#lstBox1-error').hide();
+
+							}
+
+						});
+
+
+
+					}
+
+				});
+
+			});
+
+/// //////////////////////////
+// ///////////////////////////////
+
+			$('.learner_classname').change(function(){
+
+				$.ajax({
+
+					url: '/provider-get_class_module',
+
+					data: { 'value': $('.learner_classname').val() },
+
+					dataType:'json',
+
+					type: 'post',
+
+					success: function(data){
+
+						var option = '';
+
+					   $.each(data, function(i, star) {
+
+								if(i == 'error'){
+
+								$('.class_module').html(option);
+
+								$('#class_module-error').show();
+
+								$('#class_module-error').html(star);
+
+							}else{
+								var test = '<option hidden value='+'>Select Class Module</option>';
+							  option += '<option value='+star.id+'>'+star.title+'</option>'
+
+							  $('.class_module').html(test+option);
+
+							  $('#class_module-error').hide();
+
+							}
+
+						});
+
+					}
+
+				});
+
+			});
+
+
+			$('.class_module').change(function(){
+
+				$.ajax({
+
+					url: '/provider-module-uploads',
+
+					data: { 'value': $('.class_module').val() },
+
+					type: 'post',
+
+					success: function(data){
+			             $('#class_module_uploads').html(data);
+					}
+
+				});
+
+			});
+
+
+			</script>";
+		}
+
+
+		// if ($page == 'createlearnershipSubType' || $page == 'newcreatesublearnership' || $page == 'create_assessment') {
+	    if ($page == 'create_assessment') {
+
+		    $js[] = '<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>';
+
+		    $js[] = '<script src="' . BASEURL . 'assets/admin/multiselect/jquery.multiselect.js"></script>';
+
+		    $js[] = '<script>
+
+					    $(function () {
+
+					    	$("select[multiple].active.3col").multiselect({
+
+			                	placeholder: "Select Unit Standard",
+
+					            selectAll: true,
+
+					            optionul:function(element){
+
+                              return $(element).html("<ul><li>spansss</li></ul>") || $(element).text();
+
+                              },
+
+
+
+					        });
+
+				        });
+
+                        $(document).ready(function(){
+
+					        $("select[multiple].active.3col").change(function(){
+
+					        	var brands = $("select[multiple].active.3col option:selected");
+
+					        	var options = [];
+
+					        	var sum=0;
+
+					            $(brands).each(function(index, brand){
+
+							        var options = $(this).attr("data-price");
+
+					            	sum+=+$(this).attr("data-price");
+
+					                //$("#min_credit").val(sum);
+
+					                $("#total_credits_allocated").val(sum);
+
+
+
+							    });
+
+							});
+
+                        });
+
+                        $(".unitype").click(function(e){
+
+                         var checkboxes = document.getElementsByName("unit_standard1[]");
+
+                          console.log(checkboxes);
+
+							var vals = "";
+
+							for (var i=0, n=checkboxes.length;i<n;i++)
+
+							{
+
+							    if (checkboxes[i].checked)
+
+							    {
+
+							        vals += ","+checkboxes[i].value;
+
+							    }
+
+							}
+
+							if (vals) vals = vals.substring(1);
+
+
+
+                        });
+
+		                $(function() {
+							$.validator.addMethod("full_name", function(value, element) {
+
+								// allow any non-whitespace characters as the host part
+
+								return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
+
+							  }, "Only letters and white space allowed.");
+
+		                 	$("#sublearnshipform").validate({
+
+							    rules: {
+
+							      learnship_id: { required: true },
+
+							      sub_type: { required: true },
+
+							      "unit_standard[]": { required: true },
+
+							      min_credit: { required: true, number: true },
+
+								  total_credits_allocated: { required: true, number: true },
+
+								  facilitator_id: { required: true},
+
+							    },
+
+							    messages: {
+
+							      learnship_id: "Please select your learnship name",
+
+							      sub_type: { required : "Please enter your sub type", },
+
+							      "unit_standard[]":{
+
+							       required: "Please select your unit standard",
+
+
+
+							      },
+
+							      min_credit:{
+
+							        required:"Please enter your minimum credits",
+
+							        number: "Please enter valid number"
+
+							      },
+
+							      total_credits_allocated:{
+
+							        required: "Please enter your total credits allocated",
+
+							        number: "Please enter valid number"
+
+								  },
+								  facilitator_id: "Please Select Facilitator",
+
+							    },
+
+							    submitHandler: function(form) {
+
+							    	validateTheForm ();
+
+							     /* form.submit();*/
+
+							    }
+
+						    });
+
+	                    });
+
+	                    $(document).ready(function(){
+
+					        $("#multiple_select").change(function(){
+
+					        	var brands = $("#multiple_select input:selected");
+
+					        	var options = [];
+
+					        	var sum=0;
+
+					            $(brands).each(function(index, brand){
+
+							        var options = $(this).attr("data-price");
+
+					            	sum+=+$(this).attr("data-price");
+
+					            	console.log(sum)
+
+					               // $("#min_credit").val(sum);
+
+					                $("#total_credits_allocated").val(sum);
+
+
+
+
+
+							    });
+
+					        });
+
+
+
+                        });
+
+                        function strDes(a, b) {
+
+								   if (a.value>b.value) return 1;
+
+								   else if (a.value<b.value) return -1;
+
+								   else return 0;
+
+								 }
+
+
+
+								console.clear();
+
+								(function () {
+
+								    $("#btnRight").click(function (e) {
+
+								        var selectedOpts = $("#lstBox1 option:selected");
+
+								        if (selectedOpts.length == 0) {
+
+								            alert("Nothing to move.");
+
+								            e.preventDefault();
+
+								        }
+
+
+
+								        $("#lstBox2").append($(selectedOpts).clone());
+
+								        $(selectedOpts).remove();
+
+
+                                        $("#lstBox2").children("option").prop("selected", true);
+
+
+
+								        /* -- Uncomment for optional sorting --*/
+
+								        var box2Options = $("#lstBox2 option");
+
+								        var box2OptionsSorted;
+
+								        box2OptionsSorted = box2Options.toArray().sort(strDes);
+
+								        $("#lstBox2").empty();
+
+								        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								        })
+
+
+
+								       var sum=0; var units=[];
+
+                                        var box2Options = $("#lstBox2 option");
+
+                                        console.log(box2Options);
+
+                                        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								            units.push($(opt).attr("data-id"));
+
+								          console.log($(opt).attr("data-price"));
+
+								           sum+=+$(opt).attr("data-price");
+
+								        })
+
+								         console.log(units);
+
+                                         console.log(sum);
+
+								        $("#total_credits_allocated").val(sum);
+
+								        $("#lstBox2").val(units);
+
+
+
+
+
+
+
+								        e.preventDefault();
+
+
+
+
+
+
+
+								    });
+
+
+
+								    $("#btnAllRight").click(function (e) {
+
+								        var selectedOpts = $("#lstBox1 option");
+
+								        if (selectedOpts.length == 0) {
+
+								            alert("Nothing to move.");
+
+								            e.preventDefault();
+
+								        }
+
+
+
+								        $("#lstBox2").append($(selectedOpts).clone());
+
+								        $(selectedOpts).remove();
+
+								        var box2Options = $("#lstBox2 option");
+
+								        var box2OptionsSorted;
+
+								        box2OptionsSorted = box2Options.toArray().sort(strDes);
+
+								        $("#lstBox2").empty();
+
+								        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								        })
+
+
+
+								       var sum=0; var units=[];
+
+                                        var box2Options = $("#lstBox2 option");
+
+                                        console.log(box2Options);
+
+                                        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								            units.push($(opt).attr("data-id"));
+
+								          console.log($(opt).attr("data-price"));
+
+								           sum+=+$(opt).attr("data-price");
+
+								        })
+
+								         console.log(units);
+
+                                         console.log(sum);
+
+								        $("#total_credits_allocated").val(sum);
+
+								        $("#lstBox2").val(units);
+
+								        e.preventDefault();
+
+
+                                        $("#lstBox2").children("option").prop("selected", true);
+
+								    });
+
+
+
+								    $("#btnLeft").click(function (e) {
+
+								        var selectedOpts = $("#lstBox2 option:selected");
+
+								        if (selectedOpts.length == 0) {
+
+								            alert("Nothing to move.");
+
+								            e.preventDefault();
+
+								        }
+
+
+
+								        $("#lstBox1").append($(selectedOpts).clone());
+
+								        $(selectedOpts).remove();
+
+								        var box2Options = $("#lstBox2 option");
+
+								        var box2OptionsSorted;
+
+								        box2OptionsSorted = box2Options.toArray().sort(strDes);
+
+								        $("#lstBox2").empty();
+
+								        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								        })
+
+
+
+								      var sum=0; var units=[];
+
+                                        var box2Options = $("#lstBox2 option");
+
+                                        console.log(box2Options);
+
+                                        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								            units.push($(opt).attr("data-id"));
+
+								          console.log($(opt).attr("data-price"));
+
+								           sum+=+$(opt).attr("data-price");
+
+								        })
+
+								         console.log(units);
+
+                                         console.log(sum);
+
+								        $("#total_credits_allocated").val(sum);
+
+								        $("#lstBox2").val(units);
+
+
+
+								        e.preventDefault();
+
+								    });
+
+
+
+								    $("#btnAllLeft").click(function (e) {
+
+								        var selectedOpts = $("#lstBox2 option");
+
+								        if (selectedOpts.length == 0) {
+
+								            alert("Nothing to move.");
+
+								            e.preventDefault();
+
+								        }
+
+
+
+								        $("#lstBox1").append($(selectedOpts).clone());
+
+								        $(selectedOpts).remove();
+
+								        var box2Options = $("#lstBox2 option");
+
+								        var box2OptionsSorted;
+
+								        box2OptionsSorted = box2Options.toArray().sort(strDes);
+
+								        $("#lstBox2").empty();
+
+								        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								        })
+
+
+
+								      var sum=0; var units=[];
+
+                                        var box2Options = $("#lstBox2 option");
+
+                                        console.log(box2Options);
+
+                                        box2OptionsSorted.forEach(function(opt){
+
+								          $("#lstBox2").append(opt);
+
+								            units.push($(opt).attr("data-id"));
+
+								          console.log($(opt).attr("data-price"));
+
+								           sum+=+$(opt).attr("data-price");
+
+								        })
+
+								         console.log(units);
+
+                                         console.log(sum);
+
+								        $("#total_credits_allocated").val(sum);
+
+								        $("#lstBox2").val(units);
+
+								        e.preventDefault();
+
+								    });
+
+
+
+								}(jQuery));
+
+
+
+
+
+
+
+					</script>';
+
+		    $js[] = "<script>
+
+			$(function () {
+
+				$('#learnship_id').change(function(){
+
+				$.ajax({
+
+						url: '/provider-get_learnership',
+
+						data: { 'value': $('#learnship_id').val() },
+
+						dataType:'json',
+
+						type: 'post',
+
+						success: function(data){
+
+							var option = '';
+
+						$.each(data, function(i, star) {
+
+									if(i == 'error'){
+
+										$('#min_credit').val();
+
+									}else{
+
+
+
+										$('#min_credit').val(star.total_credits);
+
+									}
+
+							});
+
+
+
+						}
+
+					});
+
+			});
+		});
+
+		</script>";
+		}
+
 
 
 		return $js;

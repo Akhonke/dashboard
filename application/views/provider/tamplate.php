@@ -98,8 +98,8 @@
             var markup =       "<tr>";
             markup  = markup + "   <td><input type='checkbox' name='record'><input type='hidden' name='class_module_id[]' value=''></td>";
             markup  = markup + "   <td><input type='text' name='class_module[]'></td>";
-            markup  = markup + "   <td><label class='form-control-label'>Learner Guide<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_guide[]'><br/>";
-            markup  = markup + "       <label class='form-control-label'>Learner Workbook<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_workbook[]'><br/>";
+//          markup  = markup + "   <td><label class='form-control-label'>Learner Guide<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_guide[]'><br/>";
+            markup  = markup + "   <td><label class='form-control-label'>Learner Workbook<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_workbook[]'><br/>";
             markup  = markup + "       <label class='form-control-label'>Learner POE<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_poe[]'><br/>";
             markup  = markup + "       <label class='form-control-label'>Facilitator Guide<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='facilitator_guide[]'><br/>";
 			markup  = markup + "   </td>";

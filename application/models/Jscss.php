@@ -2542,6 +2542,7 @@
 			</script>";
 			}
 			if ($page == 'create_learner_marks'  || $page == 'create_attendance' || $page == 'learner-attandance' || $page == 'create_assessment') {
+		    // if ($page == 'create_learner_marks'  || $page == 'create_attendance' || $page == 'learner-attandance') {
 			    $js[] = "<script>
 			$('.learnership_sub_type_id').change(function(){
 
@@ -2599,7 +2600,7 @@
 
 				$.ajax({
 
-					url: 'provider-getclassname',
+					url: 'provider-leanership-subtype-units',
 
 					data: { 'value': $('.learnership_sub_type_id').val() },
 
@@ -2623,7 +2624,7 @@
 
 							}else{
 								var test = '<option hidden value='+'>Select Class</option>';
-							  option += '<option value='+star.id+'>'+star.class_name+'</option>'
+							  option += '<option value='+star.id+'>'+star.title+'</option>'
 
 							  $('.lstBox1').html(test+option);
 
@@ -8098,6 +8099,9 @@
 								        $(selectedOpts).remove();
 
 
+                                        $("#lstBox2").children("option").prop("selected", true);
+
+
 
 								        /* -- Uncomment for optional sorting --*/
 
@@ -8222,6 +8226,9 @@
 								        $("#lstBox2").val(units);
 
 								        e.preventDefault();
+
+
+                                        $("#lstBox2").children("option").prop("selected", true);
 
 								    });
 

@@ -162,7 +162,7 @@
                                         <?php
                                         if (!empty($learnership)) {
                                             foreach ($learnership as $key => $learnship) { ?>
-                                                <option value="<?= $learnship->id; ?>" <?php if (isset($record) && $record->learnship_id == $learnship->id) {
+                                                <option value="<?= $learnship->id; ?>" <?php if (isset($class_name) && $class_name->learnership_id == $learnship->id) {
                                                                                             echo 'selected';
                                                                                         } else {
                                                                                             if (isset($_POST['learnship_id']) && $_POST['learnship_id'] == $learnship->id) {
@@ -188,7 +188,7 @@
                                         <?php
                                         if (!empty($learnershipSubType)) {
                                             foreach ($learnershipSubType as $key => $sublearnship) { ?>
-                                                <option value="<?= $sublearnship->id; ?>" <?php if (isset($record) && $record->learnershipSubType == $sublearnship->id) {
+                                                <option value="<?= $sublearnship->id; ?>" <?php if (isset($class_name) && $class_name->learnership_sub_type_id == $sublearnship->id) {
                                                                                                 echo 'selected';
                                                                                             } else {
                                                                                                 if (isset($_POST['learnershipSubType']) && $_POST['learnershipSubType'] == $sublearnship->id) {
@@ -344,28 +344,6 @@
                                 </div>
                                 <!-- ************************************************************** -->
 
-<?php
-/*
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <!-- <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($record)) ? $record->unit_standard: ''; ?>" id="unit_standard">  -->
-
-                                    <select class="form-control" name="unit_standard" id="class_name">
-
-                                        <option hidden value="">Select Unit Standard</option>
-                                        <?php foreach ($units as $unit) { ?>
-                                            <option value="<?= $unit['id'] ?>"  <?php echo ( (isset($record) && $record->unit_standard == $unit['id']) ? 'selected' : '' ) ?>>
-                                            	<?= $unit['title'] ?>
-                                        	</option>
-                                        <?php } ?>
-                                    </select>
-
-                                </div>
-*/
-?>
-
                                 <div class="col-md-6">
 
                                     <label class="form-control-label">Assessment Type<span style="color:red;font-weight:bold;"> *</span></label>
@@ -373,11 +351,11 @@
                                     <select class="form-control" name="assessment_type">
 
                                         <option hidden value="">Choose Your Assessment Type</option>
-                                        <option value="formative">Formative</option>
-                                        <option value="summative">Summative/POE</option>
-                                        <option value="live video">Live Video</option>
-                                        <option value="online questions">Online Questions</option>
-                                        <option value="practical assessment">Practical Assessment</option>
+                                        <option value="formative"<?php echo ($record->assessment_type == 'formative') ? ' selected="selected"' : ''; ?>>Formative</option>
+                                        <option value="summative"<?php echo ($record->assessment_type == 'summative') ? ' selected="selected"' : ''; ?>>Summative/POE</option>
+                                        <option value="live video"<?php echo ($record->assessment_type == 'live video') ? ' selected="selected"' : ''; ?>>Live Video</option>
+                                        <option value="online questions"<?php echo ($record->assessment_type == 'online questions') ? ' selected="selected"' : ''; ?>>Online Questions</option>
+                                        <option value="practical assessment"<?php echo ($record->assessment_type == 'practical assessment') ? ' selected="selected"' : ''; ?>>Practical Assessment</option>
                                     </select>
 
                                     <label id="quarter-error" class="error" for="assessment_type"></label>
@@ -391,8 +369,8 @@
                                     <select class="form-control" name="submission_type">
 
                                         <option hidden value="">Choose Your Assessment Submission Type</option>
-                                        <option value="manual document upload">Manual Document Upload</option>
-                                        <option value="timed based assessment online">Timed based assessment online</option>
+                                        <option value="manual document upload"<?php echo ($record->submission_type == 'manual document upload') ? ' selected="selected"' : ''; ?>>Manual Document Upload</option>
+                                        <option value="timed based assessment online"<?php echo ($record->submission_type == 'timed based assessment online') ? ' selected="selected"' : ''; ?>>Timed based assessment online</option>
                                     </select>
 
                                     <label id="quarter-error" class="error" for="submission_type"></label>
@@ -403,7 +381,7 @@
 
                                     <label class="form-control-label">Assessment Start Date<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="date" placeholder="Enter Your Assessment Start Date" name="assessment_start_date" class="form-control assessment_start_date" value="<?= (isset($record)) ? $record->assessment_start_date : ''; ?>" id="assessment_start_date">
+                                    <input type="date" placeholder="Enter Your Assessment Start Date" name="assessment_start_date" class="form-control assessment_start_date" value="<?= (isset($record)) ? date("Y-m-d", strtotime($record->assessment_start_date)) : ''; ?>" id="assessment_start_date">
 
                                 </div>
 
@@ -412,7 +390,7 @@
 
                                     <label class="form-control-label">Assessment End Date<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="date" placeholder="Enter Your Assessment End Date" name="assessment_end_date" class="form-control assessment_end_date" value="<?= (isset($record)) ? $record->assessment_end_date : ''; ?>" id="assessment_end_date">
+                                    <input type="date" placeholder="Enter Your Assessment End Date" name="assessment_end_date" class="form-control assessment_end_date" value="<?= (isset($record)) ? date("Y-m-d", strtotime($record->assessment_end_date))  : ''; ?>" id="assessment_end_date">
 
                                 </div>
 
@@ -536,6 +514,22 @@
 ?>
 
 								<div class="col-md-6" id="class_module_uploads">
+									<?php if (!empty($_GET['id'])) { ?>
+
+									    <p><label class="form-control-label">Learner Guide : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>
+
+                            		    <p><label class="form-control-label">Learner Workbook : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
+
+                            		    <p><label class="form-control-label">Learner POE : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a></p>
+
+                            		    <p><label class="form-control-label">Facilitator Guide : </span></label>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a></p>
+
+                                    <?php } ?>
+
 								</div>
 
                             </div>
@@ -556,7 +550,20 @@
 
                             </div>
 
+
                         </form>
+
+              			<?php if (!empty($_GET['id'])) { ?>
+              			    <div class="form-group row">
+                  			    <div class="col-md-12">
+                      			    <div class="text-left">
+	                      			    <a href= "/facilitator-completed-assessment-list?aid=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">See Completed Assessments</a>
+                      			    </div>
+                  			    </div>
+              			    </div>
+                        <?php } ?>
+
+
 
                     </div>
 

@@ -219,17 +219,17 @@
 
 		    $module_uploads = $this->common->accessrecord('class_module', ['*'], ['id' => $module_id], 'row');
 
-		    $markup  = '<p><label class="form-control-label">Learner Guide : </span></label>';
-		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_learner_guide . '" target="_blank">Download the Learner Guide</a></p>';
+// 		    $markup  = '<p><label class="form-control-label">Learner Guide : </span></label>';
+// 		    $markup .= '<a href="/uploads/class/upload_learner_guide/' . $module_uploads->upload_learner_guide . '" target="_blank">Download the Learner Guide</a></p>';
 
-		    $markup .= '<p><label class="form-control-label">Learner Workbook : </span></label>';
-		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_workbook . '" target="_blank">Download the Learner Workbook</a></p>';
+		    $markup = '<p><label class="form-control-label">Learner Workbook : </span></label>';
+		    $markup .= '<a href="/uploads/class/learner_workbook/' . $module_uploads->upload_workbook . '" target="_blank">Download the Learner Workbook</a></p>';
 
 		    $markup .= '<p><label class="form-control-label">Learner POE : </span></label>';
-		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner POR</a></p>';
+		    $markup .= '<a href="/uploads/class/learner_poe/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner POR</a></p>';
 
 		    $markup .= '<p><label class="form-control-label">Facilitator Guide : </span></label>';
-		    $markup .= '<a href="/uploads/assessment/upload_learner_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">Download the Facilitator Guide</a></p>';
+		    $markup .= '<a href="/uploads/class/facilitator_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">Download the Facilitator Guide</a></p>';
 
 		    echo $markup;
 
@@ -2237,21 +2237,21 @@
 				        $modules[$key]['title'] = $_POST['class_module'][$key];
 				    }
 
-				    if ( (key_exists('learner_guide', $_FILES)) && (!empty($_FILES['learner_guide']['name'][$key]))) {
-
-				        $file_entry = [
-				            'name' => $_FILES['learner_guide']['name'][$key],
-				            'type' => $_FILES['learner_guide']['type'][$key],
-				            'tmp_name' => $_FILES['learner_guide']['tmp_name'][$key],
-				            'error' => $_FILES['learner_guide']['error'][$key],
-				            'size' => $_FILES['learner_guide']['size'][$key],
-				        ];
-
-				        $_FILES['upload_learner_guide'] = $file_entry;
-
-				        $modules[$key]['learner_guide']['store'] = $this->singlefileupload('upload_learner_guide', './uploads/class/learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
-				        $modules[$key]['learner_guide']['name'] = $_FILES['learner_guide']['name'][$key];
-				    }
+// 				    if ( (key_exists('learner_guide', $_FILES)) && (!empty($_FILES['learner_guide']['name'][$key]))) {
+//
+// 				        $file_entry = [
+// 				            'name' => $_FILES['learner_guide']['name'][$key],
+// 				            'type' => $_FILES['learner_guide']['type'][$key],
+// 				            'tmp_name' => $_FILES['learner_guide']['tmp_name'][$key],
+// 				            'error' => $_FILES['learner_guide']['error'][$key],
+// 				            'size' => $_FILES['learner_guide']['size'][$key],
+// 				        ];
+//
+// 				        $_FILES['upload_learner_guide'] = $file_entry;
+//
+// 				        $modules[$key]['learner_guide']['store'] = $this->singlefileupload('upload_learner_guide', './uploads/class/learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+// 				        $modules[$key]['learner_guide']['name'] = $_FILES['learner_guide']['name'][$key];
+// 				    }
 
 				    if ( (key_exists('learner_poe', $_FILES)) && (!empty($_FILES['learner_poe']['name'][$key]))) {
 
@@ -2348,10 +2348,10 @@
 
 				    ];
 
-				    if (!empty($class_module_item['learner_guide']['store'])) {
-				        $class_module_data['upload_learner_guide'] = $class_module_item['learner_guide']['store'];
-				        $class_module_data['upload_learner_guide_name'] = $class_module_item['learner_guide']['name'];
-				    }
+// 				    if (!empty($class_module_item['learner_guide']['store'])) {
+// 				        $class_module_data['upload_learner_guide'] = $class_module_item['learner_guide']['store'];
+// 				        $class_module_data['upload_learner_guide_name'] = $class_module_item['learner_guide']['name'];
+// 				    }
 
 				    if (!empty($class_module_item['learner_workbook']['store'])) {
 				        $class_module_data['upload_workbook'] = $class_module_item['learner_workbook']['store'];
@@ -2933,6 +2933,31 @@
 			}
 
 			echo json_encode($data);
+		}
+
+		public function get_units_for_leanership_subtype()
+		{
+
+		    if (isset($_SESSION['admin']['trainer_id'])) {
+
+		        $trainer_id = $_SESSION['admin']['trainer_id'];
+		    } else {
+
+		        $trainer_id = '';
+		    }
+
+		    $id = $this->input->post('value');
+
+		    $units = $this->common->getAssessmentUnitsFromlearnershipSubType($id);
+
+		    if (!empty($units)) {
+		        $data = $units;
+		    } else {
+
+		        $data = array('error' => 'This learnershipsubtype has no units.');
+		    }
+
+		    echo json_encode($data);
 		}
 
 		public function get_facilitator()
@@ -7430,11 +7455,13 @@
 		    foreach ($this->data['record'] as &$record) {
 
 		        $unit_standard_list = $this->common->getAssessmentUnits($record->id);
-		        $unit_standards = [];
-		        foreach ($unit_standard_list as $unit_standard_item) {
-		            $unit_standards[] = $unit_standard_item->title;
+		        if ($unit_standard_list) {
+		            $unit_standards = [];
+		            foreach ($unit_standard_list as $unit_standard_item) {
+		                $unit_standards[] = $unit_standard_item->title;
+		            }
+		            $record->unit_standard = join(",", $unit_standards);
 		        }
-		        $record->unit_standard = join(",", $unit_standards);
 		    }
 
 		    $this->data['page'] = 'list_assessments';

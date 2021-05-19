@@ -1287,14 +1287,22 @@ class Faciltator extends CI_Controller
 
 
 	    if (isset($_SESSION['facilitator']['id'])) {
-	        $facilitatorid = $_SESSION['facilitator']['id'];
+	        $facilitator_id = $_SESSION['facilitator']['id'];
 	    } else {
-
-	        $facilitatorid = '';
+	        $facilitator_id = '';
 	    }
 
 
-	    $this->data['record'] = $this->common->compeletedAssessmentListByFacilitator($facilitatorid);
+	    $assessment_id = 0;
+	    if (!empty($_GET['aid'])) {
+	        $assessment_id = $_GET['aid'];
+	        $this->data['record'] = $this->common->compeletedAssessmentListByAssessment($assessment_id);
+	    } else {
+	        $this->data['record'] = $this->common->compeletedAssessmentListByFacilitator($facilitator_id);
+	    }
+
+
+
 
 	    $this->data['page'] = 'list_complete_assessments';
 
@@ -1525,12 +1533,11 @@ class Faciltator extends CI_Controller
 
     public function create_assessment()
     {
-        if (isset($_SESSION['admin']['trainer_id'])) {
 
-            $trainer_id = $_SESSION['admin']['trainer_id'];
+        if (isset($_SESSION['facilitator']['id'])) {
+            $facilitator_id = $_SESSION['facilitator']['id'];
         } else {
-
-            $trainer_id = '';
+            $facilitator_id = '';
         }
 
         // $project_manager_id = $_SESSION['projectmanager']['id'];
@@ -1542,16 +1549,12 @@ class Faciltator extends CI_Controller
 
             $id = $_GET['id'];
 
-            $this->data['record'] = $this->common->accessrecord('assessment', [], [
-                'id' => $id
-            ], 'row');
-            $class_name = $this->common->accessrecord('class_name', [], [
-                'id' => ($this->data['record'])->class_id
-            ], 'row');
+            $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
+            $class_name = $this->common->accessrecord('class_name', [], ['id' => ($this->data['record'])->class_id], 'row');
+            $this->data['class_name'] = $class_name;
             $this->data['record']->classname = $class_name->class_name;
-            $this->data['class_module'] = $this->common->accessrecord('class_module', [], [
-                'id' => ($this->data['record'])->module_id
-            ], 'row');
+            $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
+            $this->data['learnershipSubType'] = $this->common->accessrecord('learnership_sub_type', [], ['learnship_id' => $class_name->learnership_id], 'result');
         }
 
         if ($_POST) {
@@ -1610,9 +1613,8 @@ class Faciltator extends CI_Controller
                     // 'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
                     // 'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
-                    'created_by' => $trainer_id,
-                    'created_by_role' => 'trainer',
-                    'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
+//                     'created_by' => $facilitator_id,
+//                     'created_by_role' => 'faciltator',
                     'created_date' => date('Y-m-d H:i:s'),
                     'updated_date' => date('Y-m-d H:i:s')
                 ];
@@ -1627,12 +1629,12 @@ class Faciltator extends CI_Controller
 
                     $this->session->set_flashdata('success', 'Assessment Updated Succesfully');
 
-                    redirect('provider-assessment-list');
+                    redirect('faciltator-assessment-list');
                 } else {
 
                     $this->session->set_flashdata('success', 'Assessment Updated Succesfully');
 
-                    redirect('provider-assessment-list');
+                    redirect('faciltator-assessment-list');
                 }
             } else {
 
@@ -1684,8 +1686,8 @@ class Faciltator extends CI_Controller
                     // 'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
                     // 'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
-                    'created_by' => $trainer_id,
-                    'created_by_role' => 'trainer',
+                    'created_by' => $facilitator_id,
+                    'created_by_role' => 'faciltator',
                     'created_date' => date('Y-m-d H:i:s'),
                     'updated_date' => date('Y-m-d H:i:s')
                 ];
@@ -1702,12 +1704,12 @@ class Faciltator extends CI_Controller
 
                     $this->session->set_flashdata('success', 'Assessement Saved Successfully');
 
-                    redirect('provider-assessment-list');
+                    redirect('faciltator-assessment-list');
                 } else {
 
                     $this->session->set_flashdata('error', 'Please Try Again');
 
-                    redirect('provider-create-assessment');
+                    redirect('faciltator-create-assessment');
                 }
             }
 
@@ -1722,17 +1724,16 @@ class Faciltator extends CI_Controller
         }
 
         $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
-        $this->data['units'] = $this->common->accessrecord('units', [], [], 'result_array');
+        $this->data['units'] = $this->common->accessrecord('units', [], [], 'result');
 
         $this->data['page'] = 'create_assessment';
 
         $this->data['content'] = 'pages/assessment/assessment_form';
 
-        $this->data['learnership'] = $this->common->accessrecord('learnership', [], [
-            'organization' => $organisation_id
-        ], 'result');
+        $this->data['learnership'] = $this->common->accessrecord('learnership', [], ['organization' => $organisation_id], 'result');
 
-        $this->load->view('provider/tamplate', $this->data);
+
+        $this->load->view('faciltator/tamplate', $this->data);
     }
 
         function assessment_delete()
