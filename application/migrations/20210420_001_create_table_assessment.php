@@ -81,6 +81,8 @@ CREATE TABLE `learner_assessment` (
   `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 
+  `competency_status` varchar(255),
+
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
@@ -113,6 +115,9 @@ CREATE TABLE `learner_assessment_submission` (
   `upload_marked_workbook_name` varchar(255) NOT NULL,
   `upload_marked_poe` varchar(255) NOT NULL,
   `upload_marked_poe_name` varchar(255) NOT NULL,
+
+  `assessment_mark` varchar(255),
+  `competency_status` varchar(255),
 
   `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),

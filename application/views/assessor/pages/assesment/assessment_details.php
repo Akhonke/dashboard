@@ -209,7 +209,7 @@
                                                     <textarea class="form-control"  name="overall_assessment" id="overall_assessment" cols="60" rows="5"><?= (isset($assessment_submission)) ? $assessment_submission->overall_assessment : ''; ?></textarea>
 
                                                 </div>
-
+<?php /*
                                                     <div class="col-md-12">
                     									<?php if (!empty($assessment_submission->upload_marked_learner_guide)) { ?>
                     										<p>
@@ -221,7 +221,7 @@
                                                                 <label id="upload_marked_learner_guide-error" class="error" for="upload_marked_learner_guide"></label>
                                                         <?php } ?>
                                                     </div>
-
+*/ ?>
 
                                                     <div class="col-md-12">
                     									<?php if (!empty($assessment_submission->upload_marked_workbook)) { ?>

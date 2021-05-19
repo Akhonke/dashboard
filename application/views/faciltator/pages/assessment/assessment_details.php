@@ -13,7 +13,7 @@
 
                     <div class="card-header">
 
-                        <h3 class="h6 text-uppercase mb-0">Assessment Details</h3>
+                        <h3 class="h6 text-uppercase mb-0">Submitted Assessment Details</h3>
 
                     </div>
 
@@ -32,14 +32,14 @@
                             <div class="form-group row">
 
                                 <div class="col-md-12">
-                                	<h4>Assessment Details</h4>
+                                	<h4>Submitted Assessment Details</h4>
                             	</div>
 
                                 <div class="col-md-6">
 
                                     <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_end_date" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title" readonly="readonly">
+                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title" readonly="readonly">
 
                                 </div>
 
@@ -98,7 +98,7 @@
 
                                     <label class="form-control-label">Assessment Submission Type<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter Your Assessment Submission Type" name="assessment_type" class="form-control assessment_type" value="<?= (isset($record)) ? $record->submission_type : ''; ?>" id="submission_type">
+                                    <input type="text" placeholder="Enter Your Assessment Submission Type" name="submission_type" class="form-control submission_type" value="<?= (isset($record)) ? $record->submission_type : ''; ?>" id="submission_type">
 
                                 </div>
 
@@ -106,7 +106,7 @@
 
                                     <label class="form-control-label">Learner Name<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" name="learner_name" class="form-control assessment_type" value="<?= (isset($record)) ? $record->first_name . ' ' . $record->surname : ''; ?>" id="submission_type">
+                                    <input type="text" name="learner_name" class="form-control learner_name" value="<?= (isset($record)) ? $record->first_name . ' ' . $record->surname : ''; ?>" id="learner_name">
 
                                 </div>
 <?php
@@ -210,6 +210,30 @@
 
                                 </div>
 
+                                <div class="col-md-12">
+
+                                    <label class="form-control-label">Assessment Mark</label>
+
+                                    <input type="text" placeholder="Enter the Assessment Mark" name="assessment_mark" class="form-control assessment_mark" value="<?= (isset($assessment_submission)) ? $assessment_submission->assessment_mark: ''; ?>" id="assessment_mark">
+
+                                </div>
+
+                                <div class="col-md-12">
+
+                                    <label class="form-control-label">Assessment Competency Level</label>
+
+                                    <select class="form-control" name="competency_status">
+
+                                        <option hidden value="">Choose the Competency Level</option>
+                                        <option value="competent"<?php echo ($assessment_submission->competency_status == 'competent') ? ' selected="selected"' : ''; ?>>Competent</option>
+                                        <option value="not competent"<?php echo ($assessment_submission->competency_status == 'not competent') ? ' selected="selected"' : ''; ?>>Not Competent</option>
+                                    </select>
+
+                                    <label id="quarter-error" class="error" for="assessment_type"></label>
+
+                                </div>
+
+<?php /*
                                     <div class="col-md-12">
     									<?php if (!empty($assessment_submission->upload_marked_learner_guide)) { ?>
     										<p>
@@ -221,7 +245,7 @@
                                             <label id="upload_marked_learner_guide-error" class="error" for="upload_marked_learner_guide"></label>
                                         <?php } ?>
                                     </div>
-
+*/ ?>
 
                                     <div class="col-md-12">
     									<?php if (!empty($assessment_submission->upload_marked_workbook)) { ?>
@@ -235,6 +259,7 @@
                                         <?php } ?>
                                     </div>
 
+<?php /*
                                     <div class="col-md-12">
 										<?php if (!empty($assessment_submission->upload_marked_poe)) { ?>
     										<p>
@@ -246,6 +271,8 @@
                                             <label id="upload_marked_poe-error" class="error" for="upload_marked_poe"></label>
                                         <?php } ?>
                                     </div>
+
+*/ ?>
 
                                 <div class="col-md-12">
 									<p>&nbsp;</p>
