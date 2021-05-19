@@ -1488,7 +1488,7 @@ class Faciltator extends CI_Controller
 
 	        $this->session->set_flashdata('success', 'Assessement Saved Successfully');
 
-	        redirect('facilitator-completed-assessment-list');
+	        redirect('facilitator-completed-assessment-list?aid=' . $assessment_submission->learner_assessment_id);
 	    } else {
 
 	        $this->session->set_flashdata('error', 'Cannot save marked submission. Please Try Again');

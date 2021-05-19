@@ -29,6 +29,8 @@
                                     <th>Assessment Start Date</th>
                                     <th>Assessment End Date</th>
                                     <th>Title</th>
+                                    <th>Status</th>
+                                    <th>Competency</th>
                                     <th>Assessment Type</th>
                                     <th>Submission Type</th>
                                     <th>Class Name</th>
@@ -61,6 +63,8 @@
                                             <td><?= $row->assessment_start_date; ?></td>
                                             <td><?= $row->assessment_end_date; ?></td>
                                             <td><?= $row->title; ?></td>
+                                            <td><?= $row->status; ?></td>
+                                            <td style="color:<?php echo ($row->competency_status == 'competent') ? 'green' : 'red'; ?>;"><?= ucwords($row->competency_status); ?></td>
                                             <td><?= $row->assessment_type; ?></td>
                                             <td><?= $row->submission_type; ?></td>
                                             <td><?= $row->class_name; ?></td>

@@ -25,10 +25,11 @@
                             <thead>
 
                                 <tr>
-                                    <th>Assessment Submission ID.</th>
+                                    <th>ID.</th>
                                     <th>Learner Name.</th>
                                     <th>Learner Surname.</th>
                                     <th>Status</th>
+                                    <th>Competency</th>
                                     <th>Assessment Start Date</th>
                                     <th>Assessment End Date</th>
                                     <th>Title</th>
@@ -61,6 +62,7 @@
                                             <td><?= $row->first_name; ?></td>
                                             <td><?= $row->surname; ?></td>
                                             <td><?= $row->status; ?></td>
+                                            <td style="color:<?php echo ($row->competency_status == 'competent') ? 'green' : 'red'; ?>;"><?= ucwords($row->competency_status); ?></td>
                                             <td><?= $row->assessment_start_date; ?></td>
                                             <td><?= $row->assessment_end_date; ?></td>
                                             <td><?= $row->title; ?></td>

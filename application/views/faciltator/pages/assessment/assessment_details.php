@@ -151,7 +151,7 @@
 
 
                                 <div class="col-md-12">
-                                	<p>&nbsp:</p>
+                                	<p>&nbsp;</p>
                                     <h4>Assessment Submissions By Learner</h4>
                                     <?php if (count($learner_assessment_submissions)) { ?>
                                     	<ul>
@@ -160,129 +160,138 @@
     											<p>Assessment submitted on <?php echo $assessment_submission->created_date ?></p>
     											<p>Status : <?php echo $assessment_submission->assessment_status; ?></p>
     											<p>Assessment Notes : <?php echo $assessment_submission->assessment_notes; ?></p>
-
-    											<?php if (!empty($assessment_submission->upload_completed_learner_guide)) { ?>
+<?php /*
+											<?php if (!empty($assessment_submission->upload_completed_learner_guide)) { ?>
     											<p>
         											Submitted Learner Guide : <a href="/uploads/assessment/upload_completed_learner_guide/<?php echo $assessment_submission->upload_completed_learner_guide; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_learner_guide_name; ?></a>
     											</p>
 											<?php } ?>
-    											<?php if (!empty($assessment_submission->upload_completed_workbook)) { ?>
+*/ ?>
+											<?php if (!empty($assessment_submission->upload_completed_workbook)) { ?>
 												<p>
     												Submitted Workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $assessment_submission->upload_completed_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_workbook_name; ?></a>
 												</p>
 											<?php } ?>
-    											<?php if (!empty($assessment_submission->upload_completed_poe)) { ?>
+											<?php if (!empty($assessment_submission->upload_completed_poe)) { ?>
 												<p>
     												Submitted POE : <a href="/uploads/assessment/upload_completed_poe/<?php echo $assessment_submission->upload_completed_poe; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_poe_name; ?></a>
 												</p>
 											<?php } ?>
 
-
-                                <div class="col-md-12">
-                                	<p>&nbsp:</p>
-                                    <h4>Marked Assessment Upload</h4>
-                                </div>
-
-                        		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="MarkAssessment" action="/facilitator-mark-assessment">
-								<input type="hidden" name="learner_assessment_submission_id" value="<?= (isset($assessment_submission)) ? $assessment_submission->id : ''; ?>">
-
-                                <div class="col-md-12">
-
-                                    <label class="form-control-label">Assessment Notes (not viewable by Learner)<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <textarea class="form-control"  name="assessment_notes" id="assessment_notes" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->assessment_notes : ''; ?></textarea>
-
-                                </div>
-
-                                <div class="col-md-12">
-
-                                    <label class="form-control-label">Learner Feedback<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <textarea class="form-control"  name="learner_feedback" id="learner_feedback" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->learner_feedback : ''; ?></textarea>
-
-                                </div>
-
-                                <div class="col-md-12">
-
-                                    <label class="form-control-label">Overall Assessment<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <textarea class="form-control"  name="overall_assessment" id="overall_assessment" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->overall_assessment : ''; ?></textarea>
-
-                                </div>
-
-                                <div class="col-md-12">
-
-                                    <label class="form-control-label">Assessment Mark</label>
-
-                                    <input type="text" placeholder="Enter the Assessment Mark" name="assessment_mark" class="form-control assessment_mark" value="<?= (isset($assessment_submission)) ? $assessment_submission->assessment_mark: ''; ?>" id="assessment_mark">
-
-                                </div>
-
-                                <div class="col-md-12">
-
-                                    <label class="form-control-label">Assessment Competency Level</label>
-
-                                    <select class="form-control" name="competency_status">
-
-                                        <option hidden value="">Choose the Competency Level</option>
-                                        <option value="competent"<?php echo ($assessment_submission->competency_status == 'competent') ? ' selected="selected"' : ''; ?>>Competent</option>
-                                        <option value="not competent"<?php echo ($assessment_submission->competency_status == 'not competent') ? ' selected="selected"' : ''; ?>>Not Competent</option>
-                                    </select>
-
-                                    <label id="quarter-error" class="error" for="assessment_type"></label>
-
-                                </div>
-
-<?php /*
-                                    <div class="col-md-12">
-    									<?php if (!empty($assessment_submission->upload_marked_learner_guide)) { ?>
-    										<p>
-        										Marked Learner Guide : <a href="/uploads/assessment/upload_marked_learner_guide/<?php echo $assessment_submission->upload_marked_learner_guide; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_learner_guide_name; ?></a>
-    										</p>
-    									<?php } else { ?>
-                                			<label class="form-control-label">Upload The Marked Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
-                                            <input type="file" name="upload_marked_learner_guide" class="form-control">
-                                            <label id="upload_marked_learner_guide-error" class="error" for="upload_marked_learner_guide"></label>
-                                        <?php } ?>
-                                    </div>
-*/ ?>
-
-                                    <div class="col-md-12">
-    									<?php if (!empty($assessment_submission->upload_marked_workbook)) { ?>
-    										<p>
-    											Marked Workbook : <a href="/uploads/assessment/upload_marked_workbook/<?php echo $assessment_submission->upload_marked_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_workbook_name; ?></a>
-    										</p>
-    									<?php } else { ?>
-                                			<label class="form-control-label">Upload The Marked Workbook<span style="color:red;font-weight:bold;"> *</span></label>
-                                            <input type="file" name="upload_marked_workbook" class="form-control">
-                                            <label id="upload_marked_workbook-error" class="error" for="upload_marked_workbook"></label>
-                                        <?php } ?>
-                                    </div>
-
-<?php /*
-                                    <div class="col-md-12">
-										<?php if (!empty($assessment_submission->upload_marked_poe)) { ?>
-    										<p>
-    											Marked POE : <a href="/uploads/assessment/upload_marked_poe/<?php echo $assessment_submission->upload_marked_poe; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_poe_name; ?></a>
-    										</p>
-    									<?php } else { ?>
-                                			<label class="form-control-label">Upload The Marked POE<span style="color:red;font-weight:bold;"> *</span></label>
-                                            <input type="file" name="upload_marked_poe" class="form-control">
-                                            <label id="upload_marked_poe-error" class="error" for="upload_marked_poe"></label>
-                                        <?php } ?>
-                                    </div>
-
-*/ ?>
-
-                                <div class="col-md-12">
-									<p>&nbsp;</p>
-                                	<button type="submit" class="btn btn-primary">Upload the marked assessments</button>
-                                </div>
+												<p>Assessment Mark: <?php echo $assessment_submission->assessment_mark; ?></p>
+												<p>Competency Status: <?php echo $assessment_submission->competency_status; ?></p>
 
 
+											<?php if ($assessment_submission->marked_status != "marked") { ?>
+
+                                                <div class="col-md-12">
+                                                	<p>&nbsp:</p>
+                                                    <h4>Marked Assessment Upload</h4>
+                                                </div>
+
+                                        		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="MarkAssessment" action="/facilitator-mark-assessment">
+                								<input type="hidden" name="learner_assessment_submission_id" value="<?= (isset($assessment_submission)) ? $assessment_submission->id : ''; ?>">
+
+                                                <div class="col-md-12">
+
+                                                    <label class="form-control-label">Assessment Notes (not viewable by Learner)<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                                    <textarea class="form-control"  name="assessment_notes" id="assessment_notes" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->assessment_notes : ''; ?></textarea>
+
+                                                </div>
+
+                                                <div class="col-md-12">
+
+                                                    <label class="form-control-label">Learner Feedback<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                                    <textarea class="form-control"  name="learner_feedback" id="learner_feedback" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->learner_feedback : ''; ?></textarea>
+
+                                                </div>
+
+                                                <div class="col-md-12">
+
+                                                    <label class="form-control-label">Overall Assessment<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                                    <textarea class="form-control"  name="overall_assessment" id="overall_assessment" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->overall_assessment : ''; ?></textarea>
+
+                                                </div>
+
+                                                <div class="col-md-12">
+
+                                                    <label class="form-control-label">Assessment Mark</label>
+
+                                                    <input type="text" placeholder="Enter the Assessment Mark" name="assessment_mark" class="form-control assessment_mark" value="<?= (isset($assessment_submission)) ? $assessment_submission->assessment_mark: ''; ?>" id="assessment_mark">
+
+                                                </div>
+
+                                                <div class="col-md-12">
+
+                                                    <label class="form-control-label">Assessment Competency Level</label>
+
+                                                    <select class="form-control" name="competency_status">
+
+                                                        <option hidden value="">Choose the Competency Level</option>
+                                                        <option value="competent"<?php echo ($assessment_submission->competency_status == 'competent') ? ' selected="selected"' : ''; ?>>Competent</option>
+                                                        <option value="not competent"<?php echo ($assessment_submission->competency_status == 'not competent') ? ' selected="selected"' : ''; ?>>Not Competent</option>
+                                                    </select>
+
+                                                    <label id="quarter-error" class="error" for="assessment_type"></label>
+
+                                                </div>
+
+                <?php /*
+                                                    <div class="col-md-12">
+                    									<?php if (!empty($assessment_submission->upload_marked_learner_guide)) { ?>
+                    										<p>
+                        										Marked Learner Guide : <a href="/uploads/assessment/upload_marked_learner_guide/<?php echo $assessment_submission->upload_marked_learner_guide; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_learner_guide_name; ?></a>
+                    										</p>
+                    									<?php } else { ?>
+                                                			<label class="form-control-label">Upload The Marked Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
+                                                            <input type="file" name="upload_marked_learner_guide" class="form-control">
+                                                            <label id="upload_marked_learner_guide-error" class="error" for="upload_marked_learner_guide"></label>
+                                                        <?php } ?>
+                                                    </div>
+                */ ?>
+
+                                                    <div class="col-md-12">
+                    									<?php if (!empty($assessment_submission->upload_marked_workbook)) { ?>
+                    										<p>
+                    											Marked Workbook : <a href="/uploads/assessment/upload_marked_workbook/<?php echo $assessment_submission->upload_marked_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_workbook_name; ?></a>
+                    										</p>
+                    									<?php } else { ?>
+                                                			<label class="form-control-label">Upload The Marked Workbook<span style="color:red;font-weight:bold;"> *</span></label>
+                                                            <input type="file" name="upload_marked_workbook" class="form-control">
+                                                            <label id="upload_marked_workbook-error" class="error" for="upload_marked_workbook"></label>
+                                                        <?php } ?>
+                                                    </div>
+
+                <?php /*
+                                                    <div class="col-md-12">
+                										<?php if (!empty($assessment_submission->upload_marked_poe)) { ?>
+                    										<p>
+                    											Marked POE : <a href="/uploads/assessment/upload_marked_poe/<?php echo $assessment_submission->upload_marked_poe; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_poe_name; ?></a>
+                    										</p>
+                    									<?php } else { ?>
+                                                			<label class="form-control-label">Upload The Marked POE<span style="color:red;font-weight:bold;"> *</span></label>
+                                                            <input type="file" name="upload_marked_poe" class="form-control">
+                                                            <label id="upload_marked_poe-error" class="error" for="upload_marked_poe"></label>
+                                                        <?php } ?>
+                                                    </div>
+
+                */ ?>
+
+                                                <div class="col-md-12">
+                									<p>&nbsp;</p>
+                                                	<button type="submit" class="btn btn-primary">Upload the marked assessments</button>
+                                                </div>
 
 
-                        		</form>
+
+
+                                        		</form>
+
+
+											<?php } ?>
 
 
 											</li>
@@ -295,9 +304,6 @@
                                 		<p>No assessments have been submitted for this class by the learner.</p>
                                     <?php } ?>
                                 </div>
-
-
-
 
                             </div>
 

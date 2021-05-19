@@ -180,10 +180,17 @@
 											<p>Learner Feedback : <?php echo $assessment_submission->learner_feedback; ?></p>
 											<p>Overall Assessment : <?php echo $assessment_submission->overall_assessment; ?></p>
 											<?php if (!empty($assessment_submission->upload_completed_workbook)) { ?>
-											<p>
-											Submitted workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $assessment_submission->upload_completed_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_workbook_name; ?></a>
+												<p>
+												Submitted workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $assessment_submission->upload_completed_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_workbook_name; ?></a>
 											</p>
 											<?php } ?>
+
+											<p>Assessment Mark: <?php echo $assessment_submission->assessment_mark; ?></p>
+
+											<?php if ($assessment_submission->competency_status == 'not competent') { ?>
+												<p style="color:red;"><strong>Your assessment has been rated NOT COMPETENT. Your are allowed to re-submit your assessment.</strong></p>
+											<?php } ?>
+
 											</li>
                                     	<?php } ?>
 
@@ -221,12 +228,13 @@
                                                 <label id="upload_completed_workbook-error" class="error" for="upload_completed_workbook"></label>
                                         </div>
 
-                                        <div class="col-md-12">
-                                    			<label class="form-control-label">Upload Your Completed POE<span style="color:red;font-weight:bold;"> *</span></label>
-                                                <input type="file" name="upload_completed_poe" class="form-control">
-                                                <label id="upload_completed_poe-error" class="error" for="upload_completed_poe"></label>
-                                        </div>
-
+        								<?php if (count($learner_assessment_submissions) == 0) { ?>
+                                            <div class="col-md-12">
+                                        			<label class="form-control-label">Upload Your Completed POE<span style="color:red;font-weight:bold;"> *</span></label>
+                                                    <input type="file" name="upload_completed_poe" class="form-control">
+                                                    <label id="upload_completed_poe-error" class="error" for="upload_completed_poe"></label>
+                                            </div>
+    									<?php } ?>
 
                                         <div class="col-md-12">
                                         <p>&nbsp;</p>

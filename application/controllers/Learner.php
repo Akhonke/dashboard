@@ -716,13 +716,14 @@ public function load_assessment(){
     if (!empty($_FILES['upload_completed_poe']['name'])) {
         $upload_completed_poe['upload_completed_poe']['store'] = $this->singlefileupload('upload_completed_poe', './uploads/assessment/upload_completed_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
         $upload_completed_poe['upload_completed_poe']['name'] = $_FILES['upload_completed_poe']['name'];
-    } else {
-        $this->session->set_flashdata('error', 'No learner POE submitted. Please Try Again');
-        redirect('/learner/view_assessment?id=' . $assessment_id);
     }
+//     else {
+//         $this->session->set_flashdata('error', 'No learner POE submitted. Please Try Again');
+//         redirect('/learner/view_assessment?id=' . $assessment_id);
+//     }
 
     $data = [
-        'assessment_id' => $this->input->post('assessment_id'),
+        'assessment_id' => $assessment_id,
         'learner_id' => $learner_id,
 
         'status' => 'assessment',
@@ -733,7 +734,13 @@ public function load_assessment(){
     ];
 
 
-    $learner_assessment_id = $this->common->insertData('learner_assessment', $data);
+    $learner_assessment = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
+    if ($learner_assessment) {
+        $this->common->updateData('learner_assessment', $data, ['id' => $assessment_id]);
+        $learner_assessment_id  = $learner_assessment->id;
+    } else {
+        $learner_assessment_id = $this->common->insertData('learner_assessment', $data);
+    }
 
     if ($learner_assessment_id) {
 
@@ -747,14 +754,16 @@ public function load_assessment(){
             'upload_completed_workbook'           => $upload_completed_workbook['upload_completed_workbook']['store'],
             'upload_completed_workbook_name'      => $upload_completed_workbook['upload_completed_workbook']['name'],
 
-            'upload_completed_poe'                => $upload_completed_poe['upload_completed_poe']['store'],
-            'upload_completed_poe_name'           => $upload_completed_poe['upload_completed_poe']['name'],
-
             'assessment_status'                   => 'new',
 
             'created_date' => date('Y-m-d H:i:s'),
             'updated_date' => date('Y-m-d H:i:s'),
         ];
+
+        if (!empty($upload_marked_workbook['upload_marked_workbook']['store'])) {
+            $submission_data['upload_completed_poe']  = $upload_completed_poe['upload_completed_poe']['store'];
+            $submission_data['upload_completed_poe_name']  = $upload_completed_poe['upload_completed_poe']['name'];
+        }
 
         if ($this->common->insertData('learner_assessment_submission', $submission_data)) {
 
