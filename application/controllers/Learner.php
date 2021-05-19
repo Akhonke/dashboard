@@ -622,7 +622,9 @@ public function view_assessment(){
     $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
 
     $assessment_submissions = [];
-    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'result');
+    if (!empty($this->data['learner_assessment'])) {
+        $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'result');
+    }
     $this->data['learner_assessment_submissions'] = $assessment_submissions;
 
     $this->data['learner_id'] = $learner_id;
@@ -695,13 +697,13 @@ public function load_assessment(){
 
 
     // Upload files
-    if (!empty($_FILES['upload_completed_learner_guide']['name'])) {
-        $upload_completed_learner_guide['upload_completed_learner_guide']['store'] = $this->singlefileupload('upload_completed_learner_guide', './uploads/assessment/upload_completed_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
-        $upload_completed_learner_guide['upload_completed_learner_guide']['name'] = $_FILES['upload_completed_learner_guide']['name'];
-    } else {
-        $this->session->set_flashdata('error', 'No learner guide submitted. Please Try Again');
-        redirect('/learner/view_assessment?id=' . $assessment_id);
-    }
+//     if (!empty($_FILES['upload_completed_learner_guide']['name'])) {
+//         $upload_completed_learner_guide['upload_completed_learner_guide']['store'] = $this->singlefileupload('upload_completed_learner_guide', './uploads/assessment/upload_completed_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+//         $upload_completed_learner_guide['upload_completed_learner_guide']['name'] = $_FILES['upload_completed_learner_guide']['name'];
+//     } else {
+//         $this->session->set_flashdata('error', 'No learner guide submitted. Please Try Again');
+//         redirect('/learner/view_assessment?id=' . $assessment_id);
+//     }
 
     if (!empty($_FILES['upload_completed_workbook']['name'])) {
         $upload_completed_workbook['upload_completed_workbook']['store'] = $this->singlefileupload('upload_completed_workbook', './uploads/assessment/upload_completed_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
@@ -739,8 +741,8 @@ public function load_assessment(){
             'learner_assessment_id'               => $learner_assessment_id,
             'assessment_submission_date'          => date('Y-m-d H:i:s'),
 
-            'upload_completed_learner_guide'      => $upload_completed_learner_guide['upload_completed_learner_guide']['store'],
-            'upload_completed_learner_guide_name' => $upload_completed_learner_guide['upload_completed_learner_guide']['name'],
+//             'upload_completed_learner_guide'      => $upload_completed_learner_guide['upload_completed_learner_guide']['store'],
+//             'upload_completed_learner_guide_name' => $upload_completed_learner_guide['upload_completed_learner_guide']['name'],
 
             'upload_completed_workbook'           => $upload_completed_workbook['upload_completed_workbook']['store'],
             'upload_completed_workbook_name'      => $upload_completed_workbook['upload_completed_workbook']['name'],
@@ -772,6 +774,7 @@ public function load_assessment(){
                         '
                 );
 
+            $this->session->set_flashdata('success', 'Facilitator has been emailed.');
 
             $this->session->set_flashdata('success', 'Assessement Saved Successfully');
             redirect('learner-assessment-list');

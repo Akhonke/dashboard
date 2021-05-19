@@ -129,6 +129,7 @@
 
                                 </div>
 
+<?php /*
                                 <div class="col-md-12">
 
                                     <label class="form-control-label">Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
@@ -140,6 +141,8 @@
                                     <?php } ?>
 
                                 </div>
+*/
+?>
 
                                 <div class="col-md-12">
 
@@ -176,9 +179,9 @@
 											<p>Status : <?php echo $assessment_submission->assessment_status; ?></p>
 											<p>Learner Feedback : <?php echo $assessment_submission->learner_feedback; ?></p>
 											<p>Overall Assessment : <?php echo $assessment_submission->overall_assessment; ?></p>
-											<?php if (!empty($assessment_submission->upload_assessment)) { ?>
+											<?php if (!empty($assessment_submission->upload_completed_workbook)) { ?>
 											<p>
-											Submitted workbook : <a href="/uploads/assessment/upload_assessment/<?php echo $assessment_submission->upload_assessment; ?>" target="_blank"><?php echo $assessment_submission->upload_assessment_name; ?></a>
+											Submitted workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $assessment_submission->upload_completed_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_workbook_name; ?></a>
 											</p>
 											<?php } ?>
 											</li>
@@ -204,12 +207,13 @@
                                 		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="CreateAssessment" action="/learner-load-assessment">
                             			<input type="hidden" name="learner_id" value="<?= (isset($learner_id)) ? $learner_id: ''; ?>">
                             			<input type="hidden" name="assessment_id" value="<?= (isset($assessment_id)) ? $assessment_id: ''; ?>">
-
+<?php /*
                                         <div class="col-md-12">
                                     			<label class="form-control-label">Upload Your Completed Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
                                                 <input type="file" name="upload_completed_learner_guide" class="form-control">
                                                 <label id="upload_completed_learner_guide-error" class="error" for="upload_completed_learner_guide"></label>
                                         </div>
+*/ ?>
 
                                         <div class="col-md-12">
                                     			<label class="form-control-label">Upload Your Completed Workbook<span style="color:red;font-weight:bold;"> *</span></label>

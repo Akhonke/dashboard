@@ -101,9 +101,9 @@ echo $learner_nm=$learner->first_name.' '.$learner->surname;
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Learner Performance Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>learner-assessment-list" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                     <a href="<?= BASEURL ?>learner-assessment-list" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">My Assessments</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">My Assessments</a>
                   <?php } ?>
                </li>
             </ul>

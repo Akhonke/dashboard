@@ -516,8 +516,10 @@
 								<div class="col-md-6" id="class_module_uploads">
 									<?php if (!empty($_GET['id'])) { ?>
 
+<?php /*
 									    <p><label class="form-control-label">Learner Guide : </span></label>
                             		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>
+*/ ?>
 
                             		    <p><label class="form-control-label">Learner Workbook : </span></label>
                             		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
