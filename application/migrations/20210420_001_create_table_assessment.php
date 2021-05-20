@@ -133,6 +133,14 @@ CREATE TABLE `learner_assessment_submission` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
+
+ALTER TABLE `moderation_report` ADD COLUMN `sample_percentage` int(11) DEFAULT NULL;
+ALTER TABLE `moderation_report` ADD COLUMN `assessment_id` int(11) DEFAULT NULL;
+
+ALTER TABLE `class_name` ADD COLUMN `upload_learner_guide` varchar(255) DEFAULT NULL;
+ALTER TABLE `class_name` ADD COLUMN `upload_learner_guide_name` varchar(255) DEFAULT NULL;
+
+
          */
 
 //         $this->dbforge->add_field(array(

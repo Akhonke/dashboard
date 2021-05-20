@@ -226,7 +226,7 @@
 		    $markup .= '<a href="/uploads/class/learner_workbook/' . $module_uploads->upload_workbook . '" target="_blank">Download the Learner Workbook</a></p>';
 
 		    $markup .= '<p><label class="form-control-label">Learner POE : </span></label>';
-		    $markup .= '<a href="/uploads/class/learner_poe/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner POR</a></p>';
+		    $markup .= '<a href="/uploads/class/learner_poe/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner POE</a></p>';
 
 		    $markup .= '<p><label class="form-control-label">Facilitator Guide : </span></label>';
 		    $markup .= '<a href="/uploads/class/facilitator_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">Download the Facilitator Guide</a></p>';
@@ -2199,6 +2199,12 @@
 
 			if ($_POST) {
 
+			    // Upload files
+		        if (!empty($_FILES['upload_learner_guide']['name'])) {
+		            $upload_learner_guide['upload_learner_guide']['store'] = $this->singlefileupload('upload_learner_guide', './uploads/class/learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+		            $upload_learner_guide['upload_learner_guide']['name'] = $_FILES['upload_learner_guide']['name'];
+		        }
+
 				$data = array(
 					'learnership_id' => $this->input->post('learnship_id'),
 
@@ -2219,6 +2225,11 @@
 					'facilitator_id' => $this->input->post('facilitator_id')
 
 				);
+
+				if (!empty($upload_learner_guide['upload_learner_guide']['store'])) {
+				    $data['upload_learner_guide']  = $upload_learner_guide['upload_learner_guide']['store'];
+				    $data['upload_learner_guide_name']  = $upload_learner_guide['upload_learner_guide']['name'];
+				}
 
 
 				$class_modules_list = [];
@@ -2323,7 +2334,7 @@
 				} else {
 
 					if ($class_id = $this->common->insertData('class_name', $data)) {
-					    ;
+					    $id = $class_id;
 					} else {
 						$this->session->set_flashdata('error', 'Please Try Again');
 						redirect('provider-create-class');
@@ -2402,7 +2413,11 @@
 
 			$this->data['sublearnship'] = $this->common->accessrecord('learnership_sub_type', [], [], 'result');
 
-			$this->data['class_modules'] = $this->common->accessrecord('class_module', [], ['class_id' => $id], 'result');
+			if ($id) {
+			    $this->data['class_modules'] = $this->common->accessrecord('class_module', [], ['class_id' => $id], 'result');
+			} else {
+			    $this->data['class_modules'] = [];
+			}
 
 			$this->data['page'] = 'create_class';
 
