@@ -1603,7 +1603,7 @@ class Faciltator extends CI_Controller
                     'title' => $this->input->post('title'),
                     'assessment_type' => $this->input->post('assessment_type'),
                     'submission_type' => $this->input->post('submission_type'),
-                    'class_id' => $this->input->post('classname'),
+                    'class_id' => $class_name->id,
                     'module_id' => $this->input->post('class_module'),
                     'qualification' => $this->input->post('qualification'),
                     'learning_programme' => $this->input->post('learning_programme'),
@@ -1619,7 +1619,7 @@ class Faciltator extends CI_Controller
 
 //                     'created_by' => $facilitator_id,
 //                     'created_by_role' => 'faciltator',
-                    'created_date' => date('Y-m-d H:i:s'),
+               //     'created_date' => date('Y-m-d H:i:s'),
                     'updated_date' => date('Y-m-d H:i:s')
                 ];
 
@@ -1633,12 +1633,12 @@ class Faciltator extends CI_Controller
 
                     $this->session->set_flashdata('success', 'Assessment Updated Succesfully');
 
-                    redirect('faciltator-assessment-list');
+                    redirect('facilitator-assessment-list');
                 } else {
 
                     $this->session->set_flashdata('success', 'Assessment Updated Succesfully');
 
-                    redirect('faciltator-assessment-list');
+                    redirect('facilitator-assessment-list');
                 }
             } else {
 
@@ -1708,7 +1708,7 @@ class Faciltator extends CI_Controller
 
                     $this->session->set_flashdata('success', 'Assessement Saved Successfully');
 
-                    redirect('faciltator-assessment-list');
+                    redirect('facilitator-assessment-list');
                 } else {
 
                     $this->session->set_flashdata('error', 'Please Try Again');
