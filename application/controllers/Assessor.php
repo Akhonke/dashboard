@@ -908,7 +908,7 @@ class Assessor extends CI_Controller
 	    }
 
 
-	    $this->data['record'] = $this->common->compeletedAssessmentListByAssessor($assessorid);
+	    $this->data['record'] = $this->common->completedAssessmentListByAssessor($assessorid);
 
 	    $this->data['page'] = 'list_complete_assessments';
 

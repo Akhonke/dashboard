@@ -13,7 +13,7 @@
 
                     <div class="card-header">
 
-                        <h3 class="h6 text-uppercase mb-0">Assessment Details</h3>
+                        <h3 class="h6 text-uppercase mb-0">Moderation Details</h3>
 
                     </div>
 
@@ -32,22 +32,30 @@
                             <div class="form-group row">
 
                                 <div class="col-md-12">
-                                	<h4>Assessment Details</h4>
+                                	<h4>Moderation Details - <?php echo $assessment->title; ?></h4>
                             	</div>
 
                                 <div class="col-md-6">
 
                                     <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_end_date" value="<?= (isset($assessment)) ? $assessment->title: ''; ?>" id="title" readonly="readonly">
+                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control title" value="<?= (isset($assessment)) ? $assessment->title: ''; ?>" id="title" readonly="readonly">
 
                                 </div>
 
                                 <div class="col-md-6">
 
-                                    <label class="form-control-label">Class Name<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <label class="form-control-label">Assessment Class Name<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <input type="text" placeholder="Enter Your Class Name" name="class_name" class="form-control class_name" value="<?= (isset($class)) ? $class->class_name: ''; ?>" id="class_name"  readonly="readonly">
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Assessment Class Module<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <input type="text" placeholder="Enter Your Class Module" name="class_name" class="form-control module_name" value="<?= (isset($module)) ? $module->title: ''; ?>" id="module_name"  readonly="readonly">
 
                                 </div>
 
@@ -56,7 +64,7 @@
 
                                     <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($assessment)) ? $assessment->unit_standard: ''; ?>" id="unit_standard"  readonly="readonly">
+                                    <input type="text" placeholder="Enter the Class Module" name="module_name" class="form-control unit_standard" value="<?= (!empty($unit_standards) && (is_array($unit_standards))) ? join(",", $unit_standards) : ''; ?>" id="unit_standard"  readonly="readonly">
 
                                 </div>
 
@@ -102,6 +110,8 @@
                                     <input type="text" placeholder="Enter Your Assessment Submission Type" name="assessment_type" class="form-control assessment_type" value="<?= (isset($assessment)) ? $assessment->submission_type : ''; ?>" id="submission_type">
 
                                 </div>
+
+<?php /*
                                 <div class="col-md-12">
 
                                     <label class="form-control-label">Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
@@ -113,13 +123,14 @@
                                     <?php } ?>
 
                                 </div>
+*/ ?>
 
                                 <div class="col-md-12">
 
                                     <label class="form-control-label">Learner Workbook<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <?php if (!empty($assessment->upload_learner_workbook)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_workbook/<?php echo $assessment->upload_learner_workbook; ?>" target="_blank">Download the Learner Workbook</a>
+                                    <?php if (!empty($module->upload_workbook)) { ?>
+                                    	<a href="/uploads/assessment/upload_learner_workbook/<?php echo $module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a>
                                     <?php } else {?>
                                     	<p>No learner workbook available for this assessment</p>
                                     <?php } ?>
@@ -130,25 +141,53 @@
 
                                     <label class="form-control-label">Learner POE<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <?php if (!empty($assessment->upload_learner_poe)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_poe/<?php echo $assessment->upload_learner_poe; ?>" target="_blank">Download the Learner POE</a>
+                                    <?php if (!empty($module->upload_poe)) { ?>
+                                    	<a href="/uploads/assessment/upload_learner_poe/<?php echo $module->upload_poe; ?>" target="_blank">Download the Learner POE</a>
                                     <?php } else {?>
-                                    	<p>No learner guide poe for this assessment</p>
+                                    	<p>No learner poe for this assessment</p>
                                     <?php } ?>
 
                                 </div>
 
-
-
                                 <div class="col-md-12">
 									<p>&nbsp;</p>
-                                	<button type="submit" class="btn btn-primary">Select assessments for moderation</button>
+                                	<h4>Moderation Report</h4>
                                 </div>
 
+								<form class="form-horizontal" method="post" enctype="multipart/form-data" id="MarkAssessment" action="/moderator-view-moderation-submissions">
 
+									<input type="hidden" name="moderator_report_id" value="<?= (isset($moderation_report)) ? $moderation_report->id : ''; ?>">
+									<input type="hidden" name="assessment_id" value="<?= (isset($assessment)) ? $assessment->id : ''; ?>">
 
+                                    <div class="col-md-12">
 
-                        		</form>
+                                        <label class="form-control-label">Sample Percentage</label>
+
+                                        <select class="form-control" name="sample_percentage">
+                                            <option hidden value="">Choose the Sample Percentage</option>
+                                            <option value="10"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 10)) ? ' selected="selected"' : ''; ?>>10 %</option>
+                                            <option value="20"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 20)) ? ' selected="selected"' : ''; ?>>20 %</option>
+                                            <option value="30"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 30)) ? ' selected="selected"' : ''; ?>>30 %</option>
+                                            <option value="40"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 40)) ? ' selected="selected"' : ''; ?>>40 %</option>
+                                            <option value="50"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 50)) ? ' selected="selected"' : ''; ?>>50 %</option>
+                                            <option value="60"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 60)) ? ' selected="selected"' : ''; ?>>60 %</option>
+                                            <option value="70"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 70)) ? ' selected="selected"' : ''; ?>>70 %</option>
+                                            <option value="80"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 80)) ? ' selected="selected"' : ''; ?>>80 %</option>
+                                            <option value="90"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 90)) ? ' selected="selected"' : ''; ?>>90 %</option>
+                                            <option value="100"<?php echo (!empty($moderation_report) && ($moderation_report->sample_percentage == 100)) ? ' selected="selected"' : ''; ?>>100 %</option>
+                                        </select>
+
+                                        <label id="quarter-error" class="error" for="assessment_type"></label>
+
+                                    </div>
+
+                                    <div class="col-md-12">
+    									<p>&nbsp;</p>
+                                    	<button type="submit" class="btn btn-primary">View assessments for moderation</button>
+                                    </div>
+
+								</form>
+
 
                             </div>
 

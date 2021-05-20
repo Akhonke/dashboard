@@ -546,7 +546,9 @@ class Moderator extends CI_Controller
 			$this->data['learnershipSubType'] = $this->common->accessrecord('learnership_sub_type', [], [], 'result_array');
 
 			// print_r($this->data['trainer_id']);die;
-			$this->data['learnership'] = $this->common->accessrecord('learnership', [], ['trainer_id' =>  $this->data['trainer_id']], 'result');
+			// $this->data['learnership'] = $this->common->accessrecord('learnership', [], ['trainer_id' =>  $this->data['trainer_id']], 'result');
+			// TODO: I have temporarily removed the link between the moderator and trainer, so that we can access all classes and assessments
+			$this->data['learnership'] = $this->common->accessrecord('learnership', [], ['organization' => $this->data['organization_id']], 'result');
 
 
 			$this->data['page'] = 'createmoderation';
@@ -812,39 +814,36 @@ class Moderator extends CI_Controller
 
 
 
-	    $this->data['record'] = $this->common->CompletedAssessmentListByOrganisation($organisation_id);
+	    $this->data['record'] = $this->common->assessmentListByModerator($moderator_id);
 
 	    $this->data['page'] = 'list_complete_assessments';
 
-	    $this->data['content'] = '/pages/assessment/complete_assessment_list';
+	    $this->data['content'] = '/pages/assessment/assessment_list';
 
 	    $this->load->view('moderator/tamplate', $this->data);
 	}
 
-	public function list_moderation_classes()
-	{
-
-
-	    if (isset($_SESSION['moderator']['id'])) {
-	        $moderator_id = $_SESSION['moderator']['id'];
-	    } else {
-
-	        $moderator_id = '';
-	    }
-
-	    $moderator = $this->db->where('id',  $moderator_id)->get('moderator')->row();
-	    $organisation_id  = $moderator->organization;
-
-
-
-	    $this->data['record'] = $this->common->AssessmentModerationListsByOrganisation($organisation_id);
-
-	    $this->data['page'] = 'list_complete_assessments';
-
-	    $this->data['content'] = '/pages/assessment/moderation_class_list';
-
-	    $this->load->view('moderator/tamplate', $this->data);
-	}
+// 	public function list_moderation_classes()
+// 	{
+//
+//
+// 	    if (isset($_SESSION['moderator']['id'])) {
+// 	        $moderator_id = $_SESSION['moderator']['id'];
+// 	    } else {
+// 	        $moderator_id = '';
+// 	    }
+//
+// 	    $moderator = $this->db->where('id',  $moderator_id)->get('moderator')->row();
+// 	    $organisation_id  = $moderator->organization;
+//
+// 	    $this->data['record'] = $this->common->AssessmentModerationListsByOrganisation($organisation_id);
+//
+// 	    $this->data['page'] = 'list_complete_assessments';
+//
+// 	    $this->data['content'] = '/pages/assessment/moderation_class_list';
+//
+// 	    $this->load->view('moderator/tamplate', $this->data);
+// 	}
 
 
 	public function view_assessment(){
@@ -852,10 +851,8 @@ class Moderator extends CI_Controller
 	    if (isset($_SESSION['moderator']['id'])) {
 	        $moderator_id = $_SESSION['moderator']['id'];
 	    } else {
-
 	        $moderator_id = '';
 	    }
-
 
 	    $assessment_id = 0;
 	    if (!empty($_GET['id'])) {
@@ -867,20 +864,161 @@ class Moderator extends CI_Controller
 	    }
 
 	    $this->data['assessment'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
-	    // $this->data['learner_assessment'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
 	    $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
+	    $this->data['module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
 	    $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
 
-// 	    $assessment_submissions = [];
-// 	    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => ($this->data['learner_assessment'])->id], 'result');
-// 	    $this->data['learner_assessment_submissions'] = $assessment_submissions;
+	    $unit_standard_list = $this->common->getAssessmentUnits($assessment_id);
+	    $unit_standards = [];
+	    foreach ($unit_standard_list as $unit_standard_item) {
+	        $unit_standards[] = $unit_standard_item->title;
+	    }
+	    $this->data['unit_standards'] = $unit_standards;
 
-// 	    $this->data['learner_id'] = $learner_id;
-// 	    $this->data['assessment_id'] = $assessment_id;
+	    $this->data['moderation_report'] = $this->common->accessrecord('moderation_report', [], ['assessment_id' => $assessment_id], 'row');
 
 	    $this->data['page'] = 'view_assessment';
 
 	    $this->data['content'] = 'pages/assessment/assessment_details';
+
+	    $this->load->view('moderator/tamplate', $this->data);
+
+	}
+
+
+	public function report_submission_list() {
+
+	    if (isset($_SESSION['moderator']['id'])) {
+	        $moderator_id = $_SESSION['moderator']['id'];
+	    } else {
+	        $moderator_id = '';
+	    }
+
+	    $moderation_report_id = $this->input->post('moderator_report_id');
+	    $assessment_id = $this->input->post('assessment_id');
+
+	    $this->data['moderation_report'] = false;
+	    if ($moderation_report_id) {
+	        $this->data['moderation_report'] = $this->common->accessrecord('moderation_report', [], ['id' => $moderation_report_id], 'row');
+	    }
+
+	    $this->data['assessment'] = false;
+	    if ($assessment_id) {
+	        $this->data['assessment'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+	    }
+
+
+	    // Create the moderation report if it does not exist
+	    if (!$this->data['moderation_report']) {
+
+	        $data = array(
+	            'moderator_name' => '',
+	            'moderator_surname' => '',
+	            'moderation_number' => '',
+	            'moderation_date' => date('Y-m-d'),
+	            'learnship_id' => '',
+	            'learnership_sub_type' => '',
+	            'classname' => '',
+	            'unit_statndards' => '',
+	            'organization' => '',
+	            'project_manager' => '',
+	            'trainer_id' => '',
+	            // 'learner_id' => $this->input->post('learner_id'),
+	            // 'learner_name' => $this->input->post('learner_name'),
+	            // 'learner_surname' => $this->input->post('learner_surname'),
+	            'overall_comments' => '',
+	            'moderator_id' => $moderator_id,
+	            'sample_percentage' => $this->input->post('sample_percentage'),
+	            'assessment_id' => $assessment_id,
+	        );
+
+	        $res = $this->common->insertData('moderation_report', $data);
+
+	        // if saved the report entry, lets choose assessment submissions to work with
+	        if ($res) {
+
+	            // Get count of submissions
+	            $submissions_list = $this->common->accessrecord('learner_assessment', [], ['assessment_id' => $assessment_id], 'result');
+	            $submission_count = count($submissions_list);
+
+	            $sample_percentage = $this->input->post('sample_percentage');
+
+	            $sample_size = ceil(($sample_percentage / 100) * $submission_count);
+
+	            $sample_list_idx = array_rand($submissions_list, $sample_size);
+
+	            $sample_list = [];
+
+	            if (is_numeric($sample_list_idx)) {
+	                $sample_list[] = $submissions_list[$sample_list_idx];
+	            } else {
+	                foreach ($sample_list_idx as $index) {
+	                    $sample_list[] = $submissions_list[$index];
+	                }
+	            }
+
+	            foreach ($sample_list as $sample_list_item) {
+	                $this->common->updateData('learner_assessment', array('internal_moderation_status' => 'selected'), array('id' => $sample_list_item->id));
+	            }
+
+	            // Load the list of selected submissions
+	            $this->data['record'] = $this->common->assessmentSubmissionByModerationStatus($assessment_id, 'selected');
+
+	            $this->data['page'] = 'list_complete_assessments';
+
+	            $this->data['content'] = 'pages/assessment/complete_assessment_list';
+
+	            $this->load->view('moderator/tamplate', $this->data);
+
+
+	        }
+
+	    } else {
+
+	        // Moderation report exists. Just load the data
+
+	        // Load the list of selected submissions
+	        $this->data['record'] = $this->common->assessmentSubmissionByModerationStatus($assessment_id, 'selected');
+
+	        $this->data['page'] = 'list_complete_assessments';
+
+	        $this->data['content'] = 'pages/assessment/complete_assessment_list';
+
+	        $this->load->view('moderator/tamplate', $this->data);
+	    }
+
+
+	}
+
+	public function view_assessment_submission()
+	{
+
+	    if (isset($_SESSION['moderator']['id'])) {
+	        $moderator_id = $_SESSION['moderator']['id'];
+	    } else {
+	        $moderator_id = '';
+	    }
+
+
+	    $learner_assessment_id = 0;
+	    if (!empty($_GET['id'])) {
+	        $learner_assessment_id = $_GET['id'];
+	    }
+	    if ($learner_assessment_id == 0) {
+	        echo "Invalid Assessment";
+	        return;
+	    }
+
+	    $this->data['record'] = $this->common->compeletedAssessmentListByID($learner_assessment_id);
+
+	    $assessment_submissions = [];
+	    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => $learner_assessment_id], 'result');
+	    $this->data['learner_assessment_submissions'] = $assessment_submissions;
+
+
+	    $this->data['page'] = 'view_assessment';
+
+	    $this->data['content'] = 'pages/assessment/assessment_submission_details';
 
 	    $this->load->view('moderator/tamplate', $this->data);
 

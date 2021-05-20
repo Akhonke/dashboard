@@ -78,7 +78,7 @@
                                         } else { ?>
                                          <select class="form-control learner_classname" name="classname">
                                              <option label="" value="" hidden>Select Your Class Name</option>
-                                            
+
                                          </select>
                                      <?php } ?>
                                      <label id="#learner_classname-error" class="error" for="classname"></label>
@@ -98,7 +98,25 @@
                                     </select>
                                     <?php } ?>
                                     <label id="classname-error" class="error" for="classname"></label>
-                        </div>
+                    			</div>
+
+
+
+
+                               <div class="col-md-6">
+                                    <label class="form-control-label">Module Name<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <?php if (!empty($_GET['id'])) { ?>
+                                        <input type="hidden" name="class_module" class="form-control" value="<?= $class_module->title ?>">
+                                        <input type="text" name="class_module" class="form-control" value="<?= $class_module->title ?>" readonly>
+                                    <?php } else { ?>
+                                        <select class="form-control class_module" name="class_module" id="class_module">
+                                            <option label="" value="" hidden>Select Your Module</option>
+                                        </select>
+                                    <?php } ?>
+                                    <label id="class_module-error" class="error" for="class_module"></label>
+                                </div>
+
+
                                  <input type="hidden" placeholder="Enter Your Unit Standard Assessed" name="unit_statndards" id="unit_statndards" class="form-control unit_statndards" readonly>
                                  <div class="col-md-12" style="margin-top: 30px;">
                                      <table id="learner_table" class="learner_table table table-bordered table-striped" style="width:100%">

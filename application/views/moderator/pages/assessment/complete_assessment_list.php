@@ -78,7 +78,7 @@
 
                                             <td>
 
-                                                <a href="/assessor/view_assessment?id=<?= $row->id ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                                <a href="/moderator-view-assessment-submission?id=<?= $row->id ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
 
                                             </td>
 

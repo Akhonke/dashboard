@@ -3008,16 +3008,38 @@ class Common extends CI_Model
 	{
 
 	    $result = $this->db->select('assessment.*, class_name.class_name')
-	    ->from('assessment')
-	    ->join('class_name', 'class_name.id = assessment.class_id')
-// 	    ->join('class_module', 'class_name.id = class_module.class_id')
-// 	    ->join('units', 'units.id = assessment.unit_standard')
-	    ->where('assessment.created_by', $trainer_id)
-	    ->where('assessment.created_by_role', 'trainer')
-	    ->get()
-	    ->result();
+    	    ->from('assessment')
+    	    ->join('class_name', 'class_name.id = assessment.class_id')
+    // 	    ->join('class_module', 'class_name.id = class_module.class_id')
+    // 	    ->join('units', 'units.id = assessment.unit_standard')
+    	    ->where('assessment.created_by', $trainer_id)
+    	    ->where('assessment.created_by_role', 'trainer')
+    	    ->get()
+    	    ->result();
 
 	    return $result;
+	}
+
+	public function assessmentListByModerator($moderator_id)
+	{
+
+	    $moderator = $this->db
+	       ->where('id',  $moderator_id)
+	       ->get('moderator')
+	       ->row();
+
+       if ($moderator) {
+           $result = $this->db->select('assessment.*, class_name.class_name')
+               ->from('assessment')
+               ->join('class_name', 'class_name.id = assessment.class_id')
+               ->join('class_module', 'class_name.id = class_module.class_id')
+               ->where('class_name.trainer_id', $moderator->trainer_id)
+               ->get()
+               ->result();
+           return $result;
+       }
+
+	    return false;
 	}
 
 
@@ -3116,13 +3138,13 @@ class Common extends CI_Model
 	    return $result;
 	}
 
-	public function compeletedAssessmentListByFacilitator($facilitator_id)
+	public function completedAssessmentListByFacilitator($facilitator_id)
 	{
 
 	    /*
 	     select * from learner_assessment
 	     left join assessment on assessment.id = learner_assessment.assessment_id
-	     left join class_name on class_name.id = assessment.classname
+	     left join class_name on class_name.id = assessment.class_id
 	     where class_name.facilitator_id = 1
         */
 
@@ -3161,7 +3183,38 @@ class Common extends CI_Model
      * @return mixed
      */
 
-	public function compeletedAssessmentListByAssessor($assessorid)
+	public function completedAssessmentListByAssessor($assessorid)
+	{
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->join('assessor', 'assessor.organization = class_name.organization')
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+	public function completedAssessmentListByModerator($moderator_id)
 	{
 	    $select_fields = [
 	        'learner_assessment.*',
@@ -3222,7 +3275,7 @@ class Common extends CI_Model
 	    return $result;
 	}
 
-	public function compeletedAssessmentListByAssessment($assessment_id)
+	public function completedAssessmentListByAssessment($assessment_id)
 	{
 
 	    $select_fields = [
@@ -3275,7 +3328,7 @@ class Common extends CI_Model
 	    $result = $this->db->select($select_fields)
 	    ->from('learner_assessment')
 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
-	    ->join('class_name', 'class_name.id = assessment.classname')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
 	    ->where('class_name.organization', $organisation_id)
 	    ->get()
@@ -3367,6 +3420,36 @@ class Common extends CI_Model
 	        return false;
 	    }
 
+	}
+
+	public function assessmentSubmissionByModerationStatus($assessment_id, $moderation_status) {
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('learner_assessment.assessment_id', $assessment_id)
+	    ->where('learner_assessment.internal_moderation_status', $moderation_status)
+	    ->get()
+	    ->result();
+
+	    return $result;
 	}
 
 

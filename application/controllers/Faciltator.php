@@ -1296,15 +1296,12 @@ class Faciltator extends CI_Controller
 	    $assessment_id = 0;
 	    if (!empty($_GET['aid'])) {
 	        $assessment_id = $_GET['aid'];
-	        $this->data['record'] = $this->common->compeletedAssessmentListByAssessment($assessment_id);
+	        $this->data['record'] = $this->common->completedAssessmentListByAssessment($assessment_id);
 	        $this->data['assessment'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
 
 	    } else {
-	        $this->data['record'] = $this->common->compeletedAssessmentListByFacilitator($facilitator_id);
+	        $this->data['record'] = $this->common->completedAssessmentListByFacilitator($facilitator_id);
 	    }
-
-
-
 
 	    $this->data['page'] = 'list_assessments';
 
