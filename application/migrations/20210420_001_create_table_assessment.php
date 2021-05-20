@@ -59,7 +59,16 @@ CREATE TABLE `learner_assessment` (
   `assessment_id` int(11) NOT NULL,
   `learner_id` int(11) NOT NULL,
 
-  `status` varchar(255) NOT NULL,
+  `upload_assessed_workbook` varchar(255) NOT NULL,
+  `upload_assessed_workbook_name` varchar(255) NOT NULL,
+  `upload_assessed_learner_feedback` varchar(255) NOT NULL,
+  `upload_assessed_learner_feedback_name` varchar(255) NOT NULL,
+  `upload_assessed_overall_report` varchar(255) NOT NULL,
+  `upload_assessed_overall_report_name` varchar(255) NOT NULL,
+
+
+  `upload_moderated_poe` varchar(255) NOT NULL,
+  `upload_moderated_poe_name` varchar(255) NOT NULL,
 
   `internal_moderation_status` varchar(255) NOT NULL,
   `internal_moderation_by` int(11) DEFAULT NULL,
