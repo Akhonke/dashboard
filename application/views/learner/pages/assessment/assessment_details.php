@@ -32,7 +32,7 @@
                             <div class="form-group row">
 
                                 <div class="col-md-12">
-                                	<h4>Assessment Details</h4>
+                                	<h4>Assessment Details - <?= (isset($assessment)) ? $assessment->title: ''; ?></h4>
                             	</div>
 
                                 <div class="col-md-6">
@@ -59,6 +59,60 @@
 
                                 </div>
 
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($unit)) ? $unit->title: ''; ?>" id="unit_standard"  readonly="readonly">
+
+                                </div>
+
+                                <p>&nbsp;</p>
+
+                                <div class="col-md-12" style="border:1px solid black;">
+
+                                	<h6>The following documents are available for you to complete your asseement.</h6>
+                                	<p>Please upload your completed Workbook and POE for marking. </p>
+
+                                    <div class="col-md-12">
+
+                                        <label class="form-control-label">Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                        <?php if (!empty($class->upload_learner_guide)) { ?>
+                                        	<a href="/uploads/class/learner_guide/<?php echo $class->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a>
+                                        <?php } else {?>
+                                        	<p>No learner guide available for this assessment</p>
+                                        <?php } ?>
+
+                                    </div>
+
+                                    <div class="col-md-12">
+
+                                        <label class="form-control-label">Learner Workbook<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                        <?php if (!empty($class_module->upload_workbook)) { ?>
+                                        	<a href="/uploads/class/learner_workbook/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a>
+                                        <?php } else {?>
+                                        	<p>No learner workbook available for this assessment</p>
+                                        <?php } ?>
+
+                                    </div>
+
+                                    <div class="col-md-12">
+
+                                        <label class="form-control-label">Learner POE<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                        <?php if (!empty($class_module->upload_poe)) { ?>
+                                        	<a href="/uploads/class/learner_poe/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a>
+                                        <?php } else {?>
+                                        	<p>No learner guide poe for this assessment</p>
+                                        <?php } ?>
+
+                                    </div>
+
+
+                                </div>
+
 <?php /*
                                 <div class="col-md-6">
 
@@ -77,23 +131,6 @@
                                 </div>
 */
 ?>
-
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($unit)) ? $unit->title: ''; ?>" id="unit_standard"  readonly="readonly">
-
-                                </div>
-
-
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Intervention Name<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention_name" class="form-control intervention_name" value="<?= (isset($assessment)) ? $assessment->intervention_name: ''; ?>" id="intervention_name"  readonly="readonly">
-
-                                </div>
 
                             	<div class="col-md-6">
 
@@ -129,42 +166,11 @@
 
                                 </div>
 
-<?php /*
-                                <div class="col-md-12">
+                                    <div class="col-md-6">
 
-                                    <label class="form-control-label">Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <label class="form-control-label">Intervention Name<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <?php if (!empty($class_module->upload_learner_guide)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a>
-                                    <?php } else {?>
-                                    	<p>No learner guide available for this assessment</p>
-                                    <?php } ?>
-
-                                </div>
-*/
-?>
-
-                                <div class="col-md-12">
-
-                                    <label class="form-control-label">Learner Workbook<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <?php if (!empty($class_module->upload_workbook)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_workbook/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a>
-                                    <?php } else {?>
-                                    	<p>No learner workbook available for this assessment</p>
-                                    <?php } ?>
-
-                                </div>
-
-                                <div class="col-md-12">
-
-                                    <label class="form-control-label">Learner POE<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <?php if (!empty($class_module->upload_poe)) { ?>
-                                    	<a href="/uploads/assessment/upload_learner_poe/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a>
-                                    <?php } else {?>
-                                    	<p>No learner guide poe for this assessment</p>
-                                    <?php } ?>
+                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention_name" class="form-control intervention_name" value="<?= (isset($assessment)) ? $assessment->intervention_name: ''; ?>" id="intervention_name"  readonly="readonly">
 
                                 </div>
 
@@ -176,19 +182,33 @@
                                     	<?php foreach ($learner_assessment_submissions as $assessment_submission) { ?>
 											<li>
 											<p>Assessment submitted on <?php echo $assessment_submission->created_date ?></p>
+
 											<p>Status : <?php echo $assessment_submission->assessment_status; ?></p>
-											<p>Learner Feedback : <?php echo $assessment_submission->learner_feedback; ?></p>
-											<p>Overall Assessment : <?php echo $assessment_submission->overall_assessment; ?></p>
+
+											<?php if (!empty($assessment_submission->learner_feedback)) { ?>
+												<p>Learner Feedback : <?php echo $assessment_submission->learner_feedback; ?></p>
+											<?php } ?>
+
+											<?php if (!empty($assessment_submission->overall_assessment)) { ?>
+												<p>Overall Assessment : <?php echo $assessment_submission->overall_assessment; ?></p>
+											<?php } ?>
+
 											<?php if (!empty($assessment_submission->upload_completed_workbook)) { ?>
 												<p>
 												Submitted workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $assessment_submission->upload_completed_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_workbook_name; ?></a>
 											</p>
 											<?php } ?>
 
-											<p>Assessment Mark: <?php echo $assessment_submission->assessment_mark; ?></p>
+											<?php if (!empty($assessment_submission->assessment_mark)) { ?>
+												<p>Assessment Mark: <?php echo $assessment_submission->assessment_mark; ?></p>
+											<?php } ?>
 
 											<?php if ($assessment_submission->competency_status == 'not competent') { ?>
 												<p style="color:red;"><strong>Your assessment has been rated NOT COMPETENT. Your are allowed to re-submit your assessment.</strong></p>
+											<?php } ?>
+
+											<?php if ($assessment_submission->competency_status == 'competent') { ?>
+												<p style="color:green;"><strong>You have met the assessment criteria for this module.</strong></p>
 											<?php } ?>
 
 											</li>
@@ -201,11 +221,14 @@
                                     <?php } ?>
                                 </div>
 
-								<?php if ( ($learner_assessment) && ($learner_assessment->status == 'assessment')) { ?>
-										<p>Your assessment has been submitted for marking.</p>
+								<?php if ( ($learner_assessment) && ($learner_assessment->status == 'submitted for marking')) { ?>
+										<p style="color:red;">Your assessment has been submitted for marking.</p><br>
+										<p>You will be notified when your assessment is marked.</p>
                                 <?php } else { ?>
 
-    								<?php if (count($learner_assessment_submissions) < 3) { ?>
+            						<?php if ($learner_assessment->competency_status == 'competent') { ?>
+
+            						<?php } else if (count($learner_assessment_submissions) < 3) { ?>
                                         <div class="col-md-12">
                                         	<p>&nbsp:</p>
                                             <h4>Assessment Upload</h4>

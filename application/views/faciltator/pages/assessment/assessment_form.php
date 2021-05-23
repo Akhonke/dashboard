@@ -281,7 +281,8 @@
 								<div class="col-md-12" id="class_module_uploads" style="border:1px solid black;">
 									<?php if (!empty($_GET['id'])) { ?>
 
-										<h6>The class contains the following files</h6>
+										<h6>Assessment Material</h6>
+										<p>The following material is used for this assessment.</p>
 
 									    <p><label class="form-control-label">Learner Guide : </span></label>
                             		    <a href="/uploads/class/learner_guide/<?php echo $class_name->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>

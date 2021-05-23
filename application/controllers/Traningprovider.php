@@ -220,7 +220,8 @@
 		    $module_uploads = $this->common->accessrecord('class_module', ['*'], ['id' => $module_id], 'row');
 		    $class = $this->common->accessrecord('class_name', ['*'], ['id' => $module_uploads->class_id], 'row');
 
-		    $markup = '<h6>The class contains the following files</h6>';
+		    $markup = '<h6>Assessment Material</h6>';
+		    $markup .= '<p>The following material is used for this assessment.</p>';
 
  		    $markup .= '<p><label class="form-control-label">Learner Guide : </span></label>';
  		    $markup .= '<a href="/uploads/class/learner_guide/' . $class->upload_learner_guide . '" target="_blank">Download the Learner Guide - ' . $class->upload_learner_guide_name . '</a></p>';

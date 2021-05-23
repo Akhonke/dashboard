@@ -726,8 +726,8 @@ public function load_assessment(){
         'assessment_id' => $assessment_id,
         'learner_id' => $learner_id,
 
-        'status' => 'assessment',
-        'internal_moderation_status' => 'submitted',
+        'status' => 'submitted for marking',
+        'internal_moderation_status' => '',
         'created_date' => date('Y-m-d H:i:s'),
         'updated_date' => date('Y-m-d H:i:s'),
 
@@ -751,19 +751,25 @@ public function load_assessment(){
 //             'upload_completed_learner_guide'      => $upload_completed_learner_guide['upload_completed_learner_guide']['store'],
 //             'upload_completed_learner_guide_name' => $upload_completed_learner_guide['upload_completed_learner_guide']['name'],
 
-            'upload_completed_workbook'           => $upload_completed_workbook['upload_completed_workbook']['store'],
-            'upload_completed_workbook_name'      => $upload_completed_workbook['upload_completed_workbook']['name'],
+//             'upload_completed_workbook'           => $upload_completed_workbook['upload_completed_workbook']['store'],
+//             'upload_completed_workbook_name'      => $upload_completed_workbook['upload_completed_workbook']['name'],
 
-            'assessment_status'                   => 'new',
+            'assessment_status'                   => 'submitted for marking',
 
             'created_date' => date('Y-m-d H:i:s'),
             'updated_date' => date('Y-m-d H:i:s'),
         ];
 
-        if (!empty($upload_marked_workbook['upload_marked_workbook']['store'])) {
+        if (!empty($upload_completed_workbook['upload_completed_workbook']['store'])) {
+            $submission_data['upload_completed_workbook']  = $upload_completed_workbook['upload_completed_workbook']['store'];
+            $submission_data['upload_completed_workbook_name']  = $upload_completed_workbook['upload_completed_workbook']['name'];
+        }
+
+        if (!empty($upload_completed_poe['upload_completed_poe']['store'])) {
             $submission_data['upload_completed_poe']  = $upload_completed_poe['upload_completed_poe']['store'];
             $submission_data['upload_completed_poe_name']  = $upload_completed_poe['upload_completed_poe']['name'];
         }
+
 
         if ($this->common->insertData('learner_assessment_submission', $submission_data)) {
 

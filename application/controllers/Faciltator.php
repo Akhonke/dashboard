@@ -1545,7 +1545,7 @@ class Faciltator extends CI_Controller
         }
 
         // $project_manager_id = $_SESSION['projectmanager']['id'];
-        $organisation_id = $_SESSION['organisation']['id'];
+        $organisation_id = $this->data['organization'];
 
         $id = 0;
 

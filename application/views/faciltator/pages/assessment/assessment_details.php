@@ -32,8 +32,16 @@
                             <div class="form-group row">
 
                                 <div class="col-md-12">
-                                	<h4>Submitted Assessment Details</h4>
+                                	<h4>Submitted Assessment - <?= (isset($record)) ? $record->title: ''; ?></h4>
                             	</div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Submitted By<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <input type="text" name="learner_name" class="form-control learner_name" value="<?= (isset($record)) ? $record->first_name . ' ' . $record->surname : ''; ?>" id="learner_name">
+
+                                </div>
 
                                 <div class="col-md-6">
 
@@ -102,13 +110,6 @@
 
                                 </div>
 
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Learner Name<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <input type="text" name="learner_name" class="form-control learner_name" value="<?= (isset($record)) ? $record->first_name . ' ' . $record->surname : ''; ?>" id="learner_name">
-
-                                </div>
 <?php
 /*
                                 <div class="col-md-12">
@@ -158,8 +159,12 @@
                                     	<?php foreach ($learner_assessment_submissions as $assessment_submission) { ?>
 											<li>
     											<p>Assessment submitted on <?php echo $assessment_submission->created_date ?></p>
-    											<p>Status : <?php echo $assessment_submission->assessment_status; ?></p>
-    											<p>Assessment Notes : <?php echo $assessment_submission->assessment_notes; ?></p>
+    											<p>Status : <?php echo ucfirst($assessment_submission->assessment_status); ?></p>
+
+    											<?php if (!empty($assessment_submission->assessment_notes)) { ?>
+    												<p>Assessment Notes : <?php echo $assessment_submission->assessment_notes; ?></p>
+    											<?php } ?>
+
 <?php /*
 											<?php if (!empty($assessment_submission->upload_completed_learner_guide)) { ?>
     											<p>
@@ -178,8 +183,13 @@
 												</p>
 											<?php } ?>
 
+											<?php if (!empty($assessment_submission->assessment_mark)) { ?>
 												<p>Assessment Mark: <?php echo $assessment_submission->assessment_mark; ?></p>
+											<?php } ?>
+
+											<?php if (!empty($assessment_submission->competency_status)) { ?>
 												<p>Competency Status: <?php echo $assessment_submission->competency_status; ?></p>
+											<?php } ?>
 
 
 											<?php if ($assessment_submission->marked_status != "marked") { ?>
@@ -210,7 +220,7 @@
 
                                                 <div class="col-md-12">
 
-                                                    <label class="form-control-label">Overall Assessment<span style="color:red;font-weight:bold;"> *</span></label>
+                                                    <label class="form-control-label">Overall Assessment for Assessment<span style="color:red;font-weight:bold;"> *</span></label>
 
                                                     <textarea class="form-control"  name="overall_assessment" id="overall_assessment" cols="60" rows="5"<?php echo ($assessment_submission->marked_status == 'marked') ? ' readonly="readonly"' : ''; ?>><?= (isset($assessment_submission)) ? $assessment_submission->overall_assessment : ''; ?></textarea>
 
