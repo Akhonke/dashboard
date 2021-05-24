@@ -893,6 +893,44 @@ class Assessor extends CI_Controller
 
 	//****************************Assessments******************//
 
+
+	public function manage_assessment_list()
+	{
+
+	    if (isset($_SESSION['assessor']['id'])) {
+	        $assessor_id = $_SESSION['assessor']['id'];
+	    } else {
+
+	        $assessor_id = '';
+	    }
+
+	    if ($assessor_id) {
+	        $assessor = $this->common->accessrecord('assessor', [], ['id' => $assessor_id], 'row');
+	        $organization_id = $assessor->organization;
+	    } else {
+	        $organization_id = 0;
+	    }
+
+	    $this->data['record'] = $this->common->assessmentListByOrganisation($organization_id);
+
+	    foreach ($this->data['record'] as &$record) {
+
+	        $unit_standard_list = $this->common->getAssessmentUnits($record->id);
+	        $unit_standards = [];
+	        foreach ($unit_standard_list as $unit_standard_item) {
+	            $unit_standards[] = $unit_standard_item->title;
+	        }
+	        $record->unit_standard = join(",", $unit_standards);
+	    }
+
+	    $this->data['page'] = 'list_assessments';
+
+	    $this->data['content'] = 'pages/assesment/manage_assessment_list';
+
+	    $this->load->view('assessor/tamplate', $this->data);
+
+	}
+
 	/**
 	 * Display all submitted learner assessments
 	 *
@@ -907,6 +945,7 @@ class Assessor extends CI_Controller
 	        $assessorid = '';
 	    }
 
+	    // TODO : Allow for aid filter
 
 	    $this->data['record'] = $this->common->completedAssessmentListByAssessor($assessorid);
 
@@ -1144,5 +1183,102 @@ class Assessor extends CI_Controller
 // 	        }
 
 	    }
+
+        public function manage_assessment()
+        {
+            if (isset($_SESSION['assessor']['id'])) {
+                $assessor_id = $_SESSION['assessor']['id'];
+            } else {
+
+                $assessor_id = '';
+            }
+
+            if ($assessor_id) {
+                $assessor = $this->common->accessrecord('assessor', [], ['id' => $assessor_id], 'row');
+                $organization_id = $assessor->organization;
+            } else {
+                $organization_id = 0;
+            }
+
+            $id = 0;
+
+            if (! empty($_GET['id'])) {
+
+                $id = $_GET['id'];
+
+                $this->data['record'] = $this->common->accessrecord('assessment', [], [
+                    'id' => $id
+                ], 'row');
+                $class_name = $this->common->accessrecord('class_name', [], [
+                    'id' => ($this->data['record'])->class_id
+                ], 'row');
+                $this->data['class_name'] = $class_name;
+                $this->data['record']->classname = $class_name->class_name;
+                $this->data['class_module'] = $this->common->accessrecord('class_module', [], [
+                    'id' => ($this->data['record'])->module_id
+                ], 'row');
+                $this->data['learnershipSubType'] = $this->common->accessrecord('learnership_sub_type', [], [
+                    'learnship_id' => $class_name->learnership_id
+                ], 'result');
+            }
+
+            $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
+            $this->data['units'] = $this->common->accessrecord('units', [], [], 'result');
+
+            $this->data['page'] = 'create_assessment';
+
+            $this->data['content'] = 'pages/assesment/manage_assessment';
+
+            $this->data['learnership'] = $this->common->accessrecord('learnership', [], [
+                'organization' => $organization_id
+            ], 'result');
+
+            $this->load->view('assessor/tamplate', $this->data);
+        }
+
+        public function assessor_request_moderation()
+        {
+
+            if (isset($_SESSION['assessor']['id'])) {
+                $assessorid = $_SESSION['assessor']['id'];
+            } else {
+
+                $assessorid = '';
+            }
+
+            $assessment_id = 0;
+            if (!empty($_GET['id'])) {
+                $assessment_id = $_GET['id'];
+            }
+            if ($assessment_id == 0) {
+                $this->session->set_flashdata('error', 'Invalid Assessment. The request document was not found.');
+                redirect('/assessor/manage_assessment?id=' . $assessment_id);
+            }
+
+            $assessment = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+            if (!$assessment) {
+                $this->session->set_flashdata('error', 'Invalid Assessment. The request document was not found.');
+                redirect('/assessor/manage_assessment?id=' . $assessment_id);
+            }
+
+            $assessment_data = [
+                'status' => 'awaiting moderation',
+                'updated_date' => date('Y-m-d H:i:s')
+            ];
+
+            $this->common->updateData('assessment', $assessment_data, array('id' => $assessment_id));
+
+            $this->Email_model->notify_moderator_of_moderation_request(
+                $assessment_id,
+                'A new assessment has been submitted for moderation.',
+                'A new assessment moderation has been submission
+                         http://digilims.com/new_assessment'
+            );
+
+            $this->session->set_flashdata('success', 'The assessment has been submitted for moderation.');
+            redirect('/assessor/manage_assessment?id=' . $assessment_id);
+
+
+        }
 
 }

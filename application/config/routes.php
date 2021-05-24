@@ -509,6 +509,11 @@ $route['assessor-forget-password'] = 'welcome/assessor_forgetpassword';
 $route['assessor-completed-assessment-list'] = 'assessor/list_complete_assessments';
 $route['assessor-view-assessment'] = 'assessor/view_assessment';
 $route['assessor-mark-assessment'] = 'assessor/mark_assessment';
+$route['assessor-manage-assessment-list'] = 'assessor/manage_assessment_list';
+
+$route['assessor-manage-assessment'] = 'assessor/manage_assessment';
+$route['assessor-request-moderation'] = 'assessor/assessor_request_moderation';
+
 
 //*********************Assessor************************//
 

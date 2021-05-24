@@ -39,7 +39,7 @@ class JscssAssessor extends CI_Model
 			$css[] = '<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">';
 		}
 
-		if ($page == 'attendance_list' || $page == 'assesmentlist') {
+		if ($page == 'attendance_list' || $page == 'assesmentlist' || $page == 'list_assessments') {
 
 			$css[] = '<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">';
 
@@ -99,7 +99,7 @@ class JscssAssessor extends CI_Model
 			$js[] = '<script src="' . BASEURL . 'assets/admin/cloudfront/js/charts-home.js"></script>';
 		}
 
-		if ($page == "attendance_list" || $page == 'assesmentlist' || $page == 'list_complete_assessments') {
+		if ($page == "attendance_list" || $page == 'assesmentlist' || $page == 'list_complete_assessments' || $page == 'list_assessments') {
 
 			$js[] = '<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>';
 
