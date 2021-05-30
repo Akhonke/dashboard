@@ -51,11 +51,26 @@
 
                                 <?php
 
-                                    if (!empty($record)) {
+                                   // use function Common\getAssessmentUnits;
+
+if (!empty($record)) {
 
                                         $i = 1;
 
                                         foreach ($record as $key => $row) { ?>
+
+                                        <?php
+                                            if (!empty($row->unit_standard)) {
+
+                                                $unit_standard_list = $this->common->getAssessmentUnits($row->id);
+                                                $unit_standards = [];
+                                                foreach ($unit_standard_list as $unit_standard_item) {
+                                                    $unit_standards[] = $unit_standard_item->title;
+                                                }
+                                                $row->unit_standard = join(",", $unit_standards);
+
+                                            }
+                                        ?>
 
                                         <tr>
 

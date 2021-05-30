@@ -35,7 +35,7 @@
                                 	<h4>Assessment Details - <?= (isset($assessment)) ? $assessment->title: ''; ?></h4>
                             	</div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
 
@@ -43,7 +43,7 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     <label class="form-control-label">Class Name<span style="color:red;font-weight:bold;"> *</span></label>
 
@@ -51,7 +51,7 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     <label class="form-control-label">Module<span style="color:red;font-weight:bold;"> *</span></label>
 
@@ -71,7 +71,7 @@
 
                                 <div class="col-md-12" style="border:1px solid black;">
 
-                                	<h6>The following documents are available for you to complete your asseement.</h6>
+                                	<h6>The following documents are available for you to complete your assessment.</h6>
                                 	<p>Please upload your completed Workbook and POE for marking. </p>
 
                                     <div class="col-md-12">
@@ -183,7 +183,7 @@
 											<li>
 											<p>Assessment submitted on <?php echo $assessment_submission->created_date ?></p>
 
-											<p>Status : <?php echo $assessment_submission->assessment_status; ?></p>
+											<p>Status : <?php echo ucwords($assessment_submission->assessment_status); ?></p>
 
 											<?php if (!empty($assessment_submission->learner_feedback)) { ?>
 												<p>Learner Feedback : <?php echo $assessment_submission->learner_feedback; ?></p>
@@ -221,14 +221,14 @@
                                     <?php } ?>
                                 </div>
 
-								<?php if ( ($learner_assessment) && ($learner_assessment->status == 'submitted for marking')) { ?>
+								<?php if ( ($learner_assessment) && ($learner_assessment->status == 'submitted for marking') ) { ?>
 										<p style="color:red;">Your assessment has been submitted for marking.</p><br>
 										<p>You will be notified when your assessment is marked.</p>
                                 <?php } else { ?>
 
-            						<?php if ($learner_assessment->competency_status == 'competent') { ?>
+            						<?php if ( ($learner_assessment) && ($learner_assessment->competency_status == 'competent') ) { ?>
 
-            						<?php } else if (count($learner_assessment_submissions) < 3) { ?>
+            						<?php } else if (count($learner_assessment_submissions) < 1) { ?>
                                         <div class="col-md-12">
                                         	<p>&nbsp:</p>
                                             <h4>Assessment Upload</h4>
