@@ -886,7 +886,7 @@ class Moderator extends CI_Controller
 	}
 
 
-	public function report_submission_list() {
+	public function moderation_submission_list() {
 
 	    if (isset($_SESSION['moderator']['id'])) {
 	        $moderator_id = $_SESSION['moderator']['id'];
@@ -911,10 +911,10 @@ class Moderator extends CI_Controller
 	    // Create the moderation report if it does not exist
 	    if (!$this->data['moderation_report']) {
 
-	        $data = array(
+	        $moderation_report_data = array(
 	            'moderator_name' => '',
 	            'moderator_surname' => '',
-	            'moderation_number' => '',
+	            'moderation_number' => $this->input->post('moderation_number'),
 	            'moderation_date' => date('Y-m-d'),
 	            'learnship_id' => '',
 	            'learnership_sub_type' => '',
@@ -932,7 +932,7 @@ class Moderator extends CI_Controller
 	            'assessment_id' => $assessment_id,
 	        );
 
-	        $res = $this->common->insertData('moderation_report', $data);
+	        $res = $this->common->insertData('moderation_report', $moderation_report_data);
 
 	        // if saved the report entry, lets choose assessment submissions to work with
 	        if ($res) {
@@ -961,15 +961,22 @@ class Moderator extends CI_Controller
 	                $this->common->updateData('learner_assessment', array('internal_moderation_status' => 'selected'), array('id' => $sample_list_item->id));
 	            }
 
+	            $assessment_data = [
+	                'status' => 'moderation in progress',
+	                'updated_date' => date('Y-m-d H:i:s')
+	            ];
+
+	            $this->common->updateData('assessment', $assessment_data, array('id' => $assessment_id));
+
 	            // Load the list of selected submissions
 	            $this->data['record'] = $this->common->assessmentSubmissionByModerationStatus($assessment_id, 'selected');
 
 	            $this->data['page'] = 'list_complete_assessments';
 
-	            $this->data['content'] = 'pages/assessment/complete_assessment_list';
+	            $this->data['content'] = 'pages/assessment/moderation_submission_list';
+	            $this->session->set_flashdata('success', 'The moderation list is available.');
 
 	            $this->load->view('moderator/tamplate', $this->data);
-
 
 	        }
 
@@ -982,7 +989,7 @@ class Moderator extends CI_Controller
 
 	        $this->data['page'] = 'list_complete_assessments';
 
-	        $this->data['content'] = 'pages/assessment/complete_assessment_list';
+	        $this->data['content'] = 'pages/assessment/moderation_submission_list';
 
 	        $this->load->view('moderator/tamplate', $this->data);
 	    }
@@ -1015,6 +1022,13 @@ class Moderator extends CI_Controller
 	    $assessment_submissions = $this->common->accessrecord('learner_assessment_submission', [], ['learner_assessment_id' => $learner_assessment_id], 'result');
 	    $this->data['learner_assessment_submissions'] = $assessment_submissions;
 
+	    $unit_standard_list = $this->common->getAssessmentUnits(($this->data['record'])->assessment_id);
+	    $unit_standards = [];
+	    foreach ($unit_standard_list as $unit_standard_item) {
+	        $unit_standards[] = $unit_standard_item->title;
+	    }
+	    $this->data['unit_standards'] = $unit_standards;
+
 
 	    $this->data['page'] = 'view_assessment';
 
@@ -1022,7 +1036,154 @@ class Moderator extends CI_Controller
 
 	    $this->load->view('moderator/tamplate', $this->data);
 
+	}
 
+	public function moderate_submission()
+	{
+
+
+	    if (isset($_SESSION['moderator']['id'])) {
+	        $moderator_id = $_SESSION['moderator']['id'];
+	    } else {
+	        $moderator_id = '';
+	    }
+
+	    $learner_assessment_id = 0;
+	    if (!empty($_POST['learner_assessment_id'])) {
+	        $learner_assessment_id = $_POST['learner_assessment_id'];
+	    }
+
+	    if ($learner_assessment_id == 0) {
+	        $this->session->set_flashdata('error', 'Invalid Learner Assessment Submission. Please Try Again');
+	        redirect('assessor-completed-assessment-list');
+	    }
+
+	    // 	        $assessment_submission = $this->common->accessrecord('learner_assessment_submission', [], ['id' => $learner_assessment_submission_id], 'row');
+	    $learner_assessment = $this->common->accessrecord('learner_assessment', [], ['id' => $learner_assessment_id], 'row');
+
+
+	    // Upload files
+	    // 	        if (!empty($_FILES['upload_marked_learner_guide']['name'])) {
+	    // 	            $upload_marked_learner_guide['upload_marked_learner_guide']['store'] = $this->singlefileupload('upload_marked_learner_guide', './uploads/assessment/upload_marked_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	    // 	            $upload_marked_learner_guide['upload_marked_learner_guide']['name'] = $_FILES['upload_marked_learner_guide']['name'];
+	    // 	        } else {
+	    // 	            if (empty($assessment_submission->upload_marked_learner_guide)) {
+	    // 	                $this->session->set_flashdata('error', 'No learner guide submitted. Please Try Again');
+	    // 	                redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	    // 	            }
+	    // 	        }
+
+	    // 	        if (!empty($_FILES['upload_marked_workbook']['name'])) {
+	    // 	            $upload_marked_workbook['upload_marked_workbook']['store'] = $this->singlefileupload('upload_marked_workbook', './uploads/assessment/upload_marked_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	    // 	            $upload_marked_workbook['upload_marked_workbook']['name'] = $_FILES['upload_marked_workbook']['name'];
+	    // 	        } else {
+	    // 	            if (empty($assessment_submission->upload_marked_workbook)) {
+	    // 	                $this->session->set_flashdata('error', 'No learner workbook submitted. Please Try Again');
+	    // 	                redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	    // 	            }
+	    // 	        }
+
+	    // 	        if (!empty($_FILES['upload_marked_poe']['name'])) {
+	    // 	            $upload_marked_poe['upload_marked_poe']['store'] = $this->singlefileupload('upload_marked_poe', './uploads/assessment/upload_marked_poe/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	    // 	            $upload_marked_poe['upload_marked_poe']['name'] = $_FILES['upload_marked_poe']['name'];
+	    // 	        } else {
+	    // 	            if (empty($assessment_submission->upload_marked_poe)) {
+	    // 	                $this->session->set_flashdata('error', 'No learner POE submitted. Please Try Again');
+	    // 	                redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	    // 	            }
+	    // 	        }
+
+	    if (!empty($_FILES['upload_assessed_workbook']['name'])) {
+	        $upload_assessed_workbook['upload_assessed_workbook']['store'] = $this->singlefileupload('upload_assessed_workbook', './uploads/assessment/upload_assessed_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	        $upload_assessed_workbook['upload_assessed_workbook']['name'] = $_FILES['upload_assessed_workbook']['name'];
+	    } else {
+	        if (empty($learner_assessment->upload_assessed_workbook)) {
+	            $this->session->set_flashdata('error', 'No Assessed Workbook. Please Try Again');
+	            redirect('/assessor/view_assessment?id=' . $learner_assessment_id);
+	        }
+	    }
+
+	    if (!empty($_FILES['upload_assessed_learner_feedback']['name'])) {
+	        $upload_assessed_learner_feedback['upload_assessed_learner_feedback']['store'] = $this->singlefileupload('upload_assessed_learner_feedback', './uploads/assessment/upload_assessed_learner_feedback/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	        $upload_assessed_learner_feedback['upload_assessed_learner_feedback']['name'] = $_FILES['upload_assessed_learner_feedback']['name'];
+	    } else {
+	        if (empty($learner_assessment->upload_assessed_learner_feedback)) {
+	            $this->session->set_flashdata('error', 'No Learner Feedback. Please Try Again');
+	            redirect('/assessor/view_assessment?id=' . $learner_assessment_id);
+	        }
+	    }
+
+	    if (!empty($_FILES['upload_assessed_overall_report']['name'])) {
+	        $upload_assessed_overall_report['upload_assessed_overall_report']['store'] = $this->singlefileupload('upload_assessed_overall_report', './uploads/assessment/upload_assessed_overall_report/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+	        $upload_assessed_overall_report['upload_assessed_overall_report']['name'] = $_FILES['upload_assessed_overall_report']['name'];
+	    } else {
+	        if (empty($learner_assessment->upload_assessed_overall_report)) {
+	            $this->session->set_flashdata('error', 'No Overall Report. Please Try Again');
+	            redirect('/assessor/view_assessment?id=' . $learner_assessment_id);
+	        }
+	    }
+
+
+	    $learner_assessment_data = [
+	        'status' => 'assessed',
+	        'updated_date' => date('Y-m-d H:i:s'),
+	    ];
+
+	    if (!empty($upload_assessed_workbook['upload_assessed_workbook']['store'])) {
+	        $learner_assessment_data['upload_assessed_workbook'] = $upload_assessed_workbook['upload_assessed_workbook']['store'];
+	        $learner_assessment_data['upload_assessed_workbook_name'] = $upload_assessed_workbook['upload_assessed_workbook']['name'];
+	    }
+
+	    if (!empty($upload_assessed_learner_feedback['upload_assessed_learner_feedback']['store'])) {
+	        $learner_assessment_data['upload_assessed_learner_feedback'] = $upload_assessed_learner_feedback['upload_assessed_learner_feedback']['store'];
+	        $learner_assessment_data['upload_assessed_learner_feedback_name'] = $upload_assessed_learner_feedback['upload_assessed_learner_feedback']['name'];
+	    }
+
+	    if (!empty($upload_assessed_overall_report['upload_assessed_overall_report']['store'])) {
+	        $learner_assessment_data['upload_assessed_overall_report'] = $upload_assessed_overall_report['upload_assessed_overall_report']['store'];
+	        $learner_assessment_data['upload_assessed_overall_report_name'] = $upload_assessed_overall_report['upload_assessed_overall_report']['name'];
+	    }
+
+	    if (!$this->common->updateData('learner_assessment', $learner_assessment_data , ['id' => $learner_assessment_id])) {
+	        $this->session->set_flashdata('error', 'Cannot save learner assessment. Please Try Again');
+	        redirect('/assessor/view_assessment?id=' . $learner_assessment_id);
+	    } else {
+	        $this->session->set_flashdata('success', 'Assessement Saved Successfully');
+	        redirect('assessor-completed-assessment-list');
+	    }
+
+	    // 	        $assessment_submission_data = [
+	    // 	            'assessment_status' => 'marked',
+	    // 	            'assessed_by' => $assessorid,
+	    // 	            'assessment_notes' => $this->input->post('assessment_notes'),
+	    // 	            'learner_feedback' => $this->input->post('learner_feedback'),
+	    // 	            'overall_assessment' => $this->input->post('overall_assessment'),
+	    // 	            'assessment_date'  => date('Y-m-d H:i:s'),
+	    // 	            'updated_date' => date('Y-m-d H:i:s'),
+	    // 	        ];
+
+	    // 	        if (!empty($upload_marked_workbook['upload_marked_workbook']['store'])) {
+	    // 	            $assessment_submission_data['upload_marked_workbook'] = $upload_marked_workbook['upload_marked_workbook']['store'];
+	    // 	            $assessment_submission_data['upload_marked_workbook_name'] = $upload_marked_workbook['upload_marked_workbook']['name'];
+	    // 	        }
+
+	    // 	        if (!empty($upload_marked_learner_guide['upload_marked_learner_guide']['store'])) {
+	    // 	            $assessment_submission_data['upload_marked_learner_guide'] = $upload_marked_learner_guide['upload_marked_learner_guide']['store'];
+	    // 	            $assessment_submission_data['upload_marked_learner_guide_name'] = $upload_marked_learner_guide['upload_marked_learner_guide']['name'];
+	    // 	        }
+
+	    // 	        if (!empty($upload_marked_poe['upload_marked_poe']['store'])) {
+	    // 	            $assessment_submission_data['upload_marked_poe'] = $upload_marked_poe['upload_marked_poe']['store'];
+	    // 	            $assessment_submission_data['upload_marked_poe_name'] = $upload_marked_poe['upload_marked_poe']['name'];
+	    // 	        }
+
+	    // 	        if ($this->common->updateData('learner_assessment_submission', $assessment_submission_data , ['id' => $learner_assessment_submission_id])) {
+	    // 	            $this->session->set_flashdata('success', 'Assessement Saved Successfully');
+	    // 	            redirect('assessor-completed-assessment-list');
+	    // 	        } else {
+	    // 	            $this->session->set_flashdata('error', 'Cannot save marked submission. Please Try Again');
+	    // 	            redirect('/assessor/view_assessment?id=' . $assessment_submission->learner_assessment_id);
+	    // 	        }
 
 	}
 

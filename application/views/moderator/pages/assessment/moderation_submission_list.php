@@ -12,7 +12,7 @@
 
                     <div class="card-header">
 
-                        <h3 class="h6 text-uppercase mb-0">Assessment List</h3>
+                        <h3 class="h6 text-uppercase mb-0">Moderation Submission List - <?php echo ($assessment)? $assessment->title : ''; ?></h3>
 
                     </div>
 

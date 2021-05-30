@@ -52,9 +52,9 @@ $arrayfeatures = explode("%@#$", $plan[0]->feature);
 */ ?>
               <li class="sidebar-list-item">
                   <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
-                     <a href="<?= BASEURL ?>moderator-completed-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                     <a href="<?= BASEURL ?>moderator-completed-assessment-list" title="From Here You Can See Assessments due for moderation" class="sidebar-link text-white pl-lg-5">Moderation List</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Completed Assessment List" class="sidebar-link text-white pl-lg-5">Assessments List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessments due for moderation" class="sidebar-link text-white pl-lg-5">Moderation List</a>
                   <?php } ?>
                </li>
 

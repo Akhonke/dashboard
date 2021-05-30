@@ -3032,8 +3032,10 @@ class Common extends CI_Model
            $result = $this->db->select('assessment.*, class_name.class_name')
                ->from('assessment')
                ->join('class_name', 'class_name.id = assessment.class_id')
-               ->join('class_module', 'class_name.id = class_module.class_id')
+//                ->join('class_module', 'class_name.id = class_module.class_id')
                ->where('class_name.trainer_id', $moderator->trainer_id)
+               ->where('assessment.status', 'awaiting moderation')
+                ->or_where('assessment.status', 'moderation in progress')
                ->get()
                ->result();
            return $result;

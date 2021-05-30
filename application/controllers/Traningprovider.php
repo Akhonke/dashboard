@@ -2216,7 +2216,9 @@
 
 					'trainer_id' => $this->input->post('trainer_id'),
 
-					'class_name' => $this->input->post('class_name'),
+				    'class_name' => $this->input->post('class_name'),
+
+					'intervention' => $this->input->post('intervention'),
 
 					'created_by' => $this->input->post('created_by'),
 

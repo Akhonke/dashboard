@@ -196,11 +196,22 @@
                                 </div>
 
                                 <div class="col-md-6">
+
+                                    <label class="form-control-label">Intervention</label>
+
+                                    <input type="text" placeholder="Enter the Intervention" name="intervention" class="form-control intervention" value="<?= (isset($record)) ? $record->intervention: ''; ?>" id="intervention">
+
+                                </div>
+
+                                <div class="col-md-6">
                                     <label class="form-control-label">Class Name<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <input type="text" placeholder="Enter Your Class Name" name="class_name" class="form-control class_name" value="<?= (isset($record)) ? $record->class_name : ''; ?>" id="class_name">
 
                                 </div>
+
+
+
 
                                 <div class="col-md-6">
                                     <label class='form-control-label'>Learner Guide</label><br/>

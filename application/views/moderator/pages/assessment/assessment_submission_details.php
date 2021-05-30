@@ -13,7 +13,7 @@
 
                     <div class="card-header">
 
-                        <h3 class="h6 text-uppercase mb-0">Assessment Moderation</h3>
+                        <h3 class="h6 text-uppercase mb-0">Assessment Submission Moderation</h3>
 
                     </div>
 
@@ -53,9 +53,9 @@
 
                                 <div class="col-md-6">
 
-                                    <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <label class="form-control-label">Unit Standards<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($record)) ? $record->unit_standard: ''; ?>" id="unit_standard"  readonly="readonly">
+                                    <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($unit_standards)) ? join(",", $unit_standards): ''; ?>" id="unit_standard"  readonly="readonly">
 
                                 </div>
 
@@ -204,10 +204,10 @@
 
 		                                <div class="col-md-12">
                                         	<p>&nbsp;</p>
-                                            <h4>Marked Assessment Uploads</h4>
+                                            <h4>Moderate Assessment Submission</h4>
                                         </div>
 
-                                		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="MarkAssessment" action="/assessor-mark-assessment">
+                                		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="MarkAssessment" action="/moderator-moderate-submission">
         								<input type="hidden" name="learner_assessment_id" value="<?= (isset($record)) ? $record->id : ''; ?>">
 
                                         <div class="col-md-12">
@@ -249,7 +249,7 @@
                                     	<?php // if ($record->status != 'assessed') { ?>
                                             <div class="col-md-12">
             									<p>&nbsp;</p>
-                                            	<button type="submit" class="btn btn-primary">Upload the marked assessments</button>
+                                            	<button type="submit" class="btn btn-primary">Moderate the Assessment Submission</button>
                                             </div>
                                     	<?php // } ?>
 

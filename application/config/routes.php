@@ -536,8 +536,11 @@ $route['moderator-view-assessment'] = 'moderator/view_assessments';
 // $route['moderator-view-assessment'] = 'moderator/view_assessment';
 // $route['moderator-mark-assessment'] = 'moderator/mark_assessment';
 
-$route['moderator-view-moderation-submissions'] = 'moderator/report_submission_list';
+$route['moderation-submission-list'] = 'moderator/moderation_submission_list';
 $route['moderator-view-assessment-submission'] = 'moderator/view_assessment_submission';
+
+$route['moderator-moderate-submission'] = 'moderator/moderate_submission';
+
 
 
 
