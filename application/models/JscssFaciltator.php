@@ -1735,7 +1735,7 @@ class JscssFaciltator extends CI_Model
 
 				$.ajax({
 
-					url: '/provider-module-uploads',
+					url: '/api-module-uploads',
 
 					data: { 'value': $('.class_module').val() },
 
@@ -1743,6 +1743,26 @@ class JscssFaciltator extends CI_Model
 
 					success: function(data){
 			             $('#class_module_uploads').html(data);
+					}
+
+				});
+
+			});
+
+			$('.learner_classname').change(function(){
+
+				$.ajax({
+
+					url: '/api-get-class',
+
+					data: { 'value': $('.learner_classname').val() },
+
+					type: 'post',
+
+                    dataType: 'json',
+
+					success: function(data){
+			             $('#intervention').val(data.intervention);
 					}
 
 				});

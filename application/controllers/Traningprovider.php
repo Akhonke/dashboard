@@ -212,32 +212,34 @@
 			echo json_encode($data);
 		}
 
-		public function get_module_uploads()
-		{
+// 		public function get_module_uploads()
+// 		{
+//
+// 		    $module_id = $this->input->post('value');
+//
+// 		    $module_uploads = $this->common->accessrecord('class_module', ['*'], ['id' => $module_id], 'row');
+// 		    $class = $this->common->accessrecord('class_name', ['*'], ['id' => $module_uploads->class_id], 'row');
+//
+// 		    $markup = '<h6>Assessment Material</h6>';
+// 		    $markup .= '<p>The following material is used for this assessment.</p>';
+//
+//  		    $markup .= '<p><label class="form-control-label">Learner Guide : </span></label>';
+//  		    $markup .= '<a href="/uploads/class/learner_guide/' . $class->upload_learner_guide . '" target="_blank">Download the Learner Guide - ' . $class->upload_learner_guide_name . '</a></p>';
+//
+// 		    $markup .= '<p><label class="form-control-label">Learner Workbook : </span></label>';
+// 		    $markup .= '<a href="/uploads/class/learner_workbook/' . $module_uploads->upload_workbook . '" target="_blank">Download the Learner Workbook - ' . $module_uploads->upload_workbook_name . '</a></p>';
+//
+// 		    $markup .= '<p><label class="form-control-label">Learner POE : </span></label>';
+// 		    $markup .= '<a href="/uploads/class/learner_poe/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner POE - ' . $module_uploads->upload_poe_name . '</a></p>';
+//
+// 		    $markup .= '<p><label class="form-control-label">Facilitator Guide : </span></label>';
+// 		    $markup .= '<a href="/uploads/class/facilitator_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">Download the Facilitator Guide - ' . $module_uploads->upload_facilitator_guide_name . '</a></p>';
+//
+// 		    echo $markup;
+//
+// 		}
 
-		    $module_id = $this->input->post('value');
 
-		    $module_uploads = $this->common->accessrecord('class_module', ['*'], ['id' => $module_id], 'row');
-		    $class = $this->common->accessrecord('class_name', ['*'], ['id' => $module_uploads->class_id], 'row');
-
-		    $markup = '<h6>Assessment Material</h6>';
-		    $markup .= '<p>The following material is used for this assessment.</p>';
-
- 		    $markup .= '<p><label class="form-control-label">Learner Guide : </span></label>';
- 		    $markup .= '<a href="/uploads/class/learner_guide/' . $class->upload_learner_guide . '" target="_blank">Download the Learner Guide - ' . $class->upload_learner_guide_name . '</a></p>';
-
-		    $markup .= '<p><label class="form-control-label">Learner Workbook : </span></label>';
-		    $markup .= '<a href="/uploads/class/learner_workbook/' . $module_uploads->upload_workbook . '" target="_blank">Download the Learner Workbook - ' . $module_uploads->upload_workbook_name . '</a></p>';
-
-		    $markup .= '<p><label class="form-control-label">Learner POE : </span></label>';
-		    $markup .= '<a href="/uploads/class/learner_poe/' . $module_uploads->upload_poe . '" target="_blank">Download the Learner POE - ' . $module_uploads->upload_poe_name . '</a></p>';
-
-		    $markup .= '<p><label class="form-control-label">Facilitator Guide : </span></label>';
-		    $markup .= '<a href="/uploads/class/facilitator_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">Download the Facilitator Guide - ' . $module_uploads->upload_facilitator_guide_name . '</a></p>';
-
-		    echo $markup;
-
-		}
 
 		public function get_receiver_contact()
 		{

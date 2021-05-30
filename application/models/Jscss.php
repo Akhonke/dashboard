@@ -2646,7 +2646,7 @@
 
 				$.ajax({
 
-					url: 'provider-module-uploads',
+					url: 'api-module-uploads',
 
 					data: { 'value': $('.class_module').val() },
 

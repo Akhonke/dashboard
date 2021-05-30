@@ -447,10 +447,6 @@ $route['provider-completed-assessment-list'] = 'Traningprovider/list_complete_as
 $route['provider-view-assessment'] = 'Traningprovider/view_assessment';
 
 $route['provider-get_class_module'] = 'Traningprovider/get_class_module';
-$route['provider-module-uploads'] = 'Traningprovider/get_module_uploads';
-
-
-
 
 // ****************** Learner **************************** //
 $route['learner'] = 'welcome/learner'; //use for Learner login
@@ -635,3 +631,12 @@ $route['external-moderator-deletedata'] = 'External_moderator/deletedata';
 $route['external-moderator-forget-password'] = 'welcome/external_moderator_forgetpassword';
 $route['create-externalmoderator-user'] = 'Traningprovider/createexternalmoderatoruser';
 $route['externalmoderator-user-list'] = 'Traningprovider/externalmoderatoruserlist';
+
+
+// **************************** external moderator ************************************************
+
+$route['api-get-class'] = 'Api/get_class';
+$route['api-module-uploads'] = 'Api/get_module_uploads';
+
+// TODO: To be depecrated
+// $route['provider-module-uploads'] = 'Api/get_module_uploads';

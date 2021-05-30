@@ -278,6 +278,17 @@
 
                                 </div>
 
+                                <div class="col-md-3">
+
+                                    <label class="form-control-label">Intervention Name</label>
+
+                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class_name)) ? $class_name->intervention: ''; ?>" id="intervention" readonly="readonly">
+
+                                </div>
+
+								<p>&nbsp;</p>
+
+
 								<div class="col-md-12" id="class_module_uploads" style="border:1px solid black;">
 									<?php if (!empty($_GET['id'])) { ?>
 
@@ -436,18 +447,6 @@
                                     <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title">
 
                                 </div>
-
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Intervention Name</label>
-
-                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention_name" class="form-control intervention_name" value="<?= (isset($record)) ? $record->intervention_name: ''; ?>" id="intervention_name">
-
-                                </div>
-
-
-
-
 
 <?php
 /*
