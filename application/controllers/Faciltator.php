@@ -1521,10 +1521,12 @@ class Faciltator extends CI_Controller
 
 	        $unit_standard_list = $this->common->getAssessmentUnits($record->id);
 	        $unit_standards = [];
-	        foreach ($unit_standard_list as $unit_standard_item) {
-	            $unit_standards[] = $unit_standard_item->title;
+	        if ($unit_standard_list) {
+	            foreach ($unit_standard_list as $unit_standard_item) {
+	                $unit_standards[] = $unit_standard_item->title;
+	            }
+	            $record->unit_standard = join(",", $unit_standards);
 	        }
-	        $record->unit_standard = join(",", $unit_standards);
 	    }
 
 	    $this->data['page'] = 'list_assessments';
@@ -1729,12 +1731,14 @@ class Faciltator extends CI_Controller
 
         $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
         $this->data['units'] = $this->common->accessrecord('units', [], [], 'result');
+        $this->data['submission_count'] = $this->common->submissionCountByAssessment($id);
 
         $this->data['page'] = 'create_assessment';
 
         $this->data['content'] = 'pages/assessment/assessment_form';
 
         $this->data['learnership'] = $this->common->accessrecord('learnership', [], ['organization' => $organisation_id], 'result');
+
 
 
         $this->load->view('faciltator/tamplate', $this->data);
@@ -1773,6 +1777,76 @@ class Faciltator extends CI_Controller
             }
 
             echo json_encode($data);
+        }
+
+        public function facilitator_request_assessor_review()
+        {
+
+            if (isset($_SESSION['facilitator']['id'])) {
+                $facilitator_id = $_SESSION['facilitator']['id'];
+            } else {
+                $facilitator_id = '';
+            }
+
+            $assessment_id = 0;
+            if (!empty($_GET['id'])) {
+                $assessment_id = $_GET['id'];
+            }
+            if ($assessment_id == 0) {
+                $this->session->set_flashdata('error', 'Invalid Assessment. The request document was not found.');
+                redirect('facilitator-assessment-list');
+            }
+
+            $assessment = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+            if (!$assessment) {
+                $this->session->set_flashdata('error', 'Invalid Assessment. The request document was not found.');
+                redirect('facilitator-assessment-list');
+            }
+
+            if ($_POST) {
+
+                if (!empty($_FILES['upload_assessed_overall_report']['name'])) {
+                    $upload_assessed_overall_report['upload_assessed_overall_report']['store'] = $this->singlefileupload('upload_assessed_overall_report', './uploads/assessment/upload_assessed_overall_report/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+                    $upload_assessed_overall_report['upload_assessed_overall_report']['name'] = $_FILES['upload_assessed_overall_report']['name'];
+                } else {
+                    if (empty($learner_assessment->upload_assessed_overall_report)) {
+                        $this->session->set_flashdata('error', 'No Overall Report. Please Try Again');
+                        redirect('/assessor/view_assessment?id=' . $learner_assessment_id);
+                    }
+                }
+
+                $assessment_data = [
+                    'status' => 'awaiting assessment review',
+                    'updated_date' => date('Y-m-d H:i:s'),
+                    'assessor_status' =>  'awaiting assessment review',
+                    'assessment_update_date' => date('Y-m-d H:i:s'),
+                ];
+
+                if (!empty($upload_assessed_overall_report['upload_assessed_overall_report']['store'])) {
+                    $assessment_data['upload_assessed_overall_report'] = $upload_assessed_overall_report['upload_assessed_overall_report']['store'];
+                    $assessment_data['upload_assessed_overall_report_name'] = $upload_assessed_overall_report['upload_assessed_overall_report']['name'];
+                }
+
+                $this->common->updateData('assessment', $assessment_data, array('id' => $assessment_id));
+
+                $this->Email_model->notify_assessor_of_review_request(
+                    $assessment_id,
+                    'A new assessment has been submitted for moderation.',
+                    'A new assessment moderation has been submission
+                         http://digilims.com/new_assessment'
+                    );
+
+                $this->session->set_flashdata('success', 'The assessment has been submitted for moderation.');
+
+            } else {
+               // $this->session->set_flashdata('error', 'No Overall Report. Please Try Again');
+               ;
+            }
+
+
+            redirect('facilitator-assessment-list');
+
+
         }
 
 

@@ -144,6 +144,20 @@ ALTER TABLE `class_name` ADD COLUMN `upload_learner_guide_name` varchar(255) DEF
 
 ALTER TABLE `class_name` ADD COLUMN `intervention` varchar(255) DEFAULT NULL;
 
+ALTER TABLE `assessment` ADD COLUMN `facilitator_status` varchar(255) DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `assessor_status` varchar(255) DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `assessment_update_date` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `internal_moderator_status` varchar(255) DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `internal_moderator_update_date` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `external_moderator_status` varchar(255) DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `external_moderator_update_date` DATETIME NULL DEFAULT NULL;
+
+
+ALTER TABLE `assessment` ADD COLUMN `upload_assessed_overall_report` varchar(255) NOT NULL;
+ALTER TABLE `assessment` ADD COLUMN `upload_assessed_overall_report_name` varchar(255) NOT NULL;
+
+
+
 
          */
 

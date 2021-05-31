@@ -618,8 +618,17 @@ public function view_assessment(){
     $this->data['assessment'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
     $this->data['learner_assessment'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
     $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
-    $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
+//     $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
     $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
+
+    $unit_standard_list = $this->common->getAssessmentUnits($assessment_id);
+    $unit_standards = [];
+    foreach ($unit_standard_list as $unit_standard_item) {
+        $unit_standards[] = $unit_standard_item->title;
+    }
+
+    $this->data['unit_standard'] = join(",", $unit_standards);
+
 
     $assessment_submissions = [];
     if (!empty($this->data['learner_assessment'])) {

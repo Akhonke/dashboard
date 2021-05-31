@@ -1,5 +1,6 @@
 <?php
 
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Common extends CI_Model
@@ -3452,6 +3453,16 @@ class Common extends CI_Model
 	    ->result();
 
 	    return $result;
+	}
+
+	public function submissionCountByAssessment($assessment_id)
+	{
+
+
+
+	   $query = $this->db->get_where('learner_assessment', array('assessment_id' => $assessment_id));
+
+       return $query->num_rows();
 	}
 
 

@@ -225,6 +225,11 @@ return $html;
 
 	}
 
+	public function notify_assessor_of_review_request($assessment_id, $subject, $message)
+	{
+	    ;
+	}
+
 
 
 }

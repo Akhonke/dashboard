@@ -586,6 +586,9 @@ $route['facilitator-assessment-list'] = 'faciltator/list_assessments';
 // $route['faciltator-load-assessment'] = 'faciltator/load_assessment';
 
 
+$route['facilitator-request-assessor-review'] = 'faciltator/facilitator_request_assessor_review';
+
+
 
 /******************INternal Moderator*****************************************/
 $route['internal-moderator'] = 'welcome/moderator';

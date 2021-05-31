@@ -155,6 +155,17 @@
 <!--                             // /////////////////////////////////////////////////////////////////////// -->
 <!--                             // /////////////////////////////////////////////////////////////////////// -->
 
+                                <div class="col-md-6">
+                                    <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title" readonly="readonly">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-control-label">Intervention Name</label>
+                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class_name)) ? $class_name->intervention: ''; ?>" id="intervention" readonly="readonly">
+                                </div>
+
+
                                <div class="col-md-3">
                                     <label class="form-control-label">Learnership Type Name<span style="color:red;font-weight:bold;"> *</span></label>
                                     <select class="form-control learnship_id" name="learnship_id" id="learnship_id">
@@ -275,14 +286,6 @@
 
                                     <label id="class_module-error" class="error" for="class_module"></label>
 
-
-                                </div>
-
-                                <div class="col-md-3">
-
-                                    <label class="form-control-label">Intervention Name</label>
-
-                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class_name)) ? $class_name->intervention: ''; ?>" id="intervention" readonly="readonly">
 
                                 </div>
 
@@ -440,13 +443,6 @@
 
 
 
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title">
-
-                                </div>
 
 <?php
 /*
@@ -559,15 +555,83 @@
 
               			<?php if (!empty($_GET['id'])) { ?>
               			    <div class="form-group row">
+
+                                <div class="col-md-12">
+                                	<p>&nbsp;</p>
+                                    <h4>Marking Details</h4>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                	<?php echo (!empty($submission_count)) ? $submission_count : 0; ?> Learner submission<?php echo (!empty($submission_count) && ($submission_count == 1)) ? ' is ' : 's are '; ?> available for this assessment
+                                </div>
+
+
                   			    <div class="col-md-12">
                       			    <div class="text-left">
-	                      			    <a href= "/facilitator-completed-assessment-list?aid=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">See Completed Assessments</a>
+	                      			    <a href= "/facilitator-completed-assessment-list?aid=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">Mark Assessments</a>
                       			    </div>
                   			    </div>
               			    </div>
                         <?php } ?>
 
 
+          			    <div class="form-group row">
+
+                                <div class="col-md-12">
+                                	<p>&nbsp:</p>
+                                    <h4>Assessor Details</h4>
+                                </div>
+
+                                <?php if (empty($record->assessor_status)) { ?>
+
+									<form method="post" enctype="multipart/form-data" id="RequestAssessment" action="/facilitator-request-assessor-review?id=<?= (isset($record)) ? $record->id: ''; ?>">
+
+									<input type="hidden" name="id" class="form-control" value="<?= $record->id ?>">
+
+                                    <div class="col-md-12">
+
+                                        <?php if (!empty($_GET['id'])) { ?>
+
+                                            <label class="form-control-label">Upload Overall Assessment Report<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                            <input type="file" name="upload_assessed_overall_report" class="form-control" required="required">
+
+                                        <?php  } else { ?>
+
+                                            <label class="form-control-label">Upload Overall Assessment Report<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                            <input type="file" name="upload_assessed_overall_report" class="form-control" required="required">
+
+                                            <label id="upload_assessed_overall_report-error" class="error" for="upload_assessed_overall_report"></label>
+
+                                        <?php } ?>
+
+                                    </div>
+
+                      			    <div class="col-md-12">
+                          			    <div class="text-left">
+<!--    	                      			    <a href= "/facilitator-request-assessor-review?id=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-warning">Submit for Assessor Review</a> -->
+
+    	                      			    <button type="submit" class="btn btn-warning">Submit for Assessor Review</button>
+                          			    </div>
+                      			    </div>
+
+                      			    </form>
+
+                                <?php } else { ?>
+
+                                    	<ul>
+                                    		<li>Assessment submitted for Assessor Review on <?php echo $record->assessment_update_date ?></li>
+                                    		<p>Status : <?php echo ucwords($record->assessor_status); ?></p>
+                                    	</ul>
+
+
+
+                                <?php } ?>
+
+
+          			    </div>
 
                     </div>
 

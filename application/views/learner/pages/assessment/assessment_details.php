@@ -59,11 +59,20 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+
+                                <div class="col-md-4">
+
+                                    <label class="form-control-label">Intervention<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class)) ? $class->intervention: ''; ?>" id="intervention"  readonly="readonly">
+
+                                </div>
+
+                                <div class="col-md-4">
 
                                     <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($unit)) ? $unit->title: ''; ?>" id="unit_standard"  readonly="readonly">
+                                    <input type="text" placeholder="Enter the Unit Standard" name="unit_standard" class="form-control unit_standard" value="<?= (isset($unit_standard)) ? $unit_standard: ''; ?>" id="unit_standard"  readonly="readonly">
 
                                 </div>
 
@@ -163,16 +172,8 @@
                                     <label class="form-control-label">Assessment Submission Type<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <input type="text" placeholder="Enter Your Assessment Submission Type" name="assessment_type" class="form-control assessment_type" value="<?= (isset($assessment)) ? $assessment->submission_type : ''; ?>" id="submission_type" readonly="readonly">
+								</div>
 
-                                </div>
-
-                                    <div class="col-md-6">
-
-                                    <label class="form-control-label">Intervention Name<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention_name" class="form-control intervention_name" value="<?= (isset($assessment)) ? $assessment->intervention_name: ''; ?>" id="intervention_name"  readonly="readonly">
-
-                                </div>
 
                                 <div class="col-md-12">
                                 	<p>&nbsp:</p>
@@ -204,7 +205,7 @@
 											<?php } ?>
 
 											<?php if ($assessment_submission->competency_status == 'not competent') { ?>
-												<p style="color:red;"><strong>Your assessment has been rated NOT COMPETENT. Your are allowed to re-submit your assessment.</strong></p>
+												<p style="color:red;"><strong>Your assessment has been rated NOT COMPETENT.</strong></p>
 											<?php } ?>
 
 											<?php if ($assessment_submission->competency_status == 'competent') { ?>
@@ -266,18 +267,17 @@
 
 
                                 		</form>
-    								<?php } else { ?>
+    								<?php } else {
+    								    ;
+    								    /* ?>
                                         <div class="col-md-12">
                                         	<p>&nbsp:</p>
         									<h4 style="color:red !important;">You cannot submit more than three assessments. Please contact your trainer.</h4>
                                         </div>
-    								<?php } ?>
+    								<?php
+    								 */} ?>
 
                                 <?php } ?>
-
-
-
-
 
                             </div>
 

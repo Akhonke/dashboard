@@ -35,7 +35,7 @@
                                 	<h4>Submitted Assessment - <?= (isset($record)) ? $record->title: ''; ?></h4>
                             	</div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
 
                                     <label class="form-control-label">Submitted By<span style="color:red;font-weight:bold;"> *</span></label>
 
@@ -43,7 +43,7 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
 
@@ -51,7 +51,7 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     <label class="form-control-label">Class Name<span style="color:red;font-weight:bold;"> *</span></label>
 
@@ -59,7 +59,7 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     <label class="form-control-label">Unit Standard<span style="color:red;font-weight:bold;"> *</span></label>
 

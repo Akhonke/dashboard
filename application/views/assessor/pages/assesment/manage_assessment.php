@@ -562,7 +562,7 @@
               			    <div class="form-group row">
                   			    <div class="col-md-3">
                       			    <div class="text-left">
-	                      			    <a href= "/assessor-completed-assessment-list?id=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">See Completed Assessments</a>
+	                      			    <a href= "/assessor-completed-assessment-list?id=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">Mark Assessments</a>
                       			    </div>
                   			    </div>
 
