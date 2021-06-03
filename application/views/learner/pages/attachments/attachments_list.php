@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <!-- <div class -->
-                               <h5 style="text-align: center;font-weight: bold"> Ceritificate Copy</h5>
+                               <h5 style="text-align: center;font-weight: bold"> Certificate Copy</h5>
                                 <?php if (!empty($learner->certificate_copy)) { ?>
                                     <img style="box-shadow: 0px 4px 12px #00000063;" src="<?= BASEURL . 'uploads/learner/certificate_copy/' . $learner->certificate_copy ?>" width="100%">
                                 <?php } else { ?>

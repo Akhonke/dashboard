@@ -4,7 +4,7 @@
              <div class="col-lg-12 mb-1">
                  <div class="card">
                      <div class="card-header">
-                         <h3 class="h6 text-uppercase mb-0">Create Moderation Report</h3>
+                         <h3 class="h6 text-uppercase mb-0">CREATE MODERATION REPORT</h3>
                      </div>
 
 

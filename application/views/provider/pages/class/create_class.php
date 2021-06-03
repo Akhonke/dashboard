@@ -402,8 +402,6 @@
 
             submitHandler: function(form) {
 
-            console.log('abcd');
-
                 form.submit();
 
             }

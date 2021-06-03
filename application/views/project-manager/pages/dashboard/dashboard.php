@@ -169,7 +169,7 @@
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-blue"></div>
             <div class="text">
-              <h6 class="mb-0">Total Marksheets</h6><span class="text-gray"><?= $marksheet ?></span>
+              <h6 class="mb-0">Total Mark Sheets</h6><span class="text-gray"><?= $marksheet ?></span>
             </div>
           </div>
           <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>

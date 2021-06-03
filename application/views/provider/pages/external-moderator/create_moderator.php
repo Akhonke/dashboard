@@ -198,11 +198,11 @@
                                         ?>
                                                         <div id="remove_file<?= $key ?>">
                                                             <div class="col-md-6">
-                                                                <label class="form-control-label">Acreditations</label>
-                                                                <input type="text" placeholder="Enter Your Acreditations Name" name="acreditations[]" class="form-control" value="<?= $value['acreditations']; ?>">
+                                                                <label class="form-control-label">Accreditations</label>
+                                                                <input type="text" placeholder="Enter Your Accreditations Name" name="acreditations[]" class="form-control" value="<?= $value['acreditations']; ?>">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label class="form-control-label">Acreditations</label>
+                                                                <label class="form-control-label">Accreditations</label>
                                                                 <img src="<?= BASEURL . 'uploads/moderator/acreditationsfiles/' . $value['acreditations_file'] ?>" width="50px" height="50px">
                                                                 <input type="hidden" name="acreditations_image[]" class="form-control" value="<?= $implode ?>">
                                                             </div>
@@ -213,11 +213,11 @@
                                             }
                                         } else { ?>
                                             <div class="col-md-6">
-                                                <label class="form-control-label">Acreditations</label>
-                                                <input type="text" placeholder="Enter Your Acreditations Name" name="acreditations[]" class="form-control">
+                                                <label class="form-control-label">Accreditations</label>
+                                                <input type="text" placeholder="Enter Your Accreditations Name" name="acreditations[]" class="form-control">
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-control-label">Acreditations Files</label>
+                                                <label class="form-control-label">Accreditations Files</label>
                                                 <input type="file" name="acreditations_file[]" class="form-control">
                                             </div>
                                         <?php } ?>
