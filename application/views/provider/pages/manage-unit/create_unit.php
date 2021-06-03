@@ -116,7 +116,7 @@ label{
 
 
 
-                                    <input type="text" placeholder="Enter Standard id" class="form-control" name="standard_id" id="standard_id" value="<?= (isset($units)) ? $units->standard_id : ''; ?>" onkeypress="this.value=this.value.replace(/[^0-9]/g,'')">
+                                    <input type="text" placeholder="Enter Standard Id" class="form-control" name="standard_id" id="standard_id" value="<?= (isset($units)) ? $units->standard_id : ''; ?>" onkeypress="this.value=this.value.replace(/[^0-9]/g,'')">
 
                                     <span class='error_validate' style='color:red;'><?= form_error('standard_id') ?></span>
 
