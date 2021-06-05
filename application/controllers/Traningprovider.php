@@ -443,6 +443,8 @@
 
 				$data['completion_date'] = ($this->input->post('completion_date')) ? $this->input->post('completion_date') : '';
 
+				$data['tax_reference'] = ($this->input->post('tax_reference')) ? $this->input->post('tax_reference') : '';
+
 				if ($id != 0) {
 
 					if (!empty($_FILES['upload_proof_of_bankings']['name'])) {
