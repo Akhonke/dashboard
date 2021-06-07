@@ -571,6 +571,7 @@ class Common extends CI_Model
 			'id_copy' => $data['id_copy'],
 			'certificate_copy' => $data['certificate_copy'],
 			'contract_copy' => $data['contract_copy'],
+		    'tax_reference' => $data['tax_reference'],
 			// 'password' => $password,
 			// 'classname'=>$data['classname'],
 			// 'employer_name' => $data['employer_name'],

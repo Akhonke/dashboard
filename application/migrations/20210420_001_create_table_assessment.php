@@ -157,6 +157,8 @@ ALTER TABLE `assessment` ADD COLUMN `upload_assessed_overall_report` varchar(255
 ALTER TABLE `assessment` ADD COLUMN `upload_assessed_overall_report_name` varchar(255) NOT NULL;
 
 
+ALTER TABLE `learner` ADD COLUMN `tax_reference` varchar(255) DEFAULT NULL;
+
 
 
          */

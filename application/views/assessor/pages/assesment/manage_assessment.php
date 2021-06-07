@@ -558,6 +558,78 @@
 
 <!--                         </form> -->
 
+                           <div class="col-md-12">
+                            	<p>&nbsp;</p>
+                                <h4>Facilitator Status</h4>
+								<?php if ($record->facilitator_status != 'complete') { ?>
+      			    				<h6 style='color:red !important;'><strong><p>The assessment is awaiting facilitator review.</p></strong></h6>
+                                	<ul>
+                                		<li>
+
+                                		</li>
+                                	</ul>
+
+
+
+  			    				<?php } elseif (empty($record->assessor_status)) { ?>
+  			    					<h6><strong><p>The assessment is not ready for assessor review.</p></strong></h6>
+								<?php } ?>
+
+                            	<ul>
+                            	</ul>
+                        	</div>
+
+                            <div class="col-md-12">
+                            	<p>&nbsp;</p>
+                                <h4>Assessment Status</h4>
+								<?php if ($record->assessor_status == 'awaiting assessment review') { ?>
+      			    				<h6 style='color:red !important;'><strong><p>The assessment is awaiting assessor review.</p></strong></h6>
+      			    				<p>Please submit your overall assessment for this assessment.</p>
+
+                            		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="MarkAssessment" action="/facilitator-mark-assessment">
+
+        								<input type="hidden" name="id" class="form-control" value="<?= (isset($record)) ? $record->id: ''; ?>">
+
+                                        <div class="col-md-12">
+
+                                            <?php if (!empty($_GET['id'])) { ?>
+
+                                                <label class="form-control-label">Upload Overall Assessment Report<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                                <input type="file" name="upload_assessed_overall_report" class="form-control" required="required">
+
+                                            <?php  } else { ?>
+
+                                                <label class="form-control-label">Upload Overall Assessment Report<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                                <input type="file" name="upload_assessed_overall_report" class="form-control" required="required">
+
+                                                <label id="upload_assessed_overall_report-error" class="error" for="upload_assessed_overall_report"></label>
+
+                                            <?php } ?>
+
+                                        </div>
+
+
+                            		</form>
+
+
+  			    				<?php } elseif (empty($record->assessor_status)) { ?>
+  			    					<h6><strong><p>The assessment is not ready for assessor review.</p></strong></h6>
+								<?php } ?>
+
+                            	<ul>
+                            	</ul>
+                        	</div>
+
+                            <div class="col-md-12">
+                            	<p>&nbsp;</p>
+                                <h4>ModerationStatus</h4>
+                            	<ul>
+                            	</ul>
+                        	</div>
+
+
               			<?php if (!empty($_GET['id'])) { ?>
               			    <div class="form-group row">
                   			    <div class="col-md-3">

@@ -585,9 +585,9 @@
 
                                 <?php if (empty($record->assessor_status)) { ?>
 
-									<form method="post" enctype="multipart/form-data" id="RequestAssessment" action="/facilitator-request-assessor-review?id=<?= (isset($record)) ? $record->id: ''; ?>">
+					<form method="post" enctype="multipart/form-data" id="RequestAssessment" action="/facilitator-request-assessor-review?id=<?= (isset($record)) ? $record->id: ''; ?>">
 
-									<input type="hidden" name="id" class="form-control" value="<?= $record->id ?>">
+					<input type="hidden" name="id" class="form-control" value="<?= (isset($record)) ? $record->id: ''; ?>">
 
                                     <div class="col-md-12">
 

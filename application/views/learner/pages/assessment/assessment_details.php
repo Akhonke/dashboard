@@ -200,6 +200,12 @@
 											</p>
 											<?php } ?>
 
+											<?php if (!empty($assessment_submission->upload_marked_workbook)) { ?>
+												<p>
+												Marked workbook : <a href="/uploads/assessment/upload_marked_workbook/<?php echo $assessment_submission->upload_marked_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_workbook_name; ?></a>
+											</p>
+											<?php } ?>
+
 											<?php if (!empty($assessment_submission->assessment_mark)) { ?>
 												<p>Assessment Mark: <?php echo $assessment_submission->assessment_mark; ?></p>
 											<?php } ?>

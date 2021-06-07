@@ -529,7 +529,7 @@
 
 					$this->common->update_learner($id, $data);
 
-					$this->session->set_flashdata('success', 'Trining updated Succesfully');
+					$this->session->set_flashdata('success', 'Learner updated Succesfully');
 
 
 
