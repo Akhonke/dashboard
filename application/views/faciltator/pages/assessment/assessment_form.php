@@ -157,12 +157,12 @@
 
                                 <div class="col-md-6">
                                     <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
-                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title" readonly="readonly">
+                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title">
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-control-label">Intervention Name</label>
-                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class_name)) ? $class_name->intervention: ''; ?>" id="intervention" readonly="readonly">
+                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class_name)) ? $class_name->intervention: ''; ?>" id="intervention">
                                 </div>
 
 
