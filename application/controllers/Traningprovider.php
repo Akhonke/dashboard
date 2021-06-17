@@ -443,6 +443,8 @@
 
 				$data['completion_date'] = ($this->input->post('completion_date')) ? $this->input->post('completion_date') : '';
 
+				$data['tax_reference'] = ($this->input->post('tax_reference')) ? $this->input->post('tax_reference') : '';
+
 				if ($id != 0) {
 
 					if (!empty($_FILES['upload_proof_of_bankings']['name'])) {
@@ -527,7 +529,7 @@
 
 					$this->common->update_learner($id, $data);
 
-					$this->session->set_flashdata('success', 'Trining updated Succesfully');
+					$this->session->set_flashdata('success', 'Learner updated Succesfully');
 
 
 

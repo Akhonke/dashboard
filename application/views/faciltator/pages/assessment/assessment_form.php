@@ -157,12 +157,12 @@
 
                                 <div class="col-md-6">
                                     <label class="form-control-label">Assessment Title<span style="color:red;font-weight:bold;"> *</span></label>
-                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title" readonly="readonly">
+                                    <input type="text" placeholder="Enter Your Assessment Title" name="title" class="form-control assessment_title" value="<?= (isset($record)) ? $record->title: ''; ?>" id="title">
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-control-label">Intervention Name</label>
-                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class_name)) ? $class_name->intervention: ''; ?>" id="intervention" readonly="readonly">
+                                    <input type="text" placeholder="Enter the Intervention Name" name="intervention" class="form-control intervention" value="<?= (isset($class_name)) ? $class_name->intervention: ''; ?>" id="intervention">
                                 </div>
 
 
@@ -585,9 +585,9 @@
 
                                 <?php if (empty($record->assessor_status)) { ?>
 
-									<form method="post" enctype="multipart/form-data" id="RequestAssessment" action="/facilitator-request-assessor-review?id=<?= (isset($record)) ? $record->id: ''; ?>">
+					<form method="post" enctype="multipart/form-data" id="RequestAssessment" action="/facilitator-request-assessor-review?id=<?= (isset($record)) ? $record->id: ''; ?>">
 
-									<input type="hidden" name="id" class="form-control" value="<?= $record->id ?>">
+					<input type="hidden" name="id" class="form-control" value="<?= (isset($record)) ? $record->id: ''; ?>">
 
                                     <div class="col-md-12">
 

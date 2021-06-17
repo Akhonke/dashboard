@@ -1708,7 +1708,7 @@ class Faciltator extends CI_Controller
                      http://digilims.com/new_assessment
                     ');
 
-                    $this->session->set_flashdata('success', 'Assessement Saved Successfully');
+                    $this->session->set_flashdata('success', 'Assessment Saved Successfully');
 
                     redirect('facilitator-assessment-list');
                 } else {
@@ -1816,6 +1816,7 @@ class Faciltator extends CI_Controller
                 }
 
                 $assessment_data = [
+                    'facilitator_status' => 'complete',
                     'status' => 'awaiting assessment review',
                     'updated_date' => date('Y-m-d H:i:s'),
                     'assessor_status' =>  'awaiting assessment review',

@@ -177,9 +177,14 @@
     												Submitted Workbook : <a href="/uploads/assessment/upload_completed_workbook/<?php echo $assessment_submission->upload_completed_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_workbook_name; ?></a>
 												</p>
 											<?php } ?>
+											<?php if (!empty($assessment_submission->upload_marked_workbook)) { ?>
+												<p>
+    												Marked Workbook	 : <a href="/uploads/assessment/upload_marked_workbook/<?php echo $assessment_submission->upload_marked_workbook; ?>" target="_blank"><?php echo $assessment_submission->upload_marked_workbook_name; ?></a>
+												</p>
+											<?php } ?>
 											<?php if (!empty($assessment_submission->upload_completed_poe)) { ?>
 												<p>
-    												Submitted POE : <a href="/uploads/assessment/upload_completed_poe/<?php echo $assessment_submission->upload_completed_poe; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_poe_name; ?></a>
+    												Submitted POE	 : <a href="/uploads/assessment/upload_completed_poe/<?php echo $assessment_submission->upload_completed_poe; ?>" target="_blank"><?php echo $assessment_submission->upload_completed_poe_name; ?></a>
 												</p>
 											<?php } ?>
 
