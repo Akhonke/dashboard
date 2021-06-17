@@ -2679,49 +2679,55 @@
 			$this->load->view('provider/tamplate', $this->data);
 		}
 
-		public function get_sublearnership()
-		{
+		/**
+		 * @deprecated - Use Api/get_sublearnership()
+		 */
+// 		public function get_sublearnership()
+// 		{
 
-			if (!empty($this->input->post('value'))) {
-				$id = $this->input->post('value');
-			} else {
-				$id = 0;
-			}
+// 			if (!empty($this->input->post('value'))) {
+// 				$id = $this->input->post('value');
+// 			} else {
+// 				$id = 0;
+// 			}
 
-			$record = $this->common->accessrecord('learnership_sub_type', [], ['learnship_id' => $id], 'result');
+// 			$record = $this->common->accessrecord('learnership_sub_type', [], ['learnship_id' => $id], 'result');
 
-			if (!empty($record)) {
+// 			if (!empty($record)) {
 
-				$data = $record;
-			} else {
+// 				$data = $record;
+// 			} else {
 
-				$data = array('error' => 'Learnership not available of this id');
-			}
+// 				$data = array('error' => 'Learnership not available of this id');
+// 			}
 
-			echo json_encode($data);
-		}
+// 			echo json_encode($data);
+// 		}
 
-		public function get_learnership()
-		{
+		/**
+		 * @deprecated - Use Api/get_sublearnership()
+		 */
+// 		public function get_learnership()
+// 		{
 
-			if (!empty($this->input->post('value'))) {
-				$id = $this->input->post('value');
-			} else {
-				$id = 0;
-			}
+// 			if (!empty($this->input->post('value'))) {
+// 				$id = $this->input->post('value');
+// 			} else {
+// 				$id = 0;
+// 			}
 
-			$record = $this->common->accessrecord('learnership', [], ['id' => $id], 'result');
+// 			$record = $this->common->accessrecord('learnership', [], ['id' => $id], 'result');
 
-			if (!empty($record)) {
+// 			if (!empty($record)) {
 
-				$data = $record;
-			} else {
+// 				$data = $record;
+// 			} else {
 
-				$data = array('error' => 'Learnership not available of this id');
-			}
+// 				$data = array('error' => 'Learnership not available of this id');
+// 			}
 
-			echo json_encode($data);
-		}
+// 			echo json_encode($data);
+// 		}
 
 		// ******************************LEARNER MARK************************************************************************
 

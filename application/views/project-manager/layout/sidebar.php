@@ -292,7 +292,7 @@ $projectcount = count($Project);
 
 
       <!-- *************************** -->
-
+<?php /*
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages16" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
             <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
@@ -319,6 +319,8 @@ $projectcount = count($Project);
             </ul>
          </div>
       </li>
+*/
+?>
       <!-- *************************** -->
 
 
