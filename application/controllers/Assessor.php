@@ -576,27 +576,31 @@ class Assessor extends CI_Controller
 		}
 		echo json_encode($mun_data);
 	}
-	public function get_sublearnership()
-	{
 
-		if (!empty($this->input->post('value'))) {
-			$id = $this->input->post('value');
-		} else {
-			$id = 0;
-		}
+	/**
+	 * @deprecated. Use Api/get_sublearnership()
+	 */
+// 	public function get_sublearnership()
+// 	{
 
-		$record = $this->common->accessrecord('learnership_sub_type', [], ['learnship_id' => $id], 'result');
+// 		if (!empty($this->input->post('value'))) {
+// 			$id = $this->input->post('value');
+// 		} else {
+// 			$id = 0;
+// 		}
 
-		if (!empty($record)) {
+// 		$record = $this->common->accessrecord('learnership_sub_type', [], ['learnship_id' => $id], 'result');
 
-			$data = $record;
-		} else {
+// 		if (!empty($record)) {
 
-			$data = array('error' => 'Learnership not available of this id');
-		}
+// 			$data = $record;
+// 		} else {
 
-		echo json_encode($data);
-	}
+// 			$data = array('error' => 'Learnership not available of this id');
+// 		}
+
+// 		echo json_encode($data);
+// 	}
 
 	public function assessor_acreditations_file_delete()
 	{

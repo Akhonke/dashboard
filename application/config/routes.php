@@ -265,7 +265,10 @@ $route['Projectmanager-User-list'] = 'projectmanager/user_list';
 $route['list-Attendance-Sheet']    = 'projectmanager/listProviderAddedAttendance';
 $route['Projectmanager-employer-list'] = 'projectmanager/employer_list';
 $route['projectmanager-create-bank'] = 'projectmanager/create_bank';
-$route['projectmanager-get_sublearnership'] = 'projectmanager/get_sublearnership';
+
+// $route['projectmanager-get_sublearnership'] = 'projectmanager/get_sublearnership';
+$route['projectmanager-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['projectmanager-getclassname'] = 'projectmanager/get_learnerclassname';
 $route['Projectmanager-sendMassage'] = 'projectmanager/sendMassage';
 $route['Projectmanager-inbox'] = 'projectmanager/inbox';
@@ -417,8 +420,14 @@ $route['provider-create-drop-out'] = 'Traningprovider/drop_out';
 $route['bring-back-drop-out'] = 'Traningprovider/bring_back_drop_out';
 $route['provider-getfacilitator'] = 'Traningprovider/get_facilitator';
 $route['provider-getlearner'] = 'Traningprovider/get_learnername';
-$route['provider-get_learnership'] = 'Traningprovider/get_learnership';
-$route['provider-get_sublearnership'] = 'Traningprovider/get_sublearnership';
+
+//$route['provider-get_learnership'] = 'Traningprovider/get_learnership';
+$route['provider-get_learnership'] = 'Api/get_learnership';
+
+// $route['provider-get_sublearnership'] = 'Traningprovider/get_sublearnership';
+$route['provider-get_sublearnership'] = 'Api/get_sublearnership';
+
+
 $route['create-test'] = 'Traningprovider/test';
 $route['create-learner-link'] = 'Traningprovider/learnerlink';
 $route['create-learner-link-List'] = 'Traningprovider/learnerlinklist';
@@ -498,7 +507,10 @@ $route['assessor-assesment-list'] = 'assessor/assesmentlist';
 $route['assessor-create-assesment'] = 'assessor/createassesment';
 $route['assessor-getunitstandard'] = 'assessor/getunitstandard';
 $route['assessor-getlearner'] = 'assessor/get_learnername';
-$route['assessor-get_sublearnership'] = 'assessor/get_sublearnership';
+
+// $route['assessor-get_sublearnership'] = 'assessor/get_sublearnership';
+$route['assessor-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['assessor-user_listing'] = 'assessor/user_listing';
 $route['assessor-forget-password'] = 'welcome/assessor_forgetpassword';
 
@@ -559,7 +571,10 @@ $route['Faciltator-create-mark-sheet'] = 'faciltator/create_learner_mark';
 $route['Faciltator-mark-sheet-list'] = 'faciltator/learner_mark_list';
 $route['Faciltator-deletedata'] = 'faciltator/deletedata';
 $route['Faciltator-getclassname'] = 'faciltator/get_classname';
-$route['Faciltator-get_sublearnership'] = 'faciltator/get_sublearnership';
+
+// $route['Faciltator-get_sublearnership'] = 'faciltator/get_sublearnership';
+$route['Faciltator-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['facilitator-create-attendance'] = 'faciltator/create_attendance';
 $route['facilitator-attendance-list'] = 'faciltator/attendance_list';
 $route['facilitator-create-discipline'] = 'faciltator/create_discipline';
@@ -605,7 +620,10 @@ $route['internal-moderator-acreditations-file-delete'] = 'moderator/moderator_ac
 $route['internal-moderator-create-moderation'] = 'moderator/create_moderation';
 $route['internal-moderator-getunitstandard'] = 'moderator/getunitstandard';
 $route['internal-moderator-getlearner'] = 'moderator/get_learnername';
-$route['internal-moderator-get_sublearnership'] = 'moderator/get_sublearnership';
+
+// $route['internal-moderator-get_sublearnership'] = 'moderator/get_sublearnership';
+$route['internal-moderator-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['internal-moderator-user_listing'] = 'moderator/user_listing';
 $route['internal-moderator-getclassname'] = 'moderator/get_classname';
 $route['internal-moderator-moderation-list'] = 'moderator/moderationlist';
@@ -626,7 +644,10 @@ $route['external-moderator-acreditations-file-delete'] = 'External_moderator/mod
 $route['external-moderator-create-moderation'] = 'External_moderator/create_moderation';
 $route['external-moderator-getunitstandard'] = 'External_moderator/getunitstandard';
 $route['external-moderator-getlearner'] = 'External_moderator/get_learnername';
-$route['external-moderator-get_sublearnership'] = 'External_moderator/get_sublearnership';
+
+// $route['external-moderator-get_sublearnership'] = 'External_moderator/get_sublearnership';
+$route['external-moderator-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['external-moderator-user_listing'] = 'External_moderator/user_listing';
 $route['external-moderator-getclassname'] = 'External_moderator/get_classname';
 $route['external-moderator-moderation-list'] = 'External_moderator/moderationlist';
