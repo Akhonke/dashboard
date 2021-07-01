@@ -25,7 +25,7 @@
                         <h3 class="h6 text-uppercase mb-0" style="display: inline-block;">Create Live Class</h3>
 
 
-                        <button type="submit" class="btn btn-primary" style="float: right;background: radial-gradient(circle, rgba(138,214,226,1) 0%, rgba(32,188,213,1) 100%);color: #fff;box-shadow: 0 4px 12px #00000029;"> <a target="_blank" href="https://digilims.co.za/b/signin" style="color: #fff">Create Class Link</a></button>
+                        <button type="submit" class="btn btn-primary" style="float: right;background: radial-gradient(circle, rgba(138,214,226,1) 0%, rgba(32,188,213,1) 100%);color: #fff;box-shadow: 0 4px 12px #00000029;"> <a target="_blank" href="<?php echo BIG_BLUE_SIGNIN; ?>" style="color: #fff">Create Class Link</a></button>
                     </div>
 
                     <?php
@@ -108,7 +108,7 @@
 
                                 <div class="line"></div>
 
-                                
+
                             </div>
                             <div class="form-group row">
 
