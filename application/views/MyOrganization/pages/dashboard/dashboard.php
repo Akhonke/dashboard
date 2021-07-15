@@ -215,29 +215,7 @@
   </section> -->
   <p class="ddd"></p>
   <section class="py-3">
-    <div class="row">
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Projects</h6><span class="text-gray"><?= $project ?></span>
-            </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Project Manager</h6><span class="text-gray"><?= $project_manager ?></span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
+    <div class="row">        
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
@@ -311,75 +289,18 @@
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
       </div>
-
-
-
-
-
     </div>
   </section>
   <section class="pb-5 pt-0">
     <div class="row">
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Reports</h6><span class="text-gray">0</span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Financial Year</h6><span class="text-gray">0</span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
+      
+     
     </div>
   </section>
 
 
 
-  <section class="py-5">
-    <div class="row">
-      <?php $i = 1;
-      foreach ($project_manager_ as $projectmn) { ?>
-        <?php
-        $date_of_post = $projectmn->created_date;
-        $date = $date_of_post; // 6 october 2011 2:28 pm
-        $stamp = strtotime($date); // outputs 1307708880
-        ?>
 
-
-        <div class="col-lg-12">
-          <a href="#" class="message card px-5 py-3 mb-4 bg-hover-gradient-primary no-anchor-style">
-            <div class="row">
-              <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left"><strong class="h5 mb-0"><?php echo date("d", $stamp); ?><sup class="smaller text-gray font-weight-normal"><?php echo date("M", $stamp); ?></sup></strong><img src="https://d19m59y37dris4.cloudfront.net/bubbly-dashboard/1-0/img/avatar-1.jpg" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
-                <h6 class="mb-0"><?= $projectmn->project_manager ?></h6>
-              </div>
-              <div class="col-lg-9 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
-                <div class="bg-gray-100 roundy px-4 py-1 mr-0 mr-lg-3 mt-2 mt-lg-0 text-dark exclode">Project Manager</div>
-                <p class="mb-0 mt-3 mt-lg-0">Email : <span><?= $projectmn->email_address ?> </span> , Contact Number : <span><?= $projectmn->mobile_number ?></span>, Address : <span><?= $projectmn->city ?>,<?= $projectmn->region ?>,<?= $projectmn->district ?></span></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <?php
-        if ($i >= 5) {
-          break;
-        }
-        ?>
-      <?php $i++;
-      } ?>
-    </div>
-  </section>
 </div>
 
 <style>
