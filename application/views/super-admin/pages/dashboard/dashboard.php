@@ -3,22 +3,34 @@
     <div class="ms-card card-gradient-custom ms-widget ms-infographics-widget ms-p-relative">
       <div class="ms-card-body media">
         <div class="media-body">
-          <h6>Total Active Organizations</h6>
-          <p class="ms-card-change"><?php echo $plan; ?> </p>
+          <h6>Total Users</h6>
+          <p class="ms-card-change"><?php echo $organisation; ?> </p>
         </div>
       </div>
       <i class="fas fa-user-tie ms-icon-mr"></i>
     </div>
   </a>
 </div>
-
+<div class="col-xl-3 col-md-6 col-sm-6">
+  <a href="<?= base_url('superAdmin-invoiceList') ?>">
+    <div class="ms-card card-gradient-custom ms-widget ms-infographics-widget ms-p-relative">
+      <div class="ms-card-body media">
+        <div class="media-body">
+          <h6>Total Invoice</h6>
+          <p class="ms-card-change"> <?php echo $invoicettl ?></p>
+        </div>
+      </div>
+      <i class="fas fa-file-invoice"></i>
+    </div>
+  </a>
+</div>
 <div class="col-xl-3 col-md-6 col-sm-6">
   <a href="<?= base_url('superAdmin-ticketList') ?>">
     <div class="ms-card card-gradient-custom ms-widget ms-infographics-widget ms-p-relative">
       <div class="ms-card-body media">
         <div class="media-body">
-          <h6 class="bold">Total Freemium Plan Organizations</h6>
-          <p class="ms-card-change"><?php echo $plan; ?></p>
+          <h6 class="bold">Total Enquiry</h6>
+          <p class="ms-card-change"><?php echo $contactus; ?></p>
         </div>
       </div>
       <i class="fa fa-user ms-icon-mr"></i>
@@ -30,20 +42,7 @@
     <div class="ms-card card-gradient-custom ms-widget ms-infographics-widget ms-p-relative">
       <div class="ms-card-body media">
         <div class="media-body">
-          <h6 class="bold">Total Standard Plan Organizations</h6>
-          <p class="ms-card-change"> <?php echo $plan; ?></p>
-        </div>
-      </div>
-      <i class="material-icons  ms-icon-mr">assignment</i>
-    </div>
-  </a>
-</div>
-<div class="col-xl-3 col-md-6 col-sm-6">
-  <a href="<?= base_url('superAdmin-plan') ?>">
-    <div class="ms-card card-gradient-custom ms-widget ms-infographics-widget ms-p-relative">
-      <div class="ms-card-body media">
-        <div class="media-body">
-          <h6 class=>Total Advanced Plan Organizations</h6>
+          <h6 class="bold">total Plan</h6>
           <p class="ms-card-change"> <?php echo $plan; ?></p>
         </div>
       </div>
@@ -92,7 +91,26 @@
     </div>
   </div>
 </div>
-
+<div class="col-xl-6 col-md-12">
+  <div class="ms-panel">
+    <div class="ms-panel-header">
+      <h6>Client Total</h6>
+    </div>
+    <div class="ms-panel-body">
+      <canvas id="line-chart"></canvas>
+    </div>
+  </div>
+</div>
+<div class="col-xl-6 col-md-12">
+  <div class="ms-panel">
+    <div class="ms-panel-header">
+      <h6>Client In</h6>
+    </div>
+    <div class="ms-panel-body">
+      <canvas id="bar-chart-grouped"></canvas>
+    </div>
+  </div>
+</div>
 <div class="col-xl-6 col-lg-12" style="display: none;">
   <div class="ms-panel ms-panel-fh ms-facebook-engagements">
 

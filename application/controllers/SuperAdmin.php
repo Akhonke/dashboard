@@ -15,11 +15,11 @@ class SuperAdmin extends CI_Controller
     public function dashboard()
     {
         $this->data['organisation'] = $this->db->count_all("organisation");
-        $this->data['plan'] = $this->db->count_all("plan");
+        $this->data['contactus'] = $this->db->count_all("contactus");
         $this->data['plan'] = $this->db->count_all("plan");
         $total_project = count($this->common->accessrecord('project', ['*'], array(), 'result'));
-        $this->data['active_project'] = count($this->common->accessrecord('plan', ['*'], array('status' => 1), 'result'));
-        $this->data['inactive_project'] = count($this->common->accessrecord('plan', ['*'], array('status' => 0), 'result'));
+        $this->data['active_project'] = count($this->common->accessrecord('project', ['*'], array('status' => 1), 'result'));
+        $this->data['inactive_project'] = count($this->common->accessrecord('project', ['*'], array('status' => 0), 'result'));
         $percent = $total_project / 100;
         if ($percent == 0) {
             $this->data['activeprojectpercent'] = 0;
