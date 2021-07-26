@@ -184,47 +184,39 @@
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">Total Learners</h6><span class="text-gray"><?= $learner ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+          </div>         
         </div>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">Total Facilitators</h6><span class="text-gray"><?= $facilitator ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+          </div>         
         </div>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-blue"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">Total Assessors</h6><span class="text-gray"><?= $assessor ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
+          </div>         
         </div>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-red"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">
-                Total Internal Moderator</h6><span class="text-gray"><?= $internal_moderator ?></span>
+                Total Internal Moderators</h6><span class="text-gray"><?= $internal_moderator ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
+          </div>          
         </div>
       </div>
 
@@ -234,78 +226,48 @@
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
-              <h6 class="mb-0">Total External Moderator
+              <h6 class="mb-0">Total External Moderators
               </h6><span class="text-gray"><?= $external_moderator ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+          </div>          
         </div>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
+          <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
               <h6 class="mb-0">Total Classes</h6><span class="text-gray"><?= $class ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+          </div>          
         </div>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
+          <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
-              <h6 class="mb-0">Total Marksheets</h6><span class="text-gray"><?= $marksheet ?></span>
+              <h6 class="mb-0">Total Uploaded Mark sheets</h6><span class="text-gray"><?= $marksheet ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+          </div>          
         </div>
       </div>
-      
+	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+          <div class="flex-grow-1 d-flex align-items-center">            
+            <div class="text">
+              <h6 class="mb-0">Total Quarterly Reports
+              </h6><span class="text-gray"><?= $quarterly_progress_report  ?></span>
+            </div>
+          </div>          
+        </div>
+      </div>
     </div>
   </section>
   <section class="pb-5 pt-0">
     <div class="row">
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Quaterly Reports
-              </h6><span class="text-gray"><?= $quarterly_progress_report  ?></span>
-            </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Users</h6><span class="text-gray"><?= $sub_user ?></span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
-     
-
-
-
-
     </div>
-  </section>
-
-
-
-
- 
+  </section> 
 </div>
 
 <script src="<?= base_url() ?>assets/admin/cloudfront/vendor/chart.js/Chart.min.js"></script>

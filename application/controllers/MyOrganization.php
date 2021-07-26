@@ -52,10 +52,15 @@ class MyOrganization extends CI_Controller
 
 		$this->data['learner_'] = $this->common->accessrecord('learner', [], ['organization' => $_SESSION['organisation']['id']], 'result');
 		$this->data['learner'] = count($this->data['learner_']);
-
+        
+		$this->data['drop_out'] = $this->common->accessrecord('drop_out', [], ['organization' => $_SESSION['organisation']['id']], 'result');
+		$this->data['drop_out'] = count($this->data['drop_out']);
+		
 		$this->data['page'] = 'dashboard';
 		$this->data['content'] = 'pages/dashboard/dashboard';
 		$this->load->view('MyOrganization/tamplate', $this->data);
+		
+		
 	}
 
 	public function create_projects_list()
