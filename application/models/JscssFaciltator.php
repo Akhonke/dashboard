@@ -1706,19 +1706,19 @@ class JscssFaciltator extends CI_Model
 
 								if(i == 'error'){
 
-								$('.class_module').html(option);
+								$('.module').html(option);
 
-								$('#class_module-error').show();
+								$('#module-error').show();
 
-								$('#class_module-error').html(star);
+								$('#module-error').html(star);
 
 							}else{
 								var test = '<option hidden value='+'>Select Class Module</option>';
 							  option += '<option value='+star.id+'>'+star.title+'</option>'
 
-							  $('.class_module').html(test+option);
+							  $('.module').html(test+option);
 
-							  $('#class_module-error').hide();
+							  $('#module-error').hide();
 
 							}
 
@@ -1731,13 +1731,13 @@ class JscssFaciltator extends CI_Model
 			});
 
 
-			$('.class_module').change(function(){
+			$('.module').change(function(){
 
 				$.ajax({
 
 					url: '/api-module-uploads',
 
-					data: { 'value': $('.class_module').val() },
+					data: { 'value': $('.module').val() },
 
 					type: 'post',
 

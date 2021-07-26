@@ -64,8 +64,10 @@ if (!empty($record)) {
 
                                                 $unit_standard_list = $this->common->getAssessmentUnits($row->id);
                                                 $unit_standards = [];
-                                                foreach ($unit_standard_list as $unit_standard_item) {
-                                                    $unit_standards[] = $unit_standard_item->title;
+                                                if (is_array($unit_standard_list)) {
+                                                    foreach ($unit_standard_list as $unit_standard_item) {
+                                                        $unit_standards[] = $unit_standard_item->title;
+                                                    }
                                                 }
                                                 $row->unit_standard = join(",", $unit_standards);
 

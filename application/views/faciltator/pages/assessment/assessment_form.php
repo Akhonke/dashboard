@@ -268,15 +268,15 @@
 
                                     ?>
 
-                                        <input type="hidden" name="class_module" class="form-control" value="<?= $class_module->id ?>">
+                                        <input type="hidden" name="module" class="form-control" value="<?= $module->id ?>">
 
-                                        <input type="text" name="class_module_title" class="form-control" value="<?= $class_module->title ?>" readonly>
+                                        <input type="text" name="class_module_title" class="form-control" value="<?= $module->title ?>" readonly>
 
                                     <?php
 
                                     } else { ?>
 
-                                        <select class="form-control class_module" name="class_module" id="class_module">
+                                        <select class="form-control module" name="module" id="module">
 
                                             <option label="" value="">Select Your Module</option>
 
@@ -284,7 +284,7 @@
 
                                     <?php } ?>
 
-                                    <label id="class_module-error" class="error" for="class_module"></label>
+                                    <label id="module-error" class="error" for="module"></label>
 
 
                                 </div>
@@ -302,13 +302,13 @@
                             		    <a href="/uploads/class/learner_guide/<?php echo $class_name->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>
 
                             		    <p><label class="form-control-label">Learner Workbook : </span></label>
-                            		    <a href="/uploads/class/learner_workbook/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
+                            		    <a href="/uploads/class/learner_workbook/<?php echo $module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
 
                             		    <p><label class="form-control-label">Learner POE : </span></label>
-                            		    <a href="/uploads/class/learner_poe/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a></p>
+                            		    <a href="/uploads/class/learner_poe/<?php echo $module->upload_poe; ?>" target="_blank">Download the Learner POE</a></p>
 
                             		    <p><label class="form-control-label">Facilitator Guide : </span></label>
-                            		    <a href="/uploads/class/facilitator_guide/<?php echo $class_module->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a></p>
+                            		    <a href="/uploads/class/facilitator_guide/<?php echo $module->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a></p>
 
                                     <?php } ?>
 

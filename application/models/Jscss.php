@@ -2642,13 +2642,13 @@
 
 			});
 
-			$('.class_module').change(function(){
+			$('.module').change(function(){
 
 				$.ajax({
 
 					url: 'api-module-uploads',
 
-					data: { 'value': $('.class_module').val() },
+					data: { 'value': $('.module').val() },
 
 					type: 'post',
 
@@ -2659,6 +2659,28 @@
 				});
 
 			});
+
+			$('#submission_type').change(function(){
+
+                let submission_type = $('#submission_type').val();
+
+                if (submission_type == 'timed based assessment online') {
+                    $('#online_quiz_section').show();
+                } else {
+                    $('#online_quiz_section').hide();
+                }
+
+                if (submission_type == 'practical assessment') {
+                    $('#practical_workbook_section').show();
+                } else {
+                    $('#practical_workbook_section').hide();
+                }
+
+
+			});
+
+
+
 
 
 			</script>";
@@ -10813,19 +10835,19 @@
 
 								if(i == 'error'){
 
-								$('.class_module').html(option);
+								$('.module').html(option);
 
-								$('#class_module-error').show();
+								$('#module-error').show();
 
-								$('#class_module-error').html(star);
+								$('#module-error').html(star);
 
 							}else{
 								var test = '<option hidden value='+'>Select Class Module</option>';
 							  option += '<option value='+star.id+'>'+star.title+'</option>'
 
-							  $('.class_module').html(test+option);
+							  $('.module').html(test+option);
 
-							  $('#class_module-error').hide();
+							  $('#module-error').hide();
 
 							}
 

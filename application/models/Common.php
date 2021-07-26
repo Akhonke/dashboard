@@ -3012,7 +3012,7 @@ class Common extends CI_Model
 	    $result = $this->db->select('assessment.*, class_name.class_name')
     	    ->from('assessment')
     	    ->join('class_name', 'class_name.id = assessment.class_id')
-    // 	    ->join('class_module', 'class_name.id = class_module.class_id')
+    // 	    ->join('module', 'class_name.id = module.class_id')
     // 	    ->join('units', 'units.id = assessment.unit_standard')
     	    ->where('assessment.created_by', $trainer_id)
     	    ->where('assessment.created_by_role', 'trainer')
@@ -3034,7 +3034,7 @@ class Common extends CI_Model
            $result = $this->db->select('assessment.*, class_name.class_name')
                ->from('assessment')
                ->join('class_name', 'class_name.id = assessment.class_id')
-//                ->join('class_module', 'class_name.id = class_module.class_id')
+//                ->join('module', 'class_name.id = module.class_id')
                ->where('class_name.trainer_id', $moderator->trainer_id)
                ->where('assessment.status', 'awaiting moderation')
                 ->or_where('assessment.status', 'moderation in progress')
@@ -3106,7 +3106,7 @@ class Common extends CI_Model
 	    $result = $this->db->select('assessment.*, class_name.class_name')
     	    ->from('assessment')
     	    ->join('class_name', 'class_name.id = assessment.class_id')
-    	    ->join('class_module', 'class_name.id = class_module.class_id', "left")
+    	    ->join('module', 'class_name.id = module.class_id', "left")
 	        ->where('class_name.facilitator_id', $facilitator_id)
     	    ->get()
     	    ->result();
@@ -3134,7 +3134,7 @@ class Common extends CI_Model
 	    $result = $this->db->select('assessment.*, class_name.class_name')
 	    ->from('assessment')
 	    ->join('class_name', 'class_name.id = assessment.class_id')
-	    ->join('class_module', 'assessment.module_id = class_module.id')
+	    ->join('module', 'assessment.module_id = module.id')
 	    ->where('class_name.organization', $organisation_id)
 	    ->get()
 	    ->result();
@@ -3459,12 +3459,38 @@ class Common extends CI_Model
 	public function submissionCountByAssessment($assessment_id)
 	{
 
-
-
 	   $query = $this->db->get_where('learner_assessment', array('assessment_id' => $assessment_id));
 
        return $query->num_rows();
 	}
+
+	public function getQuizList($class_id)
+	{
+
+	    $this->load->helper('url');
+
+	    $quiz_url = base_url() . 'digilims_online/index.php/client_api/quiz_list';
+
+	    $quiz_list = file_get_contents($quiz_url);
+
+	    return json_decode($quiz_list, true);
+
+
+	}
+
+	//  Modules
+
+	public function moduleListByTrainer($trainer_id)
+	{
+
+	    $result = $this->db->select('module.*')
+	    ->from('module')
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
 
 
 }

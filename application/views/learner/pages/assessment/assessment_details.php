@@ -1,3 +1,18 @@
+<?php
+
+$assessment_submission_type = (isset($assessment)) ? $assessment->submission_type : '';
+
+$online_quiz_id = (isset($assessment)) ? $assessment->online_quiz_id : 0;
+
+if ($online_quiz_id) {
+   // $quiz_url = BASEURL . 'digilims_online/index.php/quiz/quiz_detail/' . $online_quiz_id;
+
+    $quiz_url = BASEURL . '/learner/take_quiz?id=' . $online_quiz_id;
+} else {
+    $quiz_url = '';
+}
+
+?>
 <div class="container-fluid px-xl-5">
 
     <section class="py-5">
@@ -55,7 +70,7 @@
 
                                     <label class="form-control-label">Module<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <input type="text" placeholder="Enter Your Class Name" name="class_module" class="form-control class_name" value="<?= (isset($class_module)) ? $class_module->title: ''; ?>" id="class_module"  readonly="readonly">
+                                    <input type="text" placeholder="Enter Your Class Name" name="module" class="form-control class_name" value="<?= (isset($module)) ? $module->title: ''; ?>" id="module"  readonly="readonly">
 
                                 </div>
 
@@ -76,51 +91,9 @@
 
                                 </div>
 
-                                <p>&nbsp;</p>
-
-                                <div class="col-md-12" style="border:1px solid black;">
-
-                                	<h6>The following documents are available for you to complete your assessment.</h6>
-                                	<p>Please upload your completed Workbook and POE for marking. </p>
-
-                                    <div class="col-md-12">
-
-                                        <label class="form-control-label">Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                        <?php if (!empty($class->upload_learner_guide)) { ?>
-                                        	<a href="/uploads/class/learner_guide/<?php echo $class->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a>
-                                        <?php } else {?>
-                                        	<p>No learner guide available for this assessment</p>
-                                        <?php } ?>
-
-                                    </div>
-
-                                    <div class="col-md-12">
-
-                                        <label class="form-control-label">Learner Workbook<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                        <?php if (!empty($class_module->upload_workbook)) { ?>
-                                        	<a href="/uploads/class/learner_workbook/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a>
-                                        <?php } else {?>
-                                        	<p>No learner workbook available for this assessment</p>
-                                        <?php } ?>
-
-                                    </div>
-
-                                    <div class="col-md-12">
-
-                                        <label class="form-control-label">Learner POE<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                        <?php if (!empty($class_module->upload_poe)) { ?>
-                                        	<a href="/uploads/class/learner_poe/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a>
-                                        <?php } else {?>
-                                        	<p>No learner guide poe for this assessment</p>
-                                        <?php } ?>
-
-                                    </div>
-
-
+                                <div class="col-md-4">
                                 </div>
+
 
 <?php /*
                                 <div class="col-md-6">
@@ -174,10 +147,163 @@
                                     <input type="text" placeholder="Enter Your Assessment Submission Type" name="assessment_type" class="form-control assessment_type" value="<?= (isset($assessment)) ? $assessment->submission_type : ''; ?>" id="submission_type" readonly="readonly">
 								</div>
 
+								                                <p>&nbsp;</p>
+
+                                <?php if ($assessment_submission_type === 'timed based assessment online') { ?>
+
+                                    <div class="col-md-12" style="border:1px solid black;">
+
+                                    	<h6>This is time based online assessment.</h6>
+                                    	<p>Click the button below to start your assessment. </p>
+
+                                        <a href="<?php echo $quiz_url;?>"  class="btn btn-success">Start Assessment.</a>
+
+                                		<p>&nbsp;</p>
+
+                                	</div>
+
+                                <?php } ?>
+
+                                <?php if ($assessment_submission_type === 'manual document upload') { ?>
+
+                                    <div class="col-md-12" style="border:1px solid black;">
+
+                                    	<h6>The following documents are available for you to complete your assessment.</h6>
+                                    	<p>Please upload your completed Workbook and POE for marking.</p>
+
+                                    	<div class="row">
+
+                                            <div class="col-md-4">
+
+                                                <label class="form-control-label">Learner Guide</label><br/>
+
+                                                <?php if (!empty($class->upload_learner_guide)) { ?>
+                                                	<a href="/uploads/class/learner_guide/<?php echo $class->upload_learner_guide; ?>" target="_blank"><img src="/assets/web/img/download_learner_guide_icon.png" style="width:120px;"></a>
+                                                <?php } else {?>
+                                                	<p>No learner guide available for this assessment</p>
+                                                <?php } ?>
+												<p><?php echo $class->upload_learner_guide_name; ?></p>
+                                            </div>
+
+                                            <div class="col-md-4">
+
+                                                <label class="form-control-label">Learner Workbook</label><br/>
+
+                                                <?php if (!empty($module->upload_workbook)) { ?>
+                                                	<a href="/uploads/class/learner_workbook/<?php echo $module->upload_workbook; ?>" target="_blank"><img src="/assets/web/img/download_learner_workbook_icon.png" style="width:120px;"></a>
+                                                <?php } else {?>
+                                                	<p>No learner workbook available for this assessment</p>
+                                                <?php } ?>
+												<p><?php echo $module->upload_workbook_name; ?></p>
+                                            </div>
+
+                                            <div class="col-md-4">
+
+                                                <label class="form-control-label">Learner POE</label><br/>
+
+                                                <?php if (!empty($module->upload_poe)) { ?>
+                                                	<a href="/uploads/class/learner_poe/<?php echo $module->upload_poe; ?>" target="_blank"><img src="/assets/web/img/download_learner_poe_icon.png" style="width:120px;"></a>
+                                                <?php } else {?>
+                                                	<p>No learner guide poe for this assessment</p>
+                                                <?php } ?>
+												<p><?php echo $module->upload_poe_name; ?></p>
+                                            </div>
+                                    	</div>
+
+								<?php if ( !$learner_assessment) { ?>
+
+            						<?php if (count($learner_assessment_submissions) < 1) { ?>
+                                        <div class="col-md-12">
+                                        	<p>&nbsp:</p>
+                                            <h4>Assessment Upload</h4>
+                                        </div>
+
+                                		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="CreateAssessment" action="/learner-load-assessment">
+                            			<input type="hidden" name="learner_id" value="<?= (isset($learner_id)) ? $learner_id: ''; ?>">
+                            			<input type="hidden" name="assessment_id" value="<?= (isset($assessment_id)) ? $assessment_id: ''; ?>">
+<?php /*
+                                        <div class="col-md-12">
+                                    			<label class="form-control-label">Upload Your Completed Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
+                                                <input type="file" name="upload_completed_learner_guide" class="form-control">
+                                                <label id="upload_completed_learner_guide-error" class="error" for="upload_completed_learner_guide"></label>
+                                        </div>
+*/ ?>
+
+                                        <div class="col-md-12">
+                                    			<label class="form-control-label">Upload Your Completed Workbook<span style="color:red;font-weight:bold;"> *</span></label>
+                                                <input type="file" name="upload_completed_workbook" class="form-control">
+                                                <label id="upload_completed_workbook-error" class="error" for="upload_completed_workbook"></label>
+                                        </div>
+
+        								<?php if (count($learner_assessment_submissions) == 0) { ?>
+                                            <div class="col-md-12">
+                                        			<label class="form-control-label">Upload Your Completed POE<span style="color:red;font-weight:bold;"> *</span></label>
+                                                    <input type="file" name="upload_completed_poe" class="form-control">
+                                                    <label id="upload_completed_poe-error" class="error" for="upload_completed_poe"></label>
+                                            </div>
+    									<?php } ?>
+
+                                        <div class="col-md-12">
+                                        <p>&nbsp;</p>
+                                                <button type="submit" class="btn btn-primary">Submit your assessment</button>
+                                        </div>
+
+
+                                		</form>
+    								<?php }  /* count($learner_assessment_submissions) */ ?>
+
+								<?php }  /* $learner_assessment->status */ ?>
+
+
+                                    </div>
+
+                                <?php } ?>
+
+                                <?php if ($assessment_submission_type === 'practical assessment') { ?>
+
+                                    <div class="col-md-12" style="border:1px solid black;">
+
+                                    	<h6>This is a practical asssessment.</h6>
+                                    	<p>Please take note of the scheduled date and time of your assessment. Be sure to download the practical workbook.</p>
+
+                                    	<div class="row">
+
+                                        	<div class="col-md-12">
+                                        		<label class="form-control-label">Scheduled Practical Date<span style="color:red;font-weight:bold;"> *</span></label>
+                                            	<input type="date" placeholder="Enter Your Practical Date" name="practical_date" class="form-control practical_date" value="<?= (isset($assessment)) ? $assessment->practical_date : ''; ?>" id="practical_date">
+                                        	</div>
+
+                                        	<div class="col-md-12">
+                                        		<label class="form-control-label">Scheduled Practical Time<span style="color:red;font-weight:bold;"> *</span></label>
+                                            	<input type="time" placeholder="Enter Your Practical Time" name="practical_time" class="form-control practical_time" value="<?= (isset($assessment)) ? $assessment->practical_time : ''; ?>" id="practical_time">
+                                        	</div>
+
+                                        	<div class="col-md-12">
+
+        									    <p><label class="form-control-label">Practical Assessment Workbook : </span></label>
+                                    		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $assessment->upload_practical_workbook; ?>" target="_blank">Practical Assessment Workbook</a></p>
+
+                                        	</div>
+
+                                    	</div>
+
+
+                                	</div>
+
+
+                                <?php } ?>
+
 
                                 <div class="col-md-12">
                                 	<p>&nbsp:</p>
                                     <h4>Assessment History</h4>
+
+
+    								<?php if ( ($learner_assessment) && ($learner_assessment->status == 'submitted for marking') ) { ?>
+										<p style="color:red;">Your assessment has been submitted for marking.</p><br>
+										<p>You will be notified when your assessment is marked.</p>
+                                	<?php } ?>
+
                                     <?php if (count($learner_assessment_submissions)) { ?>
                                     	<ul>
                                     	<?php foreach ($learner_assessment_submissions as $assessment_submission) { ?>
@@ -228,62 +354,7 @@
                                     <?php } ?>
                                 </div>
 
-								<?php if ( ($learner_assessment) && ($learner_assessment->status == 'submitted for marking') ) { ?>
-										<p style="color:red;">Your assessment has been submitted for marking.</p><br>
-										<p>You will be notified when your assessment is marked.</p>
-                                <?php } else { ?>
 
-            						<?php if ( ($learner_assessment) && ($learner_assessment->competency_status == 'competent') ) { ?>
-
-            						<?php } else if (count($learner_assessment_submissions) < 1) { ?>
-                                        <div class="col-md-12">
-                                        	<p>&nbsp:</p>
-                                            <h4>Assessment Upload</h4>
-                                        </div>
-
-                                		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="CreateAssessment" action="/learner-load-assessment">
-                            			<input type="hidden" name="learner_id" value="<?= (isset($learner_id)) ? $learner_id: ''; ?>">
-                            			<input type="hidden" name="assessment_id" value="<?= (isset($assessment_id)) ? $assessment_id: ''; ?>">
-<?php /*
-                                        <div class="col-md-12">
-                                    			<label class="form-control-label">Upload Your Completed Learner Guide<span style="color:red;font-weight:bold;"> *</span></label>
-                                                <input type="file" name="upload_completed_learner_guide" class="form-control">
-                                                <label id="upload_completed_learner_guide-error" class="error" for="upload_completed_learner_guide"></label>
-                                        </div>
-*/ ?>
-
-                                        <div class="col-md-12">
-                                    			<label class="form-control-label">Upload Your Completed Workbook<span style="color:red;font-weight:bold;"> *</span></label>
-                                                <input type="file" name="upload_completed_workbook" class="form-control">
-                                                <label id="upload_completed_workbook-error" class="error" for="upload_completed_workbook"></label>
-                                        </div>
-
-        								<?php if (count($learner_assessment_submissions) == 0) { ?>
-                                            <div class="col-md-12">
-                                        			<label class="form-control-label">Upload Your Completed POE<span style="color:red;font-weight:bold;"> *</span></label>
-                                                    <input type="file" name="upload_completed_poe" class="form-control">
-                                                    <label id="upload_completed_poe-error" class="error" for="upload_completed_poe"></label>
-                                            </div>
-    									<?php } ?>
-
-                                        <div class="col-md-12">
-                                        <p>&nbsp;</p>
-                                                <button type="submit" class="btn btn-primary">Submit your assessment</button>
-                                        </div>
-
-
-                                		</form>
-    								<?php } else {
-    								    ;
-    								    /* ?>
-                                        <div class="col-md-12">
-                                        	<p>&nbsp:</p>
-        									<h4 style="color:red !important;">You cannot submit more than three assessments. Please contact your trainer.</h4>
-                                        </div>
-    								<?php
-    								 */} ?>
-
-                                <?php } ?>
 
                             </div>
 

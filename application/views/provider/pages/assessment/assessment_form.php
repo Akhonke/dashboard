@@ -1,4 +1,9 @@
 <style>
+
+    .hide {
+       display:none;
+    }
+
     input.btn.btn-default {
 
         padding: 2px 10px !important;
@@ -102,6 +107,144 @@
         }
     }
 </style>
+
+
+<style>
+
+.menu-button {
+    display: inline-block;
+    margin: 4px;
+    padding: 7px 20px;
+    color: #FFF;
+    background: #67B5D1;
+}
+.menu-button:hover {
+    background: #3184A1;
+    cursor: pointer;
+}
+.menu-wrap {
+    background-color: #111;
+    padding: 40px 0;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: fixed;
+    width: 300px;
+    top: 0;
+    right: -300px;
+    bottom: 0;
+    z-index: 999;
+}
+.menu-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 900;
+}
+.menu-close {
+    background: url(http://i.imgur.com/iHYRssG.png) no-repeat scroll center center transparent;
+    opacity: 0;
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    right: 0;
+    top: 0;
+    text-indent: -9999px;
+    transition: all 0.3s;
+}
+.menu-close:hover {
+    background-color: rgba(236, 69, 69, 1);
+    cursor: pointer;
+}
+.menu-wrap:hover .menu-close {
+    opacity: 1;
+}
+.menu-toggle {
+    display: none;
+}
+.menu-toggle:checked + .menu-wrap {
+    right: 0;
+}
+.menu-toggle:checked ~ .menu-overlay {
+    display: block;
+}
+.menu-title {
+    color: #FFF;
+    padding-left: 40px;
+    font-weight: 300;
+}
+.menu-list {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: inherit;
+    display: block;
+    overflow: hidden;
+}
+.menu-wrap:hover .menu-list {
+    overflow-y: auto;
+}
+.menu-list ul {
+    list-style-type: none;
+}
+.menu-list li {
+    display: block;
+}
+.menu-list li:first-child {
+    border-top: medium none;
+}
+.menu-list li a {
+    display: block;
+    padding: 10px 40px;
+    font-size: 18px;
+    color: #FFF;
+    text-decoration: none;
+}
+.menu-list li a:hover {
+    background: #359BED;
+}
+.menu-list li a:active {
+    background: #666;
+}
+</style>
+
+<label for="slide-menu-right" class="menu-button">Menu</label>
+
+
+
+<!-- Menu 1 -->
+<div class="slide-menu">
+    <input id="slide-menu-right" class="menu-toggle" type="checkbox" />
+    <div class="menu-wrap">
+        <label for="slide-menu-right" class="menu-close">Close</label>
+        <h1 class="menu-title">Menu</h1>
+        <div class="menu-list">
+            <ul>
+                <li>
+                    <a href="#">Item 1</a>
+                </li>
+                <li>
+                    <a href="#">Item 2</a>
+                </li>
+                <li>
+                    <a href="#">Item 3</a>
+                </li>
+                <li>
+                    <a href="#">Item 4</a>
+                </li>
+                <li>
+                    <a href="#">Item 5</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <label for="slide-menu-right" class="menu-overlay"></label>
+</div>
 
 
 <div class="container-fluid px-xl-5">
@@ -256,15 +399,15 @@
 
                                     ?>
 
-                                        <input type="hidden" name="class_module" class="form-control" value="<?= $class_module->title ?>">
+                                        <input type="hidden" name="module" class="form-control" value="<?= $module->title ?>">
 
-                                        <input type="text" name="class_module" class="form-control" value="<?= $class_module->title ?>" readonly>
+                                        <input type="text" name="module" class="form-control" value="<?= $module->title ?>" readonly>
 
                                     <?php
 
                                     } else { ?>
 
-                                        <select class="form-control class_module" name="class_module" id="class_module">
+                                        <select class="form-control module" name="module" id="module">
 
                                             <option label="" value="" hidden>Select Your Module</option>
 
@@ -272,7 +415,7 @@
 
                                     <?php } ?>
 
-                                    <label id="class_module-error" class="error" for="class_module"></label>
+                                    <label id="module-error" class="error" for="module"></label>
 
 
                                 </div>
@@ -354,7 +497,7 @@
 
                                     <select class="form-control" name="unit_standard" id="class_name">
 
-                                        <option hidden value="">Select Unit Standard</option>
+                                        <option value="">Select Unit Standard</option>
                                         <?php foreach ($units as $unit) { ?>
                                             <option value="<?= $unit['id'] ?>"  <?php echo ( (isset($record) && $record->unit_standard == $unit['id']) ? 'selected' : '' ) ?>>
                                             	<?= $unit['title'] ?>
@@ -366,38 +509,8 @@
 */
 ?>
 
-                                <div class="col-md-6">
 
-                                    <label class="form-control-label">Assessment Type<span style="color:red;font-weight:bold;"> *</span></label>
 
-                                    <select class="form-control" name="assessment_type">
-
-                                        <option hidden value="">Choose Your Assessment Type</option>
-                                        <option value="formative">Formative</option>
-                                        <option value="summative">Summative/POE</option>
-                                        <option value="live video">Live Video</option>
-                                        <option value="online questions">Online Questions</option>
-                                        <option value="practical assessment">Practical Assessment</option>
-                                    </select>
-
-                                    <label id="quarter-error" class="error" for="assessment_type"></label>
-
-                                </div>
-
-                                <div class="col-md-6">
-
-                                    <label class="form-control-label">Assessment Submission Type<span style="color:red;font-weight:bold;"> *</span></label>
-
-                                    <select class="form-control" name="submission_type">
-
-                                        <option hidden value="">Choose Your Assessment Submission Type</option>
-                                        <option value="manual document upload">Manual Document Upload</option>
-                                        <option value="timed based assessment online">Timed based assessment online</option>
-                                    </select>
-
-                                    <label id="quarter-error" class="error" for="submission_type"></label>
-
-                                </div>
 
                                	<div class="col-md-6">
 
@@ -535,20 +648,108 @@
 */
 ?>
 
-								<div class="col-md-6" id="class_module_uploads">
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Assessment Type<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <select class="form-control" name="assessment_type" id="assessment_type">
+
+                                        <option value="">Choose Your Assessment Type</option>
+                                        <option value="formative">Formative</option>
+                                        <option value="summative">Summative/POE</option>
+<!--                                         <option value="live video">Live Video</option> -->
+<!--                                         <option value="online questions">Online Questions</option> -->
+<!--                                         <option value="practical assessment">Practical Assessment</option> -->
+                                    </select>
+
+                                    <label id="quarter-error" class="error" for="assessment_type"></label>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-control-label">Assessment Submission Type<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <select class="form-control" name="submission_type" id="submission_type">
+
+                                        <option value="">Choose Your Assessment Submission Type</option>
+                                        <option value="manual document upload">Manual Document Upload</option>
+                                        <option value="timed based assessment online">Timed based assessment online</option>
+                                        <option value="practical assessment">Practical Assessment</option>
+
+                                    </select>
+
+                                    <label id="quarter-error" class="error" for="submission_type"></label>
+
+                                </div>
+
+
+                                <div class="col-md-6 hide" id="online_quiz_section">
+
+                                    <label class="form-control-label">Online Quiz<span style="color:red;font-weight:bold;"> *</span></label>
+
+                                    <select class="form-control" name="online_quiz_id" id="online_quiz_id">
+
+                                        <option value="">Select Online Quiz</option>
+                                        <?php foreach ($online_quiz_list as $quiz) { ?>
+                                            <option value="<?= $quiz['quid'] ?>"  <?php echo ( (isset($record) && $record->online_quiz_id == $quiz['quid']) ? 'selected' : '' ) ?>>
+                                            	<?= $quiz['quiz_name'] ?>
+                                        	</option>
+                                        <?php } ?>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col-md-6 hide" id="practical_workbook_section">
+                                	<div class="row">
+
+                                    	<div class="col-md-12">
+                                    		<label class="form-control-label">Scheduled Practical Date<span style="color:red;font-weight:bold;"> *</span></label>
+                                        	<input type="date" placeholder="Enter Your Practical Date" name="practical_date" class="form-control practical_date" value="<?= (isset($record)) ? $record->practical_date : ''; ?>" id="practical_date">
+                                    	</div>
+
+                                    	<div class="col-md-12">
+                                    		<label class="form-control-label">Scheduled Practical Time<span style="color:red;font-weight:bold;"> *</span></label>
+                                        	<input type="time" placeholder="Enter Your Practical Time" name="practical_time" class="form-control practical_time" value="<?= (isset($record)) ? $record->practical_time : ''; ?>" id="practical_time">
+                                    	</div>
+
+                                    	<div class="col-md-12">
+                                            <?php if (!empty($_GET['id'])) { ?>
+
+                                                <label class="form-control-label">Upload Practical Workbook<span style="color:red;font-weight:bold;"> *</span></label>
+                                                <input type="file" name="upload_practical_workbook" class="form-control">
+
+                                            <?php  } else { ?>
+
+                                                <label class="form-control-label">Upload Practical Workbook<span style="color:red;font-weight:bold;"> *</span></label>
+                                                <input type="file" name="upload_practical_workbook" class="form-control">
+                                                <label id="upload_practical_workbook-error" class="error" for="upload_practical_workbook"></label>
+
+                                            <?php } ?>
+                                    	</div>
+
+                                	</div>
+
+
+
+                                </div>
+
+
+								<div class="col-md-12" id="class_module_uploads">
 									<?php if (!empty($_GET['id'])) { ?>
 
 									    <p><label class="form-control-label">Learner Guide : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>
 
                             		    <p><label class="form-control-label">Learner Workbook : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
 
                             		    <p><label class="form-control-label">Learner POE : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_poe; ?>" target="_blank">Download the Learner POE</a></p>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_poe; ?>" target="_blank">Download the Learner POE</a></p>
 
                             		    <p><label class="form-control-label">Facilitator Guide : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $class_module->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a></p>
+                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a></p>
 
                                     <?php } ?>
 
@@ -575,17 +776,18 @@
 
                         </form>
 
-                         <div class="form-group row">
+                    <?php if (!empty($_GET['id'])) { ?>
 
+                        <div class="form-group row">
                             <div class="col-md-12">
-
                                 <div class="text-left">
-                                	<a href= "/provider-completed-assessment-list?aid=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">See Completed Assessments</a>
+	                                <a href= "/provider-completed-assessment-list?aid=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">See Completed Assessments</a>
                                 </div>
-
                             </div>
-
                         </div>
+
+                    <?php } ?>
+
 
 
                     </div>

@@ -232,6 +232,37 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
           <!-- *************************** -->
 
           <li class="sidebar-list-item">
+             <a href="#" data-toggle="collapse" title="From Here You Can Manage Modules" data-target="#pages16" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
+             <i class="o-code-window-1 mr-3 text-gray"></i><span>Modules</span></a>
+             <div id="pages16" class="collapse">
+                <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+                   <li class="sidebar-list-item">
+                      <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                      if (in_array("Learner Performance Management", $arrayfeatures)) {
+                      ?>
+                         <a href="<?= BASEURL ?>provider-create-module" title="From Here You Can Create A Module" class="sidebar-link text-white pl-lg-5">Create Module</a>
+                      <?php } else { ?>
+                         <a onclick="subscriptionMessage()" title="From Here You Can Create An Assessment" class="sidebar-link text-white pl-lg-5">Create Module</a>
+                      <?php } ?>
+                   </li>
+                   <li class="sidebar-list-item">
+                      <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                      if (in_array("Learner Performance Management", $arrayfeatures)) {
+                      ?>
+                         <a href="<?= BASEURL ?>provider-module-list" title="From Here You Can See the Module List" class="sidebar-link text-white pl-lg-5">Module List</a>
+                      <?php } else { ?>
+                         <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Module List</a>
+                      <?php } ?>
+                   </li>
+                </ul>
+             </div>
+          </li>
+
+
+          <!-- *************************** -->
+
+
+          <li class="sidebar-list-item">
              <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages16" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
                 <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
              <div id="pages16" class="collapse">
@@ -254,6 +285,28 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                          <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
                       <?php } ?>
                    </li>
+
+                   <li class="sidebar-list-item">
+                      <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                      if (in_array("Learner Performance Management", $arrayfeatures)) {
+                      ?>
+                         <a href="<?= BASEURL ?>provider-manage-question-bank" title="From Here You Can Manage The Question Bank" class="sidebar-link text-white pl-lg-5">Manage Question Bank</a>
+                      <?php } else { ?>
+                         <a onclick="subscriptionMessage()" title="From Here You Can Manage The Question Bank" class="sidebar-link text-white pl-lg-5">Manage Question Bank</a>
+                      <?php } ?>
+                   </li>
+
+                   <li class="sidebar-list-item">
+                      <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                      if (in_array("Learner Performance Management", $arrayfeatures)) {
+                      ?>
+                         <a href="<?= BASEURL ?>provider-manage-quiz" title="From Here You Can Manage On;ine Quizes" class="sidebar-link text-white pl-lg-5">Manage Online Quiz</a>
+                      <?php } else { ?>
+                         <a onclick="subscriptionMessage()" title="From Here You Can Manage The Question Bank" class="sidebar-link text-white pl-lg-5">Manage Online Quiz</a>
+                      <?php } ?>
+                   </li>
+
+
                 </ul>
              </div>
           </li>

@@ -1562,7 +1562,7 @@ class Faciltator extends CI_Controller
             $class_name = $this->common->accessrecord('class_name', [], ['id' => ($this->data['record'])->class_id], 'row');
             $this->data['class_name'] = $class_name;
             $this->data['record']->classname = $class_name->class_name;
-            $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
+            $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['record'])->module_id], 'row');
             $this->data['learnershipSubType'] = $this->common->accessrecord('learnership_sub_type', [], ['learnship_id' => $class_name->learnership_id], 'result');
         }
 
@@ -1609,7 +1609,7 @@ class Faciltator extends CI_Controller
                     'assessment_type' => $this->input->post('assessment_type'),
                     'submission_type' => $this->input->post('submission_type'),
                     'class_id' => $class_name->id,
-                    'module_id' => $this->input->post('class_module'),
+                    'module_id' => $this->input->post('module'),
                     'qualification' => $this->input->post('qualification'),
                     'learning_programme' => $this->input->post('learning_programme'),
                     // 'unit_standard' => $this->input->post('unit_standard'),
@@ -1682,7 +1682,7 @@ class Faciltator extends CI_Controller
                     'assessment_type' => $this->input->post('assessment_type'),
                     'submission_type' => $this->input->post('submission_type'),
                     'class_id' => $this->input->post('classname'),
-                    'module_id' => $this->input->post('class_module'),
+                    'module_id' => $this->input->post('module'),
                     // 'qualification' => $this->input->post('qualification'),
                     'learning_programme' => $this->input->post('learning_programme'),
                     // 'unit_standard' => $this->input->post('unit_standard'),
@@ -1726,7 +1726,7 @@ class Faciltator extends CI_Controller
                 $this->data['record'] = $this->common->accessrecord('assessment', [], [
                     'id' => $id
                 ], 'row');
-                $this->data['class_module'] = $this->common->accessrecord('class_module', [], [
+                $this->data['module'] = $this->common->accessrecord('module', [], [
                     'id' => ($this->data['record'])->module_id
                 ], 'row');
             }
@@ -1769,7 +1769,7 @@ class Faciltator extends CI_Controller
 
             $class_id = $this->input->post('value');
 
-            $record = $this->common->accessrecord('class_module', [], ['class_id' => $class_id], 'result');
+            $record = $this->common->accessrecord('module', [], ['class_id' => $class_id], 'result');
 
             if (!empty($record)) {
 

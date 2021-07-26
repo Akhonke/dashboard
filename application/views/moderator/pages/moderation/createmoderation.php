@@ -106,14 +106,14 @@
                                <div class="col-md-6">
                                     <label class="form-control-label">Module Name<span style="color:red;font-weight:bold;"> *</span></label>
                                     <?php if (!empty($_GET['id'])) { ?>
-                                        <input type="hidden" name="class_module" class="form-control" value="<?= $class_module->title ?>">
-                                        <input type="text" name="class_module" class="form-control" value="<?= $class_module->title ?>" readonly>
+                                        <input type="hidden" name="module" class="form-control" value="<?= $module->title ?>">
+                                        <input type="text" name="module" class="form-control" value="<?= $module->title ?>" readonly>
                                     <?php } else { ?>
-                                        <select class="form-control class_module" name="class_module" id="class_module">
+                                        <select class="form-control module" name="module" id="module">
                                             <option label="" value="" hidden>Select Your Module</option>
                                         </select>
                                     <?php } ?>
-                                    <label id="class_module-error" class="error" for="class_module"></label>
+                                    <label id="module-error" class="error" for="module"></label>
                                 </div>
 
 

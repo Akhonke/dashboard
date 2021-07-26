@@ -619,12 +619,14 @@ public function view_assessment(){
     $this->data['learner_assessment'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
     $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
 //     $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
-    $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
+    $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
 
     $unit_standard_list = $this->common->getAssessmentUnits($assessment_id);
     $unit_standards = [];
-    foreach ($unit_standard_list as $unit_standard_item) {
-        $unit_standards[] = $unit_standard_item->title;
+    if (is_array($unit_standard_list)) {
+        foreach ($unit_standard_list as $unit_standard_item) {
+            $unit_standards[] = $unit_standard_item->title;
+        }
     }
 
     $this->data['unit_standard'] = join(",", $unit_standards);
@@ -812,6 +814,42 @@ public function load_assessment(){
 
 
 }
+
+
+    public function take_quiz()
+    {
+
+
+        $learner_id = $_SESSION['learner']['id'];
+
+        $learner = $this->common->accessrecord('learner', [], ['id' => $learner_id], 'row');
+
+        $online_quiz_id = $_GET['id'];
+
+        $this->session->set_userdata('access_mode', 'embedded');
+
+        $learner_user = [
+            'email' => $learner->email,
+            'password' => $learner->password,
+            'first_name' => $learner->first_name,
+            'last_name' => $learner->surname,
+            'contact_no' => $learner->mobile_number,
+            'gid' => $this->config->item('default_gid'),
+            'su' => '0'
+        ];
+
+        $this->session->set_userdata('embedded_user_type', 'learner');
+        $this->session->set_userdata('embedded_user', $learner_user);
+
+        $this->data['url'] = BASEURL . 'digilims_online/index.php/quiz/quiz_detail/' . $online_quiz_id;
+        $this->data['title'] = 'Online Assessment';
+
+
+        $this->data['page'] = 'iframe_container';
+        $this->data['content'] = '/pages/iframe/iframe_container';
+        $this->load->view('learner/tamplate', $this->data);
+
+    }
 
 
 }

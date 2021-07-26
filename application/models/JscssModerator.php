@@ -1301,19 +1301,19 @@ class JscssModerator extends CI_Model
 
 								if(i == 'error'){
 
-								$('.class_module').html(option);
+								$('.module').html(option);
 
-								$('#class_module-error').show();
+								$('#module-error').show();
 
-								$('#class_module-error').html(star);
+								$('#module-error').html(star);
 
 							}else{
 								var test = '<option hidden value='+'>Select Class Module</option>';
 							  option += '<option value='+star.id+'>'+star.title+'</option>'
 
-							  $('.class_module').html(test+option);
+							  $('.module').html(test+option);
 
-							  $('#class_module-error').hide();
+							  $('#module-error').hide();
 
 							}
 

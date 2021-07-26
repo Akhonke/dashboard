@@ -868,7 +868,7 @@ class Moderator extends CI_Controller
 
 	    $this->data['assessment'] = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
 	    $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
-	    $this->data['module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
+	    $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
 	    $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
 
 	    $unit_standard_list = $this->common->getAssessmentUnits($assessment_id);

@@ -1,4 +1,4 @@
-	<?php
+<?php
 	defined('BASEPATH') or exit('No direct script access allowed');
 	class Traningprovider extends CI_Controller
 	{
@@ -217,7 +217,7 @@
 //
 // 		    $module_id = $this->input->post('value');
 //
-// 		    $module_uploads = $this->common->accessrecord('class_module', ['*'], ['id' => $module_id], 'row');
+// 		    $module_uploads = $this->common->accessrecord('module', ['*'], ['id' => $module_id], 'row');
 // 		    $class = $this->common->accessrecord('class_name', ['*'], ['id' => $module_uploads->class_id], 'row');
 //
 // 		    $markup = '<h6>Assessment Material</h6>';
@@ -2254,8 +2254,8 @@
 
 				    $modules[$key]['id'] = $class_module_id;
 
-				    if ( (key_exists('class_module', $_POST)) && (!empty($_POST['class_module'][$key]))) {
-				        $modules[$key]['title'] = $_POST['class_module'][$key];
+				    if ( (key_exists('module', $_POST)) && (!empty($_POST['module'][$key]))) {
+				        $modules[$key]['title'] = $_POST['module'][$key];
 				    }
 
 // 				    if ( (key_exists('learner_guide', $_FILES)) && (!empty($_FILES['learner_guide']['name'][$key]))) {
@@ -2390,10 +2390,10 @@
 				    }
 
 				    if (!empty($class_module_item['id'])) {
-				        $class_module_query = $this->common->updateData('class_module', $class_module_data, ['id' => $class_module_item['id']]);
+				        $class_module_query = $this->common->updateData('module', $class_module_data, ['id' => $class_module_item['id']]);
 				    } else {
 // 				        $class_module_data['created_date'] = date('Y-m-d H:i:s');
-				        $class_module_query = $this->common->insertData('class_module', $class_module_data);
+				        $class_module_query = $this->common->insertData('module', $class_module_data);
 				    }
 
 				    if (empty($class_module_query)) {
@@ -2424,7 +2424,7 @@
 			$this->data['sublearnship'] = $this->common->accessrecord('learnership_sub_type', [], [], 'result');
 
 			if ($id) {
-			    $this->data['class_modules'] = $this->common->accessrecord('class_module', [], ['class_id' => $id], 'result');
+			    $this->data['class_modules'] = $this->common->accessrecord('module', [], ['class_id' => $id], 'result');
 			} else {
 			    $this->data['class_modules'] = [];
 			}
@@ -7514,7 +7514,6 @@
 		        $trainer_id = '';
 		    }
 
-// 		    $project_manager_id = $_SESSION['projectmanager']['id'];
 		    $organisation_id = $_SESSION['organisation']['id'];
 
 		    $id = 0;
@@ -7526,21 +7525,26 @@
 		        $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
 		        $class_name = $this->common->accessrecord('class_name', [], ['id' => ($this->data['record'])->class_id], 'row');
 		        $this->data['record']->classname = $class_name->class_name;
-		        $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
+		        $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['record'])->module_id], 'row');
 		    }
 
 		    if ($_POST) {
 
 		        if ($id != 0) {
 
+		            // upload_practical_workbook
 
-// 		            // Upload files
-// 		            if (!empty($_FILES['upload_learner_guide']['name'])) {
-// 		                $upload_learner_guide['upload_learner_guide'] = $this->singlefileupload('upload_learner_guide', './uploads/assessment/upload_learner_guide/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
-// 		            } else {
-// 		                $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
-// 		                $upload_learner_guide['upload_learner_guide'] = $assessment->upload_learner_guide;
-// 		            }
+
+		            // Upload files
+		            if (!empty($_FILES['upload_practical_workbook']['name'])) {
+		                $upload_practical_workbook['upload_practical_workbook']['store'] = $this->singlefileupload('upload_practical_workbook', './uploads/assessment/upload_practical_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+		                $upload_practical_workbook['upload_practical_workbook']['name'] = $_FILES['upload_practical_workbook']['name'];
+
+		            } else {
+		                $assessment = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
+		                $upload_practical_workbook['upload_practical_workbook']['store'] = $assessment->upload_practical_workbook;
+		                $upload_practical_workbook['upload_practical_workbook']['name']  = $assessment->upload_practical_workbook_name;
+		            }
 
 // 		            // Upload files
 // 		            if (!empty($_FILES['upload_learner_workbook']['name'])) {
@@ -7573,9 +7577,10 @@
 		                'assessment_type' => $this->input->post('assessment_type'),
 		                'submission_type' => $this->input->post('submission_type'),
 		                'class_id' => $this->input->post('classname'),
-		                'module_id' => $this->input->post('class_module'),
+		                'module_id' => $this->input->post('module'),
 		                'qualification' => $this->input->post('qualification'),
 		                'learning_programme' => $this->input->post('learning_programme'),
+		                'online_quiz_id' => $this->input->post('online_quiz_id'),
 // 		                'unit_standard' => $this->input->post('unit_standard'),
 		                // 	                'programme_name' => $this->input->post('programme_name'),
 		            // 	                'programme_number' => $this->input->post('programme_number'),
@@ -7586,9 +7591,16 @@
 // 		                'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
 // 		                'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
+		                'upload_practical_workbook'      => $upload_practical_workbook['upload_practical_workbook']['store'],
+		                'upload_practical_workbook_name' => $upload_practical_workbook['upload_practical_workbook']['name'],
+
+		                'practical_date' => $this->input->post('practical_date'),
+		                'practical_time' => $this->input->post('practical_time'),
+		                'practical_duration_minutes' => $this->input->post('practical_duration_minutes'),
+
 		                'created_by' => $trainer_id,
 		                'created_by_role' => 'trainer',
-		                'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
+		                // 'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
 		                'created_date' => date('Y-m-d H:i:s'),
 		                'updated_date' => date('Y-m-d H:i:s'),
 
@@ -7611,6 +7623,16 @@
 		            }
 
 		        } else {
+
+		            // Upload files
+		            if (!empty($_FILES['upload_practical_workbook']['name'])) {
+		                $upload_practical_workbook['upload_practical_workbook']['store'] = $this->singlefileupload('upload_practical_workbook', './uploads/assessment/upload_practical_workbook/', 'gif|jpg|png|xls|doc|docx|jpeg|pdf|xlsx|ods|ppt|pptx|txt|rar|zip');
+		                $upload_practical_workbook['upload_practical_workbook']['name'] = $_FILES['upload_practical_workbook']['name'];
+
+		            } else {
+		                $upload_practical_workbook['upload_practical_workbook']['store'] = null;
+		                $upload_practical_workbook['upload_practical_workbook']['name']  = null;
+		            }
 
 // 		            // Upload files
 // 		            if (!empty($_FILES['upload_learner_guide']['name'])) {
@@ -7647,9 +7669,10 @@
 		                'assessment_type' => $this->input->post('assessment_type'),
 		                'submission_type' => $this->input->post('submission_type'),
 		                'class_id' => $this->input->post('classname'),
-		                'module_id' => $this->input->post('class_module'),
+		                'module_id' => $this->input->post('module'),
 		                // 'qualification' => $this->input->post('qualification'),
 		                'learning_programme' => $this->input->post('learning_programme'),
+		                'online_quiz_id' => $this->input->post('online_quiz_id'),
 // 		                'unit_standard' => $this->input->post('unit_standard'),
 		                // 	                'programme_name' => $this->input->post('programme_name'),
 		            // 	                'programme_number' => $this->input->post('programme_number'),
@@ -7660,12 +7683,21 @@
 // 		                'upload_learner_poe' => $upload_learner_poe['upload_learner_poe'],
 // 		                'upload_facilitator_guide' => $upload_facilitator_guide['upload_facilitator_guide'],
 
+		                'practical_date' => $this->input->post('practical_date'),
+		                'practical_time' => $this->input->post('practical_time'),
+		                'practical_duration_minutes' => $this->input->post('practical_duration_minutes'),
+
 		                'created_by' => $trainer_id,
 		                'created_by_role' => 'trainer',
 		                'created_date' => date('Y-m-d H:i:s'),
 		                'updated_date' => date('Y-m-d H:i:s'),
 
 		            ];
+
+		            if (!empty($upload_practical_workbook['upload_practical_workbook']['name'])) {
+		                $data['upload_practical_workbook']      = $upload_practical_workbook['upload_practical_workbook']['store'];
+		                $data['upload_practical_workbook_name'] = $upload_practical_workbook['upload_practical_workbook']['name'];
+		            }
 
 		            if (!empty($_POST['unit_standard']) && is_array($_POST['unit_standard'])) {
 		                $data['unit_standard'] = join(',', $_POST['unit_standard']);
@@ -7694,16 +7726,19 @@
 
 		        if ($id != 0) {
 		            $this->data['record'] = $this->common->accessrecord('assessment', [], ['id' => $id], 'row');
-		            // $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
+		            // $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['record'])->module_id], 'row');
 		        }
 		    }
 
 		    if ($id != 0) {
-		        $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['record'])->module_id], 'row');
+		        $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['record'])->module_id], 'row');
 		    }
 
 		    $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
 		    $this->data['units'] = $this->common->accessrecord('units', [], [], 'result_array');
+
+		    // Get the list of quizes for this class
+		    $this->data['online_quiz_list'] = $this->common->getQuizList($id);
 
 		    $this->data['page'] = 'create_assessment';
 
@@ -7736,7 +7771,7 @@
 
 		    $class_id = $this->input->post('value');
 
-		    $record = $this->common->accessrecord('class_module', [], ['class_id' => $class_id], 'result');
+		    $record = $this->common->accessrecord('module', [], ['class_id' => $class_id], 'result');
 
 		    if (!empty($record)) {
 
@@ -7805,6 +7840,64 @@
 
 		    $this->load->view('provider/tamplate', $this->data);
 
+
+		}
+
+		public function manage_question_bank()
+		{
+		    $this->session->set_userdata('access_mode', 'embedded');
+
+		    $this->data['url'] = BASEURL . 'digilims_online/index.php/qbank';
+
+		    $this->data['page'] = 'iframe_container';
+		    $this->data['content'] = '/pages/iframe/iframe_container';
+		    $this->load->view('provider/tamplate', $this->data);
+
+		}
+
+		public function manage_quiz()
+		{
+
+		    $this->session->set_userdata('access_mode', 'embedded');
+
+		    $this->data['url'] = BASEURL . 'digilims_online/index.php/quiz';
+
+		    $this->data['page'] = 'iframe_container';
+		    $this->data['content'] = '/pages/iframe/iframe_container';
+		    $this->load->view('provider/tamplate', $this->data);
+
+		}
+
+
+		public function list_modules()
+		{
+
+		    if (isset($_SESSION['admin']['trainer_id'])) {
+		        $trainer_id = $_SESSION['admin']['trainer_id'];
+		    } else {
+
+		        $trainer_id = '';
+		    }
+
+		    $this->data['record'] = $this->common->moduleListByTrainer($trainer_id);
+
+		    foreach ($this->data['record'] as &$record) {
+
+		        $unit_standard_list = $this->common->getAssessmentUnits($record->id);
+		        if ($unit_standard_list) {
+		            $unit_standards = [];
+		            foreach ($unit_standard_list as $unit_standard_item) {
+		                $unit_standards[] = $unit_standard_item->title;
+		            }
+		            $record->unit_standard = join(",", $unit_standards);
+		        }
+		    }
+
+		    $this->data['page'] = 'list_assessments';
+
+		    $this->data['content'] = 'pages/assessment/assessment_list';
+
+		    $this->load->view('provider/tamplate', $this->data);
 
 		}
 	}
