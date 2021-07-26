@@ -27,13 +27,13 @@
             </div>
             <!--    <div class="col-md-6 col-sm-6 col-lg-5">
                <div class="img-wrap">
-               
+
                <video width="545" controls="" style="border:10px solid #FFF">
                      <source src="assets/web/img/Digilims-video.mp4" type="video/mp4">
-                   
-               
+
+
                    </video>
-               
+
                    <!--<img src="assets/img/screen1.png" alt="app image" class="img-fluid">-->
          </div>
       </div>
@@ -175,6 +175,9 @@
       <!--feature new style end-->
    </div>
 </div>
+
+<?php
+/*
 <!--pricing section start-->
 <section id="pricing" class="pricing-section ptb-100 gray-light-bg">
    <div class="container">
@@ -395,7 +398,7 @@
             $("#selectPackageName").val(name);
          }
       </script>
-      <!-- 
+      <!--
          <div class="row align-items-center justify-content-md-center justify-content-center">
           <div class="col-lg-3 col-md-6 col-sm-8">
                <div class="popular-price bg-white text-center single-pricing-pack mt-4">
@@ -547,6 +550,9 @@
    </div>
 </section>
 <!--pricing section end-->
+*/
+?>
+
 <!--work process start-->
 <section id="process" class="work-process-section position-relative  ptb-100 ">
    <div class="container">

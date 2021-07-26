@@ -249,7 +249,7 @@
 
                                        				</td>
                                        				<td>
-                                       					<input type='text' name='class_module[]' value="<?php echo $class_module_item->title; ?>">
+                                       					<input type='text' name='module[]' value="<?php echo $class_module_item->title; ?>">
 														<br/>
                                    					</td>
                                        				<td>
@@ -288,8 +288,8 @@
 
                                             </tbody>
                                         </table>
-                                        <button type="button" class="delete-class-module btn btn-danger">Delete Selected Class Module</button>
-                                        <button type="button" class="add-class-module btn btn-success">Add Class Module</button>
+                                        <button type="button" class="delete-module btn btn-danger">Delete Selected Class Module</button>
+                                        <button type="button" class="add-module btn btn-success">Add Class Module</button>
 
                                 </div>
 

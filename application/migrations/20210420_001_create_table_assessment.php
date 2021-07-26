@@ -10,7 +10,7 @@ class Migration_20210420_001_create_table_assessment extends CI_Migration {
         /*
 
 
-CREATE TABLE `class_module` (
+CREATE TABLE `module` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `class_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -158,6 +158,20 @@ ALTER TABLE `assessment` ADD COLUMN `upload_assessed_overall_report_name` varcha
 
 
 ALTER TABLE `learner` ADD COLUMN `tax_reference` varchar(255) DEFAULT NULL;
+
+
+=====
+
+ALTER TABLE `assessment` ADD COLUMN `online_quiz_id` int(11) DEFAULT NULL;
+
+ALTER TABLE `assessment` ADD COLUMN `practical_date` date DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `practical_time` time(6) DEFAULT NULL;
+ALTER TABLE `assessment` ADD COLUMN `practical_duration_minutes` int(11) DEFAULT NULL;
+
+ALTER TABLE `assessment` ADD COLUMN `upload_practical_workbook_name` varchar(255) DEFAULT NULL;
+
+alter table class_module rename module;
+
 
 
 

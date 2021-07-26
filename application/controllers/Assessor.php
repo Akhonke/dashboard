@@ -1218,7 +1218,7 @@ class Assessor extends CI_Controller
                 ], 'row');
                 $this->data['class_name'] = $class_name;
                 $this->data['record']->classname = $class_name->class_name;
-                $this->data['class_module'] = $this->common->accessrecord('class_module', [], [
+                $this->data['module'] = $this->common->accessrecord('module', [], [
                     'id' => ($this->data['record'])->module_id
                 ], 'row');
                 $this->data['learnershipSubType'] = $this->common->accessrecord('learnership_sub_type', [], [

@@ -457,6 +457,13 @@ $route['provider-view-assessment'] = 'Traningprovider/view_assessment';
 
 $route['provider-get_class_module'] = 'Traningprovider/get_class_module';
 
+$route['provider-manage-question-bank'] = 'Traningprovider/manage_question_bank';
+$route['provider-manage-quiz'] = 'Traningprovider/manage_quiz';
+
+$route['provider-create-module'] = 'Traningprovider/create_module';
+$route['provider-module-list'] = 'Traningprovider/list_modules';
+
+
 // ****************** Learner **************************** //
 $route['learner'] = 'welcome/learner'; //use for Learner login
 $route['learner-Dashboard'] = 'Learner/dashboard';
@@ -481,6 +488,8 @@ $route['learner-forget-password'] = 'welcome/learner_forgetpassword';
 $route['learner-assessment-list'] = 'learner/list_assessments';
 $route['learner-view-assessment'] = 'learner/view_assessment';
 $route['learner-load-assessment'] = 'learner/load_assessment';
+
+$route['provider-take-quiz'] = 'learner/take_quiz';
 
 //****************************Assessor******************//
 $route['assessor'] = 'welcome/assosser';

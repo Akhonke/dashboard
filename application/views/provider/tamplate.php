@@ -91,13 +91,13 @@
 
 <script>
     $(document).ready(function(){
-		 $(document).on('click', '.add-class-module', function (e) {
+		 $(document).on('click', '.add-module', function (e) {
             var name = $("#name").val();
             var email = $("#email").val();
 
             var markup =       "<tr>";
             markup  = markup + "   <td><input type='checkbox' name='record'><input type='hidden' name='class_module_id[]' value=''></td>";
-            markup  = markup + "   <td><input type='text' name='class_module[]'></td>";
+            markup  = markup + "   <td><input type='text' name='module[]'></td>";
 //          markup  = markup + "   <td><label class='form-control-label'>Learner Guide<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_guide[]'><br/>";
             markup  = markup + "   <td><label class='form-control-label'>Learner Workbook<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_workbook[]'><br/>";
             markup  = markup + "       <label class='form-control-label'>Learner POE<span style='color:red;font-weight:bold;'> *</span></label><br/><input type='file' name='learner_poe[]'><br/>";
@@ -111,8 +111,8 @@
         });
 
         // Find and remove selected table rows
-//         $(".delete-class-module).click(function(){
-        $(document).on('click', '.delete-class-module', function (e) {
+//         $(".delete-module).click(function(){
+        $(document).on('click', '.delete-module', function (e) {
 
             $("table tbody").find('input[name="record"]').each(function(){
             	if($(this).is(":checked")){
