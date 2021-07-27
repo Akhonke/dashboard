@@ -824,6 +824,7 @@ public function load_assessment(){
 
         $learner = $this->common->accessrecord('learner', [], ['id' => $learner_id], 'row');
 
+        $assessment_id = $_GET['aid'];
         $online_quiz_id = $_GET['id'];
 
         $this->session->set_userdata('access_mode', 'embedded');
@@ -837,6 +838,18 @@ public function load_assessment(){
             'gid' => $this->config->item('default_gid'),
             'su' => '0'
         ];
+
+        $callback = BASEURL . 'learner_online_result';
+        $this->session->set_userdata('callback', $callback);
+
+        $callback_data = [
+            'assessment_id' => $assessment_id,
+            'learner_id' => $learner_id,
+            'quiz_id' => $online_quiz_id
+        ];
+        $this->session->set_userdata('callback_data', $callback_data);
+
+
 
         $this->session->set_userdata('embedded_user_type', 'learner');
         $this->session->set_userdata('embedded_user', $learner_user);

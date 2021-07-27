@@ -489,7 +489,8 @@ $route['learner-assessment-list'] = 'learner/list_assessments';
 $route['learner-view-assessment'] = 'learner/view_assessment';
 $route['learner-load-assessment'] = 'learner/load_assessment';
 
-$route['provider-take-quiz'] = 'learner/take_quiz';
+$route['learner-take-quiz'] = 'learner/take_quiz';
+$route['learner_online_result'] = 'api/online_result';
 
 //****************************Assessor******************//
 $route['assessor'] = 'welcome/assosser';
