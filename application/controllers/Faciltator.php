@@ -40,6 +40,9 @@ class Faciltator extends CI_Controller
 
 		$this->data['attendance_'] = $this->common->accessrecord('attendance', [], ['training_provider' => $company_name], 'result');
 		$this->data['attendance'] = count($this->data['attendance_']);
+		
+		$this->data['assessment_report_learner'] = $this->common->accessrecord('assessment_report_learner', [], ['assessment_report_id' => $company_name], 'result');
+		$this->data['assessment_report_learner'] = count($this->data['assessment_report_learner']);
 
 		$this->data['page'] = 'dashboard';
 

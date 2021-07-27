@@ -27,7 +27,10 @@ class Learner extends CI_Controller
 
 		$this->data['suggestion_list_'] = $this->common->accessrecord('complaints_and_suggestions', [], ['learner_id' => $id,'type'=>'suggestions'], 'result');
 		$this->data['suggestion_list'] = count($this->data['suggestion_list_']);
-
+		
+		$this->data['class_'] = $this->common->accessrecord('class_name', [], ['project_manager' => $_SESSION['projectmanager']['id']], 'result');
+		$this->data['class'] = count($this->data['class_']);
+		
 		$this->data['page'] = 'dashboard';
 
 		$this->data['content'] = 'pages/dashboard/dashboard';

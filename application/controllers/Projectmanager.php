@@ -89,6 +89,17 @@ class Projectmanager extends CI_Controller
 
 		$this->data['user_'] = $this->common->accessrecord('sub_user', [], ['type' => 'Project_Manager', 'created_by_id' => $_SESSION['projectmanager']['id']], 'result');
 		$this->data['user'] = count($this->data['user_']);
+		
+		$this->data['class_'] = $this->common->accessrecord('class_name', [], ['project_manager' => $_SESSION['projectmanager']['id']], 'result');
+		$this->data['class'] = count($this->data['class_']);
+		
+		$this->data['finance_income_item'] = $this->common->accessrecord('finance_income_item', [], ['project_id' => $_SESSION['projectmanager']['id']], 'result');
+		$this->data['finance_income_item'] = count($this->data['finance_income_item']);
+
+        $this->data['finance_expense_item'] = $this->common->accessrecord('finance_expense_item', [], ['project_id' => $_SESSION['projectmanager']['id']], 'result');
+		$this->data['finance_expense_item'] = count($this->data['finance_expense_item']); 
+
+		
 
 		$this->data['page'] = 'dashboard';
 
