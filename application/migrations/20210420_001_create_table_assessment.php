@@ -160,7 +160,6 @@ ALTER TABLE `assessment` ADD COLUMN `upload_assessed_overall_report_name` varcha
 ALTER TABLE `learner` ADD COLUMN `tax_reference` varchar(255) DEFAULT NULL;
 
 
-=====
 
 ALTER TABLE `assessment` ADD COLUMN `online_quiz_id` int(11) DEFAULT NULL;
 
@@ -168,11 +167,15 @@ ALTER TABLE `assessment` ADD COLUMN `practical_date` date DEFAULT NULL;
 ALTER TABLE `assessment` ADD COLUMN `practical_time` time(6) DEFAULT NULL;
 ALTER TABLE `assessment` ADD COLUMN `practical_duration_minutes` int(11) DEFAULT NULL;
 
+ALTER TABLE `assessment` ADD COLUMN `upload_practical_workbook` varchar(255) DEFAULT NULL;
 ALTER TABLE `assessment` ADD COLUMN `upload_practical_workbook_name` varchar(255) DEFAULT NULL;
 
 alter table class_module rename module;
 
+=====
 
+ALTER TABLE `learner_assessment` ADD COLUMN `submission_type` varchar(255) DEFAULT NULL;
+ALTER TABLE `learner_assessment_submission` ADD COLUMN `submission_type` varchar(255) DEFAULT NULL;
 
 
          */

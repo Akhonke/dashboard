@@ -232,9 +232,9 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
           <!-- *************************** -->
 
           <li class="sidebar-list-item">
-             <a href="#" data-toggle="collapse" title="From Here You Can Manage Modules" data-target="#pages16" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
+             <a href="#" data-toggle="collapse" title="From Here You Can Manage Modules" data-target="#pages11" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
              <i class="o-code-window-1 mr-3 text-gray"></i><span>Modules</span></a>
-             <div id="pages16" class="collapse">
+             <div id="pages11" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                    <li class="sidebar-list-item">
                       <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
@@ -300,9 +300,9 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                       <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                       if (in_array("Learner Performance Management", $arrayfeatures)) {
                       ?>
-                         <a href="<?= BASEURL ?>provider-manage-quiz" title="From Here You Can Manage On;ine Quizes" class="sidebar-link text-white pl-lg-5">Manage Online Quiz</a>
+                         <a href="<?= BASEURL ?>provider-manage-quiz" title="From Here You Can Manage Online Quizes" class="sidebar-link text-white pl-lg-5">Manage Online Quiz</a>
                       <?php } else { ?>
-                         <a onclick="subscriptionMessage()" title="From Here You Can Manage The Question Bank" class="sidebar-link text-white pl-lg-5">Manage Online Quiz</a>
+                         <a onclick="subscriptionMessage()" title="From Here You Can Manage Online Quizes" class="sidebar-link text-white pl-lg-5">Manage Online Quiz</a>
                       <?php } ?>
                    </li>
 

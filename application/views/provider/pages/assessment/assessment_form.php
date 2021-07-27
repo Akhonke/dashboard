@@ -655,8 +655,8 @@
                                     <select class="form-control" name="assessment_type" id="assessment_type">
 
                                         <option value="">Choose Your Assessment Type</option>
-                                        <option value="formative">Formative</option>
-                                        <option value="summative">Summative/POE</option>
+                                        <option value="formative"<?php echo ((isset($record) && $record->assessment_type == 'formative') ? ' selected' : '' ) ?>>Formative</option>
+                                        <option value="summative"<?php echo ((isset($record) && $record->assessment_type == 'summative') ? ' selected' : '' ) ?>>Summative/POE</option>
 <!--                                         <option value="live video">Live Video</option> -->
 <!--                                         <option value="online questions">Online Questions</option> -->
 <!--                                         <option value="practical assessment">Practical Assessment</option> -->
@@ -671,12 +671,10 @@
                                     <label class="form-control-label">Assessment Submission Type<span style="color:red;font-weight:bold;"> *</span></label>
 
                                     <select class="form-control" name="submission_type" id="submission_type">
-
                                         <option value="">Choose Your Assessment Submission Type</option>
-                                        <option value="manual document upload">Manual Document Upload</option>
-                                        <option value="timed based assessment online">Timed based assessment online</option>
-                                        <option value="practical assessment">Practical Assessment</option>
-
+                                        <option value="manual document upload"<?php echo ((isset($record) && $record->submission_type == 'manual document upload') ? ' selected' : '' ) ?>>Manual Document Upload</option>
+                                        <option value="timed based assessment online"<?php echo ((isset($record) && $record->submission_type == 'timed based assessment online') ? ' selected' : '' ) ?>>Timed based assessment online</option>
+                                        <option value="practical assessment"<?php echo ((isset($record) && $record->submission_type == 'practical assessment') ? ' selected' : '' ) ?>>Practical Assessment</option>
                                     </select>
 
                                     <label id="quarter-error" class="error" for="submission_type"></label>
@@ -684,7 +682,7 @@
                                 </div>
 
 
-                                <div class="col-md-6 hide" id="online_quiz_section">
+                                <div class="col-md-6<?php echo ((isset($record) && $record->submission_type == 'timed based assessment online') ? '' : ' hide' ) ?>" id="online_quiz_section">
 
                                     <label class="form-control-label">Online Quiz<span style="color:red;font-weight:bold;"> *</span></label>
 
@@ -701,7 +699,7 @@
                                 </div>
 
 
-                                <div class="col-md-6 hide" id="practical_workbook_section">
+                                <div class="col-md-6<?php echo ((isset($record) && $record->submission_type == 'practical assessment') ? '' : ' hide' ) ?>" id="practical_workbook_section">
                                 	<div class="row">
 
                                     	<div class="col-md-12">
@@ -739,17 +737,32 @@
 								<div class="col-md-12" id="class_module_uploads">
 									<?php if (!empty($_GET['id'])) { ?>
 
-									    <p><label class="form-control-label">Learner Guide : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_learner_guide; ?>" target="_blank">Download the Learner Guide</a></p>
+                            		    <h6>Assessment Material</h6>
+                            		    <p>The following material is used for this assessment.</p>
 
-                            		    <p><label class="form-control-label">Learner Workbook : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_workbook; ?>" target="_blank">Download the Learner Workbook</a></p>
+                            		    <div class="row">
 
-                            		    <p><label class="form-control-label">Learner POE : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_poe; ?>" target="_blank">Download the Learner POE</a></p>
+                                		    <div class="col-md-3">
+                                		       <a href="/uploads/class/learner_guide/<?php echo $class_name->upload_learner_guide; ?>" target="_blank"><img src="/assets/web/img/download_learner_guide_icon.png" style="width:120px;"></a>
+                                		       <p><?php echo $class_name->upload_learner_guide_name; ?></p>
+                                		    </div>
 
-                            		    <p><label class="form-control-label">Facilitator Guide : </span></label>
-                            		    <a href="/uploads/assessment/upload_learner_guide/<?php echo $module->upload_facilitator_guide; ?>" target="_blank">Download the Facilitator Guide</a></p>
+                                		    <div class="col-md-3">
+                                		       <a href="/uploads/class/learner_workbook/<?php echo $module->upload_workbook; ?>" target="_blank"><img src="/assets/web/img/download_learner_workbook_icon.png" style="width:120px;"></a>
+                                		       <p><?php echo $module->upload_workbook_name; ?></p>
+                                		    </div>
+
+                                		    <div class="col-md-3">
+                                		       <a href="/uploads/class/learner_poe/<?php echo $module->upload_poe; ?>" target="_blank"><img src="/assets/web/img/download_learner_poe_icon.png" style="width:120px;"></a>
+                                		       <p><?php echo $module->upload_poe_name; ?></p>
+                                		    </div>
+
+                                		    <div class="col-md-3">
+                                		       <a href="/uploads/class/facilitator_guide/<?php echo $module->upload_facilitator_guide; ?>" target="_blank"><img src="/assets/web/img/download_facilitator_guide.png" style="width:120px;"></a>
+                                		       <p><?php echo $module->upload_facilitator_guide_name; ?></p>
+                                		    </div>
+
+                            		    </div>
 
                                     <?php } ?>
 
@@ -780,8 +793,17 @@
 
                         <div class="form-group row">
                             <div class="col-md-12">
+
+                               <h6>Completed Assessments</h6>
+
                                 <div class="text-left">
+
+                                <?php if (count($completed_assessments) == 0) { ?>
+                                	<p style="color:red;">There are no completed submissions for this assessment.</p>
+                                <?php } else { ?>
 	                                <a href= "/provider-completed-assessment-list?aid=<?= (isset($record)) ? $record->id: ''; ?>" class="btn btn-success">See Completed Assessments</a>
+                                <?php } ?>
+
                                 </div>
                             </div>
                         </div>
