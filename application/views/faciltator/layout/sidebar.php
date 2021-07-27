@@ -1,18 +1,61 @@
-<?php 
+<?php
         $Facilitator_id = $_SESSION['facilitator']['id'];
         $facilitato = $this->common->accessrecord('facilitator', [], array('id'=>$Facilitator_id), 'row');
 
         $facilitator = $this->db->where('id',  $Facilitator_id)->get('facilitator')->result();
         $organisation = $this->db->where('id', $facilitator[0]->organization)->get('organisation')->result();
         $plan = $this->db->where('id', $organisation[0]->packageId)->get('plan')->result();
+
+        $arrayfeatures = explode("%@#$", $plan[0]->feature);
 ?>
 <div id="sidebar" class="sidebar py-3">
 
    <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family"><?=$facilitato->fullname .' '.$facilitato->surname;?></div>
    <ul class="sidebar-menu list-unstyled">
-      
+
       <li class="sidebar-list-item"><a href="<?= BASEURL ?>Faciltator-dashboard" title="From Here You Can See Dashboard" class="sidebar-link text-white active"><i class="o-home-1 mr-3 text-gray"></i><span>Dashboard</span></a></li>
-      
+
+      <!-- *************************** -->
+
+      <li class="sidebar-list-item">
+         <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages6" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
+            <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
+         <div id="pages6" class="collapse">
+            <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+
+               <li class="sidebar-list-item">
+                  <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                  if (in_array("Learner Performance Management", $arrayfeatures)) {
+                  ?>
+                     <a href="<?= BASEURL ?>facilitator-create-assessment" title="From Here You Can Create An Assessment" class="sidebar-link text-white pl-lg-5">Create Assessment</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can Create An Assessment" class="sidebar-link text-white pl-lg-5">Create Assessment</a>
+                  <?php } ?>
+               </li>
+               <li class="sidebar-list-item">
+                  <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
+                  if (in_array("Learner Performance Management", $arrayfeatures)) {
+                  ?>
+                     <a href="<?= BASEURL ?>facilitator-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                  <?php } ?>
+               </li>
+
+
+               <li class="sidebar-list-item">
+                  <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
+                     <a href="<?= BASEURL ?>facilitator-completed-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
+                  <?php } else { ?>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Completed Assessment List" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
+                  <?php } ?>
+               </li>
+
+            </ul>
+         </div>
+      </li>
+      <!-- *************************** -->
+
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can See Manage Marksheet" data-target="#pages14" aria-expanded="false" aria-controls="pages14" class="sidebar-link text-white">
          <i class="o-wireframe-1 mr-3 text-gray"></i><span>Mark Sheet</span></a>
@@ -23,34 +66,34 @@
             </ul>
          </div>
       </li>
-      
+
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" data-target="#pages5" title="From Here You Can Manage Attendance" aria-expanded="false" aria-controls="pages5" class="sidebar-link text-white">
          <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage Attendance</span></a>
          <div id="pages5" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                 <li class="sidebar-list-item">
-                    <?php  $arrayfeatures = explode("%@#$",$plan[0]->feature); 
+                    <?php  $arrayfeatures = explode("%@#$",$plan[0]->feature);
                       if (in_array("Attendance Management", $arrayfeatures)) {
-                    ?> 
+                    ?>
                      <a href="<?= BASEURL ?>facilitator-create-attendance" title="From Here You Can Create Attendance" class="sidebar-link text-white pl-lg-5">Create Attendance</a>
                     <?php } else { ?>
                      <a onclick="subscriptionMessage()" title="From Here You Can Create Attendance"  class="sidebar-link text-white pl-lg-5">Create Attendance</a>
-                    <?php } ?>  
+                    <?php } ?>
                 </li>
                 <li class="sidebar-list-item">
-                    <?php  $arrayfeatures = explode("%@#$",$plan[0]->feature); 
+                    <?php  $arrayfeatures = explode("%@#$",$plan[0]->feature);
                       if (in_array("Attendance Management", $arrayfeatures)) {
-                    ?> 
+                    ?>
                      <a href="<?= BASEURL ?>facilitator-attendance-list" title="From Here You Can See Attendance List" class="sidebar-link text-white pl-lg-5">Attendence List</a>
                     <?php } else { ?>
                      <a onclick="subscriptionMessage()" title="From Here You Can See Attendance List" class="sidebar-link text-white pl-lg-5">Attendence List</a>
-                    <?php } ?>  
+                    <?php } ?>
                 </li>
             </ul>
          </div>
       </li>
-      
+
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" data-target="#pages4" title="From Here You Can Manage Learner Discipline" aria-expanded="false" aria-controls="pages4" class="sidebar-link text-white">
          <i class="o-wireframe-1 mr-3 text-gray"></i><span>Learner Discipline</span></a>
@@ -74,7 +117,7 @@
             </ul>
          </div>
       </li>
-   
+
    </ul>
 </div>
 

@@ -4,7 +4,7 @@
              <div class="col-lg-12 mb-1">
                  <div class="card">
                      <div class="card-header">
-                         <h3 class="h6 text-uppercase mb-0">Create Moderation Report</h3>
+                         <h3 class="h6 text-uppercase mb-0">CREATE MODERATION REPORT</h3>
                      </div>
 
 
@@ -78,7 +78,7 @@
                                         } else { ?>
                                          <select class="form-control learner_classname" name="classname">
                                              <option label="" value="" hidden>Select Your Class Name</option>
-                                            
+
                                          </select>
                                      <?php } ?>
                                      <label id="#learner_classname-error" class="error" for="classname"></label>
@@ -98,7 +98,25 @@
                                     </select>
                                     <?php } ?>
                                     <label id="classname-error" class="error" for="classname"></label>
-                        </div>
+                    			</div>
+
+
+
+
+                               <div class="col-md-6">
+                                    <label class="form-control-label">Module Name<span style="color:red;font-weight:bold;"> *</span></label>
+                                    <?php if (!empty($_GET['id'])) { ?>
+                                        <input type="hidden" name="module" class="form-control" value="<?= $module->title ?>">
+                                        <input type="text" name="module" class="form-control" value="<?= $module->title ?>" readonly>
+                                    <?php } else { ?>
+                                        <select class="form-control module" name="module" id="module">
+                                            <option label="" value="" hidden>Select Your Module</option>
+                                        </select>
+                                    <?php } ?>
+                                    <label id="module-error" class="error" for="module"></label>
+                                </div>
+
+
                                  <input type="hidden" placeholder="Enter Your Unit Standard Assessed" name="unit_statndards" id="unit_statndards" class="form-control unit_statndards" readonly>
                                  <div class="col-md-12" style="margin-top: 30px;">
                                      <table id="learner_table" class="learner_table table table-bordered table-striped" style="width:100%">

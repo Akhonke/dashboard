@@ -35,7 +35,7 @@
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
-              <h6 class="mb-0">Total Mark sheets</h6><span class="text-gray"><?= $marksheet ?></span>
+              <h6 class="mb-0">Total Mark Sheet</h6><span class="text-gray"><?= $marksheet ?></span>
             </div>
           </div>          
         </div>

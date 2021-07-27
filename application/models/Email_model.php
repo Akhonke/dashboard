@@ -92,7 +92,7 @@ class Email_model extends CI_Model {
 											</tr>
 										</tbody>
 									</table>
-									
+
 								</td>
 							</tr>
 							<tr height="40">
@@ -101,7 +101,7 @@ class Email_model extends CI_Model {
 									<h4 align="center" style="color:#fff;margin: 0">LEARNING MANEGMENT
 </h4>
 									<hr>
-									
+
 									<p style="background: #fff; padding:10px;"><a href="'.base_url().'">About us</a> &nbsp; &nbsp; <a
 											href="'.base_url().'">Contact us</a> &nbsp; &nbsp; <a href="'.base_url().'">refer-end-earn</a> &nbsp; &nbsp;
 										<a href="'.base_url().'">www.demo.com</a></p>
@@ -118,5 +118,118 @@ class Email_model extends CI_Model {
 </html>';
 return $html;
 	}
+
+
+	// Send message to all students in class
+	public function email_learner_in_class($class_id, $subject, $message)
+	{
+
+	    $this->load->library('email');
+
+	    $class_name   = $this->common->accessrecord('class_name', [], ['id' => $class_id], 'row');
+	    $learner_list = $this->common->accessrecord('learner', [], ['classname' => $class_name->class_name], 'result');
+
+	    foreach ($learner_list as $learner) {
+
+	        $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
+
+	        $this->email->to($learner->email);
+
+	        $this->email->subject($subject);
+
+	        $this->email->set_mailtype("html");
+
+	        $this->email->message($message);
+
+	        $this->email->send();
+
+	        echo $this->email->print_debugger();
+
+	    }
+
+	}
+
+	// Send message to all assessor in an organisation for a given assessment
+	public function email_assessor_from_assessment($assessment_id, $subject, $message)
+	{
+
+	    $this->load->library('email');
+
+	    $assessment    = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+	    $class         = $this->common->accessrecord('class_name', [], ['id' => $assessment->class_id], 'row');
+	    $assessor_list = $this->common->accessrecord('assessor', [], ['organization' => $class->organization], 'result');
+
+
+	    foreach ($assessor_list as $assessor) {
+
+
+	        $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
+
+	        $this->email->to($assessor->email);
+
+	        $this->email->subject($subject);
+
+	        $this->email->set_mailtype("html");
+
+	        $this->email->message($message);
+
+	        $this->email->send();
+
+	        $email =  $this->email->print_debugger();
+
+	    }
+
+	}
+
+
+	// Send message to all assessor in an organisation for a given assessment
+	public function email_facilitator_from_assessment($assessment_id, $subject, $message)
+	{
+
+	    $this->load->library('email');
+
+	    $assessment    = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+	    $class         = $this->common->accessrecord('class_name', [], ['id' => $assessment->class_id], 'row');
+	    $facilitator   = $this->common->accessrecord('facilitator', [], ['id' => $class->facilitator_id], 'row');
+
+        $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
+        $this->email->to($facilitator->email);
+        $this->email->subject($subject);
+        $this->email->set_mailtype("html");
+        $this->email->message($message);
+        $this->email->send();
+        $email =  $this->email->print_debugger();
+
+
+	}
+
+	// Send moderation message to moderator for a given assessment
+	public function notify_moderator_of_moderation_request($assessment_id, $subject, $message)
+	{
+
+	    $this->load->library('email');
+
+	    $assessment    = $this->common->accessrecord('assessment', [], ['id' => $assessment_id], 'row');
+	    $class         = $this->common->accessrecord('class_name', [], ['id' => $assessment->class_id], 'row');
+	    $trainer       = $this->common->accessrecord('trainer', [], ['id' => $class->trainer_id], 'row');
+	    $moderator     = $this->common->accessrecord('trainer', [], ['id' => $trainer->id], 'row');
+
+	    $this->email->from('info@digilims.com','LEARNING MANAGEMENT');
+	    $this->email->to($moderator->email);
+	    $this->email->subject($subject);
+	    $this->email->set_mailtype("html");
+	    $this->email->message($message);
+	    $this->email->send();
+	    $email =  $this->email->print_debugger();
+
+
+	}
+
+	public function notify_assessor_of_review_request($assessment_id, $subject, $message)
+	{
+	    ;
+	}
+
+
 
 }

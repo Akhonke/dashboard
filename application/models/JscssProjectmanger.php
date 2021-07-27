@@ -47,7 +47,7 @@ class JscssProjectmanger extends CI_Model
 
 		}
 
-		
+
 
 		</style>';
 
@@ -97,7 +97,7 @@ class JscssProjectmanger extends CI_Model
 			$js[] = '<script src="' . BASEURL . 'assets/admin/cloudfront/js/charts-home.js"></script>';
 		}
 
-		if ($page == 'employer_list' || $page == 'create_stipend_list' || $page == 'create_projects_list' || $page == 'new_task' || $page == 'learner_list' || $page == 'project_list' || $page == 'training_list' || $page == 'facilitator_list' || $page == 'assessor_list' || $page == 'moderator_list' || $page == 'create_class' || $page == 'class_list' || $page == 'learner_view' || $page == 'facilitator_view' || $page == 'assessor_view' || $page == 'monderator_view' || $page == 'training_provider_view' || $page == 'project_manager_view' || $page == 'projectmanagar_report_list' || $page == 'stipend_list' || $page == 'drop_out_list' || $page == 'attendance_list' || $page == 'income_item_list' || $page == 'expense_item_list' || $page == 'account_balance_list' || $page == 'create_income_item' || $page == 'create_expense_item' || $page == 'finance_expense_item' || $page == 'expense_view' || $page == 'bank_list' || $page == 'learner_marks_list' || $page == 'user_list') {
+		if ($page == 'employer_list' || $page == 'create_stipend_list' || $page == 'create_projects_list' || $page == 'new_task' || $page == 'learner_list' || $page == 'project_list' || $page == 'training_list' || $page == 'facilitator_list' || $page == 'assessor_list' || $page == 'moderator_list' || $page == 'create_class' || $page == 'class_list' || $page == 'learner_view' || $page == 'facilitator_view' || $page == 'assessor_view' || $page == 'monderator_view' || $page == 'training_provider_view' || $page == 'project_manager_view' || $page == 'projectmanagar_report_list' || $page == 'stipend_list' || $page == 'drop_out_list' || $page == 'attendance_list' || $page == 'income_item_list' || $page == 'expense_item_list' || $page == 'account_balance_list' || $page == 'create_income_item' || $page == 'create_expense_item' || $page == 'finance_expense_item' || $page == 'expense_view' || $page == 'bank_list' || $page == 'learner_marks_list' || $page == 'user_list' ||  $page == 'list_assessments' ) {
 
 			$js[] = '<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>';
 
@@ -126,7 +126,7 @@ class JscssProjectmanger extends CI_Model
 			var table=$('.table').DataTable( {
 
 				dom: 'Bfrtip',
-				columnDefs: [  
+				columnDefs: [
                     {
                         'searchable': false,
                         'orderable': false,
@@ -170,7 +170,7 @@ class JscssProjectmanger extends CI_Model
 
 				$js[] = '<script>
 
-		        function deleterecord(tablename,columnname,id){ 
+		        function deleterecord(tablename,columnname,id){
 
 	                swal({
 
@@ -192,7 +192,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -226,11 +226,11 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
-	           	
+
 
 	           </script>';
 			}
@@ -239,49 +239,49 @@ class JscssProjectmanger extends CI_Model
 		if ($page == 'send_massage') {
 
 			$js[] = "<script>
-			
+
 			$('#receiver_type').change(function() {
 
 				$.ajax({
-	   
+
 				   url: 'projectmanager-get_receiver',
-	   
+
 				   data: {
 					  'value': $('#receiver_type').val()
 				   },
-	   
+
 				   dataType: 'json',
-	   
+
 				   type: 'post',
-	   
+
 				   success: function(data) {
-	   
+
 					  var option = '';
-	   
+
 					  $.each(data, function(i, star) {
-	   
+
 						 if (i == 'error') {
-	   
+
 							$('#receiver').html(option);
-	   
+
 							$('#receiver-error').show();
-	   
+
 							$('#receiver-error').html(star);
-	   
+
 						 } else {
 							var test = '<option hidden value=' + '>Select Receiver</option>';
 							option += '<option value=' + star.id + '>' + star.name + '</option>'
-	   
+
 							$('#receiver').html(test + option);
-	   
+
 							$('#receiver-error').hide();
-	   
+
 						 }
-	   
+
 					  });
-	   
+
 				   }
-	   
+
 				});
 			 });
 			</script>";
@@ -289,7 +289,7 @@ class JscssProjectmanger extends CI_Model
 
 		if ($page == 'create_new_project') {
 
-			$js[] = "<script> 
+			$js[] = "<script>
 			$('.province').change(function(){
 
 				        $.ajax({
@@ -328,7 +328,7 @@ class JscssProjectmanger extends CI_Model
 
 				                });
 
-				              
+
 
 				            }
 
@@ -374,7 +374,7 @@ class JscssProjectmanger extends CI_Model
 
 				                });
 
-				              
+
 
 				            }
 
@@ -384,7 +384,7 @@ class JscssProjectmanger extends CI_Model
 
 
 
-				  
+
 					$('#city').change(function(){
 						$.ajax({
 							 url: 'projectmanager-getmunicipality',
@@ -414,7 +414,7 @@ class JscssProjectmanger extends CI_Model
 
 		if ($page == 'create_projects_list' || $page == 'new_task') {
 			$js[] = '<script>
-			function deleterecord(tablename,columnname,id){ 
+			function deleterecord(tablename,columnname,id){
 
 				swal({
 
@@ -436,7 +436,7 @@ class JscssProjectmanger extends CI_Model
 
 					closeOnCancel: false
 
-				}, 
+				},
 
 				function (isConfirm) {
 
@@ -470,13 +470,13 @@ class JscssProjectmanger extends CI_Model
 
 					}
 
-				});    
+				});
 
 			}
 
-	
 
-			function project_delete(tablename,columnname,id){ 
+            // delete project
+			function project_delete(tablename,columnname,id){
 
 			swal({
 
@@ -498,7 +498,7 @@ class JscssProjectmanger extends CI_Model
 
 				closeOnCancel: false
 
-			}, 
+			},
 
 			function (isConfirm) {
 
@@ -544,7 +544,7 @@ class JscssProjectmanger extends CI_Model
 
 				}
 
-			});    
+			});
 
 			}
 
@@ -552,11 +552,11 @@ class JscssProjectmanger extends CI_Model
 
 			$(document).on("click",".status_checks",function(){
 
-				var status = ($(this).hasClass("btn-success")) ? "0" : "1"; 
+				var status = ($(this).hasClass("btn-success")) ? "0" : "1";
 
 				var msg = (status=="0")? "Inactivate" : "Activate";
 
-				var current_element = $(this);  
+				var current_element = $(this);
 
 				swal({
 
@@ -603,7 +603,7 @@ class JscssProjectmanger extends CI_Model
 
 					});
 
-				});    
+				});
 
 			});
 			</script>';
@@ -614,7 +614,7 @@ class JscssProjectmanger extends CI_Model
 
 				    $(function() {
 
-			
+
 
 						$("#task_status").change(function(){
 							if($("#task_status").val() == "Inprogress"){
@@ -626,7 +626,7 @@ class JscssProjectmanger extends CI_Model
 							if($("#task_status").val() == "Started"){
 								$("#task_status_colour").val("Red");
 							}
-							
+
 						});
 
 							$.validator.addMethod("task_name", function(value, element) {
@@ -647,7 +647,7 @@ class JscssProjectmanger extends CI_Model
 
                         }, "Only letters and white space allowed.");
 
-                        
+
 
                         $.validator.addMethod("dateBefore", function (value, element, params) {
 
@@ -787,13 +787,13 @@ class JscssProjectmanger extends CI_Model
 				            	task_name: "Please enter your Task name",
 
 								task_desc: "Please enter your Task Description",
-								
+
 								task_owner : "Please enter your Task Owner Name",
 
 								task_status:{
 
 									required: "Please select Task Status",
- 
+
 								 },
 								 task_status_colour:{
 
@@ -842,49 +842,49 @@ class JscssProjectmanger extends CI_Model
 		if ($page == 'bulk_message') {
 
 			$js[] = "<script>
-			
+
 			$('#receiver_type').change(function() {
 
 				$.ajax({
-	   
+
 				   url: 'projectmanager-get_receiver_contact',
-	   
+
 				   data: {
 					  'value': $('#receiver_type').val()
 				   },
-	   
+
 				   dataType: 'json',
-	   
+
 				   type: 'post',
-	   
+
 				   success: function(data) {
-	   
+
 					  var option = '';
-	   
+
 					  $.each(data, function(i, star) {
-	   
+
 						 if (i == 'error') {
-	   
+
 							$('#receiver').html(option);
-	   
+
 							$('#receiver-error').show();
-	   
+
 							$('#receiver-error').html(star);
-	   
+
 						 } else {
 							var test = '<option hidden value=' + '>Select Receiver</option>';
 							option += '<option value=+27' + star.mobile_number + '>' + star.name + '</option>'
-	   
+
 							$('#receiver').html(test + option);
-	   
+
 							$('#receiver-error').hide();
-	   
+
 						 }
-	   
+
 					  });
-	   
+
 				   }
-	   
+
 				});
 			 });
 			</script>";
@@ -898,68 +898,68 @@ class JscssProjectmanger extends CI_Model
 						$('#learner_id').keyup(function(){
 							debugger;
 							$.ajax({
-	 
+
 								 url: 'projectmanager-getlearner',
-	 
+
 								 data: { 'value': $('#learner_id').val() },
-	 
+
 								 dataType:'json',
-	 
+
 								 type: 'post',
-	 
+
 								 success: function(data){
-	 
+
 									 var option = '';
-	 
+
 									$.each(data, function(i, star) {
-	 
+
 										 if(i == 'error'){
-	 
+
 											 $('#learner_name').val(option);
-	 
+
 											 $('#learner_surname').val(option);
-											
+
 											 $('#learnship_id').val(option);
 											 $('#learnership_sub_type_id').val(option);
-	 
+
 											 $('#class').val(option);
-											 
+
 											 $('#bank_name').val(option);
 											 $('#bank_branch_name').val(option);
-	 
+
 											 $('#account_type').val(option);
-											
+
 											 $('#branch_code').val(option);
 											 $('#acccount_number').val(option);
-											 
-											 
+
+
 											 $('#city-error').html(star);
-	 
+
 										 }else{
-	 
+
 											$('#learner_name').val(star.first_name);
-	 
+
 											$('#learner_surname').val(star.surname);
-											
+
 											$('#learnship_id').val(star.learnship_id);
 											// $('#learnship_id').text(star.learnshipname);
 											$('#learnership_sub_type_ids').val(star.learnershipSubType);
 											$('#learnership_sub_type_id').val(star.sublearnshipname);
 											$('#class').val(star.classname);
-	 
+
 											$('#bank_name').val(star.bank_name);
 											$('#bank_branch_name').val(star.branch_name);
-	 
+
 											$('#account_type').val(star.bank_account_type);
 											$('#branch_code').val(star.branch_code);
-	 
+
 											$('#acccount_number').val(star.bank_account_number);
-											
-	 
+
+
 										 }
-	 
+
 									 });
-	 
+
 								 }
 								})
 							 });
@@ -970,50 +970,50 @@ class JscssProjectmanger extends CI_Model
                         // allow any non-whitespace characters as the host part
                             return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(?:\S{1,63})$/.test( value );
                         }, 'Please enter a valid email address.');
-                        
+
                         $.validator.addMethod('mobile', function (value, element) {
 			              return this.optional(element) || /^[0-9]{9}$/.test(value);
 			            }, 'Invalid Mobile Number');
 				        $('#CreateStipendForm').validate({
 					        rules:{
 					            learner_id:{
-		                         required: true, 
+		                         required: true,
 		                        },
 		                        learner_name:{
-		                         required: true, 
+		                         required: true,
 								},
 								learner_surname:{
-									required: true, 
+									required: true,
 								},
 								learnership_sub_type:{
-									required: true, 
+									required: true,
 								},
 		                        class:{
-		                         required: true, 
+		                         required: true,
 		                        },
 		                        bank_name:{
-		                         required: true, 
+		                         required: true,
 		                        },
 		                        bank_branch_name:{
-		                         required: true, 
+		                         required: true,
 		                        },
 		                        account_type:{
-		                         required: true, 
+		                         required: true,
 								},
 								branch_code:{
-									required: true, 
+									required: true,
 								   },
 								account_number:{
-								  required: true, 
+								  required: true,
 								},
 								total_attend:{
-									required: true, 
+									required: true,
 								},
 								paid_amount:{
-								   required: true, 
+								   required: true,
 								},
-								
-								
+
+
 		                    },
 		                    messages:{
 		                        learner_id: {
@@ -1033,7 +1033,7 @@ class JscssProjectmanger extends CI_Model
 		                        },
 		                        bank_name: {
 		                          required: 'Please enter Bank Name',
-		                        }, 
+		                        },
 		                        bank_branch_name: {
 		                          required: 'Please enter Branch Name',
 		                        },
@@ -1041,16 +1041,16 @@ class JscssProjectmanger extends CI_Model
 		                          required: 'Please enterAccount Type',
 								},
 								branch_code:{
-									required: 'Please enter Branch Code', 
+									required: 'Please enter Branch Code',
 								},
 								account_number:{
-									required: 'Please enter Account Number', 
+									required: 'Please enter Account Number',
 								},
 								total_attend:{
-									required: 'Please enter Number of days attended', 
+									required: 'Please enter Number of days attended',
 								},
 								paid_amount:{
-									required: 'Please enter Total to be paid Amount', 
+									required: 'Please enter Total to be paid Amount',
 								},
 		                    }
 					        });
@@ -1060,7 +1060,7 @@ class JscssProjectmanger extends CI_Model
 					        }
 				        });
 					});
-					
+
 				  </script> ";
 		}
 		// ********************************************************************************************************************************
@@ -1069,7 +1069,7 @@ class JscssProjectmanger extends CI_Model
 
 			$js[] = '<script>
 
-		        function deleterecordClass(tablename,columnname,id,classname){ 
+		        function deleterecordClass(tablename,columnname,id,classname){
 
 	                swal({
 
@@ -1091,7 +1091,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -1139,7 +1139,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -1178,7 +1178,7 @@ class JscssProjectmanger extends CI_Model
 
 					          equalTo:"#password",
 
-					        },  
+					        },
 
 				          },
 
@@ -1249,7 +1249,7 @@ class JscssProjectmanger extends CI_Model
 
                         }, "Only letters and white space allowed.");
 
-				    
+
 
                       /*  $.validator.addMethod("programme_name", function(value, element) {
 
@@ -1279,7 +1279,7 @@ class JscssProjectmanger extends CI_Model
 
                         }, "Only letters and white space allowed.");
 
-                        
+
 
                         $.validator.addMethod("dateBefore", function (value, element, params) {
 
@@ -1369,26 +1369,26 @@ class JscssProjectmanger extends CI_Model
 
 				            rules: {
 
-				            	
-								
+
+
 				                project_name:  {
 
 				                    required: true,
 
 								},
-								
+
 								project_type:  {
 
 				                    required: true,
 
 								},
-								
+
 								province:  {
 
 				                    required: true,
 
 								},
-								
+
 								province:  {
 
 				                    required: true,
@@ -1418,7 +1418,7 @@ class JscssProjectmanger extends CI_Model
 				                    required: true,
 
 								},
-								
+
 								municipality:  {
 
 				                    required: true,
@@ -1428,7 +1428,7 @@ class JscssProjectmanger extends CI_Model
 				                planned_start_date:{
 									dateBefore: "#actual_end_date",
 									dateBefore: "#actual_start_date",
-									
+
 			                       required: true,
 
 			                    },
@@ -1449,7 +1449,7 @@ class JscssProjectmanger extends CI_Model
 
 			                    actual_end_date:{
 									dateAfter: "#planned_end_date",
-									
+
 			                       required: true,
 
 			                    },
@@ -1471,14 +1471,14 @@ class JscssProjectmanger extends CI_Model
 			                    project_owner_email:{
 
 								   required: true,
-								   
+
 								   email : true,
 
 			                    },
 
 			                    mobile_number:{
 
-								   required: true,        
+								   required: true,
 									mobile: true
 			                    },
 
@@ -1499,94 +1499,94 @@ class JscssProjectmanger extends CI_Model
 
 				                	required:true,
 
-				                },		                
-				               
+				                },
+
 				                dob: {
 
 				                    required: true,
 				                },
 
 
-								
+
 				                pre_implement_actual_start_date: {
 
-									required: true,    
-								
-									dateBefore: "#pre_implement_actual_end_date",   
+									required: true,
+
+									dateBefore: "#pre_implement_actual_end_date",
 
 								},
-								
+
 								pre_implement_planned_start_date: {
 
-									required: true, 
-									dateBefore: "#pre_implement_planned_end_date",   
+									required: true,
+									dateBefore: "#pre_implement_planned_end_date",
 
 								},
-								
+
 								pre_implement_planned_end_date: {
 
-									required: true, 
-									dateAfter: "#pre_implement_planned_start_date",      
+									required: true,
+									dateAfter: "#pre_implement_planned_start_date",
 
 								},
-								
+
 								pre_implement_actual_end_date: {
 
-									required: true,   
-									dateAfter: "#pre_implement_actual_start_date",    
+									required: true,
+									dateAfter: "#pre_implement_actual_start_date",
 
 								},
 								implement_planned_start_date: {
 
-				                    required: true,       
-									dateBefore: "#implement_planned_end_date",   
+				                    required: true,
+									dateBefore: "#implement_planned_end_date",
 								},
 								implement_actual_start_date: {
 
-				                    required: true,       
-									dateBefore: "#implement_actual_end_date",   
+				                    required: true,
+									dateBefore: "#implement_actual_end_date",
 								},
 								implement_planned_end_date: {
 
-				                    required: true,       
-									dateAfter: "#implement_planned_start_date",   
+				                    required: true,
+									dateAfter: "#implement_planned_start_date",
 								},
 								implement_actual_end_date: {
 
-				                    required: true,       
-									dateAfter: "#implement_actual_start_date",   
+				                    required: true,
+									dateAfter: "#implement_actual_start_date",
 								},
 								closeout_planned_start_date: {
 
-				                    required: true,       
-									dateBefore: "#closeout_planned_end_date",   
+				                    required: true,
+									dateBefore: "#closeout_planned_end_date",
 								},
 								closeout_actual_start_date: {
 
-				                    required: true,       
-									dateBefore: "#closeout_actual_end_date",   
+				                    required: true,
+									dateBefore: "#closeout_actual_end_date",
 								},
 								closeout_planned_end_date: {
 
-				                    required: true,       
-									dateAfter: "#closeout_planned_start_date",   
+				                    required: true,
+									dateAfter: "#closeout_planned_start_date",
 								},
 								closeout_actual_end_date: {
 
-				                    required: true,       
-									dateAfter: "#closeout_actual_start_date",   
+				                    required: true,
+									dateAfter: "#closeout_actual_start_date",
 								},
-								
-			                    
+
+
 
 				            },
 
 				            messages: {
 
 								project_name: "Please enter your project Name",
-								
+
 								project_type: "Please Select Project",
-								
+
 				                project_manager: "Please enter your Project Manager",
 
 				                province:  {
@@ -1612,7 +1612,7 @@ class JscssProjectmanger extends CI_Model
 				                    required: "Please Select City",
 
 								},
-								
+
 								municipality:  {
 
 				                    required: "Please Select Municipality",
@@ -1683,8 +1683,8 @@ class JscssProjectmanger extends CI_Model
 
 				                	required:"Please select  gender",
 
-				                },		                
-				               
+				                },
+
 				                dob: {
 
 				                    required: "Please enter Date of Birth",
@@ -1692,65 +1692,65 @@ class JscssProjectmanger extends CI_Model
 
 				                pre_implement_actual_start_date: {
 
-				                    required: "Please select Pre implementation Actual start date",				                   
+				                    required: "Please select Pre implementation Actual start date",
 
 								},
-								
+
 								pre_implement_planned_start_date: {
 
-				                    required: "Please select Pre implementation Planned start date",				                   
+				                    required: "Please select Pre implementation Planned start date",
 
 								},
-								
+
 								pre_implement_planned_end_date: {
 
-				                    required: "Please select Pre implementation Planned end date",				                   
+				                    required: "Please select Pre implementation Planned end date",
 
 								},
-								
+
 								pre_implement_actual_end_date: {
 
-				                    required: "Please select Pre implementation Actual end date",				                   
+				                    required: "Please select Pre implementation Actual end date",
 
 								},
 								implement_planned_start_date: {
 
-				                    required: "Please select Implementation Planned Start date",				                   
+				                    required: "Please select Implementation Planned Start date",
 
 								},
 								implement_actual_start_date: {
 
-				                    required: "Please select Implementation Actual Start date",				                   
+				                    required: "Please select Implementation Actual Start date",
 
 								},
 								implement_planned_end_date: {
 
-				                    required: "Please select Implementation Planned End date",				                   
+				                    required: "Please select Implementation Planned End date",
 
 								},
 								implement_actual_end_date: {
 
-				                    required: "Please select Implementation Actual end date",				                   
+				                    required: "Please select Implementation Actual end date",
 
 								},
 								closeout_planned_start_date: {
 
-				                    required: "Please select Closeout Planned Start Date",				                   
+				                    required: "Please select Closeout Planned Start Date",
 
 								},
 								closeout_actual_start_date: {
 
-				                    required: "Please select Closeout Actaul Start Date",				                   
+				                    required: "Please select Closeout Actaul Start Date",
 
 								},
 								closeout_planned_end_date: {
 
-				                    required: "Please select Closeout Planned end Date",				                   
+				                    required: "Please select Closeout Planned end Date",
 
 								},
 								closeout_actual_end_date: {
 
-				                    required: "Please select Closeout Actual end Date",				                   
+				                    required: "Please select Closeout Actual end Date",
 
 								},
 
@@ -1765,9 +1765,9 @@ class JscssProjectmanger extends CI_Model
 				        });
 
 					});
-					
 
-					
+
+
 
 				</script>';
 		}
@@ -1814,7 +1814,7 @@ class JscssProjectmanger extends CI_Model
 
 				                });
 
-				              
+
 
 				            }
 
@@ -1860,7 +1860,7 @@ class JscssProjectmanger extends CI_Model
 
 				                });
 
-				              
+
 
 				            }
 
@@ -1870,7 +1870,7 @@ class JscssProjectmanger extends CI_Model
 
 
 
-				  
+
 					$('#city').change(function(){
 						$.ajax({
 							 url: 'projectmanager-getmunicipality',
@@ -1932,7 +1932,7 @@ class JscssProjectmanger extends CI_Model
 
 			            }, 'Invalid Landline Number');
 
-                    var trainer_id = $('#trainer_id').val();  
+                    var trainer_id = $('#trainer_id').val();
 
 			        $('#CreateTraininForm').validate({
 
@@ -1961,7 +1961,7 @@ class JscssProjectmanger extends CI_Model
 			            'email':{
 
 						  required: true,
-						  
+
 						  email: true
 
 			            },
@@ -2001,12 +2001,12 @@ class JscssProjectmanger extends CI_Model
 			              required: true,
 
 						},
-						
-					
+
+
 			            'municipality':{
 
 							required: true,
-  
+
 						  },
 			            'Suburb':{
 
@@ -2020,7 +2020,7 @@ class JscssProjectmanger extends CI_Model
 
 			            },
 
-			          
+
 
 			            'project_id':{
 
@@ -2060,12 +2060,12 @@ class JscssProjectmanger extends CI_Model
 
 			            },
 
-			            
+
 
 			            'email':{
 
 						  required: 'Please enter valid email',
-						  
+
 						  email: 'Please enter valid email',
 
 			            },
@@ -2105,11 +2105,11 @@ class JscssProjectmanger extends CI_Model
 			              required: 'Please select your city',
 
 						},
-						
+
 						'municipality':{
 
 							required: 'Please select your municipality',
-  
+
 						  },
 
 			            'Suburb':{
@@ -2170,11 +2170,11 @@ class JscssProjectmanger extends CI_Model
 
 					    var wrapper = $(".field_wrapper"); //Input field wrapper
 
-					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>"; 
+					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>";
 
 					    var x = 1; //Initial field counter is 1
 
-					    
+
 
 					    //Once add button is clicked
 
@@ -2182,11 +2182,11 @@ class JscssProjectmanger extends CI_Model
 
 					        //Check maximum number of input fields
 
-					        if(x < maxField){ 
+					        if(x < maxField){
 
 					            x++; //Increment field counter
 
-					            
+
 
 					            $(wrapper).append(fieldHTML); //Add field html
 
@@ -2200,7 +2200,7 @@ class JscssProjectmanger extends CI_Model
 
 					    });
 
-					    
+
 
 					    //Once remove button is clicked
 
@@ -2332,7 +2332,7 @@ class JscssProjectmanger extends CI_Model
 
 				                email: "Please enter a valid email address",
 
-				                
+
 
 				                id_number: {
 
@@ -2342,7 +2342,7 @@ class JscssProjectmanger extends CI_Model
 
 				                },
 
-				                
+
 
 				                mobile: {
 
@@ -2513,11 +2513,11 @@ class JscssProjectmanger extends CI_Model
 
 					    var wrapper = $(".field_wrapper"); //Input field wrapper
 
-					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>"; 
+					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>";
 
 					    var x = 1; //Initial field counter is 1
 
-					    
+
 
 					    //Once add button is clicked
 
@@ -2525,11 +2525,11 @@ class JscssProjectmanger extends CI_Model
 
 					        //Check maximum number of input fields
 
-					        if(x < maxField){ 
+					        if(x < maxField){
 
 					            x++; //Increment field counter
 
-					            
+
 
 					            $(wrapper).append(fieldHTML); //Add field html
 
@@ -2543,7 +2543,7 @@ class JscssProjectmanger extends CI_Model
 
 					    });
 
-					    
+
 
 					    //Once remove button is clicked
 
@@ -2681,7 +2681,7 @@ class JscssProjectmanger extends CI_Model
 
 				                email: "Please enter a valid email address",
 
-				                
+
 
 				                id_number: {
 
@@ -2691,7 +2691,7 @@ class JscssProjectmanger extends CI_Model
 
 				                },
 
-				                
+
 
 				                mobile: {
 
@@ -2926,7 +2926,7 @@ class JscssProjectmanger extends CI_Model
 
 			            },
 
-			           
+
 
 			            'surname':{
 
@@ -2934,7 +2934,7 @@ class JscssProjectmanger extends CI_Model
 
 			            },
 
-			            
+
 
 			            'email':{
 
@@ -3052,13 +3052,13 @@ class JscssProjectmanger extends CI_Model
 
                         reason:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
                          classname:{
 
-                         required: true, 
+                         required: true,
 
                         },
 
@@ -3192,7 +3192,7 @@ class JscssProjectmanger extends CI_Model
 
 			            },
 
-			           
+
 
                         assessment: 'Please select your assessment status',
 
@@ -3277,7 +3277,7 @@ class JscssProjectmanger extends CI_Model
 
                                 },
 
-				              
+
 
 				            },
 
@@ -3300,13 +3300,13 @@ class JscssProjectmanger extends CI_Model
 
 			   $(document).on("click",".status_change",function(){
 
-			   	var learner = $(this).data("learner");  
+			   	var learner = $(this).data("learner");
 
-		        // var status = ($(this).hasClass("btn-success")) ? "0" : "1"; 
+		        // var status = ($(this).hasClass("btn-success")) ? "0" : "1";
 
                 var msg =((learner =="No")||(learner=="no"))? "Not Accepted" : "Accepted";
 
-		        var current_element = $(this);  
+		        var current_element = $(this);
 
 			    swal({
 
@@ -3330,7 +3330,7 @@ class JscssProjectmanger extends CI_Model
 
 				  if (inputValue === false) return false;
 
-				  
+
 
 				  if (inputValue === "") {
 
@@ -3378,7 +3378,7 @@ class JscssProjectmanger extends CI_Model
 
                var msg =((learner =="Yes")||(learner=="yes"))? "Not Accepted" : "Accepted";
 
-		        var current_element = $(this);  
+		        var current_element = $(this);
 
 		        var text = "";
 
@@ -3442,7 +3442,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });   
+	                });
 
 		    });
 
@@ -3524,52 +3524,52 @@ class JscssProjectmanger extends CI_Model
 
 			$js[] = '<script>
 
-				   
+
 				$(function () {
 					$(".learnship_id").change(function(){
 
 						$.ajax({
-						
+
 							url: "projectmanager-get_sublearnership",
-						
+
 							data: { "value": $(".learnship_id").val() },
-						
+
 							dataType:"json",
-						
+
 							type: "post",
-						
+
 							success: function(data){
-						
+
 								var option = "";
-						
+
 							   $.each(data, function(i, star) {
-						
+
 										if(i == "error"){
-						
+
 										$(".learnership_sub_type_id").html(option);
-						
+
 										$("#learnership_sub_type_id-error").show();
-						
+
 										$("#learnership_sub_type_id-error").html(star);
-						
+
 									}else{
 										var test = "<option hidden value="+">Select Sublearnership</option>";
 									  option += "<option value="+star.id+">"+star.sub_type+"</option>"
-						
+
 									  $(".learnership_sub_type_id").html(test+option);
-						
+
 									  $("#learnership_sub_type_id-error").hide();
-						
+
 									}
-						
+
 								});
-						
-							  
-						
+
+
+
 							}
-						
+
 						});
-						
+
 						});
 
 			        $("#CreateIncomeItem").validate({
@@ -3670,64 +3670,64 @@ class JscssProjectmanger extends CI_Model
 						$(".learnship_id").change(function(){
 
 							$.ajax({
-							
+
 								url: "projectmanager-get_sublearnership",
-							
+
 								data: { "value": $(".learnship_id").val() },
-							
+
 								dataType:"json",
-							
+
 								type: "post",
-							
+
 								success: function(data){
-							
+
 									var option = "";
-							
+
 								   $.each(data, function(i, star) {
-							
+
 											if(i == "error"){
-							
+
 											$(".learnership_sub_type_id").html(option);
-							
+
 											$("#learnership_sub_type_id-error").show();
-							
+
 											$("#learnership_sub_type_id-error").html(star);
-							
+
 										}else{
 											var test = "<option hidden value="+">Select Sublearnership</option>";
 										  option += "<option value="+star.id+">"+star.sub_type+"</option>"
-							
+
 										  $(".learnership_sub_type_id").html(test+option);
-							
+
 										  $("#learnership_sub_type_id-error").hide();
-							
+
 										}
-							
+
 									});
-							
-								  
-							
+
+
+
 								}
-							
+
 							});
-							
+
 							});
 
 						$.validator.addMethod("fullname", function(value, element) {
 
 							// allow any non-whitespace characters as the host part
-		
+
 								return this.optional( element ) || /^[a-zA-Z\s]+$/.test( value );
-		
+
 							}, "Only letters and white space allowed.");
-		
+
 
 
 			        $("#CreateExpenseItem").validate({
 
 			          rules:{
 
-			           
+
 						"learnershipSubType" :{
 							required :true,
 						},
@@ -3759,7 +3759,7 @@ class JscssProjectmanger extends CI_Model
 
                       messages:{
 
-			         
+
 						"learnershipSubType" :{
 							required : "Please select Learnership sub type",
 						},
@@ -3810,7 +3810,7 @@ class JscssProjectmanger extends CI_Model
 
 			$js[] = '<script>
 
-		        function projectmanagerdeletedataAssessor(tablename,columnname,id,trainer_id){ 
+		        function projectmanagerdeletedataAssessor(tablename,columnname,id,trainer_id){
 
                     swal({
 
@@ -3832,7 +3832,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -3878,7 +3878,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -3889,7 +3889,7 @@ class JscssProjectmanger extends CI_Model
 
 			$js[] = '<script>
 
-		        function projectmanagerdeletedataModerator(tablename,columnname,id){ 
+		        function projectmanagerdeletedataModerator(tablename,columnname,id){
 
                     swal({
 
@@ -3911,7 +3911,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -3957,7 +3957,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -3968,7 +3968,7 @@ class JscssProjectmanger extends CI_Model
 
 			$js[] = '<script>
 
-		        function projectmanagerdeletedataFacilitator(tablename,columnname,id,training_provider){ 
+		        function projectmanagerdeletedataFacilitator(tablename,columnname,id,training_provider){
 
                     swal({
 
@@ -3990,7 +3990,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -4036,7 +4036,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -4047,7 +4047,7 @@ class JscssProjectmanger extends CI_Model
 
 			$js[] = '<script>
 
-		        function projectmanagerdeletedataLearner(tablename,columnname,id){ 
+		        function projectmanagerdeletedataLearner(tablename,columnname,id){
 
                     swal({
 
@@ -4069,7 +4069,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -4127,7 +4127,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -4138,7 +4138,7 @@ class JscssProjectmanger extends CI_Model
 
 			$js[] = '<script>
 
-		        function projectmanagerdeletedataTrainingprovider(tablename,columnname,id){ 
+		        function projectmanagerdeletedataTrainingprovider(tablename,columnname,id){
 
                     swal({
 
@@ -4160,7 +4160,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    closeOnCancel: false
 
-	                }, 
+	                },
 
 	                function (isConfirm) {
 
@@ -4398,7 +4398,7 @@ class JscssProjectmanger extends CI_Model
 
 	                    }
 
-	                });    
+	                });
 
 	            }
 
@@ -4596,7 +4596,7 @@ class JscssProjectmanger extends CI_Model
 
 		if ($page == 'user_list') {
 			$js[] = '<script>
-        	 function deleteuser(tablename,columnname,id){ 
+        	 function deleteuser(tablename,columnname,id){
 		                swal({
 		                    title: "Are you sure?",
 		                    text: "Delete",
@@ -4607,7 +4607,7 @@ class JscssProjectmanger extends CI_Model
 		                    cancelButtonText: "No, cancel it!",
 		                    closeOnConfirm: false,
 		                    closeOnCancel: false
-		                }, 
+		                },
 		                function (isConfirm) {
 		                    if (isConfirm) {
 		                        $.ajax({
@@ -4624,7 +4624,7 @@ class JscssProjectmanger extends CI_Model
 		                    } else {
 		                      swal("Cancelled", "Your imaginary file is safe :)", "error");
 		                    }
-		                });    
+		                });
 		            }
         	</script>';
 		}
@@ -4639,9 +4639,9 @@ class JscssProjectmanger extends CI_Model
 						$.validator.addMethod('fullname', function(value, element) {
 
 							// allow any non-whitespace characters as the host part
-		
+
 								return this.optional( element ) || /^[a-zA-Z\s]+$/.test( value );
-		
+
 							}, 'Only letters and white space allowed.');
                         $.validator.addMethod('mobile', function (value, element) {
 			              return this.optional(element) || /^[0-9]{9}$/.test(value);
@@ -4650,28 +4650,28 @@ class JscssProjectmanger extends CI_Model
 					        rules:{
 					            first_name:{
 								 required: true,
-								 fullname : true, 
+								 fullname : true,
 		                        },
 		                        second_name:{
-								 required: true, 
-								 fullname : true, 
-								 
+								 required: true,
+								 fullname : true,
+
 		                        },
 		                        email:{
-								 required: true, 
+								 required: true,
 								 email :true
 		                        },
 		                        mobile:{
-								 required: true, 
+								 required: true,
 								 mobile : true
 		                        },
 		                        password:{
-		                         required: true, 
+		                         required: true,
 		                        },
 		                        designation:{
 								 required: true,
-								 fullname : true, 
-								  
+								 fullname : true,
+
 		                        },
 		                    },
 		                    messages:{
@@ -4686,7 +4686,7 @@ class JscssProjectmanger extends CI_Model
 		                        },
 		                        mobile: {
 		                          required: 'Please enter user mobile number',
-		                        }, 
+		                        },
 		                        password: {
 		                          required: 'Please enter user password',
 		                        },
@@ -4708,14 +4708,14 @@ class JscssProjectmanger extends CI_Model
 
 		if ($page == 'create_employer') {
 
-			$js[] = "<script> 
-			
+			$js[] = "<script>
+
 			$(function () {
 				$.validator.addMethod('employer_contact_email', function(value, element) {
 				// allow any non-whitespace characters as the host part
 					return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(?:\S{1,63})$/.test( value );
 				}, 'Please enter a valid email address.');
-				
+
 				$.validator.addMethod('employer_contact_number', function (value, element) {
 				  return this.optional(element) || /^[0-9]{9}$/.test(value);
 				}, 'Invalid Mobile Number');
@@ -4733,20 +4733,20 @@ class JscssProjectmanger extends CI_Model
 				$('#CreateEmployerForm').validate({
 					rules:{
 						employer_name:{
-						 required: true, 
+						 required: true,
 						 fullname : true,
 						},
 						employer_contact_email:{
-						 required: true, 
+						 required: true,
 						},
 						employer_contact_number:{
-						 required: true, 
+						 required: true,
 						},
 						employer_province:{
-						 required: true, 
+						 required: true,
 						},
 						employer_district:{
-						 required: true, 
+						 required: true,
 						},
 						employer_region:{
 						 required: true,
@@ -4760,7 +4760,7 @@ class JscssProjectmanger extends CI_Model
 						employer_Street_name:{
 						 required:true,
 						},
-					
+
 					    contact_person_name:{
 						 required:true,
 						 fullname : true,
@@ -4789,12 +4789,12 @@ class JscssProjectmanger extends CI_Model
 						},
 						employer_contact_number: {
 						  required: 'Please enter Employer mobile number',
-						}, 
+						},
 						employer_province:{
-							required: 'Please Enter Employer Province', 
+							required: 'Please Enter Employer Province',
 						   },
 						   employer_district:{
-							required: 'Please Choose Employer District', 
+							required: 'Please Choose Employer District',
 						   },
 						   employer_region:{
 							required: 'Please Choose Employer Region',
@@ -4808,7 +4808,7 @@ class JscssProjectmanger extends CI_Model
 						   employer_Street_name:{
 							required:'Please Enter Employer Street name',
 						   },
-						  
+
 						   contact_person_name:{
 							required:'Please Enter Employer Contactr Person Name',
 						   },
@@ -4829,8 +4829,8 @@ class JscssProjectmanger extends CI_Model
 					}
 				});
 			});
-			
-			
+
+
 			$('.employer_province').change(function(){
 
 				$.ajax({
@@ -4870,7 +4870,7 @@ class JscssProjectmanger extends CI_Model
 
 						});
 
-					  
+
 
 					}
 
@@ -4878,7 +4878,7 @@ class JscssProjectmanger extends CI_Model
 
 			});
 
-		
+
 
 
 
@@ -4975,10 +4975,10 @@ class JscssProjectmanger extends CI_Model
 
 			</script>';
 		}
-		if ($page == 'create_new_stipend') {
+		if ( ($page == 'create_new_stipend') || ($page == 'create_assessment')) {
 
 			$js[] = "<script>
-			
+
 			$('.learnship_id').change(function(){
 
 				$.ajax({
@@ -5017,7 +5017,7 @@ class JscssProjectmanger extends CI_Model
 
 						});
 
-					  
+
 
 					}
 
@@ -5025,7 +5025,7 @@ class JscssProjectmanger extends CI_Model
 
 			});
 
-				
+
 			</script><script>
 			$('.learnership_sub_type_id').change(function(){
 
@@ -5054,8 +5054,10 @@ class JscssProjectmanger extends CI_Model
 								$('#learnership_sub_type_id-error').html(star);
 
 							}else{
+
+debugger;
 								var test = '<option hidden value='+'>Select Class</option>';
-							  option += '<option value='+star.class_name+'>'+star.class_name+'</option>'
+							  option += '<option value='+star.id+'>'+star.class_name+'</option>'
 
 							  $('.learner_classname').html(test+option);
 
@@ -5065,7 +5067,7 @@ class JscssProjectmanger extends CI_Model
 
 						});
 
-					  
+
 
 					}
 
@@ -5078,6 +5080,204 @@ class JscssProjectmanger extends CI_Model
 			</script>";
 		}
 
+
+		// Assessments
+		if ($page == 'list_assessments') {
+		    $js[] = '<script>
+			function deleterecord(tablename,columnname,id){
+
+				swal({
+
+					title: "Are you sure?",
+
+					text: "Delete",
+
+					type: "warning",
+
+					showCancelButton: true,
+
+					confirmButtonClass: "btn-danger",
+
+					confirmButtonText: "Yes, delete it!",
+
+					cancelButtonText: "No, cancel it!",
+
+					closeOnConfirm: false,
+
+					closeOnCancel: false
+
+				},
+
+				function (isConfirm) {
+
+					if (isConfirm) {
+
+						$.ajax({
+
+							type:"GET",
+
+							url: "deletedata?table="+tablename+"&behalf="+columnname+"&data="+id,
+
+							success : function(data){
+
+								swal("Deleted!", "Record Delete Successfully.", "success");
+
+								$("#del-"+id).remove();
+
+							},
+
+							error : function(jqXHR, textStatus, errorThrown){
+
+								swal("Error deleting!", "Please try again", "error");
+
+							}
+
+						});
+
+					} else {
+
+					  swal("Cancelled", "Your data is safe :)", "error");
+
+					}
+
+				});
+
+			}
+
+
+            // delete project
+			function project_assessment(tablename,columnname,id){
+
+			swal({
+
+				title: "Are you sure?",
+
+				text: "Delete",
+
+				type: "warning",
+
+				showCancelButton: true,
+
+				confirmButtonClass: "btn-danger",
+
+				confirmButtonText: "Yes, delete it!",
+
+				cancelButtonText: "No, cancel it!",
+
+				closeOnConfirm: false,
+
+				closeOnCancel: false
+
+			},
+
+			function (isConfirm) {
+
+				if (isConfirm) {
+
+					$.ajax({
+
+						type:"GET",
+
+						url:"assessment_delete?table="+tablename+"&behalf="+columnname+"&data="+id,
+
+						dataType: "json",
+
+						success : function(data){
+
+							if(data.status == "true"){
+
+								swal("Deleted!", "Record Delete Successfully.", "success");
+
+							   $("#del-"+id).remove();
+
+							}
+
+							if(data.error == "error"){
+
+								swal("Error deleting!", "You Can Not Delete Because This Record Have Some Relative Data", "error");
+
+							}
+
+						},
+
+						error : function(jqXHR, textStatus, errorThrown){
+
+							swal("Error deleting!", "Please try again", "error");
+
+						}
+
+					});
+
+				} else {
+
+				  swal("Cancelled", "Your imaginary file is safe :)", "error");
+
+				}
+
+			});
+
+			}
+
+
+
+			$(document).on("click",".status_checks",function(){
+
+				var status = ($(this).hasClass("btn-success")) ? "0" : "1";
+
+				var msg = (status=="0")? "Inactivate" : "Activate";
+
+				var current_element = $(this);
+
+				swal({
+
+					title: "Are you sure?",
+
+					text: msg,
+
+					type: "warning",
+
+					showCancelButton: true,
+
+					confirmButtonColor: "#DD6B55",
+
+					confirmButtonText: msg,
+
+					closeOnConfirm: false
+
+				}, function (isConfirm) {
+
+				if (!isConfirm) return;
+
+					$.ajax({
+
+						url :"projectmanager-changestatus",
+
+						type : "POST",
+
+						dataType : "JSON",
+
+						data: {tablenm_id:$(current_element).attr("data"),status:status},
+
+						success : function(data){
+
+							swal("Status changed", "Status successfully changed", "success")
+							location.reload();
+
+						},
+
+						error : function(jqXHR, textStatus, errorThrown){
+
+							swal("Error deleting!", "Please try again", "error");
+
+						}
+
+					});
+
+				});
+
+			});
+			</script>';
+		}
 
 
 		return $js;

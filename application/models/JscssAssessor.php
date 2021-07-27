@@ -39,7 +39,7 @@ class JscssAssessor extends CI_Model
 			$css[] = '<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">';
 		}
 
-		if ($page == 'attendance_list' || $page == 'assesmentlist') {
+		if ($page == 'attendance_list' || $page == 'assesmentlist' || $page == 'list_assessments') {
 
 			$css[] = '<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">';
 
@@ -99,7 +99,7 @@ class JscssAssessor extends CI_Model
 			$js[] = '<script src="' . BASEURL . 'assets/admin/cloudfront/js/charts-home.js"></script>';
 		}
 
-		if ($page == "attendance_list" || $page == 'assesmentlist') {
+		if ($page == "attendance_list" || $page == 'assesmentlist' || $page == 'list_complete_assessments' || $page == 'list_assessments') {
 
 			$js[] = '<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>';
 
@@ -123,7 +123,7 @@ class JscssAssessor extends CI_Model
 
 			/*$js[] = '<script src="' . BASEURL . 'assets/admin/autocomplete/bootstrap-4-autocomplete.min.js?v2"></script>';*/
 
-			$js[] = "<script>  
+			$js[] = "<script>
 
 					$(document).ready(function() {
 
@@ -157,7 +157,7 @@ class JscssAssessor extends CI_Model
 
 			$js[] = '<script>
 
-				        function deleterecord(tablename,columnname,id){ 
+				        function deleterecord(tablename,columnname,id){
 
 			                swal({
 
@@ -179,7 +179,7 @@ class JscssAssessor extends CI_Model
 
 			                    closeOnCancel: false
 
-			                }, 
+			                },
 
 			                function (isConfirm) {
 
@@ -213,7 +213,7 @@ class JscssAssessor extends CI_Model
 
 			                    }
 
-			                });    
+			                });
 
 			            }
 
@@ -252,7 +252,7 @@ class JscssAssessor extends CI_Model
 
 					          equalTo:"#password",
 
-					        },  
+					        },
 
 				          },
 
@@ -311,11 +311,11 @@ class JscssAssessor extends CI_Model
 
 					    var wrapper = $(".field_wrapper"); //Input field wrapper
 
-					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>"; 
+					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>";
 
 					    var x = 1; //Initial field counter is 1
 
-					    
+
 
 					    //Once add button is clicked
 
@@ -323,7 +323,7 @@ class JscssAssessor extends CI_Model
 
 					        //Check maximum number of input fields
 
-					        if(x < maxField){ 
+					        if(x < maxField){
 
 					            x++; //Increment field counter
 
@@ -341,7 +341,7 @@ class JscssAssessor extends CI_Model
 
 					    });
 
-					    
+
 
 					    //Once remove button is clicked
 
@@ -361,15 +361,15 @@ class JscssAssessor extends CI_Model
 						$.validator.addMethod("full_name", function(value, element) {
 
 							// allow any non-whitespace characters as the host part
-	
+
 								return this.optional( element ) || /^[a-zA-Z\s]+$/.test( value );
-	
+
 							}, "Only letters and white space allowed.");
 
 				        $("#CreateAssessorForm").validate({
 
 				            rules: {
-								
+
 								fullname: {
 
 									required: true,
@@ -476,13 +476,13 @@ class JscssAssessor extends CI_Model
 
 				            messages: {
 
-				                
+
 								fullname: {
 
 				                	required: "Please enter your fullname name",
 
 				                },
-				                
+
 								surname: {
 
 				                	required: "Please enter your surname name",
@@ -491,7 +491,7 @@ class JscssAssessor extends CI_Model
 
 				                email: "Please enter a valid email address",
 
-				                
+
 
 				                id_number: {
 
@@ -501,7 +501,7 @@ class JscssAssessor extends CI_Model
 
 				                },
 
-				                
+
 
 				                mobile: {
 
@@ -654,7 +654,7 @@ class JscssAssessor extends CI_Model
 
 		if ($page == 'editprofile') {
 
-			$js[] = "<script> 
+			$js[] = "<script>
 			$('.province').change(function(){
 
 				        $.ajax({
@@ -693,7 +693,7 @@ class JscssAssessor extends CI_Model
 
 				                });
 
-				              
+
 
 				            }
 
@@ -739,7 +739,7 @@ class JscssAssessor extends CI_Model
 
 				    //             });
 
-				              
+
 
 				    //         }
 
@@ -750,50 +750,50 @@ class JscssAssessor extends CI_Model
 					$('.district_option').change(function(){
 
 						$.ajax({
- 
+
 							 url: 'assessor-getcity',
- 
+
 							 data: { 'value': $('.district_option').val() },
- 
+
 							 dataType:'json',
- 
+
 							 type: 'post',
- 
+
 							 success: function(data){
- 
+
 								 var option = '';
- 
+
 								$.each(data, function(i, star) {
- 
+
 								 if(i == 'error'){
- 
+
 										 $('#city').html(option);
- 
+
 										 $('#city-error').show();
- 
+
 										 $('#city-error').html(star);
- 
+
 								  }else{
- 
+
 										option += '<option value='+star.id+'>'+star.city+'</option>'
- 
+
 										$('#city').html('<option>Select City</option>'+option);
- 
+
 										$('#city-error').hide();
- 
+
 								 }
- 
+
 								 });
- 
-							   
- 
+
+
+
 							 }
- 
+
 						 });
- 
+
 					 });
- 
- 
+
+
 
 				    // $('#region').change(function(){
 
@@ -841,47 +841,47 @@ class JscssAssessor extends CI_Model
 					$('#city').change(function(){
 
 						$.ajax({
- 
+
 							 url: 'assessor-get_municipality',
- 
+
 							 data: { 'value': $('#city').val() },
- 
+
 							 dataType:'json',
- 
+
 							 type: 'post',
- 
+
 							 success: function(data){
- 
+
 								 var option = '';
- 
+
 								$.each(data, function(i, star) {
- 
+
 								 if(i == 'error'){
- 
+
 										 $('#municipality').html(option);
- 
+
 										 $('#municipality-error').show();
- 
+
 										 $('#municipality-error').html(star);
- 
+
 								  }else{
- 
+
 										option += '<option value='+star.id+'>'+star.municipality+'</option>'
- 
+
 										$('#municipality').html('<option>Select Municipality</option>'+option);
- 
+
 										$('#municipality-error').hide();
- 
+
 								 }
- 
+
 								 });
- 
-							   
- 
+
+
+
 							 }
- 
+
 						 });
- 
+
 					 });
 
 			</script>";
@@ -1053,7 +1053,7 @@ class JscssAssessor extends CI_Model
 
 			                	},
 
-			                
+
 
 			                'learner_classname':{
 
@@ -1113,7 +1113,7 @@ class JscssAssessor extends CI_Model
 
 			    });
 
-			  
+
 
 			    $('.learnshipsubtype').change(function(){
 
@@ -1153,7 +1153,7 @@ class JscssAssessor extends CI_Model
 
 			                });
 
-			              
+
 
 			            }
 
@@ -1323,7 +1323,7 @@ class JscssAssessor extends CI_Model
 								'assesment_date': {
 
 									required:true,
-	
+
 									},
 			                'learnership_sub_type': {
 
@@ -1331,7 +1331,7 @@ class JscssAssessor extends CI_Model
 
 			                	},
 
-			                
+
 
 			                'classname':{
 
@@ -1354,7 +1354,7 @@ class JscssAssessor extends CI_Model
 							'learner_name':{
 
 								'required': true,
-  
+
 							  },
 
 			            },
@@ -1364,12 +1364,12 @@ class JscssAssessor extends CI_Model
 			                'fullname':{
 
 								'required': 'Please Fill Assessor Fullname',
-  
+
 							  },
 							  'surname':{
 
 								'required': 'Please Fill Assessor Surname',
-  
+
 							  },
 			                'assesment_number':{
 
@@ -1388,17 +1388,17 @@ class JscssAssessor extends CI_Model
 			                  'required': 'Please enter Learnership Subtype',
 
 							},
-							
+
 							'classname':{
 
 								'required': 'Please Select Class Name',
-  
+
 							  },
 
 							  'unit_statndards':{
 
 								'required': 'Please Enter Unit Standards',
-  
+
 							  },
 
 							  'learner_id':{
@@ -1410,10 +1410,10 @@ class JscssAssessor extends CI_Model
 							  'learner_name':{
 
 								'required': 'Please Enter Learner ID',
-								
-  
+
+
 							  },
-							  
+
 
 			            },
 
@@ -1430,95 +1430,95 @@ class JscssAssessor extends CI_Model
 				$('.learnship_id').change(function(){
 
 					$.ajax({
-					
+
 						url: 'assessor-get_sublearnership',
-					
+
 						data: { 'value': $('.learnship_id').val() },
-					
+
 						dataType:'json',
-					
+
 						type: 'post',
-					
+
 						success: function(data){
-					
+
 							var option = '';
-					
+
 						   $.each(data, function(i, star) {
-					
+
 									if(i == 'error'){
-					
+
 									$('.learnership_sub_type_id').html(option);
-					
+
 									$('#learnership_sub_type_id-error').show();
-					
+
 									$('#learnership_sub_type_id-error').html(star);
-					
+
 								}else{
 									var test = '<option hidden value='+'>Select Sublearnership</option>';
 								  option += '<option value='+star.id+'>'+star.sub_type+'</option>'
-					
+
 								  $('.learnership_sub_type_id').html(test+option);
-					
+
 								  $('#learnership_sub_type_id-error').hide();
-					
+
 								}
-					
+
 							});
-					
-						  
-					
+
+
+
 						}
-					
+
 					});
-					
+
 					});
 
 					$('.learnership_sub_type_id').change(function(){
-							
+
 						$.ajax({
-						
+
 							url: 'assessor-getclassname',
-						
+
 							data: { 'value': $('.learnership_sub_type_id').val() },
-						
+
 							dataType:'json',
-						
+
 							type: 'post',
-						
+
 							success: function(data){
-						
+
 								var option = '';
-						
+
 							   $.each(data, function(i, star) {
-						
+
 										if(i == 'error'){
-						
+
 										$('.learner_classname').html(option);
-						
+
 										$('#learner_classname-error').show();
-						
+
 										$('#learnership_sub_type_id-error').html(star);
-						
+
 									}else{
 										var test = '<option hidden value='+'>Select Class</option>';
 									  option += '<option value='+star.class_name+'>'+star.class_name+'</option>'
-						
+
 									  $('.learner_classname').html(test+option);
-						
+
 									  $('#learner_classname-error').hide();
-						
+
 									}
-						
+
 								});
-						
-							  
-						
+
+
+
 							}
-						
+
 						});
-						
+
 						});
-				
+
 
 				$('.learnership_sub_type_id').change(function(){
 
@@ -1554,58 +1554,58 @@ class JscssAssessor extends CI_Model
 
 			                });
 
-			              
+
 
 			            }
 
 			        });
 
 				});
-				
+
 				$('.learner_classname').change(function(){
-							
+
 					$.ajax({
-					
+
 						url: 'assessor-getlearner',
-					
+
 						data: { 'value': $('.learner_classname').val() },
-					
+
 						dataType:'json',
-					
+
 						type: 'post',
-					
+
 						success: function(data){
-					
+
 							var option = '';
-					
+
 						   $.each(data, function(i, star) {
-					
+
 									if(i == 'error'){
-					
+
 									$('.learner').html(option);
-					
+
 									$('#learner-error').show();
-					
-									
-					
+
+
+
 								}else{
 									var start = '<thead><tr><td>Learner ID</td><td>Learner Name</td><td>Learner Surname</td><td>Learner Performance</td><td>Overall Comment</td><tr></thead>'
 								  option += '<tr><td>'+star.id+'<input value='+star.id+' name=lid[] type=hidden></td><td>'+star.first_name+'</td><td>'+star.surname+'</td><td><input class=form-control type=text name=lperform[] ></td><td><input class=form-control type=text name=locmnt[]></td></tr>'
-					
+
 								  $('.learner_table').html(start+option);
-					
+
 								  $('#learner_table-error').hide();
-					
+
 								}
-					
+
 							});
-					
-						  
-					
+
+
+
 						}
-					
+
 					});
-					
+
 					});
 
             </script>";

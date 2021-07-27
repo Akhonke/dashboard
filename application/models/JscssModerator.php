@@ -126,7 +126,7 @@ class JscssModerator extends CI_Model
 
 					'copy', 'csv', 'excel', 'print' ,'colvis'
 
-			    ]		
+			    ]
 
 			} );
 
@@ -139,7 +139,7 @@ class JscssModerator extends CI_Model
 		if ($page == 'moderationlist') {
 		$js[] = "<script>
 
-		function deleterecord(tablename,columnname,id){ 
+		function deleterecord(tablename,columnname,id){
 
 			swal({
 
@@ -161,7 +161,7 @@ class JscssModerator extends CI_Model
 
 				closeOnCancel: false
 
-			}, 
+			},
 
 			function (isConfirm) {
 
@@ -195,7 +195,7 @@ class JscssModerator extends CI_Model
 
 				}
 
-			});    
+			});
 
 		}
 
@@ -233,7 +233,7 @@ class JscssModerator extends CI_Model
 
 					          equalTo:"#password",
 
-					        },  
+					        },
 
 				          },
 
@@ -292,11 +292,11 @@ class JscssModerator extends CI_Model
 
 					    var wrapper = $(".field_wrapper"); //Input field wrapper
 
-					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>"; 
+					    var fieldHTML = "<div class=row id=row_><div class=col-md-6><label class=form-control-label>Acreditations</label><input type=text name=acreditations[] class=form-control  placeholder=Enter Acreditations Name></div><div class=col-md-6><label class=form-control-label>Acreditations Files</label><input type=file name=acreditations_file[] class=form-control></div><a href=javascript:void(0); class=remove_button>Remove</a></div>";
 
 					    var x = 1; //Initial field counter is 1
 
-					    
+
 
 					    //Once add button is clicked
 
@@ -304,7 +304,7 @@ class JscssModerator extends CI_Model
 
 					        //Check maximum number of input fields
 
-					        if(x < maxField){ 
+					        if(x < maxField){
 
 					            x++; //Increment field counter
 
@@ -318,7 +318,7 @@ class JscssModerator extends CI_Model
 
 					    });
 
-					    
+
 
 					    //Once remove button is clicked
 
@@ -338,23 +338,23 @@ class JscssModerator extends CI_Model
 						$.validator.addMethod("full_name", function(value, element) {
 
 							// allow any non-whitespace characters as the host part
-	
+
 								return this.optional( element ) || /^[a-zA-Z\s]+$/.test( value );
-	
+
 							}, "Only letters and white space allowed.");
 
 				        $("#CreateModeratorForm").validate({
 
 				            rules: {
 
-				               
-								
+
+
 								fullname: {
 
 				                    required: true,
 									full_name: true
 								},
-								
+
 								surname: {
 
 				                    required: true,
@@ -454,8 +454,8 @@ class JscssModerator extends CI_Model
 
 				            messages: {
 
-				             
-								
+
+
 								fullname:{
 
 									required: "Please enter your fullname ",
@@ -465,11 +465,11 @@ class JscssModerator extends CI_Model
 
 									required:  "Please enter your surname name",
 								 },
- 
+
 
 				                email: "Please enter a valid email address",
 
-				                
+
 
 				                id_number: {
 
@@ -479,7 +479,7 @@ class JscssModerator extends CI_Model
 
 				                },
 
-				                
+
 
 				                mobile: {
 
@@ -536,7 +536,7 @@ class JscssModerator extends CI_Model
 					            Street_name:{
 
 					              required: "Please enter your street name",
-									
+
 					            },
 
 					            Street_number:{
@@ -632,7 +632,7 @@ class JscssModerator extends CI_Model
 
 		if ($page == 'moderator_editprofile') {
 
-			$js[] = "<script> 
+			$js[] = "<script>
 			// $('.province').change(function(){
 
 			// 	        $.ajax({
@@ -671,7 +671,7 @@ class JscssModerator extends CI_Model
 
 			// 	                });
 
-				              
+
 
 			// 	            }
 
@@ -716,7 +716,7 @@ class JscssModerator extends CI_Model
 
 						});
 
-					  
+
 
 					}
 
@@ -762,7 +762,7 @@ class JscssModerator extends CI_Model
 
 				    //             });
 
-				              
+
 
 				    //         }
 
@@ -774,47 +774,47 @@ class JscssModerator extends CI_Model
 					$('.district_option').change(function(){
 
 						   $.ajax({
-	
+
 						        url: 'internal-moderator-getcity',
-	
+
 						        data: { 'value': $('.district_option').val() },
-	
+
 						        dataType:'json',
-	
+
 						        type: 'post',
-	
+
 						        success: function(data){
-	
+
 						            var option = '';
-	
+
 						           $.each(data, function(i, star) {
-	
+
 						            if(i == 'error'){
-	
+
 						                    $('#city').html(option);
-	
+
 						                    $('#city-error').show();
-	
+
 						                    $('#city-error').html(star);
-	
+
 						             }else{
-	
+
 						                   option += '<option value='+star.id+'>'+star.city+'</option>'
-	
+
 						                   $('#city').html('<option>Select City</option>'+option);
-	
+
 						                   $('#city-error').hide();
-	
+
 						            }
-	
+
 						            });
-	
-								  
-	
+
+
+
 						        }
-	
+
 						    });
-	
+
 						});
 
 
@@ -864,45 +864,45 @@ class JscssModerator extends CI_Model
 					$('#city').change(function(){
 
 						$.ajax({
- 
+
 							 url: 'internal-moderator-get_municipality',
- 
+
 							 data: { 'value': $('#city').val() },
- 
+
 							 dataType:'json',
- 
+
 							 type: 'post',
- 
+
 							 success: function(data){
- 
+
 								 var option = '';
- 
+
 								$.each(data, function(i, star) {
- 
+
 									 if(i == 'error'){
- 
+
 										 $('#municipality').html(option);
- 
+
 										 $('#municipality-error').show();
- 
+
 										 $('#municipality-error').html(star);
- 
+
 									 }else{
- 
+
 										 option += '<option value='+star.id+'>'+star.municipality+'</option>'
- 
+
 										 $('#municipality').html('<option>Select Municipality</option>'+option);
- 
+
 										 $('#municipality-error').hide();
- 
+
 									 }
- 
+
 								 });
- 
+
 							 }
- 
+
 						 });
- 
+
 					 });
 
 			</script>";
@@ -911,64 +911,64 @@ class JscssModerator extends CI_Model
 		if ($page == 'createmoderation') {
 
 			$js[] = "<script>
-			function deleterecord(tablename,columnname,id){ 
+			function deleterecord(tablename,columnname,id){
 
 				swal({
-				
+
 					title: 'Are you sure?',
-				
+
 					text: 'Delete',
-				
+
 					type: 'warning',
-				
+
 					showCancelButton: true,
-				
+
 					confirmButtonClass: 'btn-danger',
-				
+
 					confirmButtonText: 'Yes, delete it!',
-				
+
 					cancelButtonText: 'No, cancel it!',
-				
+
 					closeOnConfirm: false,
-				
+
 					closeOnCancel: false
-				
-				}, 
-				
+
+				},
+
 				function (isConfirm) {
-				
+
 					if (isConfirm) {
-				
+
 						$.ajax({
-				
+
 							type:'GET',
-				
+
 							url: 'internal-moderator-deletedata?table='+tablename+'&behalf='+columnname+'&data='+id,
-				
+
 							success : function(data){
-				
+
 								swal('Deleted!', 'Record Delete Successfully.', 'success');
-				
+
 								$('#del-'+id).remove();
-				
+
 							},
-				
+
 							error : function(jqXHR, textStatus, errorThrown){
-				
+
 								swal('Error deleting!', 'Please try again', 'error');
-				
+
 							}
-				
+
 						});
-				
+
 					} else {
-				
+
 					  swal('Cancelled', 'Your imaginary file is safe :)', 'error');
-				
+
 					}
-				
-				});    
-				
+
+				});
+
 				}
 			    $(function() {
 
@@ -996,7 +996,7 @@ class JscssModerator extends CI_Model
 								'assesment_date': {
 
 									required:true,
-	
+
 									},
 			                'learnership_sub_type': {
 
@@ -1004,7 +1004,7 @@ class JscssModerator extends CI_Model
 
 			                	},
 
-			                
+
 
 			                'classname':{
 
@@ -1027,7 +1027,7 @@ class JscssModerator extends CI_Model
 							'learner_name':{
 
 								'required': true,
-  
+
 							  },
 
 			            },
@@ -1037,12 +1037,12 @@ class JscssModerator extends CI_Model
 			                'fullname':{
 
 								'required': 'Please Fill Assessor Fullname',
-  
+
 							  },
 							  'surname':{
 
 								'required': 'Please Fill Assessor Surname',
-  
+
 							  },
 			                'assesment_number':{
 
@@ -1061,17 +1061,17 @@ class JscssModerator extends CI_Model
 			                  'required': 'Please enter Learnership Subtype',
 
 							},
-							
+
 							'classname':{
 
 								'required': 'Please Select Class Name',
-  
+
 							  },
 
 							  'unit_statndards':{
 
 								'required': 'Please Enter Unit Standards',
-  
+
 							  },
 
 							  'learner_id':{
@@ -1083,10 +1083,10 @@ class JscssModerator extends CI_Model
 							  'learner_name':{
 
 								'required': 'Please Enter Learner ID',
-								
-  
+
+
 							  },
-							  
+
 
 			            },
 
@@ -1103,95 +1103,95 @@ class JscssModerator extends CI_Model
 				$('.learnship_id').change(function(){
 
 					$.ajax({
-					
+
 						url: 'internal-moderator-get_sublearnership',
-					
+
 						data: { 'value': $('.learnship_id').val() },
-					
+
 						dataType:'json',
-					
+
 						type: 'post',
-					
+
 						success: function(data){
-					
+
 							var option = '';
-					
+
 						   $.each(data, function(i, star) {
-					
+
 									if(i == 'error'){
-					
+
 									$('.learnership_sub_type_id').html(option);
-					
+
 									$('#learnership_sub_type_id-error').show();
-					
+
 									$('#learnership_sub_type_id-error').html(star);
-					
+
 								}else{
 									var test = '<option hidden value='+'>Select Sublearnership</option>';
 								  option += '<option value='+star.id+'>'+star.sub_type+'</option>'
-					
+
 								  $('.learnership_sub_type_id').html(test+option);
-					
+
 								  $('#learnership_sub_type_id-error').hide();
-					
+
 								}
-					
+
 							});
-					
-						  
-					
+
+
+
 						}
-					
+
 					});
-					
+
 					});
 
 					$('.learnership_sub_type_id').change(function(){
-							
+
 						$.ajax({
-						
+
 							url: 'internal-moderator-getclassname',
-						
+
 							data: { 'value': $('.learnership_sub_type_id').val() },
-						
+
 							dataType:'json',
-						
+
 							type: 'post',
-						
+
 							success: function(data){
-						
+
 								var option = '';
-						
+
 							   $.each(data, function(i, star) {
-						
+
 										if(i == 'error'){
-						
+
 										$('.learner_classname').html(option);
-						
+
 										$('#learner_classname-error').show();
-						
+
 										$('#learnership_sub_type_id-error').html(star);
-						
+
 									}else{
 										var test = '<option hidden value='+'>Select Class</option>';
 									  option += '<option value='+star.class_name+'>'+star.class_name+'</option>'
-						
+
 									  $('.learner_classname').html(test+option);
-						
+
 									  $('#learner_classname-error').hide();
-						
+
 									}
-						
+
 								});
-						
-							  
-						
+
+
+
 							}
-						
+
 						});
-						
+
 						});
-				
+
 
 				$('.learnership_sub_type_id').change(function(){
 
@@ -1227,61 +1227,105 @@ class JscssModerator extends CI_Model
 
 			                });
 
-			              
+
 
 			            }
 
 			        });
 
 				});
-				
+
 				$('.learner_classname').change(function(){
-							
+
 					$.ajax({
-					
+
 						url: 'internal-moderator	-getlearner',
-					
+
 						data: { 'value': $('.learner_classname').val() },
-					
+
 						dataType:'json',
-					
+
 						type: 'post',
-					
+
 						success: function(data){
-					
+
 							var option = '';
-					
+
 						   $.each(data, function(i, star) {
-					
+
 									if(i == 'error'){
-					
+
 									$('.learner').html(option);
-					
+
 									$('#learner-error').show();
-					
-									
-					
+
+
+
 								}else{
 									var start = '<thead><tr><td>Learner ID</td><td>Learner Name</td><td>Learner Surname</td><td>Learner Performance</td><td>Overall Comment</td><tr></thead>'
 								  option += '<tr><td>'+star.id+'<input value='+star.id+' name=lid[] type=hidden></td><td>'+star.first_name+'</td><td>'+star.surname+'</td><td><input class=form-control type=text name=lperform[] ></td><td><input class=form-control type=text name=locmnt[]></td></tr>'
-					
+
 								  $('.learner_table').html(start+option);
-					
+
 								  $('#learner_table-error').hide();
-					
+
 								}
-					
+
 							});
-					
-						  
-					
+
+
+
 						}
-					
-					});
-					
+
 					});
 
-					
+					});
+
+			$('.learner_classname').change(function(){
+
+				$.ajax({
+
+					url: '/provider-get_class_module',
+
+					data: { 'value': $('.learner_classname').val() },
+
+					dataType:'json',
+
+					type: 'post',
+
+					success: function(data){
+
+						var option = '';
+
+					   $.each(data, function(i, star) {
+
+								if(i == 'error'){
+
+								$('.module').html(option);
+
+								$('#module-error').show();
+
+								$('#module-error').html(star);
+
+							}else{
+								var test = '<option hidden value='+'>Select Class Module</option>';
+							  option += '<option value='+star.id+'>'+star.title+'</option>'
+
+							  $('.module').html(test+option);
+
+							  $('#module-error').hide();
+
+							}
+
+						});
+
+					}
+
+				});
+
+			});
+
+
 
             </script>";
 		}
@@ -1289,64 +1333,64 @@ class JscssModerator extends CI_Model
 		if ($page == 'execreatemoderation') {
 
 			$js[] = "<script>
-			function deleterecord(tablename,columnname,id){ 
+			function deleterecord(tablename,columnname,id){
 
 				swal({
-				
+
 					title: 'Are you sure?',
-				
+
 					text: 'Delete',
-				
+
 					type: 'warning',
-				
+
 					showCancelButton: true,
-				
+
 					confirmButtonClass: 'btn-danger',
-				
+
 					confirmButtonText: 'Yes, delete it!',
-				
+
 					cancelButtonText: 'No, cancel it!',
-				
+
 					closeOnConfirm: false,
-				
+
 					closeOnCancel: false
-				
-				}, 
-				
+
+				},
+
 				function (isConfirm) {
-				
+
 					if (isConfirm) {
-				
+
 						$.ajax({
-				
+
 							type:'GET',
-				
+
 							url: 'external-moderator-deletedata?table='+tablename+'&behalf='+columnname+'&data='+id,
-				
+
 							success : function(data){
-				
+
 								swal('Deleted!', 'Record Delete Successfully.', 'success');
-				
+
 								$('#del-'+id).remove();
-				
+
 							},
-				
+
 							error : function(jqXHR, textStatus, errorThrown){
-				
+
 								swal('Error deleting!', 'Please try again', 'error');
-				
+
 							}
-				
+
 						});
-				
+
 					} else {
-				
+
 					  swal('Cancelled', 'Your imaginary file is safe :)', 'error');
-				
+
 					}
-				
-				});    
-				
+
+				});
+
 				}
 			    $(function() {
 
@@ -1374,7 +1418,7 @@ class JscssModerator extends CI_Model
 								'assesment_date': {
 
 									required:true,
-	
+
 									},
 			                'learnership_sub_type': {
 
@@ -1382,7 +1426,7 @@ class JscssModerator extends CI_Model
 
 			                	},
 
-			                
+
 
 			                'classname':{
 
@@ -1405,7 +1449,7 @@ class JscssModerator extends CI_Model
 							'learner_name':{
 
 								'required': true,
-  
+
 							  },
 
 			            },
@@ -1415,12 +1459,12 @@ class JscssModerator extends CI_Model
 			                'fullname':{
 
 								'required': 'Please Fill Assessor Fullname',
-  
+
 							  },
 							  'surname':{
 
 								'required': 'Please Fill Assessor Surname',
-  
+
 							  },
 			                'assesment_number':{
 
@@ -1439,17 +1483,17 @@ class JscssModerator extends CI_Model
 			                  'required': 'Please enter Learnership Subtype',
 
 							},
-							
+
 							'classname':{
 
 								'required': 'Please Select Class Name',
-  
+
 							  },
 
 							  'unit_statndards':{
 
 								'required': 'Please Enter Unit Standards',
-  
+
 							  },
 
 							  'learner_id':{
@@ -1461,10 +1505,10 @@ class JscssModerator extends CI_Model
 							  'learner_name':{
 
 								'required': 'Please Enter Learner ID',
-								
-  
+
+
 							  },
-							  
+
 
 			            },
 
@@ -1481,143 +1525,143 @@ class JscssModerator extends CI_Model
 				$('.learnship_id').change(function(){
 
 					$.ajax({
-					
+
 						url: 'external-moderator-get_sublearnership',
-					
+
 						data: { 'value': $('.learnship_id').val() },
-					
+
 						dataType:'json',
-					
+
 						type: 'post',
-					
+
 						success: function(data){
-					
+
 							var option = '';
-					
+
 						   $.each(data, function(i, star) {
-					
+
 									if(i == 'error'){
-					
+
 									$('.learnership_sub_type_id').html(option);
-					
+
 									$('#learnership_sub_type_id-error').show();
-					
+
 									$('#learnership_sub_type_id-error').html(star);
-					
+
 								}else{
 									var test = '<option hidden value='+'>Select Sublearnership</option>';
 								  option += '<option value='+star.id+'>'+star.sub_type+'</option>'
-					
+
 								  $('.learnership_sub_type_id').html(test+option);
-					
+
 								  $('#learnership_sub_type_id-error').hide();
-					
+
 								}
-					
+
 							});
-					
-						  
-					
+
+
+
 						}
-					
+
 					});
-					
+
 					});
 
 					// $('.learnership_sub_type_id').change(function(){
-					// debugger;		
+					// debugger;
 					// 	$.ajax({
-						
+
 					// 		url: 'internal-moderator-getclassname',
-						
+
 					// 		data: { 'value': $('.learnership_sub_type_id').val() },
-						
+
 					// 		dataType:'json',
-						
+
 					// 		type: 'post',
-						
+
 					// 		success: function(data){
-						
+
 					// 			var option = '';
-						
+
 					// 		   $.each(data, function(i, star) {
-						
+
 					// 					if(i == 'error'){
-						
+
 					// 					$('.learner_classname').html(option);
-						
+
 					// 					$('#learner_classname-error').show();
-						
+
 					// 					$('#learner_classname-error').html(star);
-						
+
 					// 				}else{
 					// 					var test = '<option hidden value='+'>Select Class</option>';
 					// 				  option += '<option value='+star.class_name+'>'+star.class_name+'</option>'
-						
+
 					// 				  $('.learner_classname').html(test+option);
-						
+
 					// 				  $('#learner_classname-error').hide();
-						
+
 					// 				}
-						
+
 					// 			});
-						
-							  
-						
+
+
+
 					// 		}
-						
+
 					// 	});
-						
+
 					// 	});
 
 					$('.learnshipsubtype').change(function(){
 						debugger;
 						$.ajax({
-		
+
 							url: 'Faciltator-getclassname',
-		
+
 							data: { 'value': $('.learnership_sub_type_id').val() },
-		
+
 							dataType:'json',
-		
+
 							type: 'post',
-		
+
 							success: function(data){
-		
+
 								var option = '';
-		
+
 							   $.each(data, function(i, star) {
-		
+
 									if(i == 'error'){
-		
+
 										$('.classname').html(option);
-		
+
 										$('#learner_classname-error').show();
-		
+
 										$('#learner_classname-error').html(star);
-		
+
 									}else{
-		
+
 									  option += '<option value='+star.id+'>'+star.class_name+'</option>'
-		
+
 									  $('.classname').html('<option>Select Class Name</option>'+option);
-		
+
 									  $('#learner_classname-error').hide();
-		
-									 
-		
+
+
+
 									}
-		
+
 								});
-		
-							  
-		
+
+
+
 							}
-		
+
 						});
-		
+
 					});
-				
+
 
 				$('.learnership_sub_type_id').change(function(){
 
@@ -1653,61 +1697,61 @@ class JscssModerator extends CI_Model
 
 			                });
 
-			              
+
 
 			            }
 
 			        });
 
 				});
-				
+
 				$('.learner_classname').change(function(){
-							
+
 					$.ajax({
-					
+
 						url: 'external-moderator	-getlearner',
-					
+
 						data: { 'value': $('.learner_classname').val() },
-					
+
 						dataType:'json',
-					
+
 						type: 'post',
-					
+
 						success: function(data){
-					
+
 							var option = '';
-					
+
 						   $.each(data, function(i, star) {
-					
+
 									if(i == 'error'){
-					
+
 									$('.learner').html(option);
-					
+
 									$('#learner-error').show();
-					
-									
-					
+
+
+
 								}else{
 									var start = '<thead><tr><td>Learner ID</td><td>Learner Name</td><td>Learner Surname</td><td>Learner Performance</td><td>Overall Comment</td><tr></thead>'
 								  option += '<tr><td>'+star.id+'<input value='+star.id+' name=lid[] type=hidden></td><td>'+star.first_name+'</td><td>'+star.surname+'</td><td><input class=form-control type=text name=lperform[] ></td><td><input class=form-control type=text name=locmnt[]></td></tr>'
-					
+
 								  $('.learner_table').html(start+option);
-					
+
 								  $('#learner_table-error').hide();
-					
+
 								}
-					
+
 							});
-					
-						  
-					
+
+
+
 						}
-					
-					});
-					
+
 					});
 
-					
+					});
+
+
 
             </script>";
 		}

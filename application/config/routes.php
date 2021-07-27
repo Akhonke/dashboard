@@ -265,7 +265,10 @@ $route['Projectmanager-User-list'] = 'projectmanager/user_list';
 $route['list-Attendance-Sheet']    = 'projectmanager/listProviderAddedAttendance';
 $route['Projectmanager-employer-list'] = 'projectmanager/employer_list';
 $route['projectmanager-create-bank'] = 'projectmanager/create_bank';
-$route['projectmanager-get_sublearnership'] = 'projectmanager/get_sublearnership';
+
+// $route['projectmanager-get_sublearnership'] = 'projectmanager/get_sublearnership';
+$route['projectmanager-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['projectmanager-getclassname'] = 'projectmanager/get_learnerclassname';
 $route['Projectmanager-sendMassage'] = 'projectmanager/sendMassage';
 $route['Projectmanager-inbox'] = 'projectmanager/inbox';
@@ -278,7 +281,7 @@ $route['projectmanager-get_receiver_contact'] = 'projectmanager/get_receiver_con
 $route['projectmanager-sendBulkMassage'] = 'projectmanager/sendBulkMessage';
 $route['projectmanager-sendBulkEmails'] = 'projectmanager/sendbulkEmails';
 // $route['Projectmanager-trash'] = 'projectmanager/trash';
-// $route['Projectmanager-important'] = 'projectmanager/important';      
+// $route['Projectmanager-important'] = 'projectmanager/important';
 $route['projectmanager-create-income'] = 'projectmanager/create_income_item';
 $route['projectmanager-income-list'] = 'projectmanager/income_list';
 $route['projectmanager-create-expenditure'] = 'projectmanager/create_expenditure_item';
@@ -324,9 +327,12 @@ $route['Projectmanager-User-Delete']    =    'projectmanager/deleteUser';
 $route['list-Mark-Sheet']    = 'projectmanager/listProviderAddedMarksheet';
 $route['projectmanager-getdestrict'] = 'projectmanager/projectmanager_getdestrict';
 
+$route['projectmanager-create-assessment'] = 'projectmanager/create_assessment';
+$route['projectmanager-assessment-list'] = 'projectmanager/list_assessments';
+
 
 /******************************(18 FEB 2021)***************************************/
-// create Project 
+// create Project
 $route['Create-New-Project'] = 'projectmanager/createNewProject';
 $route['New-Project-List'] = 'projectmanager/newProjectList';
 // create New Subcontractor
@@ -388,7 +394,10 @@ $route['provider-learnership'] = 'Traningprovider/provider_learnership';
 $route['provider-export'] = 'Traningprovider/export_learnerMarks';
 $route['provider-learnermarks-import-data'] = 'Traningprovider/learnermarks_import_data';
 $route['provider-import-learnermarks'] = 'Traningprovider/provider_import_learnermarks';
+
 $route['provider-getclassname'] = 'Traningprovider/get_learnerclassname';
+$route['provider-leanership-subtype-units'] = 'Traningprovider/get_units_for_leanership_subtype';
+
 $route['provider-attendance-list'] = 'Traningprovider/attendance_list';
 $route['providerdeletedataAssessor'] = 'Traningprovider/deletedataAssessor';
 $route['providerdeletedataFacilitator'] = 'Traningprovider/deletedataFacilitator';
@@ -411,8 +420,14 @@ $route['provider-create-drop-out'] = 'Traningprovider/drop_out';
 $route['bring-back-drop-out'] = 'Traningprovider/bring_back_drop_out';
 $route['provider-getfacilitator'] = 'Traningprovider/get_facilitator';
 $route['provider-getlearner'] = 'Traningprovider/get_learnername';
-$route['provider-get_learnership'] = 'Traningprovider/get_learnership';
-$route['provider-get_sublearnership'] = 'Traningprovider/get_sublearnership';
+
+//$route['provider-get_learnership'] = 'Traningprovider/get_learnership';
+$route['provider-get_learnership'] = 'Api/get_learnership';
+
+// $route['provider-get_sublearnership'] = 'Traningprovider/get_sublearnership';
+$route['provider-get_sublearnership'] = 'Api/get_sublearnership';
+
+
 $route['create-test'] = 'Traningprovider/test';
 $route['create-learner-link'] = 'Traningprovider/learnerlink';
 $route['create-learner-link-List'] = 'Traningprovider/learnerlinklist';
@@ -434,6 +449,21 @@ $route['provider-sendBulkEmails'] = 'Traningprovider/sendbulkEmails';
 // $route['provider-create-course'] = 'Traningprovider/create_course';
 $route['provider-forget-password'] = 'welcome/provider_forgetpassword';
 
+
+$route['provider-create-assessment'] = 'Traningprovider/create_assessment';
+$route['provider-assessment-list'] = 'Traningprovider/list_assessments';
+$route['provider-completed-assessment-list'] = 'Traningprovider/list_complete_assessments';
+$route['provider-view-assessment'] = 'Traningprovider/view_assessment';
+
+$route['provider-get_class_module'] = 'Traningprovider/get_class_module';
+
+$route['provider-manage-question-bank'] = 'Traningprovider/manage_question_bank';
+$route['provider-manage-quiz'] = 'Traningprovider/manage_quiz';
+
+$route['provider-create-module'] = 'Traningprovider/create_module';
+$route['provider-module-list'] = 'Traningprovider/list_modules';
+
+
 // ****************** Learner **************************** //
 $route['learner'] = 'welcome/learner'; //use for Learner login
 $route['learner-Dashboard'] = 'Learner/dashboard';
@@ -454,6 +484,13 @@ $route['learner-get-region'] = 'Learner/learner_getregion';
 $route['learner-complaint-list'] = 'Learner/complaint_list';
 $route['learner-suggestion-list'] = 'Learner/suggestion_list';
 $route['learner-forget-password'] = 'welcome/learner_forgetpassword';
+
+$route['learner-assessment-list'] = 'learner/list_assessments';
+$route['learner-view-assessment'] = 'learner/view_assessment';
+$route['learner-load-assessment'] = 'learner/load_assessment';
+
+$route['learner-take-quiz'] = 'learner/take_quiz';
+$route['learner_online_result'] = 'api/online_result';
 
 //****************************Assessor******************//
 $route['assessor'] = 'welcome/assosser';
@@ -480,9 +517,22 @@ $route['assessor-assesment-list'] = 'assessor/assesmentlist';
 $route['assessor-create-assesment'] = 'assessor/createassesment';
 $route['assessor-getunitstandard'] = 'assessor/getunitstandard';
 $route['assessor-getlearner'] = 'assessor/get_learnername';
-$route['assessor-get_sublearnership'] = 'assessor/get_sublearnership';
+
+// $route['assessor-get_sublearnership'] = 'assessor/get_sublearnership';
+$route['assessor-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['assessor-user_listing'] = 'assessor/user_listing';
 $route['assessor-forget-password'] = 'welcome/assessor_forgetpassword';
+
+$route['assessor-completed-assessment-list'] = 'assessor/list_complete_assessments';
+$route['assessor-view-assessment'] = 'assessor/view_assessment';
+$route['assessor-mark-assessment'] = 'assessor/mark_assessment';
+$route['assessor-manage-assessment-list'] = 'assessor/manage_assessment_list';
+
+$route['assessor-manage-assessment'] = 'assessor/manage_assessment';
+$route['assessor-request-moderation'] = 'assessor/assessor_request_moderation';
+
+
 //*********************Assessor************************//
 
 
@@ -497,6 +547,17 @@ $route['assessor-forget-password'] = 'welcome/assessor_forgetpassword';
 //**************************Moderator********************************
 $route['moderator'] = 'welcome/moderator';
 $route['moderator-dashboard'] = 'moderator/dashboard';
+
+// $route['moderator-moderation-list'] = 'moderator/list_moderation_classes';
+$route['moderator-completed-assessment-list'] = 'moderator/list_complete_assessments';
+$route['moderator-view-assessment'] = 'moderator/view_assessments';
+// $route['moderator-view-assessment'] = 'moderator/view_assessment';
+// $route['moderator-mark-assessment'] = 'moderator/mark_assessment';
+
+$route['moderation-submission-list'] = 'moderator/moderation_submission_list';
+$route['moderator-view-assessment-submission'] = 'moderator/view_assessment_submission';
+
+$route['moderator-moderate-submission'] = 'moderator/moderate_submission';
 
 
 
@@ -520,7 +581,10 @@ $route['Faciltator-create-mark-sheet'] = 'faciltator/create_learner_mark';
 $route['Faciltator-mark-sheet-list'] = 'faciltator/learner_mark_list';
 $route['Faciltator-deletedata'] = 'faciltator/deletedata';
 $route['Faciltator-getclassname'] = 'faciltator/get_classname';
-$route['Faciltator-get_sublearnership'] = 'faciltator/get_sublearnership';
+
+// $route['Faciltator-get_sublearnership'] = 'faciltator/get_sublearnership';
+$route['Faciltator-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['facilitator-create-attendance'] = 'faciltator/create_attendance';
 $route['facilitator-attendance-list'] = 'faciltator/attendance_list';
 $route['facilitator-create-discipline'] = 'faciltator/create_discipline';
@@ -535,6 +599,22 @@ $route['Facilitator-get_receiver'] = 'faciltator/get_receiver';
 $route['Facilitator-sentboxview/(:any)'] = 'faciltator/sentboxview/$1';
 $route['Facilitator-inboxview/(:any)'] = 'faciltator/inboxview/$1';
 $route['Faciltator-forget-password'] = 'welcome/facilitator_forgetpassword';
+
+$route['facilitator-completed-assessment-list'] = 'faciltator/list_complete_assessments';
+$route['faciltator-view-assessment'] = 'faciltator/view_assessment';
+$route['facilitator-mark-assessment'] = 'faciltator/mark_assessment';
+
+$route['facilitator-create-assessment'] = 'faciltator/create_assessment';
+$route['facilitator-assessment-list'] = 'faciltator/list_assessments';
+
+// $route['faciltator-view-assessment-submission'] = 'faciltator/view_assessment_submission';
+// $route['faciltator-load-assessment'] = 'faciltator/load_assessment';
+
+
+$route['facilitator-request-assessor-review'] = 'faciltator/facilitator_request_assessor_review';
+
+
+
 /******************INternal Moderator*****************************************/
 $route['internal-moderator'] = 'welcome/moderator';
 $route['internal-Moderator-dashboard'] = 'moderator/dashboard';
@@ -550,7 +630,10 @@ $route['internal-moderator-acreditations-file-delete'] = 'moderator/moderator_ac
 $route['internal-moderator-create-moderation'] = 'moderator/create_moderation';
 $route['internal-moderator-getunitstandard'] = 'moderator/getunitstandard';
 $route['internal-moderator-getlearner'] = 'moderator/get_learnername';
-$route['internal-moderator-get_sublearnership'] = 'moderator/get_sublearnership';
+
+// $route['internal-moderator-get_sublearnership'] = 'moderator/get_sublearnership';
+$route['internal-moderator-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['internal-moderator-user_listing'] = 'moderator/user_listing';
 $route['internal-moderator-getclassname'] = 'moderator/get_classname';
 $route['internal-moderator-moderation-list'] = 'moderator/moderationlist';
@@ -571,7 +654,10 @@ $route['external-moderator-acreditations-file-delete'] = 'External_moderator/mod
 $route['external-moderator-create-moderation'] = 'External_moderator/create_moderation';
 $route['external-moderator-getunitstandard'] = 'External_moderator/getunitstandard';
 $route['external-moderator-getlearner'] = 'External_moderator/get_learnername';
-$route['external-moderator-get_sublearnership'] = 'External_moderator/get_sublearnership';
+
+// $route['external-moderator-get_sublearnership'] = 'External_moderator/get_sublearnership';
+$route['external-moderator-get_sublearnership'] = 'Api/get_sublearnership';
+
 $route['external-moderator-user_listing'] = 'External_moderator/user_listing';
 $route['external-moderator-getclassname'] = 'External_moderator/get_classname';
 $route['external-moderator-moderation-list'] = 'External_moderator/moderationlist';
@@ -579,3 +665,12 @@ $route['external-moderator-deletedata'] = 'External_moderator/deletedata';
 $route['external-moderator-forget-password'] = 'welcome/external_moderator_forgetpassword';
 $route['create-externalmoderator-user'] = 'Traningprovider/createexternalmoderatoruser';
 $route['externalmoderator-user-list'] = 'Traningprovider/externalmoderatoruserlist';
+
+
+// **************************** external moderator ************************************************
+
+$route['api-get-class'] = 'Api/get_class';
+$route['api-module-uploads'] = 'Api/get_module_uploads';
+
+// TODO: To be depecrated
+// $route['provider-module-uploads'] = 'Api/get_module_uploads';

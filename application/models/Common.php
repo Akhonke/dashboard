@@ -1,5 +1,6 @@
 <?php
 
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Common extends CI_Model
@@ -150,7 +151,7 @@ class Common extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-	//  Single District data 
+	//  Single District data
 	public function one_District($id)
 	{
 		$query = $this->db->get_where('district', array('id' => $id));
@@ -225,7 +226,7 @@ class Common extends CI_Model
 		$query = $this->db->get_where('region', array('district_id' => $data));
 		return $query->result();
 	}
-	//  Insert city 
+	//  Insert city
 	public function insertcity($data)
 	{
 		$new_city =  $this->db->insert('city', $data);
@@ -570,6 +571,7 @@ class Common extends CI_Model
 			'id_copy' => $data['id_copy'],
 			'certificate_copy' => $data['certificate_copy'],
 			'contract_copy' => $data['contract_copy'],
+		    'tax_reference' => $data['tax_reference'],
 			// 'password' => $password,
 			// 'classname'=>$data['classname'],
 			// 'employer_name' => $data['employer_name'],
@@ -2958,7 +2960,7 @@ class Common extends CI_Model
 		$this->db->join('learnership', 'learnership.id = learner.learnship_id');
 		$this->db->join('learnership_sub_type', 'learnership_sub_type.id = learner.learnershipSubType');
 		$this->db->where('learner.id_number', $where);
-		
+
 		$query = $this->db->get();
 
 		return $query->result();
@@ -2970,12 +2972,526 @@ class Common extends CI_Model
 		$this->db->join('learnership', 'learnership.id = learner.learnship_id');
 		$this->db->join('learnership_sub_type', 'learnership_sub_type.id = learner.learnershipSubType');
 		$this->db->where('learner.id_number', $id);
-		
+
 		$query = $this->db->get();
 
 		return $query->result();
 
 	}
 
+	// Assessments
+
+	public function assessmentList()
+	{
+
+	    $this->db->select('*');
+
+	    $query = $this->db->get('assessment');
+
+	    return $query->result();
+	}
+
+	public function assessmentListByProjectManager($project_manager_id)
+	{
+
+	    $result = $this->db->select('assessment.*, class_name.class_name, units.title as unit_standard')
+    	    ->from('assessment')
+    	    ->join('class_name', 'class_name.id = assessment.class_id')
+    	    ->join('units', 'units.id = assessment.unit_standard')
+    	    ->where('assessment.created_by', $project_manager_id)
+    	    ->where('assessment.created_by_role', 'project manager')
+    	    ->get()
+    	    ->result();
+
+	    return $result;
+	}
+
+	public function assessmentListByTrainer($trainer_id)
+	{
+
+	    $result = $this->db->select('assessment.*, class_name.class_name')
+    	    ->from('assessment')
+    	    ->join('class_name', 'class_name.id = assessment.class_id')
+    // 	    ->join('module', 'class_name.id = module.class_id')
+    // 	    ->join('units', 'units.id = assessment.unit_standard')
+    	    ->where('assessment.created_by', $trainer_id)
+    	    ->where('assessment.created_by_role', 'trainer')
+    	    ->get()
+    	    ->result();
+
+	    return $result;
+	}
+
+	public function assessmentListByModerator($moderator_id)
+	{
+
+	    $moderator = $this->db
+	       ->where('id',  $moderator_id)
+	       ->get('moderator')
+	       ->row();
+
+       if ($moderator) {
+           $result = $this->db->select('assessment.*, class_name.class_name')
+               ->from('assessment')
+               ->join('class_name', 'class_name.id = assessment.class_id')
+//                ->join('module', 'class_name.id = module.class_id')
+               ->where('class_name.trainer_id', $moderator->trainer_id)
+               ->where('assessment.status', 'awaiting moderation')
+                ->or_where('assessment.status', 'moderation in progress')
+               ->get()
+               ->result();
+           return $result;
+       }
+
+	    return false;
+	}
+
+
+	/**
+	 * Get all assessments for given learner
+	 *
+	 * @param integer $learner_id
+	 * @return mixed
+	 */
+	public function assessmentListByLearner($learner_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.id as assessment_id',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select($select_fields)
+    	    ->from('assessment')
+    	    ->join('learner_assessment', 'assessment.id = learner_assessment.assessment_id', 'left')
+    	    ->join('class_name', 'class_name.id = assessment.class_id')
+    	    ->join('learner', 'learner.classname = class_name.class_name')
+    	    ->where('learner.id', $learner_id)
+    	    ->get()
+    	    ->result();
+
+	    return $result;
+
+	}
+
+	public function assessmentListByFacilitator($facilitator_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select('assessment.*, class_name.class_name')
+    	    ->from('assessment')
+    	    ->join('class_name', 'class_name.id = assessment.class_id')
+    	    ->join('module', 'class_name.id = module.class_id', "left")
+	        ->where('class_name.facilitator_id', $facilitator_id)
+    	    ->get()
+    	    ->result();
+
+	    return $result;
+	}
+
+	public function assessmentListByOrganisation($organisation_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select('assessment.*, class_name.class_name')
+	    ->from('assessment')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('module', 'assessment.module_id = module.id')
+	    ->where('class_name.organization', $organisation_id)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+	public function completedAssessmentListByFacilitator($facilitator_id)
+	{
+
+	    /*
+	     select * from learner_assessment
+	     left join assessment on assessment.id = learner_assessment.assessment_id
+	     left join class_name on class_name.id = assessment.class_id
+	     where class_name.facilitator_id = 1
+        */
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+            'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+ 	    ->from('learner_assessment')
+ 	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+ 	    ->join('class_name', 'class_name.id = assessment.class_id')
+ 	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+ 	    ->where('class_name.facilitator_id', $facilitator_id)
+ 	    ->get()
+ 	    ->result();
+
+	    return $result;
+	}
+
+    /**
+     * Load all submitted assessments for this assessor.
+     * for now, we link the class organisation to the assessor organisation
+     *
+     * @param integer $assessorid
+     * @return mixed
+     */
+
+	public function completedAssessmentListByAssessor($assessorid)
+	{
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->join('assessor', 'assessor.organization = class_name.organization')
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+	public function completedAssessmentListByModerator($moderator_id)
+	{
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->join('assessor', 'assessor.organization = class_name.organization')
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+	public function compeletedAssessmentListByID($learner_assessment_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('learner_assessment.id', $learner_assessment_id)
+	    ->get()
+	    ->row();
+
+	    return $result;
+	}
+
+	public function completedAssessmentListByAssessment($assessment_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('learner_assessment.assessment_id', $assessment_id)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+
+	public function CompletedAssessmentListByOrganisation($organisation_id)
+	{
+
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('class_name.organization', $organisation_id)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+
+	public function AssessmentModerationListsByOrganisation($organisation_id)
+	{
+
+	    $select_fields = [
+	        'assessment.id',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment.status as status',
+	        'assessment.created_date',
+	        'assessment.updated_date',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select($select_fields)
+	    ->from('assessment')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner_assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->where('class_name.organization', $organisation_id)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+
+	public function getAssessmentUnits($assessment_id)
+	{
+
+	    $assessment = $this->db->select('*')
+    	    ->from('assessment')
+    	    ->where('id', $assessment_id)
+    	    ->get()
+    	    ->row();
+
+    	    if ($assessment && (!empty($assessment->unit_standard))) {
+
+	        $where_clause = "id IN (" . $assessment->unit_standard . ")";
+	        $result = $this->db->select('*')
+    	        ->from('units')
+    	        ->where($where_clause)
+    	        ->get()
+    	        ->result();
+
+	        return $result;
+
+	    } else {
+	        return false;
+	    }
+
+	}
+
+
+	public function getAssessmentUnitsFromlearnershipSubType ($learnership_sub_type_id)
+	{
+
+	    $learnership_sub_type = $this->db->select('*')
+    	    ->from('learnership_sub_type')
+    	    ->where('id', $learnership_sub_type_id)
+    	    ->get()
+    	    ->row();
+
+	    if ($learnership_sub_type && (!empty($learnership_sub_type->unit_standard))) {
+
+	        $where_clause = "id IN (" . $learnership_sub_type->unit_standard . ")";
+
+	        $result = $this->db->select('*')
+    	        ->from('units')
+    	        ->where($where_clause)
+    	        ->get()
+    	        ->result();
+
+	        return $result;
+
+	    } else {
+	        return false;
+	    }
+
+	}
+
+	public function assessmentSubmissionByModerationStatus($assessment_id, $moderation_status) {
+	    $select_fields = [
+	        'learner_assessment.*',
+	        'learner.first_name',
+	        'learner.surname',
+	        'assessment.assessment_start_date',
+	        'assessment.assessment_end_date',
+	        'assessment.title',
+	        'assessment_type',
+	        'submission_type',
+	        'class_name.class_name',
+	        'unit_standard',
+	        'programme_name',
+	        'programme_number',
+	        'intervention_name'
+	    ];
+
+	    $result = $this->db->select($select_fields)
+	    ->from('learner_assessment')
+	    ->join('assessment', 'assessment.id = learner_assessment.assessment_id')
+	    ->join('class_name', 'class_name.id = assessment.class_id')
+	    ->join('learner', 'learner.id = learner_assessment.learner_id')
+	    ->where('learner_assessment.assessment_id', $assessment_id)
+	    ->where('learner_assessment.internal_moderation_status', $moderation_status)
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+	public function submissionCountByAssessment($assessment_id)
+	{
+
+	   $query = $this->db->get_where('learner_assessment', array('assessment_id' => $assessment_id));
+
+       return $query->num_rows();
+	}
+
+	public function getQuizList($class_id)
+	{
+
+	    $this->load->helper('url');
+
+	    $quiz_url = base_url() . 'digilims_online/index.php/client_api/quiz_list';
+
+	    $quiz_list = file_get_contents($quiz_url);
+
+	    return json_decode($quiz_list, true);
+
+
+	}
+
+	//  Modules
+
+	public function moduleListByTrainer($trainer_id)
+	{
+
+	    $result = $this->db->select('module.*')
+	    ->from('module')
+	    ->get()
+	    ->result();
+
+	    return $result;
+	}
+
+
 
 }
+
