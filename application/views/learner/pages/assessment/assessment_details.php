@@ -7,7 +7,7 @@ $online_quiz_id = (isset($assessment)) ? $assessment->online_quiz_id : 0;
 if ($online_quiz_id) {
    // $quiz_url = BASEURL . 'digilims_online/index.php/quiz/quiz_detail/' . $online_quiz_id;
 
-    $quiz_url = BASEURL . '/learner/take_quiz?id=' . $online_quiz_id;
+    $quiz_url = BASEURL . '/learner/take_quiz?id=' . $online_quiz_id . '&aid=' . $assessment->id;
 } else {
     $quiz_url = '';
 }
@@ -147,7 +147,7 @@ if ($online_quiz_id) {
                                     <input type="text" placeholder="Enter Your Assessment Submission Type" name="assessment_type" class="form-control assessment_type" value="<?= (isset($assessment)) ? $assessment->submission_type : ''; ?>" id="submission_type" readonly="readonly">
 								</div>
 
-								                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
 
                                 <?php if ($assessment_submission_type === 'timed based assessment online') { ?>
 

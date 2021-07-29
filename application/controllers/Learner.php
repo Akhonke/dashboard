@@ -27,6 +27,7 @@ class Learner extends CI_Controller
 
 		$this->data['suggestion_list_'] = $this->common->accessrecord('complaints_and_suggestions', [], ['learner_id' => $id,'type'=>'suggestions'], 'result');
 		$this->data['suggestion_list'] = count($this->data['suggestion_list_']);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
 =======
@@ -35,6 +36,12 @@ class Learner extends CI_Controller
 		$this->data['class'] = count($this->data['class_']);		
 			
 >>>>>>> Stashed changes
+=======
+		
+		$this->data['class_'] = $this->common->accessrecord('class_name', [], ['project_manager' => $_SESSION['projectmanager']['id']], 'result');
+		$this->data['class'] = count($this->data['class_']);
+		
+>>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
 		$this->data['page'] = 'dashboard';
 
 		$this->data['content'] = 'pages/dashboard/dashboard';
@@ -831,6 +838,7 @@ public function load_assessment(){
 
         $learner = $this->common->accessrecord('learner', [], ['id' => $learner_id], 'row');
 
+        $assessment_id = $_GET['aid'];
         $online_quiz_id = $_GET['id'];
 
         $this->session->set_userdata('access_mode', 'embedded');
@@ -844,6 +852,18 @@ public function load_assessment(){
             'gid' => $this->config->item('default_gid'),
             'su' => '0'
         ];
+
+        $callback = BASEURL . 'learner_online_result';
+        $this->session->set_userdata('callback', $callback);
+
+        $callback_data = [
+            'assessment_id' => $assessment_id,
+            'learner_id' => $learner_id,
+            'quiz_id' => $online_quiz_id
+        ];
+        $this->session->set_userdata('callback_data', $callback_data);
+
+
 
         $this->session->set_userdata('embedded_user_type', 'learner');
         $this->session->set_userdata('embedded_user', $learner_user);

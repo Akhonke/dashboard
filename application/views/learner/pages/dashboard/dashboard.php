@@ -19,10 +19,14 @@
       <div class="col-lg-12 mb-4 mb-lg-0 pl-lg-0 d-flex">
 <<<<<<< Updated upstream
         <div class="col-sm-4">
+<<<<<<< HEAD
           <a href="<?= base_url('learner-complaint-list') ?>">
 =======
         <div class="col-sm-4">          
 >>>>>>> Stashed changes
+=======
+          
+>>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
             <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
               <div class="flex-grow-1 d-flex align-items-center">                
                 <div class="text">
@@ -32,9 +36,10 @@
               </div>
               <div class="icon bg-violet text-white"><i class="fas fa-clipboard-check"></i></div>
             </div>
-          </a>
+         
         </div>
         <div class="col-sm-4">
+<<<<<<< HEAD
           <a href="<?= base_url('learner-suggestion-list') ?>">
 =======
               </div>              
@@ -42,6 +47,9 @@
         </div>
         <div class="col-sm-4">          
 >>>>>>> Stashed changes
+=======
+          
+>>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
             <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
               <div class="flex-grow-1 d-flex align-items-center">                
                 <div class="text">
@@ -51,8 +59,9 @@
               </div>
               <div class="icon bg-green text-white"><i class="fas fa-dollar-sign"></i></div>
             </div>
-          </a>
+          
         </div>
+<<<<<<< HEAD
 =======
               </div>              
             </div>          
@@ -68,6 +77,21 @@
           
 		
 >>>>>>> Stashed changes
+=======
+		
+		 <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+          <div class="flex-grow-1 d-flex align-items-center">
+            <div class="dot mr-3 bg-green"></div>
+            <div class="text">
+              <h6 class="mb-0">Total Classes</h6><span class="text-gray"><?= $class ?></span>
+            </div>
+          </div>
+          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+        </div>
+		
+      </div>
+>>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
         <!-- <div class="col-sm-4">
           <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
             <div class="flex-grow-1 d-flex align-items-center">

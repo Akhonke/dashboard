@@ -7734,6 +7734,26 @@
 		        $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['record'])->module_id], 'row');
 		    }
 
+		    if ($id != 0) {
+
+		        if (($this->data['record'])->submission_type == 'timed based assessment online') {
+
+		        }
+		        else if (($this->data['record'])->submission_type == 'manual document upload') {
+
+		        }
+		        else if (($this->data['record'])->submission_type == 'practical assessment') {
+
+		        }
+
+		        $this->data['class_name'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['record'])->class_id], 'row');
+		    }
+
+
+		    if ($id != 0) {
+		        $this->data['completed_assessments'] = $this->common->completedAssessmentListByAssessment($id);
+		    }
+
 		    $this->data['classes'] = $this->common->accessrecord('class_name', [], [], 'result_array');
 		    $this->data['units'] = $this->common->accessrecord('units', [], [], 'result_array');
 
@@ -7797,7 +7817,7 @@
 
 		    if (!empty($_GET['aid'])) {
 		        $assessment_id = $_GET['aid'];
-		        $this->data['record'] = $this->common->compeletedAssessmentListByAssessment($assessment_id);
+		        $this->data['record'] = $this->common->completedAssessmentListByAssessment($assessment_id);
 		    } else {
 		        $assessment_id = 0;
 		        $this->data['record'] = $this->common->compeletedAssessmentListByTrainer($trainer_id);

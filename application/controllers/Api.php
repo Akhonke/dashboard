@@ -22,22 +22,22 @@
 		    $markup .= '<div class="row">';
 
 		    $markup .= '<div class="col-md-3">';
-		    $markup .= '   <a href="/uploads/class/learner_guide/' . $class->upload_learner_guide . '" target="_blank">' . '<img src="/assets/web/img/download_learner_guide_icon.png" style="width:120px;">' .  '</a>';
+		    $markup .= '   <a href="/uploads/class/learner_guide/' . $class->upload_learner_guide . '" target="_blank"><img src="/assets/web/img/download_learner_guide_icon.png" style="width:120px;"></a>';
 		    $markup .= '   <p>' . $class->upload_learner_guide_name . '</p>';
 		    $markup .= '</div>';
 
 		    $markup .= '<div class="col-md-3">';
-		    $markup .= '   <a href="/uploads/class/learner_workbook/' . $module_uploads->upload_workbook . '" target="_blank">' . '<img src="/assets/web/img/download_learner_workbook_icon.png" style="width:120px;">' .  '</a>';
+		    $markup .= '   <a href="/uploads/class/learner_workbook/' . $module_uploads->upload_workbook . '" target="_blank"><img src="/assets/web/img/download_learner_workbook_icon.png" style="width:120px;"></a>';
 		    $markup .= '   <p>' . $module_uploads->upload_workbook_name . '</p>';
 		    $markup .= '</div>';
 
 		    $markup .= '<div class="col-md-3">';
-		    $markup .= '   <a href="/uploads/class/learner_poe/' . $module_uploads->upload_poe . '" target="_blank">' . '<img src="/assets/web/img/download_learner_poe_icon.png" style="width:120px;">' .  '</a>';
+		    $markup .= '   <a href="/uploads/class/learner_poe/' . $module_uploads->upload_poe . '" target="_blank"><img src="/assets/web/img/download_learner_poe_icon.png" style="width:120px;"></a>';
 		    $markup .= '   <p>' . $module_uploads->upload_poe_name . '</p>';
 		    $markup .= '</div>';
 
 		    $markup .= '<div class="col-md-3">';
-		    $markup .= '   <a href="/uploads/class/facilitator_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank">' . '<img src="/assets/web/img/download_facilitator_guide.png" style="width:120px;">' .  '</a>';
+		    $markup .= '   <a href="/uploads/class/facilitator_guide/' . $module_uploads->upload_facilitator_guide . '" target="_blank"><img src="/assets/web/img/download_facilitator_guide.png" style="width:120px;"></a>';
 		    $markup .= '   <p>' . $module_uploads->upload_facilitator_guide_name . '</p>';
 		    $markup .= '</div>';
 
@@ -108,5 +108,46 @@
 
 		    echo json_encode($data);
 		}
+
+		public function online_result()
+		{
+
+		    $post_vars = $_POST;
+
+		    if (empty($post_vars['assessment_id']))  {
+		        $response = ['result' => false, 'Message' => 'Invalid assessment id.'];
+		        return json_encode($response);
+		    }
+
+
+		    $assessment = $this->common->accessrecord('assessment', [], ['id' => $post_vars['assessment_id']], 'row');
+
+
+
+		    $learner_assessment_data = [
+		        'assessment_id' => $post_vars['assessment_id'],
+		        'learner_id' => $post_vars['learner_id'],
+		        'status' => 'submitted for marking',
+		        'internal_moderation_status' => '',
+		        'created_date' => date('Y-m-d H:i:s'),
+		        'updated_date' => date('Y-m-d H:i:s'),
+		    ];
+
+		    $learner_assessment_id = $this->common->insertData('learner_assessment', $data);
+
+		    if ($learner_assessment_id) {
+
+		        $submission_data = [
+		            'learner_assessment_id'               => $learner_assessment_id,
+		            'assessment_submission_date'          => date('Y-m-d H:i:s'),
+		            'assessment_status'                   => 'submitted for marking',
+		            'created_date' => date('Y-m-d H:i:s'),
+		            'updated_date' => date('Y-m-d H:i:s'),
+		        ];
+
+		        $this->common->insertData('learner_assessment_submission', $submission_data);
+
+		}
+
 
 	}

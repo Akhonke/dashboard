@@ -123,6 +123,7 @@
       <div class="col-lg-6 mb-4 mb-lg-0">
 
 
+<<<<<<< HEAD
         <div class="py-3">
           <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
             <div class="flex-grow-1 d-flex align-items-center">
@@ -159,6 +160,11 @@
 =======
       <div class="col-lg-6 mb-4 mb-lg-0">        
 >>>>>>> Stashed changes
+=======
+        
+      
+       
+>>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
       </div>
     </div>
   </section>
@@ -214,53 +220,45 @@
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('learner-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">Total Learners</h6><span class="text-gray"><?= $learner ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+          </div>         
         </div>
 		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('facilitator-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">Total Facilitators</h6><span class="text-gray"><?= $facilitator ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+          </div>         
         </div>
 		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('assessor-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-blue"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">Total Assessors</h6><span class="text-gray"><?= $assessor ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
+          </div>         
         </div>
 		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('moderator-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-red"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">
-                Total Internal Moderator</h6><span class="text-gray"><?= $internal_moderator ?></span>
+                Total Internal Moderators</h6><span class="text-gray"><?= $internal_moderator ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
+          </div>          
         </div>
 		</a>
       </div>
@@ -271,53 +269,51 @@
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('externalmoderator-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
-              <h6 class="mb-0">Total External Moderator
+              <h6 class="mb-0">Total External Moderators
               </h6><span class="text-gray"><?= $external_moderator ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+          </div>          
         </div>
 		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('provider-class-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
+          <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
               <h6 class="mb-0">Total Classes</h6><span class="text-gray"><?= $class ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+          </div>          
         </div>
 		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('provider-learnermark-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
+          <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
-              <h6 class="mb-0">Total Marksheets</h6><span class="text-gray"><?= $marksheet ?></span>
+              <h6 class="mb-0">Total Uploaded Mark sheets</h6><span class="text-gray"><?= $marksheet ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+          </div>          
         </div>
 		</a>
       </div>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 =======
 	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	    <a href="<?= base_url('Quaterly-Report-list') ?>">
 >>>>>>> Stashed changes
+=======
+	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+>>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
+          <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
+<<<<<<< HEAD
               <h6 class="mb-0">Total Attendace Reports</h6><span class="text-gray"><?= $attendance ?></span>
             </div>
           </div>
@@ -335,88 +331,20 @@
             <div class="dot mr-3 bg-violet"></div>
             <div class="text">
               <h6 class="mb-0">Total Quaterly Reports
+=======
+              <h6 class="mb-0">Total Quarterly Reports
+>>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
               </h6><span class="text-gray"><?= $quarterly_progress_report  ?></span>
             </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+          </div>          
         </div>
       </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Users</h6><span class="text-gray"><?= $sub_user ?></span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Attendace(absent) Reports</h6><span class="text-gray"><?= $attendance ?></span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-green"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Banking Details</h6><span class="text-gray">remain</span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
-
-
-
-
     </div>
   </section>
-
-
-
-
-  <section class="py-5">
+  <section class="pb-5 pt-0">
     <div class="row">
-      <?php $i = 1;
-      foreach ($learner_ as $learn) { ?>
-        <?php
-        $date_of_post = $learn->created_at;
-        $date = $date_of_post; // 6 october 2011 2:28 pm
-        $stamp = strtotime($date); // outputs 1307708880
-        ?>
-
-
-        <div class="col-lg-12">
-          <a href="#" class="message card px-5 py-3 mb-4 bg-hover-gradient-primary no-anchor-style">
-            <div class="row">
-              <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left"><strong class="h5 mb-0"><?php echo date("d", $stamp); ?><sup class="smaller text-gray font-weight-normal"><?php echo date("M", $stamp); ?></sup></strong><img src="https://d19m59y37dris4.cloudfront.net/bubbly-dashboard/1-0/img/avatar-1.jpg" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
-                <h6 class="mb-0"><?= $learn->first_name ?></h6>
-              </div>
-              <div class="col-lg-9 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
-                <div class="bg-gray-100 roundy px-4 py-1 mr-0 mr-lg-3 mt-2 mt-lg-0 text-dark exclode">Learner</div>
-                <p class="mb-0 mt-3 mt-lg-0">Email : <span><?= $learn->email   ?> </span> , Contact Number : <span><?= $learn->mobile ?></span>, Address : <span><?= $learn->city ?>,<?= $learn->region ?>,<?= $learn->district ?></span></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <?php
-        if ($i >= 4) {
-          break;
-        }
-        ?>
-      <?php $i++;
-      } ?>
     </div>
-  </section>
+  </section> 
 </div>
 
 <script src="<?= base_url() ?>assets/admin/cloudfront/vendor/chart.js/Chart.min.js"></script>
