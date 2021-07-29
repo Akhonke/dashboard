@@ -16,17 +16,19 @@
 
   <section class="py-3">
     <div class="row">
-
-
       <div class="col-lg-12 mb-4 mb-lg-0 pl-lg-0 d-flex">
+<<<<<<< Updated upstream
         <div class="col-sm-4">
           <a href="<?= base_url('learner-complaint-list') ?>">
+=======
+        <div class="col-sm-4">          
+>>>>>>> Stashed changes
             <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
-              <div class="flex-grow-1 d-flex align-items-center">
-                <div class="dot mr-3 bg-violet"></div>
+              <div class="flex-grow-1 d-flex align-items-center">                
                 <div class="text">
                   <h6 class="mb-0">Total Complaints</h6><span class="text-gray"><?= $complaint_list ?></span>
                 </div>
+<<<<<<< Updated upstream
               </div>
               <div class="icon bg-violet text-white"><i class="fas fa-clipboard-check"></i></div>
             </div>
@@ -34,17 +36,38 @@
         </div>
         <div class="col-sm-4">
           <a href="<?= base_url('learner-suggestion-list') ?>">
+=======
+              </div>              
+            </div>         
+        </div>
+        <div class="col-sm-4">          
+>>>>>>> Stashed changes
             <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
-              <div class="flex-grow-1 d-flex align-items-center">
-                <div class="dot mr-3 bg-green"></div>
+              <div class="flex-grow-1 d-flex align-items-center">                
                 <div class="text">
                   <h6 class="mb-0">Total Suggestions</h6><span class="text-gray"><?= $suggestion_list ?></span>
                 </div>
+<<<<<<< Updated upstream
               </div>
               <div class="icon bg-green text-white"><i class="fas fa-dollar-sign"></i></div>
             </div>
           </a>
         </div>
+=======
+              </div>              
+            </div>          
+        </div>
+		<div class="col-sm-4">          
+            <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
+              <div class="flex-grow-1 d-flex align-items-center">                
+                <div class="text">
+                  <h6 class="mb-0">Total Classes</h6><span class="text-gray"><?= $class ?></span>
+                </div>
+              </div>              
+            </div>
+          
+		
+>>>>>>> Stashed changes
         <!-- <div class="col-sm-4">
           <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
             <div class="flex-grow-1 d-flex align-items-center">

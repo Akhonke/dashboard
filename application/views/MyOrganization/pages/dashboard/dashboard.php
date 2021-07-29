@@ -17,27 +17,24 @@
         </ul>
 
       </div>
-
-
-
-
     </div>
   </section> -->
   <section class="py-5">
-    <div class="row">
+    <div class="row ">
       <div class="col-lg-12 mb-4 mb-lg-0">
         <div class="card">
           <div class="card-header">
             <h2 class="h6 text-uppercase mb-0">My Plan</h2>
           </div>
           <div class="card-body">
-            <p class="font-weight-bold text-uppercase"><?= $organization->packageName   ?>
+            <p class="h5 ">You Are On  <?= $organization->packageName   ?> Subscription Plan
               <?php if ($organization->packageId != 3) { ?>
                 <button class="btn btn-primary  text-white">Upgrade Now</button>
               <?php } ?>
             </p>
             <div class="row pt-3">
               <div class="col-sm-4">
+<<<<<<< Updated upstream
                 <h6 style="font-weight: normal !important;font-size: 22px;font-family: poppins !important;"><b style="color:#20bcd5!important;">Purchase Date :</b><span> <?= $organization->packageCreatedDate ?> </span></h6>
               </div>
               <div class="col-sm-4">
@@ -46,12 +43,21 @@
               <div class="col-sm-4">
                 <div class="container">
                   <h6 style="font-weight: normal !important;font-size: 22px;font-family: poppins !important;"><b style="color:#20bcd5!important;">Your Plan Expire after:</b></h6>
+=======
+                <h6 style="font-weight: normal 	;font-size: 16px;font-family: poppins "><b style="">Purchase Date :</b><span> <?= $organization->packageCreatedDate ?> </span></h6>
+              </div>
+              <div class="col-sm-4">
+                <h6 style="font-weight: normal ;font-size: 16px;font-family: poppins "><b style="">Expiry Date :</b> <span id="expdate" value="<?= $organization->packageExpiryDate ?>"> <?= $organization->packageExpiryDate ?></span></h6>
+              </div>
+              <div class="col-sm-4">
+                <div class="container">
+                  <h6 style="font-weight: normal ;font-size: 16px;font-family: poppins "><b style="">Your Subscription Expires after:</b></h6>
+>>>>>>> Stashed changes
 
                   <ul class="plan-time">
-                    <li>Days</br><span id="days" style="color:#20bcd5!important;"></span></li>
-                    <li>Hours</br><span style="color: #20bcd5!important;" id="hours"></span></li>
-                    <li>Minutes</br><span style="color: #20bcd5!important;" id="minutes"></span></li>
-                    <li>Seconds</br><span style="color: #20bcd5!important;" id="seconds"></span></li>
+                    <li>Days</br><span id="days" style=""></span></li>
+                    <li>Hours</br><span style="" id="hours"></span></li>
+                    <li>Minutes</br><span style="" id="minutes"></span></li>                   
                   </ul>
                 </div>
               </div>
@@ -119,10 +125,14 @@
                 <div class="col-sm-6">
                   <h2 class="mb-0 align-items-center"><span><?= $inactiveprojectmanager ?></span><span class="dot bg-violet d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:12px;">Inactive </span></h2>
                 </div>
+<<<<<<< Updated upstream
 
 
               </div>
 
+=======
+              </div>
+>>>>>>> Stashed changes
             </div>
           </div>
         </div>
@@ -215,8 +225,13 @@
   </section> -->
   <p class="ddd"></p>
   <section class="py-3">
+<<<<<<< Updated upstream
     <div class="row">
+=======
+    <div class="row">   	
+>>>>>>> Stashed changes
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+     <a href="<?= base_url('training_list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-violet"></div>
@@ -226,19 +241,30 @@
           </div>
           <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	    <a href="<?= base_url('facilitator_list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
             <div class="text">
               <h6 class="mb-0">Total Project Manager</h6><span class="text-gray"><?= $project_manager ?></span>
             </div>
+<<<<<<< Updated upstream
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+          </div>          
+        </div>
+        </a>		
+      </div>
+ <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+         <a href="<?= base_url('assessor_list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-blue"></div>
@@ -248,8 +274,14 @@
           </div>
           <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
         </div>
+		</a>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('moderator_list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-red"></div>
@@ -261,24 +293,36 @@
           <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
         </div>
       </div>
+<<<<<<< Updated upstream
 
     </div>
+=======
+	  </a>
+    </div>	
+>>>>>>> Stashed changes
   </section>
   <section class="pb-5 pt-0">
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	  <a href="<?= base_url('external_moderator_list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-violet"></div>
             <div class="text">
+<<<<<<< Updated upstream
               <h6 class="mb-0">Total Assessors
               </h6><span class="text-gray"><?= $assessor ?></span>
+=======
+              <h6 class="mb-0 ">Total External Moderators</h6><span class="text-gray"><?= $external_moderator ?></span>
+>>>>>>> Stashed changes
             </div>
           </div>
           <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('list_learner') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
@@ -288,8 +332,15 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+	  
+	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	    <a href="<?= base_url('drop-out-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
@@ -300,6 +351,7 @@
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
@@ -380,8 +432,16 @@
       } ?>
     </div>
   </section>
+=======
+	  </a>
+    </div>
+  </section>
+  <section class="pb-5 pt-0">
+    <div class="row">     
+    </div>
+  </section>
+>>>>>>> Stashed changes
 </div>
-
 <style>
   .timer li {
     display: inline-block;
@@ -638,9 +698,9 @@ var datess = "<?= $newDate ?>";
 
   /* 3 donut charts */
   var donutOptions = {
-    cutoutPercentage: 85,
+    cutoutPercentage: 0,
     legend: {
-      position: 'bottom',
+      position: 'right',
       padding: 5,
       labels: {
         pointStyle: 'circle',

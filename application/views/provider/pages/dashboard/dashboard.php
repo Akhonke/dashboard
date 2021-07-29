@@ -109,18 +109,17 @@
               </div>
               <div class="col-lg-12 d-flex  text-center">
                 <div class="col-sm-6">
-                  <h2 class="mb-0  align-items-center"><span>2</span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:12px;">Learner</span></h2>
+                  <h2 class="mb-0  align-items-center"><span>2</span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:9px;">Active Learners</span></h2>
                 </div>
                 <div class="col-sm-6">
-                  <h2 class="mb-0 align-items-center"><span>1</span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:12px;">Dropouts</span></h2>
+                  <h2 class="mb-0 align-items-center"><span>1</span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:9px;">Dropouts</span></h2>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
       </div>
+<<<<<<< Updated upstream
       <div class="col-lg-6 mb-4 mb-lg-0">
 
 
@@ -157,11 +156,11 @@
             <div class="icon bg-blue text-white"><i class="fas fa-user-friends"></i></div>
           </div>
         </div>
+=======
+      <div class="col-lg-6 mb-4 mb-lg-0">        
+>>>>>>> Stashed changes
       </div>
-
     </div>
-
-
   </section>
   <!-- <p class="ddd"></p> -->
   <!-- <section class="py-3">
@@ -213,6 +212,7 @@
   <section class="py-3">
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('learner-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-violet"></div>
@@ -222,8 +222,10 @@
           </div>
           <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('facilitator-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
@@ -233,8 +235,10 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('assessor-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-blue"></div>
@@ -244,8 +248,10 @@
           </div>
           <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('moderator-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-red"></div>
@@ -256,13 +262,14 @@
           </div>
           <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
         </div>
+		</a>
       </div>
-
     </div>
   </section>
   <section class="pb-5 pt-0">
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('externalmoderator-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-violet"></div>
@@ -273,8 +280,10 @@
           </div>
           <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('provider-class-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
@@ -284,8 +293,10 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('provider-learnermark-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
@@ -295,8 +306,14 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	    <a href="<?= base_url('Quaterly-Report-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
@@ -306,6 +323,7 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
     </div>
   </section>
@@ -447,7 +465,7 @@
 
   /* 3 donut charts */
   var donutOptions = {
-    cutoutPercentage: 85,
+    cutoutPercentage: 0,
     legend: {
       position: 'bottom',
       padding: 5,

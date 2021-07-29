@@ -45,6 +45,7 @@
   <section class="py-5">
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	  <a href="<?= base_url('create_projects_list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-violet"></div>
@@ -65,8 +66,10 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	  <a href="<?= base_url('projectmanagertraining-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-blue"></div>
@@ -76,8 +79,14 @@
           </div>
           <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
         </div>
+		</a>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('projectmanager-facilitator-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-red"></div>
@@ -114,8 +123,14 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('projectmanager-assessor-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-blue"></div>
@@ -136,6 +151,7 @@
           </div>
           <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
         </div>
+		</a>
       </div>
 
     </div>
@@ -143,6 +159,7 @@
   <section class="pb-5 pt-0">
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	  <a href="<?= base_url('projectmanager-moderator-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-violet"></div>
@@ -152,8 +169,14 @@
           </div>
           <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
         </div>
+		</a>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	  <a href="<?= base_url('projectmanager-external-moderator-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-green"></div>
@@ -163,8 +186,14 @@
           </div>
           <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
         </div>
+		</a>
       </div>
+<<<<<<< Updated upstream
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('projectmanager-mark-sheet-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-blue"></div>
@@ -174,14 +203,22 @@
           </div>
           <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
         </div>
+<<<<<<< Updated upstream
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+		</a>
+      </div> 
+	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	  <a href="<?= base_url('projectmanager-class-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-red"></div>
             <div class="text">
               <h6 class="mb-0">Total Attendance Reports</h6><span class="text-gray"><?= $attendance ?></span>
             </div>
+<<<<<<< Updated upstream
           </div>
           <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
         </div>
@@ -192,6 +229,18 @@
   <section class="pb-5 pt-0">
     <div class="row">
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+=======
+          </div>          
+        </div>
+		</a>
+      </div> 
+    </div>	  
+  </section>
+  <section class="pb-5 pt-0">
+    <div class="row">     
+ <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+     <a href="<?= base_url('projectmanager-drop-out-list') ?>">
+>>>>>>> Stashed changes
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">
             <div class="dot mr-3 bg-violet"></div>
@@ -201,6 +250,7 @@
           </div>
           <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
         </div>
+<<<<<<< Updated upstream
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
@@ -373,6 +423,14 @@
           </div>
         </div>
       </div>
+=======
+		</a>
+      </div>  	  
+    </div>
+  </section>
+  <section class="pb-5 pt-0">
+    <div class="row"> 
+>>>>>>> Stashed changes
     </div>
   </section>
   <!-- <section class="py-5">
