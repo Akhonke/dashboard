@@ -54,7 +54,7 @@ $projectcount = count($Project);
                      <a onclick="subscriptionMessage()" title="From Here You  Can Create Projects" class="sidebar-link text-white pl-lg-5">Create Projects</a>
                   <?php } ?>
                </li>
-               <li class="sidebar-list-item"><a href="<?= BASEURL ?>create_projects_list" title="From Here You  Can See Projects List" class="sidebar-link text-white pl-lg-5">All
+               <li class="sidebar-list-item"><a href="<?= BASEURL ?>create_projects_list" title="From Here You  Can See Projects List" class="sidebar-link text-white pl-lg-5">View
                      Projects List</a>
                </li>
             </ul>
@@ -63,18 +63,18 @@ $projectcount = count($Project);
 
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Manage Task" data-target="#pages32" aria-expanded="false" aria-controls="pages4" class="sidebar-link text-white">
-            <i class="o-archive-1 mr-3 text-gray"></i><span> New Task</span></a>
+            <i class="o-archive-1 mr-3 text-gray"></i><span> Task Management</span></a>
          <div id="pages32" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                <li class="sidebar-list-item"><a href="<?= BASEURL ?>Projectmanager-create_new_task" title="From Here You Can Create Task" class="sidebar-link text-white pl-lg-5">Create New Task</a></li>
-               <li class="sidebar-list-item"><a href="<?= BASEURL ?>Projectmanager-create_new_task_list" title="From Here You Can See Task Lsit" class="sidebar-link text-white pl-lg-5"> Task List</a></li>
+               <li class="sidebar-list-item"><a href="<?= BASEURL ?>Projectmanager-create_new_task_list" title="From Here You Can See Task Lsit" class="sidebar-link text-white pl-lg-5">View Task List</a></li>
             </ul>
          </div>
       </li>
 
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" data-target="#pages36" title="From Here You Can Manage Stipend" aria-expanded="false" aria-controls="pages4" class="sidebar-link text-white">
-            <i class="o-archive-1 mr-3 text-gray"></i><span> Create Stipend</span></a>
+            <i class="o-archive-1 mr-3 text-gray"></i><span>Stipend Management</span></a>
          <div id="pages36" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                <li class="sidebar-list-item">
@@ -90,9 +90,9 @@ $projectcount = count($Project);
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Stipend Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-create_stipend_list" title="From Here You Can See Stipend List" class="sidebar-link text-white pl-lg-5">Stipend List</a>
+                     <a href="<?= BASEURL ?>projectmanager-create_stipend_list" title="From Here You Can See Stipend List" class="sidebar-link text-white pl-lg-5">View Stipend List</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Stipend List" class="sidebar-link text-white pl-lg-5">Stipend List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Stipend List" class="sidebar-link text-white pl-lg-5">View Stipend List</a>
                   <?php } ?>
                </li>
             </ul>
@@ -105,7 +105,7 @@ $projectcount = count($Project);
          <div id="pages7" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                <li class="sidebar-list-item"><a href="<?= BASEURL ?>projectmanager-create-training" title="From Here You Can Create Training Providers" class="sidebar-link text-white pl-lg-5">Create Training Provider</a></li>
-               <li class="sidebar-list-item"><a href="<?= BASEURL ?>projectmanagertraining-list" title="From Here You Can See Training Providers List" class="sidebar-link text-white pl-lg-5">Training Providers List</a></li>
+               <li class="sidebar-list-item"><a href="<?= BASEURL ?>projectmanagertraining-list" title="From Here You Can See Training Providers List" class="sidebar-link text-white pl-lg-5">View Training Providers List</a></li>
             </ul>
          </div>
       </li>
@@ -130,9 +130,9 @@ $projectcount = count($Project);
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Host employer Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>Projectmanager-employer-list" title="From Here You Can See Employers List" class="sidebar-link text-white pl-lg-5">Employers List</a>
+                     <a href="<?= BASEURL ?>Projectmanager-employer-list" title="From Here You Can See Employers List" class="sidebar-link text-white pl-lg-5">View Employers List</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Employers List" class="sidebar-link text-white pl-lg-5">Employers List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Employers List" class="sidebar-link text-white pl-lg-5">View Employers List</a>
                   <?php } ?>
                </li>
             </ul>
@@ -144,14 +144,14 @@ $projectcount = count($Project);
          <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
          if (in_array("Facilitator and Moderator Management", $arrayfeatures)) {
          ?>
-            <a href="<?= BASEURL ?>projectmanager-facilitator-list" title="From Here You Can See Facilitor List" class="sidebar-link text-white"><i class="o-laptop-screen-1 mr-3 text-gray"></i><span>Facilitators List</span></a>
+            <a href="<?= BASEURL ?>projectmanager-facilitator-list" title="From Here You Can See Facilitor List" class="sidebar-link text-white"><i class="o-laptop-screen-1 mr-3 text-gray"></i><span>View Facilitators List</span></a>
          <?php } else { ?>
-            <a onclick="subscriptionMessage()" title="From Here You Can See Facilitor List" class="sidebar-link text-white"><i class="o-laptop-screen-1 mr-3 text-gray"></i><span>Facilitators List</span></a>
+            <a onclick="subscriptionMessage()" title="From Here You Can See Facilitor List" class="sidebar-link text-white"><i class="o-laptop-screen-1 mr-3 text-gray"></i><span>View Facilitators List</span></a>
          <?php } ?>
       </li>
 
       <!-- *************************** -->
-      <li class="sidebar-list-item"><a href="<?= BASEURL ?>projectmanager-assessor-list" title="From Here You Can See Assessor List" class="sidebar-link text-white"><i class="o-imac-screen-1 mr-3 text-gray"></i><span>Assessors List</span></a></li>
+      <li class="sidebar-list-item"><a href="<?= BASEURL ?>projectmanager-assessor-list" title="From Here You Can See Assessor List" class="sidebar-link text-white"><i class="o-imac-screen-1 mr-3 text-gray"></i><span>View Assessors List</span></a></li>
 
       <!-- *************************** -->
       <li class="sidebar-list-item">
@@ -163,18 +163,18 @@ $projectcount = count($Project);
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Facilitator and Moderator Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-moderator-list" title="From Here You Can See Moderators List" class="sidebar-link text-white"><i class="o-id-card-1 mr-3 text-gray"></i><span>Internal Moderators List</span></a>
+                     <a href="<?= BASEURL ?>projectmanager-moderator-list" title="From Here You Can See Moderators List" class="sidebar-link text-white"><i class="o-id-card-1 mr-3 text-gray"></i><span>View Internal Moderators List</span></a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Moderators List" class="sidebar-link text-white pl-lg-5">Moderators List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Moderators List" class="sidebar-link text-white pl-lg-5">View Moderators List</a>
                   <?php } ?>
                </li>
                <li class="sidebar-list-item">
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Facilitator and Moderator Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-external-moderator-list" title="From Here You Can See External Moderator List" class="sidebar-link text-white"><i class="o-id-card-1 mr-3 text-gray"></i><span>External Moderator List</span></a>
+                     <a href="<?= BASEURL ?>projectmanager-external-moderator-list" title="From Here You Can See External Moderator List" class="sidebar-link text-white"><i class="o-id-card-1 mr-3 text-gray"></i><span>View External Moderator List</span></a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See External Moderator List" class="sidebar-link text-white pl-lg-5">External Moderator List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See External Moderator List" class="sidebar-link text-white pl-lg-5">View External Moderator List</a>
                   <?php } ?>
                </li>
             </ul>
@@ -207,43 +207,43 @@ $projectcount = count($Project);
 
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Manage Learner" data-target="#pages11" aria-expanded="false" aria-controls="pages11" class="sidebar-link text-white">
-            <i class="o-user-1 mr-3 text-gray"></i><span>Learner</span></a>
+            <i class="o-user-1 mr-3 text-gray"></i><span>Learners</span></a>
          <div id="pages11" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                <li class="sidebar-list-item">
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Learner Performance Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-list-learner" title="From Here You Can See Learners List" class="sidebar-link text-white pl-lg-5">Learners List</a>
+                     <a href="<?= BASEURL ?>projectmanager-list-learner" title="From Here You Can See Learners List" class="sidebar-link text-white pl-lg-5">View Learners List</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Learners List" class="sidebar-link text-white pl-lg-5">Learners List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Learners List" class="sidebar-link text-white pl-lg-5">View Learners List</a>
                   <?php } ?>
                </li>
                <li class="sidebar-list-item">
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Learner Performance Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-mark-sheet-list" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5"><span>Mark Sheet List</span></a>
+                     <a href="<?= BASEURL ?>projectmanager-mark-sheet-list" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5"><span>View MarkSheet List</span></a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5">Mark Sheet List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5">View MarkSheet List</a>
                   <?php } ?>
                </li>
                <li class="sidebar-list-item">
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Learner Performance Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-attendance-list" title="From Here You Can See Attendence List" class="sidebar-link text-white pl-lg-5"><span>Attendence List</span></a>
+                     <a href="<?= BASEURL ?>projectmanager-attendance-list" title="From Here You Can See Attendence List" class="sidebar-link text-white pl-lg-5"><span>View Attendence List</span></a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Attendence List" class="sidebar-link text-white pl-lg-5">Attendence List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Attendence List" class="sidebar-link text-white pl-lg-5">View Attendence List</a>
                   <?php } ?>
                </li>
                <li class="sidebar-list-item">
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Learner Performance Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-drop-out-list" title="From Here You Can See Drop Out List" class="sidebar-link text-white pl-lg-5"><span>Drop Out List</span></a>
+                     <a href="<?= BASEURL ?>projectmanager-drop-out-list" title="From Here You Can See Drop Out List" class="sidebar-link text-white pl-lg-5"><span>View DropOut List</span></a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Drop Out List" class="sidebar-link text-white pl-lg-5">Drop Out List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Drop Out List" class="sidebar-link text-white pl-lg-5">View DropOut List</a>
                   <?php } ?>
                </li>
                <!-- <li class="sidebar-list-item">
@@ -284,9 +284,9 @@ $projectcount = count($Project);
          <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
          if (in_array("Stipend Management", $arrayfeatures)) {
          ?>
-            <a href="<?= BASEURL ?>projectmanager-class-list" title="From Here You Can See Class List" class="sidebar-link text-white"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Class List</span></a>
+            <a href="<?= BASEURL ?>projectmanager-class-list" title="From Here You Can See Class List" class="sidebar-link text-white"><i class="o-wireframe-1 mr-3 text-gray"></i><span>View Class List</span></a>
          <?php } else { ?>
-            <a onclick="subscriptionMessage()" title="From Here You Can See Class List" class="sidebar-link text-white"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Class List</span></a>
+            <a onclick="subscriptionMessage()" title="From Here You Can See Class List" class="sidebar-link text-white"><i class="o-wireframe-1 mr-3 text-gray"></i><span>View Class List</span></a>
          <?php } ?>
       </li>
 
@@ -327,7 +327,7 @@ $projectcount = count($Project);
       <!-- ******************************** -->
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Manage Finance " data-target="#pages3" aria-expanded="false" aria-controls="pages3" class="sidebar-link text-white">
-            <i class="o-wireframe-1 mr-3 text-gray"></i><span>Finance</span></a>
+            <i class="o-wireframe-1 mr-3 text-gray"></i><span>Finance Management</span></a>
          <div id="pages3" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                <li class="sidebar-list-item">
@@ -343,10 +343,10 @@ $projectcount = count($Project);
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Financial Management (including Stipends)", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>projectmanager-income-item-list" title="From Here You Can See Income List" class="sidebar-link text-white pl-lg-5">Income List</a>
+                     <a href="<?= BASEURL ?>projectmanager-income-item-list" title="From Here You Can See Income List" class="sidebar-link text-white pl-lg-5">View Income List</a>
                </li>
             <?php } else { ?>
-               <a onclick="subscriptionMessage()" title="From Here You Can See Income List" class="sidebar-link text-white pl-lg-5">Income List</a>
+               <a onclick="subscriptionMessage()" title="From Here You Can See Income List" class="sidebar-link text-white pl-lg-5">View Income List</a>
       </li>
    <?php } ?>
 
@@ -387,7 +387,7 @@ $projectcount = count($Project);
 <!-- ***************************** -->
 <li class="sidebar-list-item">
    <a href="#" data-toggle="collapse" title="From Here You Can Manage Bank Statement" data-target="#pages4" aria-expanded="false" aria-controls="pages4" class="sidebar-link text-white">
-      <i class="o-wireframe-1 mr-3 text-gray"></i><span>Upload Bank Statement</span></a>
+      <i class="o-wireframe-1 mr-3 text-gray"></i><span>Upload Bank Statement </span></a>
    <div id="pages4" class="collapse">
       <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
          <li class="sidebar-list-item">
@@ -403,9 +403,9 @@ $projectcount = count($Project);
             <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
             if (in_array("Financial Management (including Stipends)", $arrayfeatures)) {
             ?>
-               <a href="<?= BASEURL ?>projectmanager-bank-list" title="From Here You Can See Bank Statement List" class="sidebar-link text-white pl-lg-5">Bank Statement List</a>
+               <a href="<?= BASEURL ?>projectmanager-bank-list" title="From Here You Can See Bank Statement List" class="sidebar-link text-white pl-lg-5">View Bank Statement List</a>
             <?php } else { ?>
-               <a onclick="subscriptionMessage()" title="From Here You Can See Bank Statement List" class="sidebar-link text-white pl-lg-5"> Bank Statement List</a>
+               <a onclick="subscriptionMessage()" title="From Here You Can See Bank Statement List" class="sidebar-link text-white pl-lg-5">View Bank Statement List</a>
             <?php } ?>
          </li>
       </ul>
@@ -414,14 +414,14 @@ $projectcount = count($Project);
 
 <li class="sidebar-list-item">
    <a href="#" data-toggle="collapse" title="From Here You Can Manager User" data-target="#pages17" aria-expanded="false" aria-controls="pages17" class="sidebar-link text-white">
-      <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage User</span></a>
+      <i class="o-code-window-1 mr-3 text-gray"></i><span>User Management</span></a>
    <div id="pages17" class="collapse">
       <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
          <li class="sidebar-list-item">
             <a href="<?= BASEURL ?>Create-Projectmanager-User" title="From Here You Can Create User" class="sidebar-link text-white pl-lg-5">Create User</a>
          </li>
          <li class="sidebar-list-item">
-            <a href="<?= BASEURL ?>Projectmanager-User-list" title="From Here You Can See User List" class="sidebar-link text-white pl-lg-5">User List</a>
+            <a href="<?= BASEURL ?>Projectmanager-User-list" title="From Here You Can See User List" class="sidebar-link text-white pl-lg-5">View User List</a>
          </li>
       </ul>
    </div>
@@ -498,14 +498,14 @@ $projectcount = count($Project);
 </li>
 <li class="sidebar-list-item">
    <a href="#" data-toggle="collapse" title="From Here You Can Manager User" data-target="#pages77" aria-expanded="false" aria-controls="pages17" class="sidebar-link text-white">
-      <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage Sub Contractor</span></a>
+      <i class="o-code-window-1 mr-3 text-gray"></i><span>Sub-Contractor Management</span></a>
    <div id="pages77" class="collapse">
       <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
          <li class="sidebar-list-item">
-            <a href="<?= BASEURL ?>Create-New-Subcontractor" title="From Here You Can Create Sub Contractor" class="sidebar-link text-white pl-lg-5">Create Sub Contractor</a>
+            <a href="<?= BASEURL ?>Create-New-Subcontractor" title="From Here You Can Create Sub Contractor" class="sidebar-link text-white pl-lg-5">Create Sub-Contractor</a>
          </li>
          <li class="sidebar-list-item">
-            <a href="<?= BASEURL ?>New-Subcontractor-List" title="From Here You Can See Sub Contractor List" class="sidebar-link text-white pl-lg-5">Sub Contractor List</a>
+            <a href="<?= BASEURL ?>New-Subcontractor-List" title="From Here You Can See Sub Contractor List" class="sidebar-link text-white pl-lg-5">View Sub-Contractor List</a>
          </li>
       </ul>
    </div>

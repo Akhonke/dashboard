@@ -69,22 +69,22 @@ $plan = $this->db->where('id', $organisation[0]->packageId)->get('plan')->result
 
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages7" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
-            <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
+            <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage Assessment</span></a>
          <div id="pages7" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
                <li class="sidebar-list-item">
                   <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
-                     <a href="<?= BASEURL ?>assessor-manage-assessment-list" title="From Here You Can Manage Assessments" class="sidebar-link text-white pl-lg-5">Manage Assessment</a>
+                     <a href="<?= BASEURL ?>assessor-manage-assessment-list" title="From Here You Can Manage Assessments" class="sidebar-link text-white pl-lg-5">Create Assessment Report</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can Manage Assessments" class="sidebar-link text-white pl-lg-5">Manage Assessment</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can Manage Assessments" class="sidebar-link text-white pl-lg-5">Create Assessment Report</a>
                   <?php } ?>
                </li>
                <li class="sidebar-list-item">
                   <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
                      <a href="<?= BASEURL ?>assessor-completed-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Completed Assessment List" class="sidebar-link text-white pl-lg-5">Completed Assessment List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Completed Assessment List" class="sidebar-link text-white pl-lg-5">View Completed Assessment List</a>
                   <?php } ?>
                </li>
 

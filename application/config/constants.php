@@ -87,7 +87,7 @@ defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest auto
 if (in_array($_SERVER['HTTP_HOST'], ["dev.digilims.net", "dev.digilims.com"])) {
     $root = "http://" . $_SERVER['HTTP_HOST'];
 } else {
-    $root = "https://" . $_SERVER['HTTP_HOST'];
+    $root = "http://" . $_SERVER['HTTP_HOST'];
 }
 
 

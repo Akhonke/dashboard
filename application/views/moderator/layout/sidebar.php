@@ -37,7 +37,7 @@ $arrayfeatures = explode("%@#$", $plan[0]->feature);
 
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages7" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
-            <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
+            <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage Assessment</span></a>
          <div id="pages7" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
@@ -52,9 +52,9 @@ $arrayfeatures = explode("%@#$", $plan[0]->feature);
 */ ?>
               <li class="sidebar-list-item">
                   <?php if (in_array("Learner Performance Management", $arrayfeatures)) { ?>
-                     <a href="<?= BASEURL ?>moderator-completed-assessment-list" title="From Here You Can See Assessments due for moderation" class="sidebar-link text-white pl-lg-5">Moderation List</a>
+                     <a href="<?= BASEURL ?>moderator-completed-assessment-list" title="From Here You Can See Assessments due for moderation" class="sidebar-link text-white pl-lg-5">View Moderation List</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessments due for moderation" class="sidebar-link text-white pl-lg-5">Moderation List</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessments due for moderation" class="sidebar-link text-white pl-lg-5">View Moderation List</a>
                   <?php } ?>
                </li>
 

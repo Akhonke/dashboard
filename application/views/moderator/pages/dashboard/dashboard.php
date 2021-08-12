@@ -25,7 +25,7 @@
         <a href="<?= base_url('internal-moderator-moderation-list') ?>">
           <div class="card rounded credit-card bg-hover-gradient-blue">
             <div class="content d-flex flex-column justify-content-between p-4">
-              <h1 class="mb-5 text-center">Total Moderation Report</h1>
+              <h1 class="mb-5 text-center">Total Moderation Reports</h1>
               <div class="d-flex justify-content-between align-items-end pt-3">
                 <div class="text-uppercase">
                   <!-- <div class="font-weight-bold d-block">Free</div> -->

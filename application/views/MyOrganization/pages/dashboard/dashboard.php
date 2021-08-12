@@ -4,12 +4,10 @@
       <div class="col-lg-12">
         <ul>
           <li>
-
             <button class="btn btn-primary  text-white"><a href="<?= BASEURL ?>create_project" class="text-white">Create Project Manager</a></button>
 
           </li>
           <li>
-
             <button class="btn btn-primary  text-white"><a href="<?= BASEURL ?>myorganization-upcoming" class="text-white">Create Financial Year</a></button>
 
           </li>
@@ -34,38 +32,19 @@
             </p>
             <div class="row pt-3">
               <div class="col-sm-4">
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-                <h6 style="font-weight: normal !important;font-size: 22px;font-family: poppins !important;"><b style="color:#20bcd5!important;">Purchase Date :</b><span> <?= $organization->packageCreatedDate ?> </span></h6>
-=======
-                <h6 style="font-weight: normal !important;font-size: 18px;font-family: poppins !important;"><b style="color:#20bcd5!important;">Purchase Date :</b><span> <?= $organization->packageCreatedDate ?> </span></h6>
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+                <h6 style="font-weight: normal !important;font-size: 16px;font-family: normal ;"><b style="">Purchase Date :</b><span> <?= $organization->packageCreatedDate ?> </span></h6>
               </div>
               <div class="col-sm-4">
-                <h6 style="font-weight: normal !important;font-size: 18px;font-family: poppins !important;"><b style="color:#20bcd5!important;">Expiry Date :</b> <span id="expdate" value="<?= $organization->packageExpiryDate ?>"> <?= $organization->packageExpiryDate ?></span></h6>
+                <h6 style="font-weight: normal !important;font-size: 16px;font-family: normal ;"><b style="">Expiry Date :</b> <span id="expdate" value="<?= $organization->packageExpiryDate ?>"> <?= $organization->packageExpiryDate ?></span></h6>
               </div>
               <div class="col-sm-4">
                 <div class="container">
-<<<<<<< HEAD
-                  <h6 style="font-weight: normal !important;font-size: 22px;font-family: poppins !important;"><b style="color:#20bcd5!important;">Your Plan Expire after:</b></h6>
-=======
-                <h6 style="font-weight: normal 	;font-size: 16px;font-family: poppins "><b style="">Purchase Date :</b><span> <?= $organization->packageCreatedDate ?> </span></h6>
-              </div>
-              <div class="col-sm-4">
-                <h6 style="font-weight: normal ;font-size: 16px;font-family: poppins "><b style="">Expiry Date :</b> <span id="expdate" value="<?= $organization->packageExpiryDate ?>"> <?= $organization->packageExpiryDate ?></span></h6>
-              </div>
-              <div class="col-sm-4">
-                <div class="container">
-                  <h6 style="font-weight: normal ;font-size: 16px;font-family: poppins "><b style="">Your Subscription Expires after:</b></h6>
->>>>>>> Stashed changes
-=======
-                  <h6 style="font-weight: normal !important;font-size: 18px;font-family: poppins !important;"><b style="color:#20bcd5!important;">Your Subscription Expires after:</b></h6>
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+                  <h6 style="font-weight: normal !important;font-size: 16px;font-family: normal ;"><b style=";">Your Subscription Plan Expires after:</b></h6>
 
                   <ul class="plan-time">
-                    <li>Days</br><span id="days" style=""></span></li>
-                    <li>Hours</br><span style="" id="hours"></span></li>
-                    <li>Minutes</br><span style="" id="minutes"></span></li>                   
+                    <li>Days</br><span id="days" style=";"></span></li>
+                    <li>Hours</br><span style="color: ;" id="hours"></span></li>
+                    <li>Minutes</br><span style="color: ;" id="minutes"></span></li>                   
                   </ul>
                 </div>
               </div>
@@ -76,7 +55,7 @@
     </div>
   </section>
   <section class="py-3">
-    <div class="row">
+    <div class="row vertical-middle text-center" >
       <div class="col-lg-6 mb-4 mb-lg-0">
         <div class="card mb-3">
           <div class="card-body">
@@ -95,10 +74,10 @@
               </div>
               <div class="col-lg-12 d-flex  text-center">
                 <div class="col-sm-6">
-                  <h2 class="mb-0  align-items-center"><span><?= $activeproject ?></span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:12px;">Active</span></h2>
+                  <h2 class="mb-0  align-items-center"><span><?= $activeproject ?></span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase normal" style="font-size:10px;">Active</span></h2>
                 </div>
                 <div class="col-sm-6">
-                  <h2 class="mb-0 align-items-center"><span><?= $inactiveproject ?></span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:12px;">Inactive</span></h2>
+                  <h2 class="mb-0 align-items-center"><span><?= $inactiveproject ?></span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase normal" style="font-size:10px;">Inactive</span></h2>
                 </div>
               </div>
             </div>
@@ -124,22 +103,13 @@
               </div>
               <div class="col-lg-12 d-flex  text-center">
                 <div class="col-sm-6">
-                  <h2 class="mb-0 align-items-center"><span><?= $activeprojectmanager ?></span><span class="dot bg-violet d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:12px;">Active </span></h2>
+                  <h2 class="mb-0 align-items-center"><span><?= $activeprojectmanager ?></span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase normal" style="font-size:10px;">Active </span></h2>
                 </div>
                 <div class="col-sm-6">
-                  <h2 class="mb-0 align-items-center"><span><?= $inactiveprojectmanager ?></span><span class="dot bg-violet d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:12px;">Inactive </span></h2>
+                  <h2 class="mb-0 align-items-center"><span><?= $inactiveprojectmanager ?></span><span class="dot bg-blue d-inline-block ml-3"></span><br><span class="text-muted text-uppercase normal" style="font-size:10px;">Inactive </span></h2>
                 </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-
               </div>
-
-=======
               </div>
->>>>>>> Stashed changes
-=======
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
             </div>
           </div>
         </div>
@@ -179,7 +149,7 @@
           </div>
         </div>
       </div> -->
-    </div>
+    
 
 
   </section>
@@ -228,20 +198,33 @@
         </div>
       </div>
     </div>
-  </section> -->
-  <p class="ddd"></p>
+  </section> -->  
   <section class="py-3">
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    <div class="row">
-=======
-    <div class="row">   	
->>>>>>> Stashed changes
-=======
-    <div class="row">        
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+     <div class="row vertical-middle text-center" >
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-     <a href="<?= base_url('training_list') ?>">
+	   <a href="<?= base_url('myorganization-create_projects_list') ?>">
+        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+          <div class="flex-grow-1 d-flex align-items-center">            
+            <div class="text">
+              <h6 class="mb-0">Total Projects</h6><span class="text-gray"><?= $project ?></span>
+            </div>
+          </div>         
+        </div>
+		</a>
+      </div>
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('project_list') ?>">
+        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+          <div class="flex-grow-1 d-flex align-items-center">            
+            <div class="text">
+              <h6 class="mb-0">Total Project Managers</h6><span class="text-gray"><?= $project_manager ?></span>
+            </div>
+          </div>        
+        </div>
+		</a>
+      </div>
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('training_list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
@@ -252,150 +235,70 @@
 		</a>
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-	    <a href="<?= base_url('facilitator_list') ?>">
+	   <a href="<?= base_url('facilitator_list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
-              <h6 class="mb-0">Total Facilitators</h6><span class="text-gray"><?= $facilitator ?></span>
-            </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-          </div>          
-        </div>
-        </a>		
-      </div>
- <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-         <a href="<?= base_url('assessor_list') ?>">
->>>>>>> Stashed changes
-=======
-          </div>          
-        </div>			
-      </div>
- <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">            
-            <div class="text">
-              <h6 class="mb-0">Total Assessors
-              </h6><span class="text-gray"><?= $assessor ?></span>
+              <h6 class="mb-0">
+                Total Facilitators</h6><span class="text-gray"><?= $facilitator ?></span>
             </div>
           </div>          
         </div>
 		</a>
-      </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+      </div> 
+    </div>
+  </section>
+  
+  <section class="py-3">
+     <div class="row vertical-middle text-center" >
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('assessor_list') ?>">
+        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+          <div class="flex-grow-1 d-flex align-items-center">            
+            <div class="text">
+              <h6 class="mb-0">Total Assessors</h6><span class="text-gray"><?= $assessor ?></span>
+            </div>
+          </div>         
+        </div>
+		</a>
+      </div>
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('moderator_list') ?>">
->>>>>>> Stashed changes
-=======
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
               <h6 class="mb-0">Total Internal Moderators</h6><span class="text-gray"><?= $internal_moderator ?></span>
             </div>
-          </div>          
-        </div>
-      </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-    </div>
-=======
-	  </a>
-    </div>	
->>>>>>> Stashed changes
-  </section>
-  <section class="pb-5 pt-0">
-    <div class="row">
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-	  <a href="<?= base_url('external_moderator_list') ?>">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
-            <div class="text">
-<<<<<<< Updated upstream
-              <h6 class="mb-0">Total Assessors
-              </h6><span class="text-gray"><?= $assessor ?></span>
-=======
-              <h6 class="mb-0 ">Total External Moderators</h6><span class="text-gray"><?= $external_moderator ?></span>
->>>>>>> Stashed changes
-            </div>
-          </div>
-          <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+          </div>        
         </div>
 		</a>
       </div>
-=======
-    </div>	
-  </section>
-  <section class="pb-5 pt-0">
-    <div class="row">      
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+	   <a href="<?= base_url('external_moderator_list') ?>">
+        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+          <div class="flex-grow-1 d-flex align-items-center">            
+            <div class="text">
+             <h6 class="mb-0 ">Total External Moderators</h6><span class="text-gray"><?= $external_moderator ?></span>
+            </div>
+          </div>          
+        </div>
+		</a>
+      </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('list_learner') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
-              <h6 class="mb-0">Total External Moderators</h6><span class="text-gray"><?= $external_moderator ?></span>
-            </div>
-          </div>         
-        </div>
-		</a>
-      </div>
-<<<<<<< Updated upstream
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-	  
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-	    <a href="<?= base_url('drop-out-list') ?>">
->>>>>>> Stashed changes
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">           
-            <div class="text">
-              <h6 class="mb-0">Total Learners</h6><span class="text-gray"><?= $learner ?></span>
-            </div>
-          </div>         
-        </div>
-      </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-	  
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">           
-            <div class="text">
-              <h6 class="mb-0">Total Dropouts</h6><span class="text-gray"><?= $drop_out?></span>
+              <h6 class="mb-0">Total Learners</h6><span class="text-gray"><?= $facilitator ?></span>
             </div>
           </div>          
         </div>
-      </div>
-	  
+		</a>
+      </div> 
     </div>
-  </section>
-  <section class="pb-5 pt-0">
-    <div class="row">
-      
-     
-    </div>
-  </section>
-
-
-
-<<<<<<< HEAD
+	</section> 
+	</div>
+  
   <section class="py-5">
     <div class="row">
       <?php $i = 1;
@@ -406,20 +309,6 @@
         $stamp = strtotime($date); // outputs 1307708880
         ?>
 
-
-        <div class="col-lg-12">
-          <a href="#" class="message card px-5 py-3 mb-4 bg-hover-gradient-primary no-anchor-style">
-            <div class="row">
-              <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left"><strong class="h5 mb-0"><?php echo date("d", $stamp); ?><sup class="smaller text-gray font-weight-normal"><?php echo date("M", $stamp); ?></sup></strong><img src="https://d19m59y37dris4.cloudfront.net/bubbly-dashboard/1-0/img/avatar-1.jpg" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
-                <h6 class="mb-0"><?= $projectmn->project_manager ?></h6>
-              </div>
-              <div class="col-lg-9 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
-                <div class="bg-gray-100 roundy px-4 py-1 mr-0 mr-lg-3 mt-2 mt-lg-0 text-dark exclode">Project Manager</div>
-                <p class="mb-0 mt-3 mt-lg-0">Email : <span><?= $projectmn->email_address ?> </span> , Contact Number : <span><?= $projectmn->mobile_number ?></span>, Address : <span><?= $projectmn->city ?>,<?= $projectmn->region ?>,<?= $projectmn->district ?></span></p>
-              </div>
-            </div>
-          </a>
-        </div>
         <?php
         if ($i >= 5) {
           break;
@@ -429,7 +318,7 @@
       } ?>
     </div>
   </section>
-=======
+
 	  </a>
     </div>
   </section>
@@ -437,10 +326,6 @@
     <div class="row">     
     </div>
   </section>
->>>>>>> Stashed changes
-=======
-
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
 </div>
 <style>
   .timer li {
@@ -512,10 +397,7 @@
         </div>
       </div>
     </div>
-
   </div>
-
-
 </div> -->
 
 <?php

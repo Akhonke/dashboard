@@ -82,7 +82,7 @@
 </section> -->
 
   <section class="py-3">
-    <div class="row">
+    <div class="row vertical-middle text-center" >
       <div class="col-lg-6 mb-4 mb-lg-0">
         <div class="card mb-3">
           <div class="card-body">
@@ -107,66 +107,19 @@
                 </div>
                 <canvas id="chDonut1" width="537" height="268" class="chartjs-render-monitor" style="display: block; width: 537px; height: 268px;"></canvas>
               </div>
-              <div class="col-lg-12 d-flex  text-center">
+                <div class="col-lg-12 d-flex  text-left">
                 <div class="col-sm-6">
-                  <h2 class="mb-0  align-items-center"><span>2</span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:9px;">Active Learners</span></h2>
+                  <h2 class="mb-0  align-items-left"><span>2</span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase normal" style="font-size:10px;">Learners</span></h2>
                 </div>
                 <div class="col-sm-6">
-                  <h2 class="mb-0 align-items-center"><span>1</span><span class="dot bg-green d-inline-block ml-3"></span><br><span class="text-muted text-uppercase small" style="font-size:9px;">Dropouts</span></h2>
+                  <h2 class="mb-0 align-items-"><span>1</span><span class="dot bg-blue d-inline-block ml-3"></span><br><span class="text-muted text-uppercase normal" style="font-size:10px;">Dropouts</span></h2>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-<<<<<<< Updated upstream
-      <div class="col-lg-6 mb-4 mb-lg-0">
-
-
-<<<<<<< HEAD
-        <div class="py-3">
-          <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
-            <div class="flex-grow-1 d-flex align-items-center">
-              <div class="dot mr-3 bg-violet"></div>
-              <div class="text">
-                <h6 class="mb-0">Total Learnership </h6><span class="text-gray"><?= $learnership ?></span>
-              </div>
-            </div>
-            <div class="icon bg-violet text-white"><i class="fas fa-clipboard-check"></i></div>
-          </div>
-        </div>
-        <div class="py-3">
-          <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
-            <div class="flex-grow-1 d-flex align-items-center">
-              <div class="dot mr-3 bg-green"></div>
-              <div class="text">
-                <h6 class="mb-0">Total Sub Learnership</h6><span class="text-gray"><?= $sublearnership ?></span>
-              </div>
-            </div>
-            <div class="icon bg-green text-white"><i class="fas fa-dollar-sign"></i></div>
-          </div>
-        </div>
-        <div class="py-3">
-          <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between">
-            <div class="flex-grow-1 d-flex align-items-center">
-              <div class="dot mr-3 bg-blue"></div>
-              <div class="text">
-                <h6 class="mb-0">Total Units</h6><span class="text-gray">--</span>
-              </div>
-            </div>
-            <div class="icon bg-blue text-white"><i class="fas fa-user-friends"></i></div>
-          </div>
-        </div>
-=======
-      <div class="col-lg-6 mb-4 mb-lg-0">        
->>>>>>> Stashed changes
-=======
-        
-      
-       
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
-      </div>
-    </div>
+     
   </section>
   <!-- <p class="ddd"></p> -->
   <!-- <section class="py-3">
@@ -216,7 +169,7 @@
   </section> -->
   <p class="ddd"></p>
   <section class="py-3">
-    <div class="row">
+     <div class="row vertical-middle text-center" >
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('learner-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
@@ -255,8 +208,7 @@
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
-              <h6 class="mb-0">
-                Total Internal Moderators</h6><span class="text-gray"><?= $internal_moderator ?></span>
+              <h6 class="mb-0">Total Internal Moderators</h6><span class="text-gray"><?= $internal_moderator ?></span>
             </div>
           </div>          
         </div>
@@ -265,7 +217,7 @@
     </div>
   </section>
   <section class="pb-5 pt-0">
-    <div class="row">
+    <div class="row vertical-middle text-center" >
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('externalmoderator-user-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
@@ -300,53 +252,37 @@
         </div>
 		</a>
       </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">	  
 	    <a href="<?= base_url('Quaterly-Report-list') ?>">
->>>>>>> Stashed changes
-=======
-	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
-<<<<<<< HEAD
               <h6 class="mb-0">Total Attendace Reports</h6><span class="text-gray"><?= $attendance ?></span>
-            </div>
-          </div>
-          <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
-        </div>
-		</a>
-      </div>
-    </div>
-  </section>
-  <section class="pb-5 pt-0">
-    <div class="row">
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">
-            <div class="dot mr-3 bg-violet"></div>
-            <div class="text">
-              <h6 class="mb-0">Total Quaterly Reports
-=======
-              <h6 class="mb-0">Total Quarterly Reports
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
-              </h6><span class="text-gray"><?= $quarterly_progress_report  ?></span>
             </div>
           </div>          
         </div>
+		</a>
       </div>
+	  
     </div>
   </section>
+   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+      <a href="<?= base_url('Quaterly-Report-list') ?>">
+        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+          <div class="flex-grow-1 d-flex align-items-center">           
+            <div class="text">
+              <h6 class="mb-0">Total Quarterly Reports
+              </h6><span class="text-gray"><?= $quarterly_progress_report  ?></span>
+            </div>
+          </div>         
+        </div>
+		</a>
+      </div>
   <section class="pb-5 pt-0">
     <div class="row">
     </div>
   </section> 
 </div>
-
 <script src="<?= base_url() ?>assets/admin/cloudfront/vendor/chart.js/Chart.min.js"></script>
 <script src="<?= base_url() ?>assets/admin/cloudfront/js/charts-home.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -395,7 +331,7 @@
   var donutOptions = {
     cutoutPercentage: 0,
     legend: {
-      position: 'bottom',
+      position: 'right',
       padding: 5,
       labels: {
         pointStyle: 'circle',
@@ -406,7 +342,7 @@
 
   // donut 1
   var chDonutData1 = {
-    labels: ['Learner', 'Dropouts'],
+    labels: ['Active Learners', 'Dropouts'],
     datasets: [{
       backgroundColor: colors.slice(0, 7),
       borderWidth: 0,

@@ -27,21 +27,8 @@ class Learner extends CI_Controller
 
 		$this->data['suggestion_list_'] = $this->common->accessrecord('complaints_and_suggestions', [], ['learner_id' => $id,'type'=>'suggestions'], 'result');
 		$this->data['suggestion_list'] = count($this->data['suggestion_list_']);
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-=======
 		
-		$this->data['class_'] = $this->common->accessrecord('class_name', [], ['trainer_id' => $_SESSION['admin']['trainer_id']], 'result');
-		$this->data['class'] = count($this->data['class_']);		
-			
->>>>>>> Stashed changes
-=======
 		
-		$this->data['class_'] = $this->common->accessrecord('class_name', [], ['project_manager' => $_SESSION['projectmanager']['id']], 'result');
-		$this->data['class'] = count($this->data['class_']);
-		
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
 		$this->data['page'] = 'dashboard';
 
 		$this->data['content'] = 'pages/dashboard/dashboard';
@@ -633,14 +620,12 @@ public function view_assessment(){
     $this->data['learner_assessment'] = $this->common->accessrecord('learner_assessment', [], ['learner_id' => $learner_id, 'assessment_id' => $assessment_id], 'row');
     $this->data['class'] = $this->common->accessrecord('class_name', [], ['id' => ($this->data['assessment'])->class_id ], 'row');
 //     $this->data['unit'] = $this->common->accessrecord('units', [], ['id' => ($this->data['assessment'])->unit_standard ], 'row');
-    $this->data['module'] = $this->common->accessrecord('module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
+    $this->data['class_module'] = $this->common->accessrecord('class_module', [], ['id' => ($this->data['assessment'])->module_id ], 'row');
 
     $unit_standard_list = $this->common->getAssessmentUnits($assessment_id);
     $unit_standards = [];
-    if (is_array($unit_standard_list)) {
-        foreach ($unit_standard_list as $unit_standard_item) {
-            $unit_standards[] = $unit_standard_item->title;
-        }
+    foreach ($unit_standard_list as $unit_standard_item) {
+        $unit_standards[] = $unit_standard_item->title;
     }
 
     $this->data['unit_standard'] = join(",", $unit_standards);
@@ -828,55 +813,6 @@ public function load_assessment(){
 
 
 }
-
-
-    public function take_quiz()
-    {
-
-
-        $learner_id = $_SESSION['learner']['id'];
-
-        $learner = $this->common->accessrecord('learner', [], ['id' => $learner_id], 'row');
-
-        $assessment_id = $_GET['aid'];
-        $online_quiz_id = $_GET['id'];
-
-        $this->session->set_userdata('access_mode', 'embedded');
-
-        $learner_user = [
-            'email' => $learner->email,
-            'password' => $learner->password,
-            'first_name' => $learner->first_name,
-            'last_name' => $learner->surname,
-            'contact_no' => $learner->mobile_number,
-            'gid' => $this->config->item('default_gid'),
-            'su' => '0'
-        ];
-
-        $callback = BASEURL . 'learner_online_result';
-        $this->session->set_userdata('callback', $callback);
-
-        $callback_data = [
-            'assessment_id' => $assessment_id,
-            'learner_id' => $learner_id,
-            'quiz_id' => $online_quiz_id
-        ];
-        $this->session->set_userdata('callback_data', $callback_data);
-
-
-
-        $this->session->set_userdata('embedded_user_type', 'learner');
-        $this->session->set_userdata('embedded_user', $learner_user);
-
-        $this->data['url'] = BASEURL . 'digilims_online/index.php/quiz/quiz_detail/' . $online_quiz_id;
-        $this->data['title'] = 'Online Assessment';
-
-
-        $this->data['page'] = 'iframe_container';
-        $this->data['content'] = '/pages/iframe/iframe_container';
-        $this->load->view('learner/tamplate', $this->data);
-
-    }
 
 
 }

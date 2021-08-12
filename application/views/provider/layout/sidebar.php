@@ -23,12 +23,12 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
         ?> </div>
 
     <ul class="sidebar-menu list-unstyled">
-        <li class="sidebar-list-item"><a href="<?= base_url('Provider-Dashboard'); ?>" title="From Here You Can See Dashboard " class="sidebar-link text-white active"><i class="o-home-1 mr-3 text-gray"></i><span>Provider Dashboard</span></a>
+        <li class="sidebar-list-item"><a href="<?= base_url('Provider-Dashboard'); ?>" title="From Here You Can See Dashboard " class="sidebar-link text-white active"><i class="o-home-1 mr-3 text-gray"></i><span>Dashboard</span></a>
         </li>
 
         <li class="sidebar-list-item">
             <a href="#" data-toggle="collapse" title="From Here You Can Manage Facilitators " data-target="#pages8" aria-expanded="false" aria-controls="pages8" class="sidebar-link text-white">
-                <i class="o-laptop-screen-1 mr-3 text-gray"></i><span>My Facilitators</span></a>
+                <i class="o-laptop-screen-1 mr-3 text-gray"></i><span>Facilitators</span></a>
             <div id="pages8" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
@@ -38,10 +38,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Facilitator and Moderator Management", $arrayfeatures)) {
                         ?>
-                            <a href="<?= site_url('facilitator-user-list'); ?>" title="From Here You Can See Facilitaors List" class="sidebar-link text-white pl-lg-5">All Facilitators List</a>
+                            <a href="<?= site_url('facilitator-user-list'); ?>" title="From Here You Can See Facilitaors List" class="sidebar-link text-white pl-lg-5">View Facilitators List</a>
                     </li>
                 <?php } else { ?>
-                    <a onclick="subscriptionMessage()" title="From Here You Can See Facilitaors List" class="sidebar-link text-white pl-lg-5">All Facilitators List</a>
+                    <a onclick="subscriptionMessage()" title="From Here You Can See Facilitaors List" class="sidebar-link text-white pl-lg-5">View Facilitators List</a>
                 <?php } ?>
 
                 </ul>
@@ -61,10 +61,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                             <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                             if (in_array("Qualification Management", $arrayfeatures)) {
                             ?>
-                                <a href="<?= base_url('manage-unit'); ?>" title="From Here You Can See Unit Standard List " class="sidebar-link text-white pl-lg-5">Unit Standard List</a>
+                                <a href="<?= base_url('manage-unit'); ?>" title="From Here You Can See Unit Standard List " class="sidebar-link text-white pl-lg-5">View Unit Standard List</a>
                         </li>
                     <?php } else { ?>
-                        <a onclick="subscriptionMessage()" title="From Here You Can See Unit Standard List " class="sidebar-link text-white pl-lg-5">Unit Standard List</a>
+                        <a onclick="subscriptionMessage()" title="From Here You Can See Unit Standard List " class="sidebar-link text-white pl-lg-5">View Unit Standard List</a>
                     <?php } ?>
                     </ul>
                 </div>
@@ -83,10 +83,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                             <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                             if (in_array("Qualification Management", $arrayfeatures)) {
                             ?>
-                                <a href="<?= base_url('learnership-list'); ?>" title="From Here You Can See Learnership Type List " class="sidebar-link text-white pl-lg-5">Learnership Type List</a>
+                                <a href="<?= base_url('learnership-list'); ?>" title="From Here You Can See Learnership Type List " class="sidebar-link text-white pl-lg-5">View Learnership Type List</a>
                         </li>
                     <?php } else { ?>
-                        <a onclick="subscriptionMessage()" title="From Here You Can See Learnership Type List " class="sidebar-link text-white pl-lg-5">Learnership Type List</a>
+                        <a onclick="subscriptionMessage()" title="From Here You Can See Learnership Type List " class="sidebar-link text-white pl-lg-5">View Learnership Type List</a>
                     <?php } ?>
 
 
@@ -106,10 +106,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                             <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                             if (in_array("Qualification Management", $arrayfeatures)) {
                             ?>
-                                <a href="<?= base_url('learnership-sub-list'); ?>" title="From Here You Can See Learnership Sub-Type List" class="sidebar-link text-white pl-lg-5">Learnership Sub Type List</a>
+                                <a href="<?= base_url('learnership-sub-list'); ?>" title="From Here You Can See Learnership Sub-Type List" class="sidebar-link text-white pl-lg-5">View Learnership Sub Type List</a>
                         </li>
                     <?php } else { ?>
-                        <a onclick="subscriptionMessage()" title="From Here You Can See Learnership Sub-Type List" class="sidebar-link text-white pl-lg-5">Learnership Sub Type List</a>
+                        <a onclick="subscriptionMessage()" title="From Here You Can See Learnership Sub-Type List" class="sidebar-link text-white pl-lg-5">View Learnership Sub Type List</a>
                     <?php } ?>
 
                     </ul>
@@ -123,7 +123,7 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
 
         <li class="sidebar-list-item">
             <a href="#" data-toggle="collapse" title="From Here You Can manage Class" data-target="#pages13" aria-expanded="false" aria-controls="pages13" class="sidebar-link text-white">
-                <i class="o-wireframe-1 mr-3 text-gray"></i><span>Manage My Class</span></a>
+                <i class="o-wireframe-1 mr-3 text-gray"></i><span>Class Management</span></a>
             <div id="pages13" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
@@ -134,17 +134,17 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Class Management", $arrayfeatures)) {
                         ?>
-                            <a href="<?= BASEURL ?>provider-class-list" title="From Here You Can See Class List" class="sidebar-link text-white pl-lg-5">My Class List</a>
+                            <a href="<?= BASEURL ?>provider-class-list" title="From Here You Can See Class List" class="sidebar-link text-white pl-lg-5">View Class List</a>
                     </li>
                 <?php } else { ?>
-                    <a onclick="subscriptionMessage()" title="From Here You Can See Class List" class="sidebar-link text-white pl-lg-5">My Class List</a>
+                    <a onclick="subscriptionMessage()" title="From Here You Can See Class List" class="sidebar-link text-white pl-lg-5">View Class List</a>
                 <?php } ?>
                 </ul>
             </div>
         </li>
 
         <li class="sidebar-list-item">
-            <a href="#" title="From Here You Can Manage Learners " data-toggle="collapse" data-target="#pages7" aria-expanded="false" aria-controls="pages7" class="sidebar-link text-white"><i class="o-user-1 mr-3 text-gray"></i><span>My Learners</span></a>
+            <a href="#" title="From Here You Can Manage Learners " data-toggle="collapse" data-target="#pages7" aria-expanded="false" aria-controls="pages7" class="sidebar-link text-white"><i class="o-user-1 mr-3 text-gray"></i><span>Learners</span></a>
 
             <div id="pages7" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
@@ -162,10 +162,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Learner Performance Management", $arrayfeatures)) {
                         ?>
-                            <a href="<?= base_url('learner-list'); ?>" title="From Here You Can See Learners List " class="sidebar-link text-white pl-lg-5">Learners List</a>
+                            <a href="<?= base_url('learner-list'); ?>" title="From Here You Can See Learners List " class="sidebar-link text-white pl-lg-5">View Learners List</a>
                     </li>
                 <?php } else { ?>
-                    <a onclick="subscriptionMessage()" title="From Here You Can See Learners List " class="sidebar-link text-white pl-lg-5">Learners List</a>
+                    <a onclick="subscriptionMessage()" title="From Here You Can See Learners List " class="sidebar-link text-white pl-lg-5">View Learners List</a>
                 <?php } ?>
                 <!-- <li class="sidebar-list-item"><a href="<?= base_url('Rejected-learner-list'); ?>" class="sidebar-link text-white pl-lg-5">Rejected For Training</a></li> -->
                 <li class="sidebar-list-item">
@@ -173,11 +173,11 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                     <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                     if (in_array("Learner Performance Management", $arrayfeatures)) {
                     ?>
-                        <a href="<?= base_url('provider-drop-out-list'); ?>" title="From Here You Can See Drop Outs List " class="sidebar-link text-white pl-lg-5">Drop Outs List</a>
+                        <a href="<?= base_url('provider-drop-out-list'); ?>" title="From Here You Can See Drop Outs List " class="sidebar-link text-white pl-lg-5">View Drop Outs List</a>
                 </li>
 
             <?php } else { ?>
-                <a onclick="subscriptionMessage()" title="From Here You Can See Drop Outs List " class="sidebar-link text-white pl-lg-5">Drop Outs List</a>
+                <a onclick="subscriptionMessage()" title="From Here You Can See Drop Outs List " class="sidebar-link text-white pl-lg-5">View Drop Outs List</a>
             <?php } ?>
                 </ul>
             </div>
@@ -196,10 +196,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Learner Performance Management", $arrayfeatures)) {
                         ?>
-                            <a href="<?= BASEURL ?>provider-attendance-list" title="From Here You Can See Attendance List" class="sidebar-link text-white pl-lg-5">Attendance List</a>
+                            <a href="<?= BASEURL ?>provider-attendance-list" title="From Here You Can See Attendance List" class="sidebar-link text-white pl-lg-5">View Attendance List</a>
                     </li>
                 <?php } else { ?>
-                    <a onclick="subscriptionMessage()" title="From Here You Can See Attendance List" class="sidebar-link text-white pl-lg-5">Attendance List</a>
+                    <a onclick="subscriptionMessage()" title="From Here You Can See Attendance List" class="sidebar-link text-white pl-lg-5">View Attendance List</a>
                 <?php } ?>
 
                 </ul>
@@ -233,7 +233,7 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
 
           <li class="sidebar-list-item">
              <a href="#" data-toggle="collapse" title="From Here You Can Manage Modules" data-target="#pages11" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
-             <i class="o-code-window-1 mr-3 text-gray"></i><span>Modules</span></a>
+             <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage Modules</span></a>
              <div id="pages11" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                    <li class="sidebar-list-item">
@@ -249,9 +249,9 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                       <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                       if (in_array("Learner Performance Management", $arrayfeatures)) {
                       ?>
-                         <a href="<?= BASEURL ?>provider-module-list" title="From Here You Can See the Module List" class="sidebar-link text-white pl-lg-5">Module List</a>
+                         <a href="<?= BASEURL ?>provider-module-list" title="From Here You Can See the Module List" class="sidebar-link text-white pl-lg-5">View Module List</a>
                       <?php } else { ?>
-                         <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Module List</a>
+                         <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">View Module List</a>
                       <?php } ?>
                    </li>
                 </ul>
@@ -264,7 +264,7 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
 
           <li class="sidebar-list-item">
              <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages16" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
-                <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
+                <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage Assessment</span></a>
              <div id="pages16" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                    <li class="sidebar-list-item">
@@ -280,9 +280,9 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                       <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                       if (in_array("Learner Performance Management", $arrayfeatures)) {
                       ?>
-                         <a href="<?= BASEURL ?>provider-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                         <a href="<?= BASEURL ?>provider-assessment-list" title="From Here You Can See AssessmentList" class="sidebar-link text-white pl-lg-5">View Assessment List</a>
                       <?php } else { ?>
-                         <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessment List</a>
+                         <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">View Assessment List</a>
                       <?php } ?>
                    </li>
 
@@ -325,9 +325,9 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Learner Performance Management", $arrayfeatures)) {
                         ?>
-                            <a href="<?= BASEURL ?>provider-learnermark-list" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5">Mark Sheet List</a>
+                            <a href="<?= BASEURL ?>provider-learnermark-list" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5">View Mark Sheet List</a>
                         <?php } else { ?>
-                            <a onclick="subscriptionMessage()" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5">Mark Sheet List</a>
+                            <a onclick="subscriptionMessage()" title="From Here You Can See Marksheet List" class="sidebar-link text-white pl-lg-5">View Mark Sheet List</a>
                         <?php } ?>
                     </li>
                     <!--  <li class="sidebar-list-item"><a href="<?= BASEURL ?>provider-import-learnermarks"
@@ -339,14 +339,14 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
 
         <li class="sidebar-list-item">
             <a href="#" data-toggle="collapse" title="From Here You Can Manage Assessor " data-target="#pages9" aria-expanded="false" aria-controls="pages9" class="sidebar-link text-white">
-                <i class="o-imac-screen-1 mr-3 text-gray"></i><span>My Assessor</span></a>
+                <i class="o-imac-screen-1 mr-3 text-gray"></i><span>Assessor</span></a>
             <div id="pages9" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
                     <li class="sidebar-list-item"><a href="<?= site_url('create-assessor-user'); ?>" title="From Here You Can Create Assessor " class="sidebar-link text-white pl-lg-5">Create
                             New Assessor</a></li>
 
-                    <li class="sidebar-list-item"><a href="<?= site_url('assessor-user-list'); ?>" title="From Here You Can See Assessor List" class="sidebar-link text-white pl-lg-5">All Assessor list</a></li>
+                    <li class="sidebar-list-item"><a href="<?= site_url('assessor-user-list'); ?>" title="From Here You Can See Assessor List" class="sidebar-link text-white pl-lg-5">View Assessor list</a></li>
 
                 </ul>
             </div>
@@ -354,7 +354,7 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
 
         <li class="sidebar-list-item">
             <a href="#" data-toggle="collapse" title="From Here You Can Manage Moderator" data-target="#pages10" aria-expanded="false" aria-controls="pages10" class="sidebar-link text-white">
-                <i class="o-id-card-1 mr-3 text-gray"></i><span>My Moderator</span></a>
+                <i class="o-id-card-1 mr-3 text-gray"></i><span>Moderator</span></a>
             <div id="pages10" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
@@ -365,10 +365,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Facilitator and Moderator Management", $arrayfeatures)) {
                         ?>
-                            <a href="<?= site_url('moderator-user-list'); ?>" title="From Here You Can See Internal Moderator List" class="sidebar-link text-white pl-lg-5">Internal Moderator List</a>
+                            <a href="<?= site_url('moderator-user-list'); ?>" title="From Here You Can See Internal Moderator List" class="sidebar-link text-white pl-lg-5">View Internal Moderator List</a>
                     </li>
                 <?php } else { ?>
-                    <a onclick="subscriptionMessage()" title="From Here You Can See Internal Moderator List" class="sidebar-link text-white pl-lg-5">Internal Moderator List</a>
+                    <a onclick="subscriptionMessage()" title="From Here You Can See Internal Moderator List" class="sidebar-link text-white pl-lg-5">View Internal Moderator List</a>
                 <?php } ?>
 
                 <li class="sidebar-list-item"><a href="<?= site_url('create-externalmoderator-user'); ?>" title="From Here You Can Create External Moderator " class="sidebar-link text-white pl-lg-5">Create
@@ -378,10 +378,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                     <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                     if (in_array("Facilitator and Moderator Management", $arrayfeatures)) {
                     ?>
-                        <a href="<?= site_url('externalmoderator-user-list'); ?>" title="From Here You Can See External Moderator List" class="sidebar-link text-white pl-lg-5">External moderator list</a>
+                        <a href="<?= site_url('externalmoderator-user-list'); ?>" title="From Here You Can See External Moderator List" class="sidebar-link text-white pl-lg-5">View External moderator list</a>
                 </li>
             <?php } else { ?>
-                <a onclick="subscriptionMessage()" title="From Here You Can See External Moderator List" class="sidebar-link text-white pl-lg-5">External Moderator List</a>
+                <a onclick="subscriptionMessage()" title="From Here You Can See External Moderator List" class="sidebar-link text-white pl-lg-5">View External Moderator List</a>
             <?php } ?>
                 </ul>
             </div>
@@ -403,10 +403,10 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Financial Management (including Stipends)", $arrayfeatures)) {
                         ?>
-                            <a href="<?= site_url('list_banking_detail'); ?>" title="From Here You Can See Banking Details List" class="sidebar-link text-white pl-lg-5">List Of Banking Detail</a>
+                            <a href="<?= site_url('list_banking_detail'); ?>" title="From Here You Can See Banking Details List" class="sidebar-link text-white pl-lg-5">View List Of Banking Detail</a>
                     </li>
                 <?php } else { ?>
-                    <a onclick="subscriptionMessage()" title="From Here You Can See Banking Details List" class="sidebar-link text-white pl-lg-5">List Of Banking Detail</a>
+                    <a onclick="subscriptionMessage()" title="From Here You Can See Banking Details List" class="sidebar-link text-white pl-lg-5">View List Of Banking Detail</a>
                 <?php } ?>
 
                 </ul>
@@ -430,7 +430,7 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         ?>
                             <a href="<?= BASEURL ?>Quaterly-Report-list" title="From Here You Can See Quarterly Report List" class="sidebar-link text-white pl-lg-5">Quarterly Progress Report</a>
                         <?php } else { ?>
-                            <a onclick="subscriptionMessage()" title="From Here You Can See Quarterly Report List" class="sidebar-link text-white pl-lg-5">Quaterly Report List</a>
+                            <a onclick="subscriptionMessage()" title="From Here You Can See Quarterly Report List" class="sidebar-link text-white pl-lg-5">View Quaterly Report List</a>
                         <?php } ?>
                     </li>
 
@@ -473,11 +473,11 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
 
         <li class="sidebar-list-item">
             <a href="#" data-toggle="collapse" data-target="#pages17" aria-expanded="false" aria-controls="pages17" title="From Here You Can Manage User" class="sidebar-link text-white">
-                <i class="o-code-window-1 mr-3 text-gray"></i><span>User</span></a>
+                <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage User</span></a>
             <div id="pages17" class="collapse">
                 <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                     <li class="sidebar-list-item"><a href="<?= BASEURL ?>Create-Provider-User" title="From Here You Can Create User" class="sidebar-link text-white pl-lg-5">Create User</a></li>
-                    <li class="sidebar-list-item"><a href="<?= BASEURL ?>Provider-User-list" title="From Here You Can See User List" class="sidebar-link text-white pl-lg-5">Users List</a></li>
+                    <li class="sidebar-list-item"><a href="<?= BASEURL ?>Provider-User-list" title="From Here You Can See User List" class="sidebar-link text-white pl-lg-5">View Users List</a></li>
                 </ul>
             </div>
         </li>
@@ -493,9 +493,9 @@ if (!empty($_SESSION['admin']['trainer_id'])) {
                         <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                         if (in_array("Learner Performance Management", $arrayfeatures)) {
                         ?>
-                            <a href="<?= site_url('list_learner_attendance'); ?>" title="From Here You Can See Learner Attendance List" class="sidebar-link text-white pl-lg-5">Learner Attendance List</a>
+                            <a href="<?= site_url('list_learner_attendance'); ?>" title="From Here You Can See Learner Attendance List" class="sidebar-link text-white pl-lg-5">View Learner Attendance List</a>
                         <?php } else { ?>
-                            <a onclick="subscriptionMessage()" title="From Here You Can See Learner Attendance List" class="sidebar-link text-white pl-lg-5">Attendance List</a>
+                            <a onclick="subscriptionMessage()" title="From Here You Can See Learner Attendance List" class="sidebar-link text-white pl-lg-5">View Learner Attendance List</a>
                         <?php } ?>
                     </li>
 

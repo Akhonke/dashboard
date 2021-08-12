@@ -43,7 +43,7 @@
     </div>
   </section> -->
   <section class="py-5">
-    <div class="row">
+   <div class="row vertical-middle text-center" >
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	  <a href="<?= base_url('create_projects_list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
@@ -54,8 +54,7 @@
           </div>          
         </div>
 		</a>
-      </div>
-     
+      </div>     
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	  <a href="<?= base_url('projectmanagertraining-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
@@ -67,16 +66,8 @@
         </div>
 		</a>
       </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-	   <a href="<?= base_url('projectmanager-facilitator-list') ?>">
->>>>>>> Stashed changes
-=======
-       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">       
+	   <a href="<?= base_url('projectmanager-facilitator-list') ?>">  
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
@@ -86,16 +77,8 @@
         </div>
 		</a>
       </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
 	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	   <a href="<?= base_url('projectmanager-assessor-list') ?>">
->>>>>>> Stashed changes
-=======
-	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">            
             <div class="text">
@@ -108,7 +91,7 @@
     </div>
   </section>
   <section class="pb-5 pt-0">
-    <div class="row">     
+    <div class="row vertical-middle text-center" >    
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
 	  <a href="<?= base_url('projectmanager-moderator-list') ?>">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
@@ -120,16 +103,8 @@
         </div>
 		</a>
       </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">	
 	  <a href="<?= base_url('projectmanager-external-moderator-list') ?>">
->>>>>>> Stashed changes
-=======
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
@@ -139,16 +114,9 @@
         </div>
 		</a>
       </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
-	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">	  
 	   <a href="<?= base_url('projectmanager-mark-sheet-list') ?>">
->>>>>>> Stashed changes
-=======
-	   <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
@@ -156,46 +124,25 @@
             </div>
           </div>          
         </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      </div>
-      <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
 		</a>
       </div> 
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-	  <a href="<?= base_url('projectmanager-class-list') ?>">
->>>>>>> Stashed changes
-=======
-      </div> 
-	  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
-        <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
-          <div class="flex-grow-1 d-flex align-items-center">           
-            <div class="text">
-              <h6 class="mb-0">Total Classes</h6><span class="text-gray"><?= $class ?></span>
-            </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-          </div>
-          <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
-        </div>
-      </div>
+	 
+    
 
-=======
+
           </div>          
         </div>		
       </div> 
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+
     </div>
 	 
 	  
   </section>
   <section class="pb-5 pt-0">
     <div class="row">
-<<<<<<< HEAD
+
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
-=======
+
           </div>          
         </div>
 		</a>
@@ -203,16 +150,16 @@
     </div>	  
   </section>
   <section class="pb-5 pt-0">
-    <div class="row">     
+   <div class="row vertical-middle text-center" >    
  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
      <a href="<?= base_url('projectmanager-drop-out-list') ?>">
->>>>>>> Stashed changes
-=======
+
+
      
      
      
  <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
           <div class="flex-grow-1 d-flex align-items-center">           
             <div class="text">
@@ -220,8 +167,8 @@
             </div>
           </div>          
         </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+
+
       </div>
       <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
         <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
@@ -257,90 +204,18 @@
         </div>
       </div>
 
-=======
+
       </div>  	  
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+
     </div>
   </section>
-  <section class="pb-5 pt-0">
-    <div class="row">
-<<<<<<< HEAD
-      <div class="col-lg-5 mb-4 mb-lg-0">
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="row align-items-center mb-3 flex-row">
-              <div class="col-lg-5">
-                <h2 class="mb-0 d-flex align-items-center"><span>86%</span><span class="dot bg-violet d-inline-block ml-3"></span></h2><span class="text-muted text-uppercase small">Monthly Usage</span>
-                <hr><small class="text-muted">Lorem ipsum dolor sit</small>
-              </div>
-              <div class="col-lg-7">
-                <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                  <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                  </div>
-                  <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                  </div>
-                </div>
-                <canvas id="pieChartHome3" width="192" height="96" class="chartjs-render-monitor" style="display: block; width: 192px; height: 96px;"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="row align-items-center flex-row">
-              <div class="col-lg-5">
-                <h2 class="mb-0 d-flex align-items-center"><span>$126,41</span><span class="dot bg-green d-inline-block ml-3"></span></h2><span class="text-muted text-uppercase small">All Income</span>
-                <hr><small class="text-muted">Lorem ipsum dolor sit</small>
-              </div>
-              <div class="col-lg-7">
-                <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                  <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                  </div>
-                  <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                  </div>
-                </div>
-                <canvas id="pieChartHome4" width="192" height="96" class="chartjs-render-monitor" style="display: block; width: 192px; height: 96px;"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-7">
-        <div class="card">
-          <div class="card-header">
-            <h2 class="h6 text-uppercase mb-0">Total Overdue</h2>
-          </div>
-          <div class="card-body">
-            <p class="text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <div class="chart-holder">
-              <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                  <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                </div>
-                <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                  <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                </div>
-              </div>
-              <canvas id="lineChart2" style="max-height: 14rem !important; display: block; width: 529px; height: 264px;" class="w-100 chartjs-render-monitor" width="529" height="264"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-=======
-		</a>
-      </div>  	  
-    </div>
-  </section>
+ 
   <section class="pb-5 pt-0">
     <div class="row"> 
->>>>>>> Stashed changes
-=======
+
+
  
->>>>>>> 397e9a3297bf8ace564ebaacc8d8c76dc20d8d1c
+
     </div>
   </section>
 

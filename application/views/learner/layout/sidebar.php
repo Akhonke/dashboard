@@ -16,7 +16,7 @@ echo $learner_nm=$learner->first_name.' '.$learner->surname;
 ?> </div>
    <ul class="sidebar-menu list-unstyled">
       <li class="sidebar-list-item"><a href="<?= base_url() . 'learner-Dashboard' ?>" title="From Here You Can See Dashboard" class="sidebar-link text-white active"><i class="o-home-1 mr-3 text-gray"></i><span>Dashboard</span></a></li>
-      <li class="sidebar-list-item"><a href="<?= base_url() ?>learner-attachments " title="From Here You Can See Attachments"class="sidebar-link text-white"><i class="o-home-1 mr-3 text-gray"></i><span>My Attachments</span></a></li>
+      <li class="sidebar-list-item"><a href="<?= base_url() ?>learner-attachments " title="From Here You Can See Attachments"class="sidebar-link text-white"><i class="o-home-1 mr-3 text-gray"></i><span>Attachments</span></a></li>
       <!-- <li class="sidebar-list-item">
          <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
          if (in_array("Learner Performance Management", $arrayfeatures)) {
@@ -43,8 +43,8 @@ echo $learner_nm=$learner->first_name.' '.$learner->surname;
          <div id="pages8" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
                <li class="sidebar-list-item"><a href="<?= BASEURL ?>learner-complaints-suggestion" title="From Here You Can Create Complaints And Suggestion" class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>Create New Complaints/Suggestions</span></a></li>
-               <li class="sidebar-list-item"><a href="<?= BASEURL ?>learner-complaint-list" title="From Here You Can See Complaints List" class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>My Complaints</span></a></li>
-               <li class="sidebar-list-item"><a href="<?= BASEURL ?>learner-suggestion-list" title="From Here You Can See Suggestion List" class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>My Suggestion</span></a></li>
+               <li class="sidebar-list-item"><a href="<?= BASEURL ?>learner-complaint-list" title="From Here You Can See Complaints List" class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>View Complaints List</span></a></li>
+               <li class="sidebar-list-item"><a href="<?= BASEURL ?>learner-suggestion-list" title="From Here You Can See Suggestion List" class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>View Suggestion List</span></a></li>
             </ul>
          </div>
       </li>
@@ -73,9 +73,9 @@ echo $learner_nm=$learner->first_name.' '.$learner->surname;
          <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
          if (in_array("Stipend Management", $arrayfeatures)) {
          ?>
-            <a href="<?= BASEURL ?>learner-stipends-list" title="From Here You Can See Stipends History " class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>My Stipends History</span></a>
+            <a href="<?= BASEURL ?>learner-stipends-list" title="From Here You Can See Stipends History " class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>Stipends History</span></a>
          <?php } else { ?>
-            <a onclick="subscriptionMessage()" title="From Here You Can See Stipends History" class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>My Stipends History</span></a>
+            <a onclick="subscriptionMessage()" title="From Here You Can See Stipends History" class="sidebar-link text-white"><i class="o-paperwork-1 mr-3 text-gray"></i><span>Stipends History</span></a>
          <?php } ?>
       </li>
       <li class="sidebar-list-item">
@@ -93,7 +93,7 @@ echo $learner_nm=$learner->first_name.' '.$learner->surname;
 
       <li class="sidebar-list-item">
          <a href="#" data-toggle="collapse" title="From Here You Can Assessments" data-target="#pages6" aria-expanded="false" aria-controls="pages6" class="sidebar-link text-white">
-            <i class="o-code-window-1 mr-3 text-gray"></i><span>Assessment</span></a>
+            <i class="o-code-window-1 mr-3 text-gray"></i><span>Manage Assessment</span></a>
          <div id="pages6" class="collapse">
             <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
 
@@ -101,9 +101,9 @@ echo $learner_nm=$learner->first_name.' '.$learner->surname;
                   <?php $arrayfeatures = explode("%@#$", $plan[0]->feature);
                   if (in_array("Learner Performance Management", $arrayfeatures)) {
                   ?>
-                     <a href="<?= BASEURL ?>learner-assessment-list" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">My Assessments</a>
+                     <a href="<?= BASEURL ?>learner-assessment-list" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessments List</a>
                   <?php } else { ?>
-                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">My Assessments</a>
+                     <a onclick="subscriptionMessage()" title="From Here You Can See Assessment List" class="sidebar-link text-white pl-lg-5">Assessments List</a>
                   <?php } ?>
                </li>
             </ul>
